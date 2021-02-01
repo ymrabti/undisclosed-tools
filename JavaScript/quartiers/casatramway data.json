@@ -1,0 +1,62 @@
+[
+  {
+    "label": "sidi moumen"
+  },
+  {
+    "label": "bournazel"
+  },
+  {
+    "label": "hay mohammadi"
+  },
+  {
+    "label": "belvédère"
+  },
+  {
+    "label": "derb omar"
+  },
+  {
+    "label": "centre ville"
+  },
+  {
+    "label": "les hôpitaux"
+  },
+  {
+    "label": "maarif"
+  },
+  {
+    "label": "oasis"
+  },
+  {
+    "label": "sidi maarouf"
+  },
+  {
+    "label": "sidi bernoussi"
+  },
+  {
+    "label": "ain sbaa"
+  },
+  {
+    "label": "fida"
+  },
+  {
+    "label": "beauséjour"
+  },
+  {
+    "label": "hay hassani"
+  },
+  {
+    "label": "ain diab"
+  }
+]
+
+var quarts=document.getElementById('casamappa-districts-stations');
+var list=[];
+for(n=0;n<quarts.options.length;n++)
+{
+var opt=quarts.options[n];
+	var label=opt.label;
+	var obj={};
+	obj.label=label;
+	list.push(obj);
+}
+copy(list);

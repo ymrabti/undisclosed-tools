@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Instagram</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../Libraries/css/bootstrap.min.css" type="text/css" />
+<script>
+function Cleartext() {
+document.getElementById('usernameInput').value = '';
+//$('#usernameInput').attr("value","");
+}
+/*var edges = rfetch["entry_data"]["ProfilePage"][0]["graphql"]["user"]
+["edge_owner_to_timeline_media"]["edges"];
+edges.forEach(function(item,index){
+var node = item["node"];
+var __typename = node["__typename"];
+var dimensions = node["dimensions"];
+var thumbnail_resourcesmax = node["thumbnail_resources"][4];
+var config_height = thumbnail_resourcesmax["config_height"];
+var config_width = thumbnail_resourcesmax["config_width"];
+console.log(__typename);
+console.log(dimensions);
+console.log(dimensions);
+console.log(config_width+"*"+config_height);
+});*/
+button.attr("onclick",`use(${JSON.stringify(arr[0])})`)
+
+
+function r(argument) {
+return argument;
+}
+
+var rfetch ="";
+function getSharedData(us) {
+var attr = `https://www.instagram.com/${us}/followers/?__a=1`;console.log(`attr = ${attr}`);
+$.get(attr)
+.done(function (data) {
+console.log(`${data}`);
+})
+.fail(function () {
+	alert('cors origin!')
+})
+}
+Object.keys(obj).forEach(function (key) {
+console.log(`${key}`);
+})
+
+function asyncFetchSharedData(extra) {
+var sharedDataReq = new XMLHttpRequest();
+sharedDataReq.onreadystatechange = function() {
+if (sharedDataReq.readyState === 4) {
+if(sharedDataReq.status === 200){
+var sharedData = JSON.parse(sharedDataReq.responseText);
+window.__initialDataLoaded(sharedData, extra);
+}
+}
+}
+sharedDataReq.open('GET', '/data/shared_data/', true);
+sharedDataReq.send(null);
+}
+</script>
+</head>
+<body>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>-->
+<script src="../Libraries/js/jquery.min.js">
+</script>
+<!--<script src="bootstrap.bundle.js">
+</script>-->
+
+
+
+<input value="https://www.marocannonces.com/maroc/offres-emploi-niveau-d'etudes-bac-plus-5-fonction-informatique-developpement-b309.html?f_574=Informatique+-+D%C3%A9veloppement&f_570=Bac+plus+5" placeholder="type username or url." type="text" id="usernameInput">
+
+<button onclick="getPhoto()">Get profile photo</button>
+<br>
+<br>
+<button onclick="Cleartext()">clear</button>
+<button type="button" class="btn btn-sm" style="background-color:#09aacc ; color:white;" data-toggle="modal" data-target="#Backdrop">
+Static
+</button>
+<a href="./ihssanebenalluch 2021_01_19_15_51_09.mp4" download="ihssane.mp4">Telecharger</a>
+</center>
+
+</body>
+</html>

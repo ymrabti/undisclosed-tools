@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1610845215 source:d:\programming folder\c\codeblocks\donut\main.c
+	<stdint.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+

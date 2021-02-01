@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Images Slider Toggle</title>
+    <style type="text/css">
+      body{
+        margin: 0;
+        padding: 0;
+        background: #364b63;
+      }
+      .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 450px;
+        width: 800px;
+        box-shadow: 0px 5px 8px rgba(0,0,0,.3);
+        overflow: hidden;
+      }
+      .images{
+        height: 100%;
+        width: 500%;
+        display: flex;
+      }
+      .images img{
+        width: 100%;
+        height: 100%;
+      }
+      .images .slide{
+        width: 20%;
+        transition: .6s;
+      }
+      .buttons{
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+      }
+      .buttons a{
+        height: 8px;
+        width: 30px;
+        border: 2px solid white;
+        margin: 0 5px;
+        border-radius: 10px;
+      }
+      a.active{
+        transition: .5s;
+        transform: scale(0.999);
+        background: white;
+        animation: animate .4s;
+      }
+      @keyframes animate {
+        100%{
+          transform: scale(0.8);
+        }
+      }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  </head>
+  <body>
+    <div class="center">
+      <div class="images">
+        <div class="slide img1"><img src="bg1.jpg"></div>
+        <div class="slide"     ><img src="bg2.jpg"></div>
+        <div class="slide"     ><img src="bg3.jpg"></div>
+        <div class="slide"     ><img src="bg4.jpg"></div>
+        <div class="slide"     ><img src="bg5.jpg"></div>
+      </div>
+      <div class="buttons">
+        <a href="#" class="btn1 active"></a>
+        <a href="#" class="btn2"       ></a>
+        <a href="#" class="btn3"       ></a>
+        <a href="#" class="btn4"       ></a>
+        <a href="#" class="btn5"       ></a>
+      </div>
+    </div>
+    <script>
+      var photos = 5;
+      $(document).ready(function(){
+        for(let i = 1; i < photos+1; i++){
+          var marginLeft = (i-1)*100/photos;
+          $('.btn'+i).click(function(){
+            $('.img1').css("marginLeft","-"+marginLeft+"%");
+          });
+        $('a').click(function(){
+          $(this).addClass('active').siblings()
+                  .removeClass('active');
+        })
+        }
+        // $('.btn1').click(function(){
+        //   $('.img1').css("marginLeft","0");
+        // });
+        // $('.btn2').click(function(){
+        //   $('.img1').css("marginLeft","-20%");
+        // });
+        // $('.btn3').click(function(){
+        //   $('.img1').css("marginLeft","-40%");
+        // });
+        // $('.btn4').click(function(){
+        //   $('.img1').css("marginLeft","-60%");
+        // });
+        // $('.btn5').click(function(){
+        //   $('.img1').css("marginLeft","-80%");
+        // });
+      });
+
+    </script>
+
+  </body>
+</html>

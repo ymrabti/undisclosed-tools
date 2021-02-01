@@ -1,0 +1,645 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Instagram</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="StyleSheet" crossorigin="anonymous" type="text/css" href="https://www.instagram.com/static/bundles/es6/ConsumerUICommons.css/6a9060457779.css"/>
+    <link rel="StyleSheet" crossorigin="anonymous" type="text/css" href="https://www.instagram.com/static/bundles/es6/Consumer.css/2afa8fbe6005.css"/>
+    <link rel="StyleSheet" crossorigin="anonymous" type="text/css" href="https://www.instagram.com/static/bundles/es6/ProfilePageContainer.css/a7d72aa870c4.css"/>
+    <link rel="icon" sizes="192x192" href="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css'>
+    <script src="https://www.jqueryscript.net/demo/Add-Image-Or-Text-Watermarks-To-Images-with-jQuery-watermark/dist/jquery.watermark.min.js" type="text/javascript"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js'></script>
+    <style type="text/css">.slider {max-width: 300px;width: auto;background-color: #aaa;}.slick-next::before, .slick-prev::before {color: #000;} </style>
+</head>
+<body>
+    <script>
+        var profile = "https://www.instagram.com/ihssanebenalluch/";
+        var profil1 = "https://www.instagram.com/instagram?";
+        var posto   = "https://www.instagram.com/p/CJl2fYSFBgd/";
+        var postp   = "https://www.instagram.com/p/CJl2fYSFBgd?";
+        var story0  = "https://www.instagram.com/stories/manelkaraman/2478693374632544660/";
+        var story1  = "https://www.instagram.com/stories/manelkaraman/2478693374632544660?";
+        var videp   = "https://www.instagram.com/p/CJjmFPUg8ei/";
+        var thum    = "https://www.youtube.com/watch?tag=younes&v=WZKW2Hq2fks&waka=12";
+        var thu1    = "https://www.youtu.be/WZKW2Hq2fks&waka=12";
+        var sliPost = "https://www.instagram.com/p/CJlyyXwgw87/";
+        var slividPost = "https://www.instagram.com/p/CJ_Hm2uHNqI/";
+        var sabrina = "Err1___sabri__na";
+        var sabrina1 = "Erramlisabrina";
+        var ihssane = "ihssanebenalluch";
+        setTimeout(function () {
+        var inputL = document.getElementById("usernameInput");
+        inputL.addEventListener("keyup", function(event) {
+          if (event.keyCode == 13) {
+           document.getElementById("GoAction").click();
+          }
+        });
+        }, 500)
+
+        var Imge = "https://i.imgur.com/NZcrImT.png";
+        var Scar = "https://i.imgur.com/O1jPIWS.png";
+        var Vdeo = "https://i.imgur.com/2f9xI5l.png";
+        var igtv = "https://i.imgur.com/aueMFdM.png";
+        var rels = "https://i.imgur.com/38D6uoX.png";
+
+        var Imge1 = "https://i.imgur.com/PxKbuQw.png";
+        var Scar1 = "https://i.imgur.com/Hk3l5Aa.png";
+        var Vdeo1 = "https://i.imgur.com/RzfQBbi.png";
+        var igtv1 = "https://i.imgur.com/KIBH1ag.png";
+        var rels1 = "https://i.imgur.com/fYP4jzo.png";
+
+        var Imge2 = "https://i.imgur.com/N0193nf.png";
+        var Scar2 = "https://i.imgur.com/35Fy4O8.png";
+        var Vdeo2 = "https://i.imgur.com/ONClSt9.png";
+        var igtv2 = "https://i.imgur.com/GnseGRo.png";
+        var rels2 = "https://i.imgur.com/70HGYB6.png";
+
+        var icons050 = {"GraphSidecar":Scar,"GraphImage":Imge,"GraphVideo":Vdeo,"igtv":igtv,"reels":rels};
+        var icons100 = {"GraphSidecar":Scar1,"GraphImage":Imge1,"GraphVideo":Vdeo1,"igtv":igtv1,"reels":rels1};
+        var icons256 = {"GraphSidecar":Scar2,"GraphImage":Imge2,"GraphVideo":Vdeo2,"igtv":igtv2,"reels":rels2};
+        var icons = icons100;
+        var withoutResponsive = {dots:true,infinite:false,speed:500,slidesToShow:1,slidesToScroll:1};
+        // DetectURL("ihssanebenalluch");
+    </script>
+    <script>
+var All_Posts = [];var Un_Post = [];
+function slick () {$('.slider').slick(withoutResponsive);};
+getLink = node => {
+    var disp_rs = node["display_resources"];
+    var thum_rs = node["thumbnail_resources"];
+    var HD = !!disp_rs ? disp_rs : thum_rs;
+    HD = !!HD ? HD[HD.length-1].src : "" ;
+    var is_video =node["is_video"];
+    var display_url = node["display_url"];
+    var video_url = node["video_url"];
+    return is_video ? video_url : ((HD != display_url) ? HD : display_url);
+}
+function AllPosts(edges) {
+    All_Posts = [];
+    edges.forEach(function(item,index){
+        var node = item["node"];
+        var __typename = node["__typename"];
+        var username = node["owner"]["username"];
+        if (__typename!="GraphSidecar") {
+            var is_video =node["is_video"];
+            var linkDownload = getLink(node);
+            var oMedia = {"is_video":is_video,"linkDownload":linkDownload,"owner":username};
+            All_Posts.push(oMedia);
+        }
+        else{
+            var edges1 = node["edge_sidecar_to_children"]["edges"];
+            edges1.forEach(function(item1,index){
+                var node1 = item1["node"];
+                var username1 = node1["owner"]["username"];
+                var is_video =node1["is_video"];
+                var linkDownload = getLink(node1);
+                var oMedia = {"is_video":is_video,"linkDownload":linkDownload,"owner":username};
+                All_Posts.push(oMedia);
+            });
+        }
+    });
+}
+PostClicked = shortcode => getPost(shortcode,"divModaltoreplace");
+function demarrerPost(data,container) {
+    var shortcode_media = data["graphql"]["shortcode_media"];
+    var user        = shortcode_media["owner"];var username    = user["username"];
+    var pic_url     = user["profile_pic_url"];var full_name   = user["full_name"];
+    var is_verified = user["is_verified"];var abonnes     = user["edge_followed_by"]["count"];
+    var nombrePub   = user["edge_owner_to_timeline_media"]["count"];
+    var __typename  = shortcode_media["__typename"];
+    var captions = shortcode_media["edge_media_to_caption"]["edges"];console.log(captions);
+    var likesNbr = shortcode_media["edge_media_preview_like"]["count"];console.log(likesNbr);
+    var commentsNbr = shortcode_media["edge_media_preview_comment"]["count"];console.log(commentsNbr);
+    var commentsPreviw = shortcode_media["edge_media_preview_comment"]["edges"];console.log(commentsPreviw);
+    var comments = shortcode_media["edge_media_to_parent_comment"]["edges"];console.log(comments);
+    var cid = container["id"];var cidjq = $(`#${cid}`);
+    cidjq.children().remove();
+    if (cid=="divtoreplace") {$("title").text(`Post de ${full_name} (@${username})`);}
+    var center      = createElements(container, [],"center");
+    if (__typename!="GraphSidecar") {
+        var type__ = __typename.split("Graph")[1] + " ?";
+        var link = getLink(shortcode_media);
+        cidjq.children().append(`<div class='slider'>${PhotoOrVid(shortcode_media)}</div><br><button name='download' onclick="download('${link}','${username}')"><i class="fa fa-download"></i>Telecharger</button><br><br>`);
+    }
+    else{
+        var edges = shortcode_media["edge_sidecar_to_children"]["edges"];
+        Un_Post = edges.map(b=>{var node = b["node"];var is_video = node["is_video"];
+            var linld = getLink(node);return {"linkDownload":linld,"owner":username,"is_video":is_video};
+        });
+        cidjq.children().append(`<div class='slider'></div><button onclick='download_multiple(true)' name='download'><i class='fa fa-download'></i>Telecharger</button><br><br>`);
+        setTimeout(function () {ext(edges);}, 1000);
+        slick ();
+    }
+    var diveo2As = createElements(center,[["class","eo2As"]],"div");
+    `Aimé par <button class="sqdOP yWX7d _8A5w5" type="button"><span>84 762</span> personnes</button>`
+    var u = undefined;
+    var caption = captions.length!=0 ? captions[0]["node"]["text"]:"";
+    head(center,username,full_name,pic_url,u,nombrePub,u,abonnes,caption,true,is_verified,u,true);
+}
+function download_multiple(post) {
+    var elements = !!post ? Un_Post : All_Posts.filter(item =>!item.is_video);
+    var cPhotos = elements.filter(item => !item.is_video).length;
+    var cVideos = elements.filter(item =>  item.is_video).length;
+    var cElemts = elements.length;
+    var confirmText = "Telecharger " + cElemts +" elements ("+cPhotos +" photos";
+    cVideos!=0 ?confirmText+= " et "+cVideos +" videos) ?":confirmText+=") ?";
+    if (confirm(confirmText)) {
+        elements.forEach(function(item,index){
+            setTimeout(function () {
+                download(item["linkDownload"],item["owner"],(index+1));
+            }, 1500*(index+1))
+        });
+    }
+}
+function demarrerThumb(VidId,container){
+    var ThumbLink = "https://i.ytimg.com/vi/"+VidId+"/maxresdefault.jpg";
+    var ThumbView = "https://i.ytimg.com/vi/"+VidId+"/hqdefault.jpg";
+    $("title").text(`YouTube thumbnail ${VidId}`);
+    var center = createElements(container, [],"center");
+    var divSli = createElements(center, [["class","slider"]],"div");
+    var Img = createElements(divSli, [["src",ThumbView],["width","100%"]],"img");
+    var Br = createElements(center, [],"br");
+    var line = createElements(center, [["onclick", "download('"+ThumbLink+"','thumbnail')"],["name","download"]], 'button',undefined,'<i class="fa fa-download"></i>Telecharger');
+}
+function text2Html(text) {
+    var biography = text.split("\n").map(function(item1,index1){
+      return item1.split(" ").map((item,index)=>{
+        var hashtag=item.match(/#[a-zA-Z0-9\-_\.]{0,29}/);
+        var usrname=item.match(/@[a-zA-Z0-9\-_\.]{0,29}/);
+        var us = item.match(/[a-zA-Z0-9\-_\.]{0,29}/);
+        return !!hashtag ? `<a class="notranslate" tabindex="0">${hashtag.pop()}</a>` 
+              :!!usrname ? `<a class="notranslate" onclick="DetectURL(\'${us.pop()}\')" tabindex="0">${usrname.pop()}</a>`
+              :item;
+        }).join(" ");
+    });
+    html = biography.join("<br>");
+    return html;
+}
+getmn = d => Math.round(d/60);
+PhotoOrVid = sh => {
+    var url = getLink(sh);
+    return !sh["is_video"] ? `<img src="${url}" width="100%" alt="">`
+        :`<video controls="" width="100%"><source src="${url}" type="video/mp4"></video>`;
+}
+function ext(data) {
+  data.forEach(function(item,index){
+    $(".slider").slick("slickAdd", PhotoOrVid(item["node"]));
+  });
+}
+function demarrer(data,container){
+    var user        = data["graphql"]["user"];
+    var pic_url_hd  = user["profile_pic_url_hd"];
+    var pic_url     = user["profile_pic_url"];
+    var full_name   = user["full_name"];
+    var username    = user["username"];
+    var nombrePub   = user["edge_owner_to_timeline_media"]["count"];
+    var abonnes     = user["edge_followed_by"]["count"];
+    var abonnements = user["edge_follow"]["count"];
+    var is_private  = user["is_private"];
+    var edges       = user["edge_owner_to_timeline_media"]["edges"];
+    var biography   = user["biography"];
+    var hglght_cnt  = user["highlight_reel_count"];
+    var is_verified = user["is_verified"];
+    var ext_url     = user["external_url"];
+    /*var i_bsnacct   = user["is_business_account"];console.log("is_business_account "+i_bsnacct);
+    var bus_email   = user["business_email"];console.log("business_email "+bus_email);
+    var bnss_name   = user["business_category_name"];console.log("business_category_name "+bnss_name);
+    var ctegoenum   = user["category_enum"];console.log("category_enum "+ctegoenum);
+    var isjoincent  = user["is_joined_recently"];console.log("is_joined_recently "+isjoincent);
+    var cuntrlock   = user["country_block"];console.log("country_block "+cuntrlock);*/
+    head(container,username,full_name,pic_url,pic_url_hd,nombrePub,abonnements,abonnes,biography,is_private,is_verified,ext_url,false);
+    $("title").text(`${full_name} (@${username})`);
+    Posts(edges,container,is_private,pic_url_hd);
+}
+function circularpic(pere,full_name,profile_pic_url,profile_pic_url_hd,username,is_private) {
+    var line066 = createElements(pere, [['class', "XjzKX"]], 'div');
+    var line067 = createElements(line066, [['class', "RR-M- "], ["aria-disabled", "true"], ["role", "button"], ["tabindex", "-1"], ["data-ext-skip", "1"]], 'div');
+    var size = 150;
+    var line068 = createElements(line067, [['class', "CfWVH"], ["height", "168"], ["width", "168"], ["style", "position: absolute; top: -9px; left: -9px; width: 168px; height: 168px;"]], 'canvas');
+    var line070 = createElements(line067, [['class', "_2dbep"], ["role", "link"], ["tabindex", "-1"], ["style", "width: "+size+"px; height: "+size+"px;"]], 'div');
+    var line071 = createElements(line070, [["alt", "Photo de profil de " + full_name], ["class", "_6q-tv"], ["data-testid", "user-avatar"], ["draggable", "false"], ["src", profile_pic_url]], "img");
+    profile_pic_url_hd ? createElements(line066, [["onclick", "download('"+profile_pic_url_hd+"','"+username+"')"],["name","download"]], 'button',undefined,'<i class="fa fa-download"></i>Telecharger'):"";
+    if (!is_private) {
+        profile_pic_url_hd ? createElements(line066, [["onclick", "download_multiple(false)"],["name","download"]], 'button',undefined,'<i class="fa fa-download"></i>Telecharger Tous les photos'):"";
+    }
+}
+function head(container,username,full_name,profile_pic_url,profile_pic_url_hd,nombrePub,abonnements,abonnes,biography,is_private,is_verified,ext_url,modaal) {
+    var line065 = createElements(container, [['class', "vtbgv"]], 'header');
+    var line075 = createElements(line065, [["class", "zwlfE"]], "section");
+    circularpic(line075,full_name,profile_pic_url,profile_pic_url_hd,username,is_private);
+    var line076 = createElements(line075, [["class", "nZSzR"]], "div");
+    !modaal ? createElements(line076, [["class", "_7UhW9 fKFbl yUEEX KV-D4 fDxYl"],["href","https://www.instagram.com/" + username+"/"],["target","_blank"]], "a", username):
+    createElements(line076, [["class", "_7UhW9 fKFbl yUEEX KV-D4 fDxYl"],["onclick","DetectURL('" + username+"')"]], "p", username);
+    if (is_verified) {
+        var divBadge = createElements(line076,[["class","Igw0E IwRSH eGOV_ _4EzTm soMvl"]],"div");
+        createElements(divBadge,[["class","mTLOB Szr5J coreSpriteVerifiedBadge"],["title","Vérifié"]],"span","Vérifié");
+    }
+    var line078 = createElements(line076, [["class", "Igw0E IwRSH eGOV_ ybXk5 _4EzTm"]], "div");
+    var line079 = createElements(line078, [["class", "Igw0E IwRSH eGOV_ ybXk5 _4EzTm"]], "div");
+    var line080 = createElements(line079, [["class", "_862NM"]], "div");
+    var line081 = createElements(line080, [["class", "Igw0E IwRSH eGOV_ vwCYk JI_ht"]], "div");
+    var line085 = createElements(line079, [], "div");
+    var line086 = createElements(line085, [["class", "Igw0E IwRSH eGOV_ _4EzTm"], ["style", "height: 30px;"]], "div");
+    var line109 = createElements(line076, [["class", "AFWDX"]], "div");
+    var line110 = createElements(line109, [["class", "wpO6b"], ["type", "button"]], "button");
+    var line111 = createElements(line110, [["class", "QBdPU"]], "div");
+    var line112 = createElements(line111, [["class", "_8-yf5 "], ["aria-label", "Options"], ["fill", "#262626"], ["viewBox", "0 0 48 48"], ["height", "24"], ["width", "24"]], "svg");
+    var line113 = createElements(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
+    var line115 = createElements(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
+    var line117 = createElements(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
+    var line124 = createElements(line075, [["class", "k9GMp"]], "ul");
+    var line125 = createElements(line124, [["class", "Y8-fY"]], "li");
+    var line126 = createElements(line125, [["class", "-nal3"]], "span");
+    createElements(line126,[["class", "g47SY"]],"span",nombrePub);
+    createElements(line126, [], "span", " publications");
+    createElements(line126, [], "br");
+    var line130 = createElements(line124, [["class", "Y8-fY"]], "li");
+    var line131 = createElements(line130, [["class", "-nal3 "], ["tabindex", "0"]], "p");
+    createElements(line131,[["class", "g47SY"]],"span",size_plain(abonnes));
+    createElements(line131, [], "span", " abonnés");
+    createElements(line131, [], "br");
+    if (abonnements) {
+        var line135 = createElements(line124, [["class", "Y8-fY"]], "li");
+        var line136 = createElements(line135, [["class", "-nal3 "], ["tabindex", "0"]], "p");
+        createElements(line136,[["class", "g47SY"]],"span",size_plain(abonnements));
+        createElements(line136, [], "span", " abonnements");
+        createElements(line136, [], "br");
+        
+    }
+    var line141 = createElements(line075, [["class", "-vDIg"]], "div");
+    var line142 = createElements(line141, [["class", "rhpdm"]], "h1", full_name + "\n");
+    if (biography) {
+        var biography2 = text2Html(biography);
+        var line142 = createElements(line141, [], "span", undefined, biography2);
+        var Lia = createElements(line141,[["class","yLUwa"],["href",ext_url],["target","_blank"]],"a",ext_url);
+        
+    }
+    if (!is_private) {
+        bar(container,username);
+    }
+}
+function size_plain(number) {
+    var i = 3; var div = 1024; var return_text = "";
+    while (number >= div && i >= 0) {
+        number = number / div; i -= 1; div = 1000;
+    }
+    number = Math.ceil(number * 100) / 100;
+    if (i == 3) { return_text = number + " "; } else if (i == 2) { return_text = number + " " + "k"; }
+    else if (i == 1) { return_text = number + " " + "m"; } else if (i == 0) { return_text = number + " " + "B"; }
+    return return_text;
+}
+function createElements(parent, liste, name, innerText, innerHTML) {
+    var node = document.createElement(name);
+    if (liste.length != 0) {
+        for (var i = 0; i < liste.length; i++) {
+            node.setAttribute(liste[i][0], liste[i][1]);
+        }
+    }
+    if (innerText) {node.innerText = innerText;}
+    if (innerHTML) {node.innerHTML = innerHTML;}
+    parent.append(node); return node;
+}
+function Posts(edges,container,is_private,profile_pic_url_hd) {
+    var Poston = PostsCon(container);
+    AllPosts(edges);
+    if (!is_private) {
+        var edgeslength = edges.length;
+        var columns = 3;
+        var r = edgeslength % columns;
+        var q = (edgeslength - r) / columns;
+        var p = returnpub(Poston);
+        for (var i = 0; i < q; i++) {// q*i+k
+            var kposts = createElements(p, [["class", "Nnq7C weEfm"]], "div");
+            for (var k = 0; k < columns; k++) {
+                var current = columns * i + k;
+                var edge_i = edges[current]["node"];
+                post(edge_i, kposts,undefined,current);
+            }
+        }
+        if (r != 0) {
+            var kposts = createElements(p, [["class", "Nnq7C weEfm"]], "div");
+            for (var k = q * columns; k < q * columns + r; k++) {
+                var edge_i = edges[k]["node"];
+                post(edge_i, kposts,undefined,k);
+            }
+            for (var j = q * columns + r; j < (q + 1) * columns; j++) {
+                var current = q * columns + r - 1;
+                var edge_i = edges[current]["node"];
+                post(edge_i, kposts,undefined,j,true);
+            }
+        }
+        pdp(p,profile_pic_url_hd);
+    } else {
+        returnprv(Poston,profile_pic_url_hd);
+    }
+}
+function pdp(pere,profile_pic_url_hd) {
+    var kposts = createElements(pere, [["class", "Nnq7C weEfm"]], "div");
+    post(undefined,kposts,profile_pic_url_hd);
+}
+function post(edgei, sup, profile_pic_url_hd,index,vide=false) {
+    if (!vide) {
+        var line210 = createElements(sup,[["class","v1Nh3 kIKUG  _bz0w"]/*,["data-ext-skip","1"]*/], "div");
+        var line211 = createElements(line210, [["tabindex", "0"]], "a");
+        var line212 = createElements(line211, [["class", "eLAPa"]], "div");
+        var line213 = createElements(line212, [["class", "KL4Bh"]], "div");
+        if (edgei) {
+            var caption = edgei["accessibility_caption"];
+            var rss = edgei["thumbnail_resources"];
+            var thumb = edgei["thumbnail_src"];
+            var shortcode = edgei["shortcode"];
+            var product_type = edgei["product_type"];
+            var __typename = edgei["__typename"];
+            var icon = icons[(product_type=="feed" || !product_type)?__typename:product_type];
+            var line214 = createElements(line213,[["alt", caption],["id","No"+index],["class", "FFVAD"], ["decoding", "auto"],["style", "object-fit: cover;"],["sizes", "293px"],["src", thumb],["onclick",`PostClicked('${shortcode}')`]], "img");
+            __typename=="GraphImage"?"":$("#No"+index).watermark({path: icon,gravity: 'ne',opacity: 1});
+        }else {
+            var center  = createElements(line213,[],"center");
+            var line214 = createElements(center, [["alt", "profile_pic_url_hd"], ["decoding", "auto"], ["src", profile_pic_url_hd]], "img");;
+        }
+    }
+    else {createElements(sup,[["class","_bz0w"]], "div");}
+}
+function returnpub(argument) {
+    var public1 = createElements(argument, [], "div");
+    var public2 = createElements(public1, [["style", "flex-direction: column; padding-bottom: 1577px; padding-top: 0px;"]], "div");
+    return public2;
+}
+function returnprv(argument,profile_pic_url_hd) {
+    var privat1 = createElements(argument, [["class", "_4Kbb_ _54f4m"]], "div");
+    var privat2 = createElements(privat1, [["class", "QlxVY"]], "div")
+    var privat2_1 = createElements(privat2, [["class", "rkEop"]], "h2", "Ce compte est privé");
+    var privat2_2 = createElements(privat2, [["class", "VIsJD"]], "div", "Abonnez-vous pour voir ses photos et vidéos.");
+    pdp(privat1,profile_pic_url_hd);
+}
+function PostsCon(container) {
+    var line204 = createElements(container, [["class", "_2z6nI"]], "div");
+    var line205 = createElements(line204, [["class", "ySN3v"]], "article");
+    return line205;
+}
+function ReturnContainer(id) {
+    var divtoreplace = document.getElementById(id);
+    var perereplaceable = divtoreplace.parentElement;
+    perereplaceable.removeChild(divtoreplace);
+    var line064 = createElements(perereplaceable, [['class', "v9tJq AAaSh VfzDr"], ["id", id]], 'div');
+    return line064;
+}
+function bar(container,username) {
+    var line185 = createElements(container, [["class", "fx7hk"]], "div");
+    elementbar(line185,true , "", "Publications", "",username);
+    elementbar(line185,false , "tagged/", "Identifié(e)", "",username);
+}
+function elementbar(pere, courant, afusm, txtlabel, d,username) {
+    if (courant) {/*, ["href", "https://www.instagram.com/" + username + "/" + afusm],["target","_blank"]*/
+        var line186 = createElements(pere, [["class", "_9VEo1 T-jvg"], ["tabindex", "0"]], "p");
+        var line187 = createElements(line186, [["class", "smsjF"]], "span");
+        var line188 = createElements(line187, [["class", "_8-yf5"], ["height", "12"], ["width", "12"], ["viewBox", "0 0 48 48"], ["fill", "#262626"], ["aria-label", txtlabel]], "svg");
+        var line189 = createElements(line188, [["fill-rule", "evenodd"], ["d", d], ["clip-rule", "evenodd"]], "path");
+        var line192 = createElements(line187, [["class", "PJXu4"]], "span", txtlabel);
+    }
+    else {/*, ["href", "https://www.instagram.com/" + username + "/" + afusm],["target","_blank"]*/
+        var line186 = createElements(pere, [["class", "_9VEo1"], ["tabindex", "0"]], "p");
+        var line187 = createElements(line186, [["class", "qzihg"]], "span");
+        var line188 = createElements(line187, [["class", "_8-yf5"], ["height", "12"], ["width", "12"], ["viewBox", "0 0 48 48"], ["fill", "#8e8e8e"], ["aria-label", txtlabel]], "svg");
+        var line189 = createElements(line188, [["d", d]], "path");
+        var line192 = createElements(line187, [["class", "_08DtY"]], "span", txtlabel);
+    }
+}
+function Coller () {
+    navigator.clipboard.readText()
+	  .then(text => {
+            setTimeout(function () {
+                DetectURL(text);
+            }, 500)
+	  })
+	  .catch(err => {
+	    alert('Failed to read clipboard contents : '+err);
+	  });
+}
+function Cleartext() {$('#usernameInput').val("");}
+function toDataURL(url) {
+    return fetch(url).then((response) => {
+            return response.blob();
+        }).then(blob => {
+            return URL.createObjectURL(blob);
+        });
+}
+async function download(link,username,index) {
+    var a = document.createElement("a");
+    var date=new Date();
+    var daba = date.toJSON()
+        .replaceAll(":","_").split(".")[0]
+        .replaceAll("T","_").replaceAll("-","_");
+    var list = link.split("?")[0].split(".");
+    var extension = list[list.length-1];
+    a.href = await toDataURL(link);
+    var numeroPost = "";
+    if (index!=undefined) {numeroPost = " "+index}
+    a.download = username+" "+ daba+numeroPost+"."+extension;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+function returnDeviceInfos() {
+    var w = screen.width;
+    var h = screen.height;
+    var ratio = window.devicePixelRatio || 1;
+    var w1 = screen.width * ratio;
+    var h1 = screen.height * ratio;
+    var txt = 'w = '+w+'\n'+'h = '+h+'\n'+'ratio = '+ratio+'\n'+'w1 = '+w1+'\n'+'h1 = '+h1+'\n';
+}
+function DetectURL(URL) {
+    var modal = document.getElementById("ModalPost");
+    modal.style.display = "none";
+    var mSId = URL.match(/instagram\.com\/stories\/.*\/(.*?)[\/,?]/);
+    var mSUN = URL.match(/instagram\.com\/stories\/(.*?)\//);
+    var mUN0 = URL.match(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/);
+    var mUN1 = URL.match(/instagram\.com\/(.*?)[\/,?]/);
+    var mP   = URL.match(/instagram\.com\/p\/(.*?)[\/,?]/);
+    var mT1  = URL.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
+    var mT2  = URL.match(/youtube\.com.*(v=|\/embed\/)(.{11})/);
+    var mT3  = URL.match(/youtu.be\/(.{11})/);
+    if (mP)     {id=mP.pop()  ;$("#usernameInput").val(id);getPost(id,"divtoreplace");}
+    else if (mSId || mSUN){id=mSUN.pop();$("#usernameInput").val(id);getStory(id);}
+    else {
+        if (mUN0)        {id=mUN0.pop();$("#usernameInput").val(id); getProfile(id);}
+        else if (mUN1)   {id=mUN1.pop();$("#usernameInput").val(id); getProfile(id);}
+        else if (mT1)    {id=mT1 .pop();$("#usernameInput").val(id);getThumbail(id);}
+        else if (mT2)    {id=mT2 .pop();$("#usernameInput").val(id);getThumbail(id);}
+        else if (mT3)    {id=mT3 .pop();$("#usernameInput").val(id);getThumbail(id);}
+        else {alert("undefined");}
+    } 
+}
+function getProfile(a) {
+    $.get("https://www.instagram.com/" + a + "/?__a=1")
+        .done(function (data) {
+            var container = ReturnContainer("divtoreplace");
+            demarrer(data,container);
+        })
+        .fail(function () {
+            alert('Username was not found! '+a)
+        })
+}
+function getSharedData(a) {
+    $.get("https://www.instagram.com/" + a)
+        .done(function (data) {
+            var container = ReturnContainer("divtoreplace");
+            var fetch = data.match(/<script type="text\/javascript">window._sharedData =(.*?);/g)
+                .pop()
+                .replaceAll("<script type=\"text/javascript\">window._sharedData =","")
+                .replaceAll(";","");
+            var retour = JSON.parse(fetch)["entry_data"]["ProfilePage"][0];
+            demarrer(retour,container);
+        })
+        .fail(function () {
+            alert('Username was not found! '+a)
+        })
+}
+function getPost(a,id) {
+    $.get("https://www.instagram.com/p/" + a + "/?__a=1")
+        .done(function (data) {
+            var modal = document.getElementById("ModalPost");
+            var container = ReturnContainer(id);
+            var disp = (id=="divtoreplace") ? "none":"block";
+            modal.style.display = disp;
+            demarrerPost(data,container);
+        })
+        .fail(function () {
+            alert('Post was not found! '+a)
+        })
+}
+function getStory(a) {
+    alert("Story ! Soon");
+    // $.get("https://www.instagram.com/" + a + "/?__a=1")
+    //     .done(function (data) {
+    //         var container = ReturnContainer("divtoreplace");
+    //         demarrer(data,container);
+    //     })
+    //     .fail(function () {
+    //         alert('Story was not found! '+a)
+    //     })
+}
+function getThumbail(a) {
+    var container = ReturnContainer("divtoreplace");
+    demarrerThumb(a,container);
+}
+    </script>
+    <script type="text/javascript">
+        window.onload = function(){
+        var modal = document.getElementById("ModalPost");
+        var span = document.getElementsByClassName("close")[0];
+        setTimeout(function () {
+            span.onclick = function() {modal.style.display = "none";}
+            window.onclick = function(event) {if (event.target == modal) {modal.style.display = "none";}}
+        }, 500)
+        }
+    </script>
+    <style>
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        button[name=download] {
+          background-color: DodgerBlue;
+          border: none;
+          color: white;
+          padding: 6px 5px;
+          margin: 5px;
+          cursor: pointer;
+          font-size: 20px;
+        }
+        button[name=download]:hover {
+          background-color: RoyalBlue;
+        }
+    </style>
+    <br><br><br><br>
+    <section class="_9eogI E3X2T">
+        <main class="SCxLW  o64aR" role="main">
+            <div id="ModalPost" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="v9tJq AAaSh VfzDr" id="divModaltoreplace">
+                </div>
+              </div>
+            </div>
+            <div class="v9tJq AAaSh VfzDr" id="divtoreplace">
+            </div>
+        </main>
+        <nav class="NXc7H jLuN9  ">
+            <div class="_8MQSO  Cx7Bp">
+                <div class="_lz6s aUCRo Hz2lF">
+                    <div class="MWDvN buoMu nfCOa">
+                        <div class="ctQZg">
+                            <div class="_47KiJ">
+                                <div class="Fifk5">
+                                    <div class="">
+                                        <input class="XTCLo x3qfX" placeholder="type username ..." type="text" id="usernameInput" value="ihssanebenalluch">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="_47KiJ">
+                                <div class="Fifk5">
+                                    <div class="">
+                                        <button class="XTCLo x3qfX" onclick="Cleartext()">
+                                            clear
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="Fifk5">
+                                    <div class="">
+                                        <button class="XTCLo x3qfX" onclick="Coller()" style="cursor:pointer">
+                                                coller
+                                            </button>
+                                    </div>
+                                </div>
+                                <div class="Fifk5">
+                                    <div class="">
+                                        <button id="GoAction" class="XTCLo x3qfX" onclick="DetectURL($('#usernameInput').val().trim())" style="cursor:pointer">
+                                            Go
+                                        </button>
+  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+</body>
+</html>

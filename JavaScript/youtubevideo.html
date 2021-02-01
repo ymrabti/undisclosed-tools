@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YouTube Downloader</title>
+</head>
+<body>
+</html>
+	<video tabindex="-1" class="video-stream html5-main-video" style="width: 784px; height: 441px; left: 0px; top: 0px;" src="blob:https://www.youtube.com/322e9454-50ed-4c53-b376-5995e9d19c68">
+		<!-- blob:https://www.youtube.com/9821c75e-c4bd-4834-945a-0c4d9bf048cf -->
+	</video>
+	<script type="text/javascript">
+    var thum    = "https://www.youtube.com/watch?tag=younes&v=WZKW2Hq2fks&waka=12";
+    var thu1    = "https://www.youtu.be/WZKW2Hq2fks&waka=12";
+	var downloadUrl = "https://example.org/image.png";
+    function onStartedDownload(id) {console.log(`Started downloading: ${id}`);}
+	function onFailed(error) {console.log(`Download failed: ${error}`);}
+	var downloading = browser.downloads.download({
+		url : downloadUrl,
+		filename : 'my-image-again.png',
+		conflictAction : 'uniquify'
+	});
+	downloading.then(onStartedDownload, onFailed);
+</script>
+</body>
