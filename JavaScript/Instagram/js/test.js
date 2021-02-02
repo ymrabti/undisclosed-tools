@@ -38,7 +38,7 @@ var div =$('[class="_9eogI E3X2T"]')[0];
 copy(HTML_TO_SCRIPTS(div));
 let deivjson=xmlToJson(div);
 
-var div =$('[class="_9eogI E3X2T"]')[0];
+var div =$('[class="_9eogI E3X2T"]')[0];// ltEKP
 copy(GET_HTML_SCRIPTS(div));
 let deivjson=xmlToJson(div);
 
