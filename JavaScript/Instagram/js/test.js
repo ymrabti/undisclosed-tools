@@ -14,6 +14,7 @@ function test_regexp() {
         }
         return script;
     });
+    
 }
 shoow= (txt,lab,fetch) => fetch ? txt.replace(lab,""): !txt.includes(lab) ? lab.concat(txt): txt;
 function text2HtmlBetter(text) {
