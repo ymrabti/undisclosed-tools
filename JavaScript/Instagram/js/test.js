@@ -14,7 +14,7 @@ function test_regexp() {
         }
         return script;
     });
-    
+
 }
 shoow= (txt,lab,fetch) => fetch ? txt.replace(lab,""): !txt.includes(lab) ? lab.concat(txt): txt;
 function text2HtmlBetter(text) {
@@ -122,6 +122,9 @@ function getLocation(a) {
             alert('Location was not found! '+a)
         })
 }
+
+
+
 var i = 0;
 var sb = ["TextA", "TextB"];
 setInterval(function() {
@@ -185,18 +188,17 @@ let deivjson = xmlToJson(div);
       }
     }
 
+navigator.connection.addEventListener("change",function () {
+  let rtt = navigator.connection.rtt;
+  let effectiveType = navigator.connection.effectiveType;
+  if (rtt > 500 || effectiveType == "2g") {
+    // slow connection
+  }
+}
 
-    // video download , video player , server , mobile app , api(stories) , extension
+    // video player , server , mobile app , api(stories) , extension
     // html code viewer || beautify minify codes
     // cinema.ma | arbre family | russian rollet
-    // explore locations , reels(reel) , igtv channel(tv) , tagged(profile) , tweets
-    // new def DetectURL download_all_in_zip_file
+    // tweets
     // 
-      // var text = "ttps://www.instagram.com/p/CJl_yyXwgw87/";
-      // var hoste = "ttps://www.instagram.com/";
-      // var methd = "p/";
-      // var treg =  `${hoste}${methd}([^)]+)[\/]`;
-      // var regx = RegExp(treg);
-      // var aff = text.match(regx)?text.match(regx).pop():"NOTHING";
-      //console.log(aff);
-    // distributionUrl=file\:///D\:/Android/wrapper/dists/gradle-6.5-all.zip
+// distributionUrl=file\:///D\:/Android/wrapper/dists/gradle-6.5-all.zip
