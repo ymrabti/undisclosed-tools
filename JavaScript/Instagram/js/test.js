@@ -191,10 +191,11 @@ let deivjson = xmlToJson(div);
 navigator.connection.addEventListener("change",function () {
   let rtt = navigator.connection.rtt;
   let effectiveType = navigator.connection.effectiveType;
+  console.log(effectiveType);
   if (rtt > 500 || effectiveType == "2g") {
     // slow connection
   }
-}
+});
 
     // video player , server , mobile app , api(stories) , extension
     // html code viewer || beautify minify codes
