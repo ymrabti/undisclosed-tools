@@ -46,9 +46,9 @@
         window.onclick = function(event) {if (event.target == modal) {show_modal(false);}}
     }, 500)
     }
-        var timeoutDefault = 60000;
-        var timeoutRetry = 300000;var xhrsStatus = {aborted: false,};
-
+    var timeoutDefault = 60000;
+    var timeoutRetry = 300000;var xhrsStatus = {aborted: false,};
+    var ns = 'http://www.w3.org/2000/svg';
     var Imge = "https://i.imgur.com/NZcrImT.png";
     var Scar = "https://i.imgur.com/O1jPIWS.png";
     var Vdeo = "https://i.imgur.com/2f9xI5l.png";
@@ -346,10 +346,10 @@ function head(container,username,full_name,profile_pic_url,profile_pic_url_hd,no
     var line109 = createElements(line076, [["class", "AFWDX"]], "div");
     var line110 = createElements(line109, [["class", "wpO6b"], ["type", "button"]], "button");
     var line111 = createElements(line110, [["class", "QBdPU"]], "div");
-    var line112 = createElements(line111, [["class", "_8-yf5 "], ["aria-label", "Options"], ["fill", "#262626"], ["viewBox", "0 0 48 48"], ["height", "24"], ["width", "24"]], "svg");
-    var line113 = createElements(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
-    var line115 = createElements(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
-    var line117 = createElements(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
+    var line112 = createElementsNS(line111, [["class", "_8-yf5 "], ["aria-label", "Options"], ["fill", "#262626"], ["viewBox", "0 0 48 48"], ["height", "24"], ["width", "24"]], "svg");
+    var line113 = createElementsNS(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
+    var line115 = createElementsNS(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
+    var line117 = createElementsNS(line112, [["cx", "82440"], ["cy", "24"], ["fill-rule", "evenodd"], ["clip-rule", "evenodd"], ["r", "4.5"]], "circle");
     var line124 = createElements(line075, [["class", "k9GMp"]], "ul");
     var line125 = createElements(line124, [["class", "Y8-fY"]], "li");
     var line126 = createElements(line125, [["class", "-nal3"]], "span");
@@ -358,14 +358,14 @@ function head(container,username,full_name,profile_pic_url,profile_pic_url_hd,no
     createElements(line126, [], "br");
     if (abonnes) {
         var line130 = createElements(line124, [["class", "Y8-fY"]], "li");
-        var line131 = createElements(line130, [["class", "-nal3 "], ["tabindex", "0"]], "p");
+        var line131 = createElements(line130, [["class", "-nal3"], ["tabindex", "0"]], "p");
         createElements(line131,[["class", "g47SY"]],"span",size_plain(abonnes));
         createElements(line131, [], "span", " abonnés");
         createElements(line131, [], "br");
     }
     if (abonnements) {
         var line135 = createElements(line124, [["class", "Y8-fY"]], "li");
-        var line136 = createElements(line135, [["class", "-nal3 "], ["tabindex", "0"]], "p");
+        var line136 = createElements(line135, [["class", "-nal3"], ["tabindex", "0"]], "p");
         createElements(line136,[["class", "g47SY"]],"span",size_plain(abonnements));
         createElements(line136, [], "span", " abonnements");
         createElements(line136, [], "br");
@@ -765,6 +765,17 @@ function createElements(parent, liste, name, innerText, innerHTML) {
     if (innerText) {node.innerText = innerText;}
     if (innerHTML) {node.innerHTML = innerHTML;}
     parent.append(node); return node;
+}
+function createElementsNS(parent, liste, name, innerText, innerHTML) {
+    var node = document.createElementNS(ns,name);
+    if (liste.length != 0) {
+        for (var i = 0; i < liste.length; i++) {
+            node.setAttribute(liste[i][0], liste[i][1]);
+        }
+    }
+    if (innerText) {node.innerText = innerText;}
+    if (innerHTML) {node.innerHTML = innerHTML;}
+    parent.appendChild(node); return node;
 }
 function createbyjquery(parent, object, name, innerText, innerHTML) {
     var node = $(`<${name}>`);

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="pathNumbs.js"></script>
+    <script type="text/javascript" src="svg.js"></script>
+    <title>SVG</title>
+    <style type="text/css">.custom{perspective-origin: center;}p{font-size: 28px;font-family: sans-serif;font-weight: 20;}
+    .sec{transform-origin: center;transition: transform 50ms;}
+    .aiguille {stroke: #FF00FF;fill: #0E0AFF;}
+    .minutes {stroke: #CC00FF;}
+    .heures {stroke: #AE00FF;}
+    .outline {stroke: #0E0AFF;fill: #7A7CFF50}
+
+    .svgout {border: 2px solid gray;}
+        .Quarters {stroke: #0E0EFF;}
+        .Thirds {stroke: #4040FF;}
+        .Units {stroke: #7C7CFF;}
+        .autres {stroke: #AEAEFF;stroke-width: 0.25}
+        .Numbs {fill: #7A7CFF}
+    </style>
+</head>
+<body>
+    <div id="NewClocks"></div>
+    <script type="text/javascript">
+
+    var ctr = 50;
+class TimeCity{
+    constructor(tz,cityID){
+        this.timeZone = tz;
+        this.CityId = cityID;
+        var newXlocks = document.querySelector("#NewClocks");
+        var Numeric = document.createElement("p");
+        Numeric.setAttribute("class","Numbs");
+        Numeric.setAttribute("align","center");
+        newXlocks.appendChild(Numeric);
+        this.Numeric = Numeric;
+        var svg_out = document.createElementNS(ns,"svg");
+        svg_out.setAttribute("viewBox",`0, 0, ${2*ctr}, ${2*ctr}`);
+        svg_out.setAttribute("class","svgout");
+        svg_out.setAttribute("width",`${2*ctr}`);
+        svg_out.setAttribute("height",`${2*ctr}`);
+        svg_out.setAttribute("id",this.CityId);
+        newXlocks.appendChild(svg_out);
+        this.svgOut = svg_out;
+        this.init_svg(cityID);
+    }
+    init_svg() {
+        var svg_in = document.createElementNS(ns,"svg");
+        svg_in.setAttribute("viewBox","-37,-33,300,300");
+        svg_in.setAttribute("class","Numbs");
+        svg_in.setAttribute("align","center");
+        svg_in.setAttribute("xmlns","http://www.w3.org/2000/svg");
+        this.svgOut.appendChild(svg_in);
+        var g_tag = document.createElementNS(ns,"g");
+        svg_in.appendChild(g_tag);
+        var path_tag = document.createElementNS(ns,"path");
+        path_tag.setAttribute("class","Numbs");
+        path_tag.setAttribute("d",pathNumbers);
+        g_tag.appendChild(path_tag);
+
+
+        var one_sec = 1000;// milli_socondes
+        var date = new Date();
+        var Hours   = date.getHours();
+        var Minutes = date.getMinutes();
+        var Seconds = date.getSeconds();
+        var MSecods = date.getMilliseconds();
+        var TiZnOff = date.getTimezoneOffset();
+        var int_sto = one_sec -MSecods;
+        var stom = (60 - Seconds)*one_sec;
+        var stoh = ((60 - Minutes)*60 - Seconds)*one_sec;
+        var angle_secnds = Seconds*6;
+        var angleMinu = Minutes*6;
+        var angleHours = Hours*30 + 0.5*Minutes;
+        var init_style = `${trans(angle_secnds)} ${this.stckw(0.4)}`;
+        var init_style_mints = `${trans(angleMinu)} ${this.stckw(0.8)}`;
+        var init_style_hrs = `${trans(angleHours)} ${this.stckw(1.2)}`;
+        var thisNumeric = this.Numeric;
+        this.addNs({x1:ctr,x2:ctr,y1:ctr*1.24,y2:ctr*.2,name:"sec",style:init_style},["sec","aiguille"],"line",this.svgOut);
+        this.addNs({x1:ctr,x2:ctr,y1:ctr*1.14,y2:ctr*.3,name:"minutes",style:init_style_mints},["sec","minutes"],"line",this.svgOut);
+        this.addNs({x1:ctr,x2:ctr,y1:ctr*1.1,y2:ctr*.44,name:"heures",style:init_style_hrs},["sec","heures"],"line",this.svgOut);
+        var sec = this.svgOut.querySelector("[name='sec']");
+        var minutes = this.svgOut.querySelector("[name='minutes']");
+        var heures = this.svgOut.querySelector("[name='heures']");
+        thisNumeric.innerText=get_time(angleHours,angleMinu,angle_secnds);
+        setTimeout(function () {
+            angle_secnds += 6;st(sec,angle_secnds);thisNumeric.innerText=get_time(angleHours,angleMinu,angle_secnds);
+            setInterval(() =>{angle_secnds += 6;st(sec,angle_secnds);thisNumeric.innerText=get_time(angleHours,angleMinu,angle_secnds);}, one_sec)
+        }, int_sto)
+        setTimeout(function () {
+            angleMinu += 6;st(minutes,angleMinu);
+            angleHours += 0.5;st(heures,angleHours);
+            setInterval(()=> {angleMinu += 6;st(minutes,angleMinu);angleHours += 0.5;st(heures,angleHours);}, 60*one_sec);
+        }, stom  - MSecods);
+        var oln_st = `${this.stckw(1.4)};`;
+        this.addNs({cx:ctr,cy:ctr,r:ctr*.94,style:oln_st},["outline"],"circle",this.svgOut);
+        this.addNs({cx:ctr,cy:ctr,r:0.05*ctr},["aiguille"],"circle",this.svgOut);
+        for(let i = 0; i < 360; i+=6){
+            var __ = this.getCls(i);
+            var cls = __[0];
+            var st_wsth = __[1];
+            var styl = `${trans(i)}${this.stckw(st_wsth)}`;
+            this.addNs({x1:ctr,x2:ctr,y1:.1*ctr,y2:.16*ctr,style:styl},[cls,"sec"],"line",this.svgOut);
+        }
+    }
+    stckw = (l)=> `stroke-width: ${l*ctr/40}`
+    addNs(Attrs={},Classes=[],name="line",pere) {
+        var i_svg = document.createElementNS(ns, name);
+        Object.keys(Attrs).forEach(function(item,index){
+            i_svg.setAttribute(item, Attrs[item]);
+        });
+        Classes.forEach(function(item,index){
+            i_svg.classList.add(item);
+        });
+        pere.appendChild(i_svg);
+    }
+    getCls(angle) {
+        if (!`${angle/90}`.includes(".")) {return ["Quarters",1.5];}
+        else if (!`${angle/30}`.includes(".")) {return ["Thirds",1];}
+        else if (!`${angle/6}`.includes(".")) {return ["Units",0.5];}
+        else{return "autres";}
+    }
+}
+    function init(id,city,ctrnew) {
+        ctr = ctrnew;
+        new TimeCity(id,city);
+    }
+    init(2,"rissani",200);
+    init(2,"rissani",100);
+    init(2,"rissani",50);
+    init(2,"rissani",25);
+    </script>
+</body>
+</html>
