@@ -6,8 +6,8 @@ class myClass{
     //console.log(date);
   }
   sayHello() {
-    console.log('Hello ' + this.str + '!');
-}
+    	console.log('Hello ' + this.str + '!');
+	}
 }
 let mc=new myClass("new instant");
 mc.sayHello();
