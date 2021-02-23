@@ -8,7 +8,7 @@
     <meta name="msapplication-TileColor" content="#FFFFFFFF">
     <meta name="theme-color" content="#FFFFFFFF">
     <title>SVG</title>
-    <style type="text/css">p{font-size: 28px;color: #7C7CFF;font-family:Verdana sans-serif;line-height:115%;}.sec{transform-origin: center;transition: transform 50ms;}.minutes {stroke: #CC00FF;stroke-width: 0.8;}.heures {stroke: #AE00FF;stroke-width: 1.2;}.aiguille {stroke: #FF00FF;fill: #0E0AFF;stroke-width: 0.4;}.outline {stroke: #0E0AFF;stroke-width: 1.4;fill: #7A7CFF20}.svgout {border: 2px solid gray;background-color: #1A1A1A;max-width: 30em}.Quarters {stroke: #0E0EFF;}.Thirds {stroke: #4040FF;}.Units {stroke: #7C7CFF;}.autres {stroke: #AEAEFF;stroke-width: 0.25}.Numbs{fill: #7A7CFF}</style>
+    <style type="text/css">p{font-size: 28px;color: #7C7CFF;font-family:Verdana sans-serif;line-height:115%;}.sec{transform-origin: center;transition: transform 50ms;}.svgout {border: 2px solid gray;background-color: #1A1A1A;max-width: 30em}.Quarters {stroke: #0E0EFF;}.Thirds {stroke: #4040FF;}.Units {stroke: #7C7CFF;}.autres {stroke: #AEAEFF;stroke-width: 0.25}.Numbs{fill: #7A7CFF}</style>
 </head>
 <body style="background-color: #0E0E0E;color: #F1F1F1">
     <center>
@@ -33,9 +33,7 @@
     var one_sec =1000;var DarkMode = true;
     var Numeric = document.querySelector('#Numeric');
     function Update(time){
-        clearInterval(interval);
         var date = time? new Date(time):new Date();
-        var int_sto = one_sec - (date.getMilliseconds()/1000)*one_sec;
         var hrsutc = ((-1)*date.getTimezoneOffset()/60).toFixed(2);
         Citypara = `(GMT${hrsutc!=0 ? ` ${hrsutc>0?`+${hrsutc}`:hrsutc} H`:``})`;
         AngleSecnds = date.getSeconds() * 6;
@@ -43,9 +41,18 @@
         AngleHourss = date.getHours() * 30 + .5 * date.getMinutes();
         readAngles(Mode12);
         MoveSecnds(0);MoveMinuts(0);MoveHourss(0);
+        clearInterval(interval);
+        var int_sto = one_sec - (date.getMilliseconds()/1000)*one_sec;
         setTimeout(function () {
             readAngles(Mode12);interval=setInterval(() =>{readAngles(Mode12);}, one_sec)
         }, int_sto);
+    }
+    function readAngles(M12){Mode12=M12;
+        MoveSecnds();PlaySounds();
+        Numeric.innerText = getNumeric(AngleHourss,AngleMinuts,AngleSecnds,M12);
+        var secnd = (AngleSecnds%360)/6;
+        if (!secnd) {MoveMinuts();MoveHourss();}
+        Numeric.innerText = getNumeric(AngleHourss,AngleMinuts,AngleSecnds,M12);
     }
     function PlaySounds(){
         var audio = document.querySelector("#tics");
@@ -64,13 +71,6 @@
                 oclock.play();
             }
         }
-    }
-    function readAngles(M12){Mode12=M12;
-        MoveSecnds();PlaySounds();
-        Numeric.innerText = getNumeric(AngleHourss,AngleMinuts,AngleSecnds,M12);
-        var secnd = (AngleSecnds%360)/6;
-        if (!secnd) {MoveMinuts();MoveHourss();}
-        Numeric.innerText = getNumeric(AngleHourss,AngleMinuts,AngleSecnds,M12);
     }
     function DarkModeSet(DarkModeApp) {
         var graphs = svg_out.querySelectorAll(`[name="SVGGARPH"]`);
