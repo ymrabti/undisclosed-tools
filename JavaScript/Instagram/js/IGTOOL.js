@@ -64,6 +64,10 @@ function fetchFeedPost(data,container) {
     var _AJdV7RfSjyX = createElements(__GgPKgHxGV5,[[`class`,`e1e1d`]],`DIV`);
     var _QT5dsdKJk0n = createElements(_AJdV7RfSjyX,[[`class`,`Jv7Aj mArmR MqpiF`]],`SPAN`);
     var _OWd7j5SPRW_ = createElements(_QT5dsdKJk0n,[[`class`,`sqdOP yWX7d _8A5w5 ZIAjV`],[`onclick`,`constroctur("@${username}")`],[`tabindex`,`0`]],`P`,`${username}`);
+    if (is_verified) {
+        var divBadge = createElements(_QT5dsdKJk0n,[["class","Igw0E IwRSH eGOV_ _4EzTm soMvl"]],"div");
+        createElements(divBadge,[["class","mTLOB Szr5J coreSpriteVerifiedBadge"],["title","Vérifié"]],"span","Vérifié");
+    }
     if (location) {
         var location_id = location["id"];
         var location_name = location["name"];
