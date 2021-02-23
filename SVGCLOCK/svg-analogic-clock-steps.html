@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prism</title>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons' async='async'></script>
+    <link rel="stylesheet" type="text/css" href="../prismJs/css/prism.css">
+    <script type="text/javascript" src="../prismJs/prism.js"></script> 
+    <script type="text/javascript" src="../prismJs/plugins/prism-toolbar.js"></script>
+    <script type="text/javascript" src="../prismJs/plugins/prism-line-numbers.js"></script>
+
+    <style type="text/css">.Numbs{fill: #7A7CFF}.sec{transform-origin: center;transition: transform 50ms;}p{font-size: 28px;color: #7C7CFF;font-family:Verdana sans-serif;line-height:115%;}</style>
+    <style type="text/css">
+      .dark_Mode{background-color: #4E4E4E;color: #DFDFDF;}
+      .__switch__ {
+        position: relative;
+        display: inline-block;
+        width: 90px;
+        height: 34px;
+      }
+      .__switch__ ._input {display:none;}
+      .__slider__ {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #1E1E1E;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      .__slider__:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        right: 4px;
+        bottom: 4px;
+        background-color: #BBBBBB;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      ._input:checked + .__slider__ {
+        background-color: #DDDDDD;
+      }
+      ._input:focus + .__slider__ {
+        box-shadow: 0 0 1px #2196F3;
+      }
+      ._input:checked + .__slider__:before {
+        -webkit-transform: translateX(55px);
+        -ms-transform: translateX(55px);
+        transform: translateX(-55px);
+      }
+      .on
+      {
+        display: none;color: #1E1E1E;
+      }
+      .off{color: white;}
+      .on, .off
+      {
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        font-size: 10px;
+      }
+      ._input:checked+ .__slider__ .on
+      {display: block;}
+      ._input:checked + .__slider__ .off
+      {display: none;}
+      .__slider__._round_ {
+        border-radius: 34px;
+      }
+      .__slider__._round_:before {
+        border-radius: 50%;}
+      body{
+        font: 400 16px Merriweather, Georgia, serif;padding: 15px;
+      }
+      #content      {position: relative;width: 60%;left: 20%;margin: 15px;}
+      #table-content{position: fixed   ;width: 20%;top: 5em;}
+      #params       {position: fixed   ;width: 20%;top: 5em;left: 81%;}
+      .pDark{color: #A9FDF0}
+      .pLight{color: #56020f}
+      /*#content ,#table-content ,#params{border: 1px #FF6A2D solid}*/
+    </style>
+</head>
+<body class="dark_Mode">
+  <script type="text/javascript">
+    function toggleModes() {
+      document.body.classList.toggle('dark_Mode')
+      document.querySelectorAll("[name='toggled']").forEach(function(item,index){
+        item.classList.toggle("pLight")
+      });
+    }
+  </script>
+  <div id="table-content">
+<aside>
+  <h3>Contents</h3>
+  <ul class="sections">
+      <li><a name="toggled" class="pDark" href="#introduction">Introduction</a></li>
+      <li><a name="toggled" class="pDark" href="#step_1_install_bitnami_wordpress_module_for_xampp">Step 1: Install Bitnami WordPress module for XAMPP</a></li>
+      <li><a name="toggled" class="pDark" href="#step_2_test_wordpress">Step 2: Test WordPress</a></li>
+      <li><a name="toggled" class="pDark" href="#step_3_create_an_editor_account_and_start_blogging">Step 3: Create an Editor Account and Start Blogging</a></li>
+  </ol>
+</aside>
+  </div>
+<div id="params">
+  <aside>
+    <h3>Parameters</h3>
+    <div style="margin-bottom: 10px;">
+      <label style="position: relative;bottom: 10px;">DARK MODE :</label>
+      <label class="__switch__">
+        <input type="checkbox" class="_input" id="togBtn" onchange="toggleModes()">
+        <div class="__slider__ _round_">
+          <span class="on">OFF</span>
+          <span class="off">ON</span>
+        </div>
+      </label>
+    </div>
+  </aside>
+</div>
+<div id="content"> 
+<!-- data-prismjs-copy-timeout="5000" data-prismjs-copy="Copy Text" data-prismjs-copy-error="Something went wrong!" data-prismjs-copy-success="Copied to Clipboard!" -->
+<H3>Script :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-html">&lt;center>
+  &lt;p class="Numbs" id="Numeric">00:00:00 (GMT +1.00 H) (24H)&lt;/p>
+  &lt;svg id="out" viewBox="0, 0, 100, 100" class="svgout" width="100%" style="border: 2px solid gray;background-color: #1A1A1A;max-width: 30em">
+    &lt;!-- next codes here -->
+  &lt;/svg>
+&lt;/center></code></pre>
+
+<H3>graphic numbers :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-html"> &lt;svg viewBox="-37, -33, 300, 300" xmlns="http://www.w3.org/2000/svg" class="Numbs">
+    &lt;!-- graphic numbers here -->
+  &lt;/svg></code></pre>
+
+
+<H3>first number graph :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-html">&lt;path d="M166.5 38.2V21.9h-5.9v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7z"/>
+&lt;!-- other numbers here --></code></pre>
+<H3>other number graph :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-html">&lt;path d="M105.5 22.7V6.4h-5.9V4.3c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7zM114.1 4.8c.3-1 .8-1.8 1.4-2.5.6-.7 1.4-1.3 2.4-1.7.9-.4 2-.6 3.2-.6 1 0 1.9.1 2.8.4.9.3 1.6.7 2.3 1.2.6.5 1.1 1.2 1.5 2 .4.8.6 1.7.6 2.8 0 1-.2 1.9-.5 2.7s-.7 1.5-1.2 2.1c-.5.6-1.1 1.2-1.8 1.6-.7.5-1.3 1-2 1.4-.7.4-1.4.8-2.1 1.3s-1.3.9-1.9 1.3c-.6.5-1.1 1-1.5 1.5s-.7 1.2-.8 1.9h11.6v2.4h-14.8c.1-1.3.3-2.5.7-3.4.4-.9.8-1.8 1.4-2.5s1.2-1.3 2-1.9c.7-.5 1.5-1 2.3-1.5 1-.6 1.8-1.1 2.5-1.6s1.3-1 1.8-1.5.8-1.1 1.1-1.7.4-1.3.4-2.1c0-.6-.1-1.2-.4-1.7-.2-.5-.5-.9-.9-1.3s-.9-.6-1.4-.8c-.5-.2-1.1-.3-1.7-.3-.8 0-1.5.2-2 .5-.6.3-1 .8-1.4 1.3-.4.5-.6 1.1-.8 1.8s-.2 1.3-.2 2H114c-.3-1-.2-2.1.1-3.1z"/>
+&lt;path d="M198.9 59.2c.3-1 .8-1.8 1.4-2.5.6-.7 1.4-1.3 2.4-1.7.9-.4 2-.6 3.2-.6 1 0 1.9.1 2.8.4.9.3 1.6.7 2.3 1.2.6.5 1.1 1.2 1.5 2 .4.8.6 1.7.6 2.8 0 1-.2 1.9-.5 2.7s-.7 1.5-1.2 2.1c-.5.6-1.1 1.2-1.8 1.6-.7.5-1.3 1-2 1.4-.7.4-1.4.8-2.1 1.3s-1.3.9-1.9 1.3c-.6.5-1.1 1-1.5 1.5s-.7 1.2-.8 1.9h11.6V77H198c.1-1.3.3-2.5.7-3.4.4-.9.8-1.8 1.4-2.5s1.2-1.3 2-1.9c.7-.5 1.5-1 2.3-1.5 1-.6 1.8-1.1 2.5-1.6s1.3-1 1.8-1.5.8-1.1 1.1-1.7.4-1.3.4-2.1c0-.6-.1-1.2-.4-1.7-.2-.5-.5-.9-.9-1.3s-.9-.6-1.4-.8c-.5-.2-1.1-.3-1.7-.3-.8 0-1.5.2-2 .5-.6.3-1 .8-1.4 1.3-.4.5-.6 1.1-.8 1.8s-.2 1.3-.2 2h-2.7c-.2-1.1-.1-2.1.2-3.1z"/>
+&lt;path d="M217.6 115.1H218.5c.6 0 1.1-.1 1.6-.2s1-.4 1.4-.7c.4-.3.7-.7.9-1.2.2-.5.4-1 .4-1.6 0-1.2-.4-2.1-1.2-2.7-.8-.6-1.7-.9-2.9-.9-.7 0-1.4.1-1.9.4-.5.3-1 .6-1.3 1.1-.4.4-.6 1-.8 1.6-.2.6-.3 1.2-.3 1.9h-2.7c0-1.1.2-2.1.5-3s.8-1.7 1.3-2.3c.6-.6 1.3-1.1 2.2-1.5.9-.4 1.9-.5 3-.5 1 0 1.9.1 2.7.4s1.6.6 2.2 1.1c.6.5 1.1 1.1 1.5 1.9s.5 1.7.5 2.7c0 1-.3 1.9-.9 2.7-.6.8-1.3 1.4-2.2 1.8v.1c1.4.3 2.4 1 3.1 2 .7 1 1 2.2 1 3.6 0 1.1-.2 2.1-.6 3-.4.9-1 1.6-1.7 2.2s-1.5 1-2.5 1.3-2 .4-3 .4c-1.2 0-2.2-.2-3.1-.5-.9-.3-1.7-.8-2.4-1.4-.7-.6-1.2-1.4-1.5-2.3-.4-.9-.5-2-.5-3.1h2.7c0 1.5.5 2.7 1.3 3.6.8.9 2 1.4 3.6 1.4.7 0 1.3-.1 1.9-.3.6-.2 1.1-.5 1.6-.9s.8-.8 1.1-1.4.4-1.2.4-1.8c0-.7-.1-1.3-.4-1.9s-.6-1-1-1.4-.9-.7-1.5-.8-1.2-.3-1.9-.3c-.6 0-1.1 0-1.6.1V115c-.1.1 0 .1.1.1z"/>
+&lt;path d="M214.2 173.8v2.4h-3.1v5.3h-2.6v-5.3h-10v-2.6l10.3-14.8h2.2v15h3.2zm-5.6-11.1l-7.6 11.1h7.6v-11.1z"/>
+&lt;path d="M163.7 199.4l-1.2 6.5.1.1c.5-.6 1.1-1 1.9-1.2.8-.3 1.6-.4 2.3-.4 1 0 2 .2 2.8.5.9.3 1.7.8 2.3 1.5.7.7 1.2 1.5 1.6 2.4s.6 2.1.6 3.4c0 1-.2 1.9-.5 2.8-.3.9-.8 1.7-1.5 2.4s-1.5 1.3-2.5 1.7-2.1.6-3.5.6c-1 0-1.9-.1-2.8-.4s-1.6-.7-2.3-1.2-1.2-1.2-1.6-2c-.4-.8-.6-1.7-.6-2.8h2.7c0 .6.2 1.1.4 1.6s.6.9 1 1.3.9.7 1.5.9c.6.2 1.2.3 1.9.3.6 0 1.3-.1 1.8-.3.6-.2 1.1-.6 1.5-1 .4-.4.8-1 1-1.7.3-.7.4-1.5.4-2.4 0-.7-.1-1.4-.4-2.1s-.6-1.2-1-1.6-1-.8-1.6-1.1-1.3-.4-2.1-.4c-.9 0-1.7.2-2.4.6-.7.4-1.3.9-1.8 1.6l-2.3-.1 2.1-11.8h11.2v2.4h-9z"/>
+&lt;path d="M116.4 214.1c-.7-.6-1.5-.9-2.6-.9-1.2 0-2.1.3-2.8.8s-1.3 1.3-1.6 2.1-.7 1.8-.8 2.8c-.1 1-.2 1.9-.3 2.8l.1.1c.6-1 1.4-1.8 2.4-2.3.9-.5 2-.7 3.3-.7 1.1 0 2.1.2 2.9.6.9.4 1.6.9 2.2 1.6s1 1.4 1.4 2.3c.3.9.5 1.9.5 2.9 0 .8-.1 1.7-.4 2.6-.3.9-.7 1.7-1.3 2.4-.6.7-1.4 1.3-2.3 1.8-1 .5-2.2.7-3.6.7-1.7 0-3-.3-4.1-1s-1.8-1.6-2.4-2.6c-.6-1.1-.9-2.2-1.1-3.5-.2-1.3-.3-2.5-.3-3.7 0-1.6.1-3.1.4-4.5.3-1.5.7-2.8 1.4-3.9.6-1.1 1.5-2 2.6-2.7 1.1-.7 2.4-1 4-1 1.9 0 3.4.5 4.5 1.5s1.7 2.4 1.9 4.3h-2.7c-.2-1.1-.6-1.9-1.3-2.5zm-4.9 7.5c-.6.3-1.1.6-1.5 1.1-.4.5-.7 1-.9 1.6-.2.6-.3 1.3-.3 2s.1 1.4.3 2c.2.6.5 1.2.9 1.6.4.4.9.8 1.5 1.1.6.3 1.3.4 2 .4s1.4-.1 2-.4c.6-.3 1-.6 1.4-1.1.4-.5.7-1 .9-1.6s.3-1.2.3-1.9-.1-1.4-.3-2c-.2-.6-.5-1.2-.8-1.6-.4-.5-.9-.8-1.4-1.1s-1.2-.4-2-.4c-.9-.1-1.5.1-2.1.3z"/>
+&lt;path d="M64.9 203.4c-1 1.6-1.9 3.2-2.7 5-.8 1.8-1.4 3.6-1.9 5.5s-.8 3.7-.9 5.5h-3c.1-1.9.4-3.8.9-5.6.5-1.8 1.1-3.6 1.9-5.2s1.7-3.3 2.7-4.8c1-1.5 2.1-2.9 3.3-4.1H53.5V197h14.7v2.3c-1.2 1.2-2.3 2.5-3.3 4.1z"/>
+&lt;path d="M15.2 162.1c.4-.7.9-1.3 1.5-1.8s1.3-.9 2.1-1.1c.8-.3 1.6-.4 2.5-.4 1.2 0 2.3.2 3.2.5.9.3 1.6.8 2.1 1.3s.9 1.2 1.2 1.9c.3.7.4 1.4.4 2.1 0 1-.3 2-.8 2.8s-1.3 1.5-2.3 1.9c1.4.4 2.4 1.1 3 2.1s1 2.2 1 3.6c0 1.1-.2 2.1-.6 2.9-.4.9-.9 1.6-1.6 2.2s-1.5 1-2.4 1.3-1.9.4-2.9.4c-1.1 0-2.1-.1-3-.4-.9-.3-1.8-.7-2.4-1.3s-1.2-1.3-1.6-2.2c-.4-.9-.6-1.9-.6-3 0-1.3.3-2.5 1-3.5s1.7-1.7 2.9-2.2c-1-.4-1.7-1-2.3-1.9-.6-.9-.9-1.8-.9-2.8-.1-.9.1-1.7.5-2.4zm2.9 16.2c.9.8 2.1 1.2 3.5 1.2.7 0 1.3-.1 1.9-.3.6-.2 1.1-.5 1.5-.9s.7-.9 1-1.4.3-1.1.3-1.8c0-.6-.1-1.2-.4-1.7s-.6-1-1-1.4-.9-.7-1.5-.9c-.6-.2-1.2-.3-1.8-.3-.7 0-1.3.1-1.9.3-.6.2-1.1.5-1.5.9-.4.4-.8.8-1 1.4-.2.5-.4 1.1-.4 1.8-.1 1.2.3 2.3 1.3 3.1zm-.3-12c.2.5.5.8.9 1.1.4.3.8.5 1.3.7.5.1 1 .2 1.6.2 1.1 0 2-.3 2.7-1 .7-.6 1.1-1.5 1.1-2.7s-.4-2-1.1-2.6c-.7-.6-1.6-.9-2.7-.9-.5 0-1 .1-1.5.2s-.9.4-1.3.7c-.4.3-.6.7-.8 1.1-.2.4-.3.9-.3 1.5-.2.7-.1 1.2.1 1.7z"/>
+&lt;path d="M4.5 125.1c.8.6 1.7.9 2.8.9 1.7 0 2.9-.7 3.7-2.2s1.3-3.6 1.4-6.6l-.1-.1c-.5 1-1.2 1.7-2.2 2.3-.9.6-2 .8-3.1.8-1.2 0-2.2-.2-3.1-.6-.9-.4-1.6-.9-2.3-1.6-.6-.7-1.1-1.5-1.4-2.4-.3-.9-.5-2-.5-3.1s.2-2.1.5-3c.4-.9.9-1.7 1.5-2.3.7-.7 1.5-1.2 2.4-1.5.9-.4 1.9-.5 3-.5s2.1.2 3 .5c.9.3 1.8.9 2.5 1.7.7.8 1.3 1.9 1.7 3.3.4 1.4.6 3.2.6 5.3 0 3.9-.6 6.9-1.9 9-1.2 2.1-3.2 3.2-6 3.2-1.9 0-3.5-.5-4.7-1.4s-2-2.4-2.1-4.4h2.7c.4 1.2.9 2.1 1.6 2.7zm7.2-14.2c-.2-.6-.5-1.2-.9-1.6s-.9-.9-1.5-1.1c-.6-.3-1.2-.4-2-.4s-1.5.1-2.1.4-1 .7-1.4 1.2c-.4.5-.6 1.1-.8 1.7-.2.6-.2 1.3-.2 2 0 .6.1 1.2.3 1.8.2.6.5 1.1.9 1.5.4.4.9.8 1.4 1.1s1.1.4 1.8.4 1.3-.1 1.9-.4 1.1-.6 1.5-1.1c.4-.5.7-1 .9-1.6.2-.6.3-1.2.3-1.9.2-.7.1-1.4-.1-2z"/>
+&lt;path d="M13.6 76V59.8H7.8v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1V76h-2.8z M21.9 62.3c0-.9.1-1.8.3-2.6.2-.9.4-1.7.7-2.4.3-.8.8-1.4 1.3-2 .6-.6 1.3-1 2.1-1.4s1.9-.5 3-.5c1.2 0 2.2.2 3 .5s1.5.8 2.1 1.4c.6.6 1 1.2 1.3 2 .3.8.6 1.6.7 2.4.2.9.3 1.7.3 2.6s.1 1.8.1 2.6 0 1.7-.1 2.6-.1 1.8-.3 2.6c-.2.9-.4 1.7-.7 2.4s-.8 1.4-1.3 2c-.6.6-1.2 1-2.1 1.4s-1.8.5-3 .5-2.2-.2-3-.5-1.5-.8-2.1-1.4c-.6-.6-1-1.2-1.3-2s-.6-1.6-.7-2.4c-.2-.9-.3-1.7-.3-2.6 0-.9-.1-1.8-.1-2.6.1-.8.1-1.7.1-2.6zm2.9 5.4c.1 1.1.2 2 .5 3 .3.9.8 1.7 1.4 2.4s1.5 1 2.7 1c1.2 0 2-.3 2.7-1s1.1-1.4 1.4-2.4c.3-.9.5-1.9.5-3 .1-1.1.1-2 .1-2.9V63c0-.7-.1-1.3-.2-2s-.2-1.3-.4-2c-.2-.6-.4-1.2-.8-1.7s-.8-.9-1.3-1.2-1.2-.4-2-.4-1.4.1-2 .4c-.5.3-1 .7-1.3 1.2-.4.5-.6 1-.8 1.7-.2.6-.3 1.3-.4 2-.1.7-.1 1.3-.2 2v1.8c.1.9.1 1.9.1 2.9z"/>
+&lt;path d="M53.5 38.2V21.9h-5.9v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7zM69.1 38.2V21.9h-5.9v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7z"/>
+</code></pre>
+
+
+
+<H3>Adding out-circle and stucks :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-html">&lt;line x1="50" x2="50" y1="62" y2="10" id="Scnds" style="stroke-width: 0.5; stroke: rgb(255, 0, 255); fill: rgb(14, 10, 255);" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="56" y2="15" id="Mnuts" style="stroke-width: 1; stroke: rgb(204, 0, 255);" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="55" y2="22" id="Hours" style="stroke-width: 1.375; stroke: rgb(174, 0, 255);" class="sec">&lt;/line>&lt;circle cx="50" cy="50" r="47" style="stroke-width: 1.75; stroke: #0E0AFF;fill: #7A7CFF15">&lt;/circle>&lt;circle cx="50" cy="50" r="2.5" style="stroke-width: 0.75; stroke: #FF00FF;fill: #0E0AFF;">&lt;/circle>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(0deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(6deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(12deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(18deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(24deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(30deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(36deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(42deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(48deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(54deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(60deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(66deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(72deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(78deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(84deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(90deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(96deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(102deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(108deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(114deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(120deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(126deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(132deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(138deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(144deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(150deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(156deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(162deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(168deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(174deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(180deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(186deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(192deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(198deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(204deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(210deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(216deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(222deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(228deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(234deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(240deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(246deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(252deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(258deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(264deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(270deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(276deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(282deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(288deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(294deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(300deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(306deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(312deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(318deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(324deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(330deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(336deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(342deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(348deg)" class="sec">&lt;/line>
+&lt;line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(354deg)" class="sec">&lt;/line></code></pre>
+
+
+<H3>css :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-css">.Numbs{fill: #7A7CFF}
+.sec{transform-origin: center;transition: transform 50ms;}
+p{font-size: 28px;color: #7C7CFF;font-family:Verdana sans-serif;line-height:115%;}
+</code></pre>
+
+<H3>Now we can see :</H3>
+<div align="center">
+  <p class="Numbs" id="Numeric">00:00:00 (GMT +1.00 H) (24H)</p>
+  <svg id="out" viewBox="0, 0, 100, 100" class="svgout" width="100%" style="border: 2px solid gray;background-color: #1A1A1A;max-width: 30em">
+    <svg viewBox="-37, -33, 300, 300" xmlns="http://www.w3.org/2000/svg" class="Numbs">
+    <path d="M166.5 38.2V21.9h-5.9v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7z"/>
+    <path d="M105.5 22.7V6.4h-5.9V4.3c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7zM114.1 4.8c.3-1 .8-1.8 1.4-2.5.6-.7 1.4-1.3 2.4-1.7.9-.4 2-.6 3.2-.6 1 0 1.9.1 2.8.4.9.3 1.6.7 2.3 1.2.6.5 1.1 1.2 1.5 2 .4.8.6 1.7.6 2.8 0 1-.2 1.9-.5 2.7s-.7 1.5-1.2 2.1c-.5.6-1.1 1.2-1.8 1.6-.7.5-1.3 1-2 1.4-.7.4-1.4.8-2.1 1.3s-1.3.9-1.9 1.3c-.6.5-1.1 1-1.5 1.5s-.7 1.2-.8 1.9h11.6v2.4h-14.8c.1-1.3.3-2.5.7-3.4.4-.9.8-1.8 1.4-2.5s1.2-1.3 2-1.9c.7-.5 1.5-1 2.3-1.5 1-.6 1.8-1.1 2.5-1.6s1.3-1 1.8-1.5.8-1.1 1.1-1.7.4-1.3.4-2.1c0-.6-.1-1.2-.4-1.7-.2-.5-.5-.9-.9-1.3s-.9-.6-1.4-.8c-.5-.2-1.1-.3-1.7-.3-.8 0-1.5.2-2 .5-.6.3-1 .8-1.4 1.3-.4.5-.6 1.1-.8 1.8s-.2 1.3-.2 2H114c-.3-1-.2-2.1.1-3.1z"/>
+    <path d="M198.9 59.2c.3-1 .8-1.8 1.4-2.5.6-.7 1.4-1.3 2.4-1.7.9-.4 2-.6 3.2-.6 1 0 1.9.1 2.8.4.9.3 1.6.7 2.3 1.2.6.5 1.1 1.2 1.5 2 .4.8.6 1.7.6 2.8 0 1-.2 1.9-.5 2.7s-.7 1.5-1.2 2.1c-.5.6-1.1 1.2-1.8 1.6-.7.5-1.3 1-2 1.4-.7.4-1.4.8-2.1 1.3s-1.3.9-1.9 1.3c-.6.5-1.1 1-1.5 1.5s-.7 1.2-.8 1.9h11.6V77H198c.1-1.3.3-2.5.7-3.4.4-.9.8-1.8 1.4-2.5s1.2-1.3 2-1.9c.7-.5 1.5-1 2.3-1.5 1-.6 1.8-1.1 2.5-1.6s1.3-1 1.8-1.5.8-1.1 1.1-1.7.4-1.3.4-2.1c0-.6-.1-1.2-.4-1.7-.2-.5-.5-.9-.9-1.3s-.9-.6-1.4-.8c-.5-.2-1.1-.3-1.7-.3-.8 0-1.5.2-2 .5-.6.3-1 .8-1.4 1.3-.4.5-.6 1.1-.8 1.8s-.2 1.3-.2 2h-2.7c-.2-1.1-.1-2.1.2-3.1z"/>
+    <path d="M217.6 115.1H218.5c.6 0 1.1-.1 1.6-.2s1-.4 1.4-.7c.4-.3.7-.7.9-1.2.2-.5.4-1 .4-1.6 0-1.2-.4-2.1-1.2-2.7-.8-.6-1.7-.9-2.9-.9-.7 0-1.4.1-1.9.4-.5.3-1 .6-1.3 1.1-.4.4-.6 1-.8 1.6-.2.6-.3 1.2-.3 1.9h-2.7c0-1.1.2-2.1.5-3s.8-1.7 1.3-2.3c.6-.6 1.3-1.1 2.2-1.5.9-.4 1.9-.5 3-.5 1 0 1.9.1 2.7.4s1.6.6 2.2 1.1c.6.5 1.1 1.1 1.5 1.9s.5 1.7.5 2.7c0 1-.3 1.9-.9 2.7-.6.8-1.3 1.4-2.2 1.8v.1c1.4.3 2.4 1 3.1 2 .7 1 1 2.2 1 3.6 0 1.1-.2 2.1-.6 3-.4.9-1 1.6-1.7 2.2s-1.5 1-2.5 1.3-2 .4-3 .4c-1.2 0-2.2-.2-3.1-.5-.9-.3-1.7-.8-2.4-1.4-.7-.6-1.2-1.4-1.5-2.3-.4-.9-.5-2-.5-3.1h2.7c0 1.5.5 2.7 1.3 3.6.8.9 2 1.4 3.6 1.4.7 0 1.3-.1 1.9-.3.6-.2 1.1-.5 1.6-.9s.8-.8 1.1-1.4.4-1.2.4-1.8c0-.7-.1-1.3-.4-1.9s-.6-1-1-1.4-.9-.7-1.5-.8-1.2-.3-1.9-.3c-.6 0-1.1 0-1.6.1V115c-.1.1 0 .1.1.1z"/>
+    <path d="M214.2 173.8v2.4h-3.1v5.3h-2.6v-5.3h-10v-2.6l10.3-14.8h2.2v15h3.2zm-5.6-11.1l-7.6 11.1h7.6v-11.1z"/>
+    <path d="M163.7 199.4l-1.2 6.5.1.1c.5-.6 1.1-1 1.9-1.2.8-.3 1.6-.4 2.3-.4 1 0 2 .2 2.8.5.9.3 1.7.8 2.3 1.5.7.7 1.2 1.5 1.6 2.4s.6 2.1.6 3.4c0 1-.2 1.9-.5 2.8-.3.9-.8 1.7-1.5 2.4s-1.5 1.3-2.5 1.7-2.1.6-3.5.6c-1 0-1.9-.1-2.8-.4s-1.6-.7-2.3-1.2-1.2-1.2-1.6-2c-.4-.8-.6-1.7-.6-2.8h2.7c0 .6.2 1.1.4 1.6s.6.9 1 1.3.9.7 1.5.9c.6.2 1.2.3 1.9.3.6 0 1.3-.1 1.8-.3.6-.2 1.1-.6 1.5-1 .4-.4.8-1 1-1.7.3-.7.4-1.5.4-2.4 0-.7-.1-1.4-.4-2.1s-.6-1.2-1-1.6-1-.8-1.6-1.1-1.3-.4-2.1-.4c-.9 0-1.7.2-2.4.6-.7.4-1.3.9-1.8 1.6l-2.3-.1 2.1-11.8h11.2v2.4h-9z"/>
+    <path d="M116.4 214.1c-.7-.6-1.5-.9-2.6-.9-1.2 0-2.1.3-2.8.8s-1.3 1.3-1.6 2.1-.7 1.8-.8 2.8c-.1 1-.2 1.9-.3 2.8l.1.1c.6-1 1.4-1.8 2.4-2.3.9-.5 2-.7 3.3-.7 1.1 0 2.1.2 2.9.6.9.4 1.6.9 2.2 1.6s1 1.4 1.4 2.3c.3.9.5 1.9.5 2.9 0 .8-.1 1.7-.4 2.6-.3.9-.7 1.7-1.3 2.4-.6.7-1.4 1.3-2.3 1.8-1 .5-2.2.7-3.6.7-1.7 0-3-.3-4.1-1s-1.8-1.6-2.4-2.6c-.6-1.1-.9-2.2-1.1-3.5-.2-1.3-.3-2.5-.3-3.7 0-1.6.1-3.1.4-4.5.3-1.5.7-2.8 1.4-3.9.6-1.1 1.5-2 2.6-2.7 1.1-.7 2.4-1 4-1 1.9 0 3.4.5 4.5 1.5s1.7 2.4 1.9 4.3h-2.7c-.2-1.1-.6-1.9-1.3-2.5zm-4.9 7.5c-.6.3-1.1.6-1.5 1.1-.4.5-.7 1-.9 1.6-.2.6-.3 1.3-.3 2s.1 1.4.3 2c.2.6.5 1.2.9 1.6.4.4.9.8 1.5 1.1.6.3 1.3.4 2 .4s1.4-.1 2-.4c.6-.3 1-.6 1.4-1.1.4-.5.7-1 .9-1.6s.3-1.2.3-1.9-.1-1.4-.3-2c-.2-.6-.5-1.2-.8-1.6-.4-.5-.9-.8-1.4-1.1s-1.2-.4-2-.4c-.9-.1-1.5.1-2.1.3z"/>
+    <path d="M64.9 203.4c-1 1.6-1.9 3.2-2.7 5-.8 1.8-1.4 3.6-1.9 5.5s-.8 3.7-.9 5.5h-3c.1-1.9.4-3.8.9-5.6.5-1.8 1.1-3.6 1.9-5.2s1.7-3.3 2.7-4.8c1-1.5 2.1-2.9 3.3-4.1H53.5V197h14.7v2.3c-1.2 1.2-2.3 2.5-3.3 4.1z"/>
+    <path d="M15.2 162.1c.4-.7.9-1.3 1.5-1.8s1.3-.9 2.1-1.1c.8-.3 1.6-.4 2.5-.4 1.2 0 2.3.2 3.2.5.9.3 1.6.8 2.1 1.3s.9 1.2 1.2 1.9c.3.7.4 1.4.4 2.1 0 1-.3 2-.8 2.8s-1.3 1.5-2.3 1.9c1.4.4 2.4 1.1 3 2.1s1 2.2 1 3.6c0 1.1-.2 2.1-.6 2.9-.4.9-.9 1.6-1.6 2.2s-1.5 1-2.4 1.3-1.9.4-2.9.4c-1.1 0-2.1-.1-3-.4-.9-.3-1.8-.7-2.4-1.3s-1.2-1.3-1.6-2.2c-.4-.9-.6-1.9-.6-3 0-1.3.3-2.5 1-3.5s1.7-1.7 2.9-2.2c-1-.4-1.7-1-2.3-1.9-.6-.9-.9-1.8-.9-2.8-.1-.9.1-1.7.5-2.4zm2.9 16.2c.9.8 2.1 1.2 3.5 1.2.7 0 1.3-.1 1.9-.3.6-.2 1.1-.5 1.5-.9s.7-.9 1-1.4.3-1.1.3-1.8c0-.6-.1-1.2-.4-1.7s-.6-1-1-1.4-.9-.7-1.5-.9c-.6-.2-1.2-.3-1.8-.3-.7 0-1.3.1-1.9.3-.6.2-1.1.5-1.5.9-.4.4-.8.8-1 1.4-.2.5-.4 1.1-.4 1.8-.1 1.2.3 2.3 1.3 3.1zm-.3-12c.2.5.5.8.9 1.1.4.3.8.5 1.3.7.5.1 1 .2 1.6.2 1.1 0 2-.3 2.7-1 .7-.6 1.1-1.5 1.1-2.7s-.4-2-1.1-2.6c-.7-.6-1.6-.9-2.7-.9-.5 0-1 .1-1.5.2s-.9.4-1.3.7c-.4.3-.6.7-.8 1.1-.2.4-.3.9-.3 1.5-.2.7-.1 1.2.1 1.7z"/>
+    <path d="M4.5 125.1c.8.6 1.7.9 2.8.9 1.7 0 2.9-.7 3.7-2.2s1.3-3.6 1.4-6.6l-.1-.1c-.5 1-1.2 1.7-2.2 2.3-.9.6-2 .8-3.1.8-1.2 0-2.2-.2-3.1-.6-.9-.4-1.6-.9-2.3-1.6-.6-.7-1.1-1.5-1.4-2.4-.3-.9-.5-2-.5-3.1s.2-2.1.5-3c.4-.9.9-1.7 1.5-2.3.7-.7 1.5-1.2 2.4-1.5.9-.4 1.9-.5 3-.5s2.1.2 3 .5c.9.3 1.8.9 2.5 1.7.7.8 1.3 1.9 1.7 3.3.4 1.4.6 3.2.6 5.3 0 3.9-.6 6.9-1.9 9-1.2 2.1-3.2 3.2-6 3.2-1.9 0-3.5-.5-4.7-1.4s-2-2.4-2.1-4.4h2.7c.4 1.2.9 2.1 1.6 2.7zm7.2-14.2c-.2-.6-.5-1.2-.9-1.6s-.9-.9-1.5-1.1c-.6-.3-1.2-.4-2-.4s-1.5.1-2.1.4-1 .7-1.4 1.2c-.4.5-.6 1.1-.8 1.7-.2.6-.2 1.3-.2 2 0 .6.1 1.2.3 1.8.2.6.5 1.1.9 1.5.4.4.9.8 1.4 1.1s1.1.4 1.8.4 1.3-.1 1.9-.4 1.1-.6 1.5-1.1c.4-.5.7-1 .9-1.6.2-.6.3-1.2.3-1.9.2-.7.1-1.4-.1-2z"/>
+    <path d="M13.6 76V59.8H7.8v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1V76h-2.8z M21.9 62.3c0-.9.1-1.8.3-2.6.2-.9.4-1.7.7-2.4.3-.8.8-1.4 1.3-2 .6-.6 1.3-1 2.1-1.4s1.9-.5 3-.5c1.2 0 2.2.2 3 .5s1.5.8 2.1 1.4c.6.6 1 1.2 1.3 2 .3.8.6 1.6.7 2.4.2.9.3 1.7.3 2.6s.1 1.8.1 2.6 0 1.7-.1 2.6-.1 1.8-.3 2.6c-.2.9-.4 1.7-.7 2.4s-.8 1.4-1.3 2c-.6.6-1.2 1-2.1 1.4s-1.8.5-3 .5-2.2-.2-3-.5-1.5-.8-2.1-1.4c-.6-.6-1-1.2-1.3-2s-.6-1.6-.7-2.4c-.2-.9-.3-1.7-.3-2.6 0-.9-.1-1.8-.1-2.6.1-.8.1-1.7.1-2.6zm2.9 5.4c.1 1.1.2 2 .5 3 .3.9.8 1.7 1.4 2.4s1.5 1 2.7 1c1.2 0 2-.3 2.7-1s1.1-1.4 1.4-2.4c.3-.9.5-1.9.5-3 .1-1.1.1-2 .1-2.9V63c0-.7-.1-1.3-.2-2s-.2-1.3-.4-2c-.2-.6-.4-1.2-.8-1.7s-.8-.9-1.3-1.2-1.2-.4-2-.4-1.4.1-2 .4c-.5.3-1 .7-1.3 1.2-.4.5-.6 1-.8 1.7-.2.6-.3 1.3-.4 2-.1.7-.1 1.3-.2 2v1.8c.1.9.1 1.9.1 2.9z"/>
+    <path d="M53.5 38.2V21.9h-5.9v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7zM69.1 38.2V21.9h-5.9v-2.2c.8 0 1.5-.1 2.2-.2.7-.1 1.4-.3 2-.7.6-.3 1.1-.8 1.5-1.3.4-.6.7-1.3.8-2.1h2.1v22.7h-2.7z"/>
+  </svg>
+  <line x1="50" x2="50" y1="62" y2="10" id="Scnds" style="stroke-width: 0.5; stroke: rgb(255, 0, 255); fill: rgb(14, 10, 255);" class="sec"></line>
+  <line x1="50" x2="50" y1="56" y2="15" id="Mnuts" style="stroke-width: 1; stroke: rgb(204, 0, 255);" class="sec"></line>
+  <line x1="50" x2="50" y1="55" y2="22" id="Hours" style="stroke-width: 1.375; stroke: rgb(174, 0, 255);" class="sec"></line><circle cx="50" cy="50" r="47" style="stroke-width: 1.75; stroke: #0E0AFF;fill: #7A7CFF15"></circle><circle cx="50" cy="50" r="2.5" style="stroke-width: 0.75; stroke: #FF00FF;fill: #0E0AFF;"></circle>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(0deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(6deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(12deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(18deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(24deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(30deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(36deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(42deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(48deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(54deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(60deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(66deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(72deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(78deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(84deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(90deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(96deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(102deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(108deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(114deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(120deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(126deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(132deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(138deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(144deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(150deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(156deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(162deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(168deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(174deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(180deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(186deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(192deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(198deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(204deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(210deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(216deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(222deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(228deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(234deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(240deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(246deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(252deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(258deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(264deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #0E0EFF;stroke-width: 1.875; transform: rotate(270deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(276deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(282deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(288deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(294deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(300deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(306deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(312deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(318deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(324deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #4040FF;stroke-width: 1.25; transform: rotate(330deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(336deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(342deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(348deg)" class="sec"></line>
+  <line x1="50" x2="50" y1="5" y2="8" style="stroke: #7C7CFF;stroke-width: 0.625; transform: rotate(354deg)" class="sec"></line>
+    </svg>
+</div>
+
+<H3>Javascript :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-javascript">var one_sec =1000;var Mode12 = false;
+var GraphHourssProp = document.querySelector("#Hours");
+var GraphMinutsProp = document.querySelector("#Mnuts");
+var GraphSecndsProp = document.querySelector("#Scnds");
+function Update(time){
+    var date = time? new Date(time):new Date();
+    var hrsutc = ((-1)*date.getTimezoneOffset()/60).toFixed(2);
+    Citypara = `(GMT${hrsutc!=0 ? ` ${hrsutc>0?`+${hrsutc}`:hrsutc} H`:``})`;
+    AngleSecnds = date.getSeconds() * 6;
+    AngleMinuts = date.getMinutes() * 6;
+    AngleHourss = date.getHours() * 30 + .5 * date.getMinutes();
+    readAngles(Mode12);
+    MoveSecnds(0);MoveMinuts(0);MoveHourss(0);
+    /* Update every seconde */
+}
+function readAngles(M12){Mode12=M12;
+    MoveSecnds();
+    Numeric.innerText = getNumeric(AngleHourss,AngleMinuts,AngleSecnds,M12);
+    var secnd = (AngleSecnds%360)/6;
+    if (!secnd) {MoveMinuts();MoveHourss();}
+    Numeric.innerText = getNumeric(AngleHourss,AngleMinuts,AngleSecnds,M12);
+}
+<H3>Javascript :</H3>
+function MoveSecnds (val = 6){
+  AngleSecnds += val;
+  GraphSecndsProp.style.transform = `rotate(${AngleSecnds}deg)`;
+}
+function MoveMinuts (val = 6){
+  AngleMinuts += val;
+  GraphMinutsProp.style.transform = `rotate(${AngleMinuts}deg)`;
+}
+function MoveHourss (val =.5){
+  AngleHourss += val;
+  GraphHourssProp.style.transform = `rotate(${AngleHourss}deg)`;
+}
+function getNumeric(Ah,Am,As,M12) {
+    var mod = Ah%30;
+    var secnd = (As%360)/6;
+    var minte = mod*2;var mnte1 = (Am%360)/6;
+    var heure = ((Ah%720-mod)/30)%24;
+    return `${pad(M12&&heure!=12?heure%12:heure)}:${pad(minte)}:${pad(secnd)} ${Citypara} (${M12 ? `${(heure>11 ? `PM`:`AM`)}`:`24H`})`;
+}
+function pad  (num)  {return num<10 ? `0${num}`:num}
+Update();
+</code></pre>
+
+<H3>Updating Every Second :</H3>
+<pre style="max-height: 400px;" class="line-numbers"><code class="language-javascript">var int_sto = one_sec - (date.getMilliseconds()/1000)*one_sec;
+setTimeout(function () {
+    readAngles(Mode12);interval=setInterval(() =>{readAngles(Mode12);}, one_sec)
+}, int_sto);</code></pre>
+
+</body>
+</html>
