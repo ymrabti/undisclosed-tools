@@ -78,7 +78,7 @@ function fetchFeedPost(data,container) {
         var _3cUk4FwWPzg = createElements(_jT60mZVLibD,[[`class`,`O4GlU`],
             [`onclick`,`constroctur("€${location_id}")`],[`tabindex`,`0`]],`P`,location_name);
     }
-    var _sv67py5Oziu = createElements(container,[[`class`,`_97aPb wKWK0`],["id","secondch"]],`DIV`);
+    var _sv67py5Oziu = createElements(container,[[`class`,`left`],["style","width:100%;max-width:30em;"],["id","secondch"]],`DIV`);
     var _zCl4SWYOmcR = createElements(_sv67py5Oziu,[[`role`,`button`],[`class`,`ZyFrc sf-root-media-container`],[`tabindex`,`-1`],[`data-sf-touch`,`1`]],`DIV`);
     var _2dM2NwPcefL = createElements(_zCl4SWYOmcR,[["id","tagsclass"],[`class`,`kPFhm kHt39 fTh_a plVq-`],[`data-sf-skip`,`1`]],`DIV`);
     var _ZBds80k9iNA = createElements(_2dM2NwPcefL,[[`class`,`eLAPa _23QFA`],["onclick","twitch()"],[`role`,`button`],[`tabindex`,`-1`]],`DIV`);
@@ -101,11 +101,11 @@ function fetchFeedPost(data,container) {
             var linld = getLink(node);
             return {"linkDownload":linld,"owner":username,"is_video":is_video};
         });
-        onclick = `download_multiple(true,"Post of ${username} In Instagram Photos and Videos")`;
+        onclick = `download_multiple(true,'Post of ${username} In Instagram Photos and Videos')`;
         setTimeout(function () {ext(edges);}, 1000);
         slick ();
     }
-    $("#secondch").append(`<br><button name='download' onclick="${onclick}"><i class="fa fa-download"></i>Download</button><br><br>`);
+    $("#secondch").append(`<button name='download' onclick="${onclick}"><i class="fa fa-download"></i>Download</button>`);
     if (tagged_users.length!=0) {
         var button_ident = createElements(_2dM2NwPcefL,[["class","G_hoz LcKDX _6JfJs"]],"div",null,`<div class="HBUJV"><span aria-label="Identifications" class="glyphsSpriteUser__filled__24__grey_0 u-__7"></span></div>`);
         tagged_users.forEach(function(item,index){
@@ -126,18 +126,18 @@ function fetchFeedPost(data,container) {
         });
     }
 
-    var _KcvtLM3jw0w = createElements(container,[[`class`,`eo2As`]],`DIV`);
+    var _KcvtLM3jw0w = createElements(container,[[`class`,`right`],["style","max-height:30em;max-width:30em;"]],`DIV`);
     var _X1lbS3TqQTX = createElements(_KcvtLM3jw0w,[[`class`,`EDfFK ygqzn`]],`SECTION`);
-    createElements(_KcvtLM3jw0w,[[`class`,`Igw0E IwRSHeGOV_ ybXk5 vwCYk`],["style","font-size: 20px;font-weight: bold;"]],`DIV`,undefined,`Liked  by &nbsp;<span class="sqdOP yWX7d _8A5w5"> ${beautify_numbers(likesNbr)}</span>&nbsp;people <br>`);
+    createElements(_KcvtLM3jw0w,[[`class`,`Igw0E IwRSHeGOV_ ybXk5 vwCYk`],["style","font-size: 16px;"]],`DIV`,undefined,`Liked  by &nbsp;<span class="sqdOP yWX7d _8A5w5"> ${beautify_numbers(likesNbr)}</span>&nbsp;people <br>`);
     createElements(_KcvtLM3jw0w,[],"br");
-    createElements(_KcvtLM3jw0w,[[`class`,`Igw0E IwRSHeGOV_ ybXk5 vwCYk`],["style","font-size: 20px;font-weight: bold;"]],`DIV`,undefined,`${beautify_numbers(commentsNbr)}</span>&nbsp;comments`);
+    createElements(_KcvtLM3jw0w,[[`class`,`Igw0E IwRSHeGOV_ ybXk5 vwCYk`],["style","font-size: 16px;"]],`DIV`,undefined,`${beautify_numbers(commentsNbr)}</span>&nbsp;comments`);
     createElements(_KcvtLM3jw0w,[],"br");
-    var _IBR5JqaMc5S = createElements(_KcvtLM3jw0w,[[`class`,`EtaWk`]],`DIV`);
+    var _IBR5JqaMc5S = createElements(_KcvtLM3jw0w,[[`class`,`EtaWk`],["margin-top","10px"]],`DIV`);
     var _IQRzAN2kJWE = createElements(_IBR5JqaMc5S,[[`class`,`XQXOT pXf-y`]],`UL`);
     var _pNB4odnO7E5 = createElements(_IQRzAN2kJWE,[[`class`,`k_Q0X NnvRN`]],`DIV`);
     var _kJWFjquWkzi = createElements(_pNB4odnO7E5,[[`class`,`c-Yi7`],[`onclick`,`constroctur("£${shortcode}")`],[`tabindex`,`0`]],`P`);
     createElements(_pNB4odnO7E5,[[`class`,`c-Yi7`],[`href`,`https://www.instagram.com/p/${shortcode}`],[`tabindex`,`0`],["target","_blank"]],`A`,"Comment in instagram");
-    var _hl5Ob6rVQeo = createElements(_kJWFjquWkzi,[[`class`,`_1o9PC Nzb55`],[`datetime`,date_pub.toJSON()],[`title`,date_pub.toLocaleDateString()],["style","font-size: 28px;font-weight: bold;"]],`TIME`,date_pub.toLocaleString());
+    var _hl5Ob6rVQeo = createElements(_kJWFjquWkzi,[[`class`,`_1o9PC Nzb55`],[`datetime`,date_pub.toJSON()],[`title`,date_pub.toLocaleDateString()],["style","font-size: 16px;"]],`TIME`,date_pub.toLocaleString());
     createElements(_kJWFjquWkzi,[],"br");
 
     shortcode_media["text"] = caption;
@@ -226,14 +226,6 @@ function fetchProfile(data,container){
 }
 function fetchStory(a) {
     alert("Story ! Soon");
-    // $.get("https://www.instagram.com/" + a + "/?__a=1")
-    //     .done(function (data) {
-    //         var container = ReturnContainer("divtoreplace");
-    //         fetchProfile(data,container);
-    //     })
-    //     .fail(function () {
-    //         alert('Story was not found! '+a)
-    //     })
 }
 function create_comment(pere,node) {
     var node_text                    = node["text"];// @ihssanebenalluch ♥♥♥
@@ -452,7 +444,7 @@ function pdp(p,profile_pic_url_hd,username,is_private) {
 }
 var All_Posts = [];var Un_Post = [];
 function slick () {$('.slider').slick(withoutResponsive);};
-PostClicked = shortcode => _gt_(`https://www.instagram.com/p/${shortcode}?__a=1`,"£",shortcode,"divModaltoreplace","Instagram Post",fetchFeedPost);
+PostClicked = shortcode => _gt_(`https://www.instagram.com/p/${shortcode}?__a=1&SameSite=Lax`,"£",shortcode,"divModaltoreplace","Instagram Post",fetchFeedPost);
 getmn = d => Math.round(d/60);
 PhotoOrVid = sh => {
     var url = getLink(sh);
@@ -478,16 +470,23 @@ function show_modal(disp) {
     $(`#divModaltoreplace`).children().remove();
 }
 function _gt_(url,code,pop,id,rel,func) {
-    $.get(url)
-        .done(function (data) {
-            var container = ReturnContainer(id);
-            show_modal(id!="divtoreplace");
-            $('#url').val(`${code}${pop}`);
-            func(data,container);
-        })
-        .fail(function () {
-            alert(`${rel} ${pop} was not found!`)
-        })
+    /*fetch(url, {mode:'no-cors',"Access-Control-Allow-Origin":"*"})
+    .then((data) => {console.log(data)
+        var container = ReturnContainer(id);
+        show_modal(id!="divtoreplace");
+        $('#url').val(`${code}${pop}`);
+        func(data,container);
+    })*/
+    $.get(url, {mode:'no-cors'})
+    .done(function (data) {
+        var container = ReturnContainer(id);
+        show_modal(id!="divtoreplace");
+        $('#url').val(`${code}${pop}`);
+        func(data,container);
+    })
+    .fail(function () {
+        alert(`${rel} ${pop} was not found!`)
+    })
 }
 function getThumbail(a,id) {
     var container = ReturnContainer(id);
@@ -552,7 +551,7 @@ function constroctur(input) {
         var rel = comp.rel;var code = comp.code;
         var shortcode = input.match(mss).pop();
         var link = comp.base_url + shortcode ;
-        link += comp._u ? '?__a=1':'';
+        link += comp._u ? '?__a=1&SameSite=None':'';
         var fonction = comp.func;
         var fonctiot = comp.funct;
         fonctiot?fonction(link,code,shortcode,"divtoreplace",rel,fonctiot):fonction(shortcode,"divtoreplace");

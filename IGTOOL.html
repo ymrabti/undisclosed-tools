@@ -3,38 +3,64 @@
 <head>
     <meta charset="utf-8" />
     <title>Instagram</title>
+    <meta name="Access-Control-Allow-Origin" value="*" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons' async='async'></script>
-    <link rel="StyleSheet" crossorigin="anonymous" type="text/css" href="https://www.instagram.com/static/bundles/es6/ConsumerUICommons.css/6a9060457779.css"/>
-    <link rel="StyleSheet" crossorigin="anonymous" type="text/css" href="https://www.instagram.com/static/bundles/es6/Consumer.css/2afa8fbe6005.css"/>
-    <link rel="StyleSheet" crossorigin="anonymous" type="text/css" href="https://www.instagram.com/static/bundles/es6/ProfilePageContainer.css/a7d72aa870c4.css"/>
-    <link rel="icon" sizes="192x192" href="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png">
-
+    <link rel="StyleSheet" type="text/css" href="css1/igtool1.css"/>
+    <link rel="StyleSheet" type="text/css" href="css1/igtool2.css"/>
+    <link rel="StyleSheet" type="text/css" href="css1/igtool3.css"/>
+    <link rel="stylesheet" type="text/css" href="css/igtool.css">
+    <link rel="stylesheet" type="text/css" href="css/progress.css">
+    <link rel="icon" sizes="192x192" href="igtool.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css'>
-    
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css'>
+    
 
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09' async='async'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://stuk.github.io/jszip/dist/jszip.min.js"></script>
     <script type="text/javascript" src="https://stuk.github.io/jszip-utils/dist/jszip-utils.js"></script>
     <script type="text/javascript" src="https://stuk.github.io/jszip/vendor/FileSaver.js"></script>
-    <style type="text/css">.w3-container:after,.w3-container:before{content:"";display:table;clear:both} .w3-container{padding:0.01em 16px} .w3-round-small{border-radius:2px}.w3-round,.w3-round-medium{border-radius:4px}.w3-round-large{border-radius:8px}.w3-round-xlarge{border-radius:16px}.w3-round-xxlarge{border-radius:32px} .w3-row-padding,.w3-row-padding>.w3-half,.w3-row-padding>.w3-third,.w3-row-padding>.w3-twothird,.w3-row-padding>.w3-threequarter,.w3-row-padding>.w3-quarter,.w3-row-padding>.w3-col{padding:0 8px} .w3-aqua,.w3-hover-aqua:hover{color:#000!important;background-color:#00ffff!important} .w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:#2196F3!important} .w3-light-blue,.w3-hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important} .w3-brown,.w3-hover-brown:hover{color:#fff!important;background-color:#795548!important} .w3-cyan,.w3-hover-cyan:hover{color:#000!important;background-color:#00bcd4!important} .w3-blue-grey,.w3-hover-blue-grey:hover,.w3-blue-gray,.w3-hover-blue-gray:hover{color:#fff!important;background-color:#607d8b!important} .w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#4CAF50!important} .w3-light-green,.w3-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important} .w3-indigo,.w3-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important} .w3-khaki,.w3-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important} .w3-lime,.w3-hover-lime:hover{color:#000!important;background-color:#cddc39!important} .w3-orange,.w3-hover-orange:hover{color:#000!important;background-color:#ff9800!important} .w3-deep-orange,.w3-hover-deep-orange:hover{color:#fff!important;background-color:#ff5722!important} .w3-pink,.w3-hover-pink:hover{color:#fff!important;background-color:#e91e63!important} .w3-purple,.w3-hover-purple:hover{color:#fff!important;background-color:#9c27b0!important} .w3-deep-purple,.w3-hover-deep-purple:hover{color:#fff!important;background-color:#673ab7!important} .w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#f44336!important} .w3-sand,.w3-hover-sand:hover{color:#000!important;background-color:#fdf5e6!important} .w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#009688!important} .w3-yellow,.w3-hover-yellow:hover{color:#000!important;background-color:#ffeb3b!important} .w3-white,.w3-hover-white:hover{color:#000!important;background-color:#fff!important} .w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important} .w3-grey,.w3-hover-grey:hover,.w3-gray,.w3-hover-gray:hover{color:#000!important;background-color:#9e9e9e!important} .w3-light-grey,.w3-hover-light-grey:hover,.w3-light-gray,.w3-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important} .w3-dark-grey,.w3-hover-dark-grey:hover,.w3-dark-gray,.w3-hover-dark-gray:hover{color:#fff!important;background-color:#616161!important}</style>
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js'></script>
-    <style type="text/css">.slider {background-color: #aaa;}.slick-next::before, .slick-prev::before {color: #000;} .modal {display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0;top: 0;width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); }.modal-content {background-color: #fefefe;margin: auto;padding: 20px;border: 1px solid #888;width: 80%;}.close {color: #aaaaaa;float: right;font-size: 28px;font-weight: bold;}.close:hover,.close:focus {color: #000;text-decoration: none;cursor: pointer;}button[name=download] {background-color: DodgerBlue;border: none;color: white;padding: 6px 5px;margin: 5px;cursor: pointer;font-size: 20px;}button[name=download]:hover {background-color: RoyalBlue;} .Djus7KLks {position: absolute; top: -5px; left: -5px; width: 82px; height: 82px;} .Gai8tTPkdjh7{width: 82px; height: 82px;}
+    <style>
+        * {
+          box-sizing:border-box;
+        }
+        ._left_ {
+          padding:20px;border: 2px green solid;
+          float:left;
+          width:48%; /* The width is 20%, by default */
+        }
+        ._right_ {
+          padding:20px;border: 2px green solid;
+          float:right;
+          width:48%; /* The width is 20%, by default */
+        }
+        @media screen and (max-width:600px) {
+          ._left_, ._main_, ._right_ {
+            width:100%; 
+          }
+        }
     </style>
 </head>
 <body>
-<script src="js/IGTOOL.js"></script>
-<br><br><br><br>
+<script src="js/igtool.js"></script>
+<br><br>
 <section class="_9eogI E3X2T">
     <main class="SCxLW  o64aR" role="main">
         <div id="ModalPost" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
             <div class="v9tJq AAaSh VfzDr" id="divModaltoreplace">
+            </div>
+            <div class="_left_">
+              <p>Left Menu</p>
+            </div>
+
+
+            <div class="_right_">
+              <p>Right Content</p>
             </div>
           </div>
         </div>
