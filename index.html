@@ -2,29 +2,44 @@
 <html lang="en">
 <head>
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons' async='async'></script>
-    <meta charset="UTF-8">
     <script data-ad-client="ca-pub-7566702396165026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1485KNZF9"></script>
     <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "{{site.google_ad_client}}",
-        enable_page_level_ads: true
-      });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N1485KNZF9');
     </script>
+    <link rel="icon" sizes="192x192" href="img/favicon.ico">
+    
+    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="msapplication-TileColor" content="#FFFFFFFF">
     <meta name="theme-color" content="#FFFFFFFF">
     <title>Analogic clock ⏲</title>
-    <link rel="icon" sizes="192x192" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="toggles.css">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Analogic Clock using HTML JavaScript CSS">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://ymrabti.github.io/undisclosed-tools">
+    <meta property="og:site_name" content="ymrabti.github.io">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@younesmrabti50" />
+    <meta name="twitter:title" content="Analogic Clock using HTML JavaScript CSS" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:url" content="https://ymrabti.github.io/undisclosed-tools" />
     <style type="text/css">p{font-size: 28px;color: #7C7CFF;font-family:Verdana sans-serif;line-height:115%;}.sec{transform-origin: center;transition: transform 50ms;}.svgout {border: 2px solid gray;background-color: #1A1A1A;max-width: 30em}.Quarters {stroke: #0E0EFF;}.Thirds {stroke: #4040FF;}.Units {stroke: #7C7CFF;}.autres {stroke: #AEAEFF;stroke-width: 0.25}.Numbs{fill: #7A7CFF}</style>
 
 </head>
-<body style="background-color: #1E1E1E;color: #F1F1F1">
+<body style="background-color: #3E3E3E;color: #F1F1F1">
 
     <center>
+        <h1 align="center">Analogic Clock ⏲ using HTML, JavaScript and CSS. How to make it <a href="svg-analogic-clock-steps.html" style="color: #A9FDF0">here</a> </h1>
         <p class="Numbs" id="Numeric"></p>
         <svg id="out" viewBox="0, 0, 100, 100" class="svgout" width="100%">
             <svg viewBox="-37, -33, 300, 300" xmlns="http://www.w3.org/2000/svg" class="Numbs" name="SVGGARPH">
@@ -137,7 +152,9 @@
         var secnd = (As%360)/6;
         var minte = mod*2;var mnte1 = (Am%360)/6;
         var heure = ((Ah%720-mod)/30)%24;
-        return `${pad(M12&&heure!=12?heure%12:heure)}:${pad(minte)}:${pad(secnd)} ${Citypara} (${M12 ? `${(heure>11 ? `PM`:`AM`)}`:`24H`})`;
+        var Mo12h = `(${M12 ? `${(heure>11 ? `PM`:`AM`)}`:`24H`})`;
+        var heuru = pad(M12&&heure!=12?heure%12:heure);
+        return `${heuru}:${pad(minte)}:${pad(secnd)} ${Mo12h} ${Citypara}`;
     }
     function trans  (angle)  {return `transform: ${tran1(angle)}`}
     function tran1  (angle)  {return `rotate(${angle}deg)`}

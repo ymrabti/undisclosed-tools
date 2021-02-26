@@ -1,80 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-
 <head>
-  <script type='text/javascript'
-  src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons'
-  async='async'></script>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons' async='async'></script>
+    <script data-ad-client="ca-pub-7566702396165026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1485KNZF9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N1485KNZF9');
+    </script>
+    <link rel="icon" sizes="192x192" href="img/favicon.ico">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Analogic Clock using HTML JavaScript CSS">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://ymrabti.github.io/undisclosed-tools">
+    <meta property="og:site_name" content="ymrabti.github.io">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@younesmrabti50" />
+    <meta name="twitter:title" content="Analogic Clock using HTML JavaScript CSS" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:url" content="https://ymrabti.github.io/undisclosed-tools" />
   <meta charset="UTF-8">
-  <script data-ad-client="ca-pub-7566702396165026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Step by Step Build Analogic Clock Easily</title>
-  <link rel="icon" sizes="192x192" href="favicon.ico">
   <link type="text/css" href="prismJs/css/prism.css" rel="stylesheet">
   <script type="text/javascript" src="prismJs/prism.js"></script>
   <script type="text/javascript" src="prismJs/plugins/prism-toolbar.js"></script>
   <script type="text/javascript" src="prismJs/plugins/prism-line-numbers.js"></script>
   <link rel="stylesheet" type="text/css" href="toggles.css">
+    <link rel="icon" sizes="192x192" href="img/favicon.ico">
   <style type="text/css">
     .Numbs {
       fill: #7A7CFF
     }
-
     .sec {
       transform-origin: center;
       transition: transform 50ms;
     }
-
     p {
       font-size: 28px;
       color: #7C7CFF;
       font-family: Verdana sans-serif;
       line-height: 115%;
     }
-
     .dark_Mode {
       background-color: #4E4E4E;
       color: #DFDFDF;
     }
-
-    
-
     body {
       font: 400 16px Merriweather, Georgia, serif;
       padding: 15px;
     }
-
     #content {
       position: relative;
       width: 60%;
       left: 20%;
       margin: 15px;
     }
-
     #table-content {
       position: fixed;
       width: 20%;
       top: 5em;
     }
-
     #params {
       position: fixed;
       width: 20%;
       top: 5em;
       left: 81%;
     }
-
     .pDark {
       color: #A9FDF0
     }
-
     .pLight {
       color: #56020f
     }
-
     /*#content ,#table-content ,#params{border: 1px #FF6A2D solid}*/
   </style>
 </head>
@@ -92,12 +96,10 @@
     <aside>
       <h3>Contents</h3>
       <ul class="sections">
-        <li><a name="toggled" class="pDark" href="#introduction">Introduction</a></li>
-        <li><a name="toggled" class="pDark" href="#step_1_install_bitnami_wordpress_module_for_xampp">Step 1: Install
-            Bitnami WordPress module for XAMPP</a></li>
-        <li><a name="toggled" class="pDark" href="#step_2_test_wordpress">Step 2: Test WordPress</a></li>
-        <li><a name="toggled" class="pDark" href="#step_3_create_an_editor_account_and_start_blogging">Step 3: Create an
-            Editor Account and Start Blogging</a></li>
+        <li><a name="toggled" class="pDark" href="#SettingBasics">Setting Canvas</a></li>
+        <li><a name="toggled" class="pDark" href="#MovingHh">Moving Hour Hands to current Time</a></li>
+        <li><a name="toggled" class="pDark" href="#UpdatingHh">Updating Hour Hands</a></li>
+        <li><a name="toggled" class="pDark" href="#PlayingSounds">Playing Sounds</a></li>
       </ul>
     </aside>
   </div>
@@ -118,6 +120,9 @@
   </div>
   <div id="content">
     <!-- data-prismjs-copy-timeout="5000" data-prismjs-copy="Copy Text" data-prismjs-copy-error="Something went wrong!" data-prismjs-copy-success="Copied to Clipboard!" -->
+
+    <h1 align="center">How to make Analogic Clock ⏲ using HTML, JavaScript and CSS.<a href="svg-analogic-clock-steps.html" style="color: #A9FDF0">here</a> </h1>
+    <h2 id="SettingBasics">Setting Canvas</h2>
     <H3>Script :</H3>
     <pre style="max-height: 400px;" class="line-numbers"><code class="language-html">&lt;center>
   &lt;p class="Numbs" id="Numeric">00:00:00 (GMT +1.00 H) (24H)&lt;/p>
@@ -151,7 +156,7 @@
 
 
 
-    <H3>Adding out-circle and stucks :</H3>
+    <H3>Adding out-circle and Hour Hands :</H3>
     <pre style="max-height: 400px;"
       class="line-numbers"><code class="language-html">&lt;line x1="50" x2="50" y1="62" y2="10" id="Scnds" style="stroke-width: 0.5; stroke: rgb(255, 0, 255); fill: rgb(14, 10, 255);" class="sec">&lt;/line>
 &lt;line x1="50" x2="50" y1="56" y2="15" id="Mnuts" style="stroke-width: 1; stroke: rgb(204, 0, 255);" class="sec">&lt;/line>
@@ -385,6 +390,7 @@ p{font-size: 28px;color: #7C7CFF;font-family:Verdana sans-serif;line-height:115%
       </svg>
     </div>
 
+    <h2 id="MovingHh">Moving Hour Hands to current Time</h2>
     <H3>Javascript :</H3>
     <pre style="max-height: 400px;" class="line-numbers"><code class="language-javascript">var one_sec =1000;var Mode12 = false;
 var GraphHourssProp = document.querySelector("#Hours");
@@ -432,11 +438,14 @@ function pad  (num)  {return num<10 ? `0${num}`:num}
 Update();
 </code></pre>
 
+    <h2 id="UpdatingHh">Updating Hour Hands</h2>
     <H3>Updating Every Second :</H3>
     <pre style="max-height: 400px;" class="line-numbers"><code class="language-javascript">var int_sto = one_sec - (date.getMilliseconds()/1000)*one_sec;
 setTimeout(function () {
     readAngles(Mode12);interval=setInterval(() =>{readAngles(Mode12);}, one_sec)
 }, int_sto);</code></pre>
+    <h2 id="PlayingSounds">Playing Sounds</h2>
+
     <!-- ShareThis BEGIN -->
     <div class="sharethis-inline-reaction-buttons"></div><!-- ShareThis END -->
 </body>
