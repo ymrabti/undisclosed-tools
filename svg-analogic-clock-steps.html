@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons' async='async'></script>
-    <script data-ad-client="ca-pub-7566702396165026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1485KNZF9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N1485KNZF9');
-    </script>
-    <link rel="icon" sizes="192x192" href="img/favicon.ico">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Analogic Clock using HTML JavaScript CSS">
-    <meta property="og:description" content="">
-    <meta property="og:url" content="https://ymrabti.github.io/undisclosed-tools">
-    <meta property="og:site_name" content="ymrabti.github.io">
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@younesmrabti50" />
-    <meta name="twitter:title" content="Analogic Clock using HTML JavaScript CSS" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:url" content="https://ymrabti.github.io/undisclosed-tools" />
+  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=60357bf55b508c0011025a09&product=sticky-share-buttons' async='async'></script>
+  <script data-ad-client="ca-pub-7566702396165026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1485KNZF9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N1485KNZF9');
+  </script>
+  <link rel="icon" sizes="192x192" href="img/favicon.ico">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Analogic Clock using HTML JavaScript CSS">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://ymrabti.github.io/undisclosed-tools">
+  <meta property="og:site_name" content="ymrabti.github.io">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@younesmrabti50" />
+  <meta name="twitter:title" content="Analogic Clock using HTML JavaScript CSS" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:url" content="https://ymrabti.github.io/undisclosed-tools" />
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -52,7 +52,7 @@
       background-color: #4E4E4E;
       color: #DFDFDF;
     }
-    body {
+    .bodyGlobe {
       font: 400 16px Merriweather, Georgia, serif;
       padding: 15px;
     }
@@ -73,6 +73,28 @@
       top: 5em;
       left: 81%;
     }
+
+    @media screen and (max-width:1000px) {
+      #params, #table-content {
+        top: 0;position: relative;
+      }
+      #table-content {
+        /*left: 0;*/
+      }
+      #params{
+        /*left: 0;*/
+      }
+      #content {
+        position: absolute;
+      }
+      #content, #table-content, #params{
+        width: 100%; left: 0;
+      }
+    }
+    @media screen and (max-width: 500){
+      
+    }
+
     .pDark {
       color: #A9FDF0
     }
@@ -85,7 +107,7 @@
       position: fixed;
       top: 0;
       z-index: 1;
-      width: 95%;
+      width: 100%;
       background-color: #f1f1f1;
     }
     .progress-container {
@@ -101,19 +123,14 @@
   </style>
 </head>
 <body class="dark_Mode">
-  <div class="header">
-    <div class="progress-container">
-      <div class="progress-bar" id="myBar"></div>
-    </div>  
-  </div>
   <script type="text/javascript">
-    window.onscroll = function() {myFunction()};
+    window.onscroll = function() {scroll_function()};
 
-    function myFunction() {
+    function scroll_function() {
       var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var scrolled = (winScroll / height) * 100;
-      document.getElementById("myBar").style.width = scrolled + "%";
+      document.getElementById("ScrollProgressBar").style.width = scrolled + "%";
     }
     function toggleModes() {
       document.body.classList.toggle('dark_Mode')
@@ -122,6 +139,12 @@
       });
     }
   </script>
+  <div class="header">
+    <div class="progress-container">
+      <div class="progress-bar" id="ScrollProgressBar"></div>
+    </div>  
+  </div>
+  <div class="bodyGlobe">
   <div id="table-content">
     <aside>
       <h3>Contents</h3>
@@ -478,6 +501,7 @@ setTimeout(function () {
 
     <!-- ShareThis BEGIN -->
     <div class="sharethis-inline-reaction-buttons"></div><!-- ShareThis END -->
-</body>
 
+  </div>
+</body>
 </html>
