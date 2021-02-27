@@ -92,7 +92,9 @@
       }
     }
     @media screen and (max-width: 500){
-      
+      .bodyGlobe {
+        padding: 0px;
+      }
     }
 
     .pDark {
@@ -120,6 +122,11 @@
       background: #A9FDF0;
       width: 0%;
     }
+    .progress-bar-light {
+      height: 8px;
+      background: #56020f;
+      width: 0%;
+    }
   </style>
 </head>
 <body class="dark_Mode">
@@ -137,6 +144,7 @@
       document.querySelectorAll("[name='toggled']").forEach(function (item, index) {
         item.classList.toggle("pLight")
       });
+      document.querySelector("#ScrollProgressBar").classList.toggle("progress-bar-light");
     }
   </script>
   <div class="header">
@@ -174,7 +182,7 @@
   <div id="content">
     <!-- data-prismjs-copy-timeout="5000" data-prismjs-copy="Copy Text" data-prismjs-copy-error="Something went wrong!" data-prismjs-copy-success="Copied to Clipboard!" -->
 
-    <h1 align="center">How to make Analogic Clock ⏲ using HTML, JavaScript and CSS.<a href="svg-analogic-clock-steps.html" style="color: #A9FDF0">here</a> </h1>
+    <h1 align="center">How to make Analogic Clock ⏲ using HTML, JavaScript and CSS.<a href="svg-analogic-clock-steps.html" name="toggled" class="pDark">here</a> </h1>
     <h2 id="SettingBasics">Setting Canvas</h2>
     <H3>Script :</H3>
     <pre style="max-height: 400px;" class="line-numbers"><code class="language-html">&lt;center>
