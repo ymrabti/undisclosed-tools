@@ -13,24 +13,33 @@
 <body>
     <div style="margin: 0 auto;">
 <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
-    <path d="M0 0, 600 0,600 110,133.33 110,0 0" style="stroke: black;fill: black;"/>
-    <path d="M0 330, 600 330,600 220,133.33 220" style="stroke: green;fill: green;"/>
-    <path d="M0 330, 200 165,0 0" style="stroke: red;fill: red;"/>
-    <path d="M600 220, 600 110" style="stroke: black;"/>
+    <path d="M0 0, 600 0,600 110,133.33 110,0 0" style="stroke: black;fill: black;" />
+    <path d="M0 330, 600 330,600 220,133.33 220" style="stroke: green;fill: green;" />
+    <path d="M0 330, 200 165,0 0" style="stroke: red;fill: red;" />
+    <path d="M600 220, 600 110" style="stroke: black;" />
     <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
 </svg>
-<svg viewBox="0 0 100 100" width="100">
-    <path style="stroke: red;fill: red;" 
-    d="M 10,30A 20,20 0,0,1 50,30A 20,20 0,0,1 90,30Q 90,60 50,90Q 10,60 10,30 z" />
+<svg id="heart" viewBox="0 0 100 100" width="50">
+    <path style="stroke: red;fill: red;" d="M 10,30A 20,20 0,0,1 50,30A 20,20 0,0,1 90,30Q 90,60 50,90Q 10,60 10,30 z" />
 </svg>
 <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
     <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
-    <path d="M300 110,270.5 220, 345 150,255 150,329.5 220,300 110,270.5 220" 
-    style="stroke: green;stroke-width: 5;fill:none;" />
+    <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: green;stroke-width: 5;fill:none;" />
 </svg>
-<style>
-    @media screen and (max-width:600px) {
-        .svg{
+<style type="text/css">
+    .svg {
+        box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5)
+    }
+
+    @media screen and (max-width:700px) {
+        #heart {
+            position: relative;
+            top: auto;
+            left: 50%;
+            transform: translate(-50%)
+        }
+
+        .svg {
             width: 100%;
         }
     }

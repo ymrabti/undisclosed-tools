@@ -1,46 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
-        <path d="M0 0, 300 0,300 330,0 330,0 0" style="stroke: none;fill: green;" />
-    
-        <path d="M600 220, 600 110" style="stroke: black;" />
-    
-        <path d="M360 105A95 85 0 1 0 360 225 80 70 0 1 1 360 105z" fill="red" />
-        <path d="M300 125,270.5 220, 345 160,255 160,329.5 220,300 125,270.5 220" style="fill:brown;transform: rotate(50deg) scale(1) translate(80%,-500%)" />
-    
-        <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
-    </svg>
-    <svg id="heart" viewBox="0 0 100 100" width="50">
-        <path style="stroke: red;fill: red;" d="M 10,30A 20,20 0,0,1 50,30A 20,20 0,0,1 90,30Q 90,60 50,90Q 10,60 10,30 z" />
-    </svg>
-    <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
-        <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
-        <path d="M300 125,270.5 220, 345 160,255 160,329.5 220,300 125,270.5 220" style="stroke: green;stroke-width: 5;fill:none;" />
-    </svg>
-    <style type="text/css">
-        .svg {
-            box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5)
-        }
-    
-        @media screen and (max-width:700px) {
-            #heart {
-                position: relative;
-                top: auto;
-                left: 50%;
-                transform: translate(-50%)
-            }
-    
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SVG Flags</title>
+        <style type="text/css">
             .svg {
-                width: 100%;
+                box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
             }
-        }
-    </style>
-</body>
+
+            
+
+            .svg {
+                width: 45%;
+            }
+
+            @media screen and (max-width:700px) {
+                .svg {
+                    width: 100%;
+                }
+
+                #heart {
+                    position: relative;
+                    top: auto;
+                    left: 50%;
+                    transform: translate(-50%)
+                }
+
+            }
+        </style>
+    </head>
+    <body>
+        <svg viewbox="0, 0, 600, 330" width="70%" heigth="330" id="empty">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;stroke-width: 8;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M300.00 80.00,349.96 233.77,219.16 138.73,380.84 138.73,250.04 233.77,300.00,80.00z" style="stroke: green;stroke-width: 5;fill: none;" />
+            <path d="M310 182.32050807568876A20 20 0 1 1 310 147.67949192431124 10 10 0 1 0 310 182.32050807568876" style="fill: green;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M300.00 80.00,349.96 233.77,219.16 138.73,380.84 138.73,250.04 233.77,300.00,80.00z" style="stroke: white;stroke-width: 5;fill: none;" />
+            <path d="M310 182.32050807568876A20 20 0 1 1 310 147.67949192431124 10 10 0 1 0 310 182.32050807568876" style="fill: white;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M300.00 140.00,314.69 185.23,276.22 157.27,323.78 157.27,285.31 185.23,300.00,140.00zM369.2820323027551 205A80 80 0 1 1 369.2820323027551 125 70 70 0 1 0 369.2820323027551 205" style="fill: white;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
+            <path d="M300 0,600 0,600 330,300 330,300 0" style="fill: green;" />
+            <path d="M0 0,300 0,300 330,0 330" style="fill: red;" />
+            <path d="M300.00 140.00,314.69 185.23,276.22 157.27,323.78 157.27,285.31 185.23,300.00,140.00zM369.2820323027551 205A80 80 0 1 1 369.2820323027551 125 70 70 0 1 0 369.2820323027551 205" style="fill: white;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M300.00 110.00,347.63 192.50,252.37 192.50,300.00,110.00zM347.63 137.50,300.00 220.00,252.37 137.50,347.63,137.50z" style="stroke:green;stroke-width:7;fill: none" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M370.00 140.00,384.69 185.23,346.22 157.27,393.78 157.27,355.31 185.23,370.00,140.00zM369.28 205.00A80 80 0 1 1 369.28 125.00 70 70 0 1 0 369.28 205.00" style="fill: green" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M20 30,580 30,580 300,20 300,20 30,580 30" style="stroke: yellow;stroke-width: 10;fill: none;" />
+            <path d="M300.00,100.00,365.00,165.00,300.00,230.00,235.00,165.00,300.00,100.00zM345.96,119.04,345.96,210.96,254.04,210.96,254.04,119.04,345.96,119.04z" style="stroke: yellow;stroke-width: 7;fill: none;" />
+        </svg>
+
+
+
+        
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="morocco">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: green;stroke-width: 5;fill:none;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="algeria">
+            <path d="M0 0, 300 0,300 330,0 330,0 0" style="stroke: none;fill: green;" />
+            <path d="M600 220, 600 110" style="stroke: black;" />
+            <path d="M360 105A85 85 0 1 0 360 225 70 70 0 1 1 360 105zM365.00,165.00,301.68,185.57,340.82,131.71,340.82,198.29,301.68,144.43,365.00,165.00,301.68,185.57z" fill="red" />
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="tunesia">
+            <path d="M0 0, 600 0,600 330,0 330,0 0" style="stroke: none;fill: red;" />
+            <circle cx="300" cy="165" r="80" stroke="white" fill="white" />
+            <path d="M330 105A65 65 0 1 0 330 225 50 50 0 1 1 330 105zM280.00,165.00,343.32,144.43,304.18,198.29,304.18,131.71,343.32,185.57,280.00,165.00,343.32,144.43z" fill="red" />
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="mauritani">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: rgb(0, 88, 0);" />
+            <path d="M400 110A100 100 0 1 1 200 110 105 105 0 1 0 400 110zM300.00,65.00,320.57,128.32,266.71,89.18,333.29,89.18,279.43,128.32,300.00,65.00,320.57,128.32z" style="fill: rgb(238, 255, 0);" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="liby">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
+            <path d="M0 0,600 0,600 100,0 100,0 0" style="fill: red;" />
+            <path d="M0 100,600 100,600 230,0 230,0 100" style="fill: black;" />
+            <path d="M0 230,600 230,600 330,0 330,0 230" style="fill: green;" />
+            <path d="M330 134A40 40 0 1 0 330 196 35 35 0 1 1 330 134M320.00 165.00,374.27 147.37,340.73 193.53,340.73 136.47,374.27 182.63,320.00,165.00z" style="fill: white;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="japan">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
+            <circle cx="300" cy="165" r="80" fill="red" />
+        </svg>
+        <script>
+            let cos = Math.cos;
+            let sin = Math.sin;
+            let PI = Math.PI;
+            function star(noids, r, dx, dy, initial = 90,ar=false) {
+                const l = [...Array(noids)].map((_, i) => {
+                    let angle = (360 / noids) * i - initial;
+                    let angra = angle * PI / 180;
+                    let coss = cos(angra) * r + dx;
+                    let sinn = sin(angra) * r + dy;
+                    return [coss.toFixed(2), sinn.toFixed(2)];
+                })
+                if (ar) {
+                    switch (noids) {
+                        case 8:
+                            return "M" + [l[0], l[2], l[4], l[6], l[0]].join() + "zM" + [l[1], l[3], l[5], l[7], l[1]].join() + "z";
+                            break;
+                        default:
+                            return "M" + l.join()+"z"
+                            break;
+                    }
+                }
+                if (noids % 4 == 2) {
+                    let even = l.filter((_, i) => i % 2 == 0);
+                    let odd = l.filter((_, i) => i % 2 == 1);
+                    return path(even) + path(odd);
+                }
+                return path(l);
+            }
+            function cstep(noids) {
+                if (noids % 2 == 1) {
+                    return (noids - noids % 2) / 2;
+
+                } else {
+                    return ((noids - 1) - (noids - 1) % 2) / 2;
+                }
+            }
+            function path(l) {
+                var step = cstep(l.length);
+                var l1 = [];
+                let i = 0; let j = 0;
+                while (j < l.length) {
+                    l1.push(l[i % l.length].join(" "));
+                    i += step; j++;
+                }
+                l1.push(l[0]);
+                return "M" + l1.join() + "z";
+            }
+            function addNs(Attrs = {}, Classes = [], name = "line", pere) {
+                var i_svg = document.createElementNS('http://www.w3.org/2000/svg', name);
+                Object.keys(Attrs).forEach(function (item, index) {
+                    i_svg.setAttribute(item, Attrs[item]);
+                });
+                Classes.forEach(function (item, index) {
+                    i_svg.classList.add(item);
+                });
+                document.querySelector(pere).appendChild(i_svg);
+            }
+            function hilalc(xc, yc, angle, r1, dr) {
+                let x1 = (r1 * cos(angle * PI / 180) + xc).toFixed(2);
+                let y1 = (r1 * sin(angle * PI / 180) + yc).toFixed(2); 
+                let x2 = (r1 * cos(-angle * PI / 180) + xc).toFixed(2);
+                let y2 = (r1 * sin(-angle * PI / 180) + yc).toFixed(2);
+                return `M${x1} ${y1}A${r1} ${r1} 0 1 1 ${x2} ${y2} ${r1-dr} ${r1-dr} 0 1 0 ${x1} ${y1}`;
+            }
+            function hilal(x1, y1, x2, y2, r1, r2) {
+                return `M${x1} ${y1}A${r1} ${r1} 0 1 0 ${x2} ${y2} ${r2} ${r2} 0 1 1 ${x1} ${y1}`;
+            }
+            addNs({ d: star(9, 110, 300, 165, 90),style:"fill: black;stroke:black;" }, [], "path", "#empty");
+        </script>
+    </body>
+
 </html>

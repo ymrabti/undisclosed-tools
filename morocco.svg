@@ -1,0 +1,6 @@
+<svg  xmlns="http://www.w3.org/2000/svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="morocco">
+            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: green;stroke-width: 5;fill:none;" />
+        </svg>
+
+        
