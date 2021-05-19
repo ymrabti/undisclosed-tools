@@ -33,21 +33,18 @@
         </style>
     </head>
     <body>
-        <svg viewbox="0, 0, 600, 330" width="70%" heigth="330" id="empty">
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;stroke-width: 8;" />
-        </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 80.00,349.96 233.77,219.16 138.73,380.84 138.73,250.04 233.77,300.00,80.00z" style="stroke: green;stroke-width: 5;fill: none;" />
             <path d="M310 182.32050807568876A20 20 0 1 1 310 147.67949192431124 10 10 0 1 0 310 182.32050807568876" style="fill: green;" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 80.00,349.96 233.77,219.16 138.73,380.84 138.73,250.04 233.77,300.00,80.00z" style="stroke: white;stroke-width: 5;fill: none;" />
             <path d="M310 182.32050807568876A20 20 0 1 1 310 147.67949192431124 10 10 0 1 0 310 182.32050807568876" style="fill: white;" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 140.00,314.69 185.23,276.22 157.27,323.78 157.27,285.31 185.23,300.00,140.00zM369.2820323027551 205A80 80 0 1 1 369.2820323027551 125 70 70 0 1 0 369.2820323027551 205" style="fill: white;" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
@@ -57,15 +54,15 @@
             <path d="M300.00 140.00,314.69 185.23,276.22 157.27,323.78 157.27,285.31 185.23,300.00,140.00zM369.2820323027551 205A80 80 0 1 1 369.2820323027551 125 70 70 0 1 0 369.2820323027551 205" style="fill: white;" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 110.00,347.63 192.50,252.37 192.50,300.00,110.00zM347.63 137.50,300.00 220.00,252.37 137.50,347.63,137.50z" style="stroke:green;stroke-width:7;fill: none" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M370.00 140.00,384.69 185.23,346.22 157.27,393.78 157.27,355.31 185.23,370.00,140.00zM369.28 205.00A80 80 0 1 1 369.28 125.00 70 70 0 1 0 369.28 205.00" style="fill: green" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M20 30,580 30,580 300,20 300,20 30,580 30" style="stroke: yellow;stroke-width: 10;fill: none;" />
             <path d="M300.00,100.00,365.00,165.00,300.00,230.00,235.00,165.00,300.00,100.00zM345.96,119.04,345.96,210.96,254.04,210.96,254.04,119.04,345.96,119.04z" style="stroke: yellow;stroke-width: 7;fill: none;" />
         </svg>
@@ -74,7 +71,7 @@
 
         
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="morocco">
-            <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: red;" />
+            <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: green;stroke-width: 5;fill:none;" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="algeria">
@@ -104,76 +101,7 @@
             <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
             <circle cx="300" cy="165" r="80" fill="red" />
         </svg>
-        <script>
-            let cos = Math.cos;
-            let sin = Math.sin;
-            let PI = Math.PI;
-            function star(noids, r, dx, dy, initial = 90,ar=false) {
-                const l = [...Array(noids)].map((_, i) => {
-                    let angle = (360 / noids) * i - initial;
-                    let angra = angle * PI / 180;
-                    let coss = cos(angra) * r + dx;
-                    let sinn = sin(angra) * r + dy;
-                    return [coss.toFixed(2), sinn.toFixed(2)];
-                })
-                if (ar) {
-                    switch (noids) {
-                        case 8:
-                            return "M" + [l[0], l[2], l[4], l[6], l[0]].join() + "zM" + [l[1], l[3], l[5], l[7], l[1]].join() + "z";
-                            break;
-                        default:
-                            return "M" + l.join()+"z"
-                            break;
-                    }
-                }
-                if (noids % 4 == 2) {
-                    let even = l.filter((_, i) => i % 2 == 0);
-                    let odd = l.filter((_, i) => i % 2 == 1);
-                    return path(even) + path(odd);
-                }
-                return path(l);
-            }
-            function cstep(noids) {
-                if (noids % 2 == 1) {
-                    return (noids - noids % 2) / 2;
-
-                } else {
-                    return ((noids - 1) - (noids - 1) % 2) / 2;
-                }
-            }
-            function path(l) {
-                var step = cstep(l.length);
-                var l1 = [];
-                let i = 0; let j = 0;
-                while (j < l.length) {
-                    l1.push(l[i % l.length].join(" "));
-                    i += step; j++;
-                }
-                l1.push(l[0]);
-                return "M" + l1.join() + "z";
-            }
-            function addNs(Attrs = {}, Classes = [], name = "line", pere) {
-                var i_svg = document.createElementNS('http://www.w3.org/2000/svg', name);
-                Object.keys(Attrs).forEach(function (item, index) {
-                    i_svg.setAttribute(item, Attrs[item]);
-                });
-                Classes.forEach(function (item, index) {
-                    i_svg.classList.add(item);
-                });
-                document.querySelector(pere).appendChild(i_svg);
-            }
-            function hilalc(xc, yc, angle, r1, dr) {
-                let x1 = (r1 * cos(angle * PI / 180) + xc).toFixed(2);
-                let y1 = (r1 * sin(angle * PI / 180) + yc).toFixed(2); 
-                let x2 = (r1 * cos(-angle * PI / 180) + xc).toFixed(2);
-                let y2 = (r1 * sin(-angle * PI / 180) + yc).toFixed(2);
-                return `M${x1} ${y1}A${r1} ${r1} 0 1 1 ${x2} ${y2} ${r1-dr} ${r1-dr} 0 1 0 ${x1} ${y1}`;
-            }
-            function hilal(x1, y1, x2, y2, r1, r2) {
-                return `M${x1} ${y1}A${r1} ${r1} 0 1 0 ${x2} ${y2} ${r2} ${r2} 0 1 1 ${x1} ${y1}`;
-            }
-            addNs({ d: star(9, 110, 300, 165, 90),style:"fill: black;stroke:black;" }, [], "path", "#empty");
-        </script>
+        
     </body>
 
 </html>
