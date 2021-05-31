@@ -1,8 +1,8 @@
 let cos = Math.cos;
 let sin = Math.sin;
 let PI = Math.PI;
-let svg = document.querySelector("#empty");
-let rayon = 250, n = 7, dfx = 100, dfy = 100, af = 0, at = 360;
+let svg = document.querySelector("#empty"); let svg1 = document.querySelector("#fulfilled")
+let rayon = 250, n = 12, dfx = 100, dfy = 100, af = 0, at = 360;
 function StarPoints(noids, r, dx, dy, initialAngle) {
     return [...Array(noids)].map((_, i) => {
         let angle = (360 / noids) * i - initialAngle;
@@ -122,6 +122,7 @@ function rand_color() {
 function getRayon(pt, dx, dy) {
     return Math.sqrt((pt.x - dx) ** 2 + (pt.y - dy) ** 2);
 }
+// SDL1234@2021
 function nest(n, angle, rayon, min_r, start,svg,dx = 0, dy = 0) {
     let i = 0, rcc = rand_color();
     let g = addNs({}, "g", svg);
@@ -259,12 +260,13 @@ function simpleyingyang() {
 function yinyang(n,R,dur="4s") {
     let g = addNs({}, "g", svg1);
     let l = StarPoints(n,R,0,0,0);
-    addNs({ cx: 0, cy: 0, r: R, style: "fill: none;stroke:black;" }, "circle", g);
+    addNs({ cx: 0, cy: 0, r: R, style: "fill: orange;stroke:black;" }, "circle", g);
     let listColors = ["black"].concat([...Array(n-2)].map((_,i)=>`rgb(${(i+1)*255/n},${(i+1)*255/n},${(i+1)*255/n})`)).concat(["white"]);
     l.forEach((element,index,arr) => {
         let ng = listColors[index],rem = (index-2+n) % n;
-        let d = `M${element.join(" ")}A20 20 0 1 1 0 0`;
-        d += `A20 20 0 1 0 ${arr[(index + 1) % n].join(" ")}`;
+        let rj = n*R/4;
+        let d = `M${element.join(" ")}A${rj} ${rj} 0 0 1 0 0`;
+        d += `A${rj} ${rj} 0 0 0 ${arr[(index + 1) % n].join(" ")}`;
         d += `A${-1*R} ${-1*R} 0 0 0 ${element.join(" ")}`;
         addNs({ d, style: `fill:${ng};stroke:${ng};` }, "path", g);
         // addNs({ cx: element[0], cy: element[1], r: 4, style: "fill: black;stroke:black;" }, "circle", g);
@@ -272,11 +274,12 @@ function yinyang(n,R,dur="4s") {
         setTimeout(()=>{
             let inn = element.map(val => val * 0.5);
             addNs({ cx: inn[0], cy: inn[1], r: 0.4 * R / n, style: `fill: ${listColors[rem]};stroke:${listColors[rem]};` }, "circle", g);
-            addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", g,index+1);
         },(index+2)*50)
+        addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1,index+1);
     });
     // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
 }
+yinyang(2, 250, "5s");
 function Google(ro = 250) {
     var dr = ro / 2.5; var ri = ro - dr;
     var str = "black;stroke-width:8;";
@@ -330,8 +333,22 @@ function tangenteCircle(rayon, angle) {
     addNs({ x1, y1, x2, y2, style: `stroke:red;stroke-width:3;` }, "line", group);
     // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: "0 0 0;360 0 0", keyTimes: "0;1", dur:"4s", begin: "2s", repeatCount: "indefinite" }, "animateTransform", group);
 }
+function logoUchiha() {
+    let dx = -60; var group = addNs({}, "g", svg);
+    let ry = 200, ag = 30, da = 5, h = pt_cir(ry, 90 - da * 0.75, 0, dx).x;
+    let d = `M${pt_cir(ry, ag, 0, dx).p}A${ry} ${ry} 0 1 0 ${pt_cir(ry, 180 - ag, 0, dx).p}A${ry} ${ry} 0 0 1 ${pt_cir(ry, ag, 0, dx).p}`;
+    let d1 = `M${pt_cir(ry, ag + da, 0, dx).p}A${ry - 10} ${ry - 10} 0 0 0 ${pt_cir(ry, 180 - (ag + da), 0, dx).p}A${ry} ${ry} 0 0 0 ${pt_cir(ry, 90 + da * 0.75, 0, dx).p}v${0.75 * ry}H${h}L${pt_cir(ry, 90 - da * 0.75, 0, dx).p}A${ry} ${ry} 0 0 0 ${pt_cir(ry, ag + da, 0, dx).p}`;
+    // 
+    addNs({ width: 600, height: 600, x: -300, y: -300, stroke: "red", fill: "black" }, "rect", group);
+    addNs({ d, stroke: "red", fill: "red" }, "path", group);
+    addNs({ d: d1, stroke: "black", fill: "white" }, "path", group);
+    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${dx};360 0 ${dx}`, keyTimes: "0;1", dur:"4s", begin: "0s", repeatCount: "indefinite" }, "animateTransform", group);
+}
+logoUchiha()
 var rangle = Math.random() * 360;
-tangenteCircle(100, rangle);
+// tangenteCircle(100, rangle);
+
+
 // let x2 = 300;
 // let y2 = x2 * Math.tan(PI / 2 + deg2rad(rangle));
 // addNs({ x2, y2, fill: 'green', stroke: "green", style: "stroke-width:6;" }, 'line', svg);
@@ -358,11 +375,9 @@ tangenteCircle(100, rangle);
 // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${dfx} ${dfy};${at} ${dfx} ${dfy}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", poly);
 // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${0} ${0};${at} ${0} ${0}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", poly);
 
-let svg1 = document.querySelector("#fulfilled"), rr = 20, dur = "1s";
-var arc1 = addNs({ d: hilalc(0, rr, 60, 80, 5, 90), style: `fill:${rand_color()}` }, "path", svg1);
-addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${rr};360 0 ${rr}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite" }, "animateTransform", arc1);
+let rr = 20, dur = "1s";
+// var arc1 = addNs({ d: hilalc(0, rr, 60, 80, 5, 90), style: `fill:${rand_color()}` }, "path", svg1);
+// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${rr};360 0 ${rr}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite" }, "animateTransform", arc1);
 
-var arc2 = addNs({ d: hilalc(0, -rr, 60, 80, 5, 270), style: `fill:${rand_color()}` }, "path", svg1);
-addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${-rr};360 0 ${-rr}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite" }, "animateTransform", arc2);
-
-yinyang(n, 200, "5s");
+// var arc2 = addNs({ d: hilalc(0, -rr, 60, 80, 5, 270), style: `fill:${rand_color()}` }, "path", svg1);
+// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${-rr};360 0 ${-rr}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite" }, "animateTransform", arc2);
