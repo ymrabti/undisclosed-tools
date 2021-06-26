@@ -28,7 +28,7 @@ function star(noids, r, dx, dy, initial = 90, ar = false) {
         let even = l.filter((_, i) => i % 2 == 0);
         let odd = l.filter((_, i) => i % 2 == 1);
         // return "M" + path(even).join() + "zM" + path(odd).join() + "z";
-        return [path(even) , path(odd)];
+        return [path(even), path(odd)];
     }
     // return "M" + path(l).join() + "z";
     return [path(l)];
@@ -65,19 +65,19 @@ function path(l, sep = " ") {
         let listfloat = [parseFloat(l[i % l.length][0]), parseFloat(l[i % l.length][1])];
         let listText = l[i % l.length].join(sep);
         l1.push(listfloat);
-        i += step; 
+        i += step;
         j++;
     }
-    let firstFloat = [parseFloat(l[0][0]),parseFloat(l[0][1])];
+    let firstFloat = [parseFloat(l[0][0]), parseFloat(l[0][1])];
     let firstTxt = l[0].join(sep);
     l1.push(firstFloat);
     return l1;
 }
-function hilalc(xc, yc, angle, r1, dr,anglMove=90) {
-    let x1 = (r1 * cos((anglMove+ angle) * PI / 180) + xc).toFixed(2);
-    let y1 = (r1 * sin((anglMove+ angle) * PI / 180) + yc).toFixed(2);
-    let x2 = (r1 * cos((anglMove -angle) * PI / 180) + xc).toFixed(2);
-    let y2 = (r1 * sin((anglMove -angle) * PI / 180) + yc).toFixed(2);
+function hilalc(xc, yc, angle, r1, dr, anglMove = 90) {
+    let x1 = (r1 * cos((anglMove + angle) * PI / 180) + xc).toFixed(2);
+    let y1 = (r1 * sin((anglMove + angle) * PI / 180) + yc).toFixed(2);
+    let x2 = (r1 * cos((anglMove - angle) * PI / 180) + xc).toFixed(2);
+    let y2 = (r1 * sin((anglMove - angle) * PI / 180) + yc).toFixed(2);
     return `M${x1} ${y1}A${r1} ${r1} 0 1 1 ${x2} ${y2} ${r1 - dr} ${r1 - dr} 0 1 0 ${x1} ${y1}`;
 }
 function hilal(x1, y1, x2, y2, r1, r2) {
@@ -123,16 +123,16 @@ function getRayon(pt, dx, dy) {
     return Math.sqrt((pt.x - dx) ** 2 + (pt.y - dy) ** 2);
 }
 // SDL1234@2021
-function nest(n, angle, rayon, min_r, start,svg,dx = 0, dy = 0) {
+function nest(n, angle, rayon, min_r, start, svg, dx = 0, dy = 0) {
     let i = 0, rcc = rand_color();
     let g = addNs({}, "g", svg);
     while (rayon > min_r && n > 4) {
         let alpha = 180 * i / n - angle;
         let list_gr = star(n, rayon, dx, dy, alpha);
-        let star_graphic = "M" + (list_gr.length == 2 ? list_gr[0].join() +"zM"+ list_gr[1].join():list_gr[0].join())+"z";
+        let star_graphic = "M" + (list_gr.length == 2 ? list_gr[0].join() + "zM" + list_gr[1].join() : list_gr[0].join()) + "z";
         if (i === 0) {
-            list_gr.forEach(function(item,index){
-                item.forEach(function(item1,index1,arr1){
+            list_gr.forEach(function (item, index) {
+                item.forEach(function (item1, index1, arr1) {
                     // console.log(index1,arr1.length);
                     if (index1 < arr1.length - 1) {
                         let indTxt = index * (arr1.length - 1) + index1;
@@ -174,7 +174,10 @@ function arc(r, angle, da, dr, xc, yc) {
 function deg2rad(deg) {
     return deg * PI / 180;
 }
-function draw_cstar(l, fun,ray,fillrule) {
+function rad2deg(deg) {
+    return deg * 180 / PI;
+}
+function draw_cstar(l, fun, ray, fillrule) {
     var step = cstep(l.length);
     var curveStar = path(l, ",");
     let curvePath = ["M", curveStar[0][0], curveStar[0][1]];
@@ -187,11 +190,11 @@ function draw_cstar(l, fun,ray,fillrule) {
         var isl = curveStar[index];
         // addNs({ x1: isl[0], y1: isl[1], x2: il[0], y2: il[1], style: `fill:none;fill-rule:evenodd;stroke:black;stroke-width:2;` }, "line", svg);
         // addNs({ d: `M${isl[0] + " " + isl[1]}` +["A", rayon, rayon, 0, 0, fun(ind), ...val.split(",")].join(" "), style: `fill:${rand_color()};fill-rule:evenodd;stroke:black;stroke-width:2;` }, "path", svg);
-        addNs({ x: il[0], y: il[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text",svg, index + 1);
+        addNs({ x: il[0], y: il[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg, index + 1);
     });
     addNs({ d: curvePath.join(" "), style: `fill:${rand_color()};fill-rule:${fillrule};stroke:black;` }, "path", svg);
 }
-function curve_star(n, r, dx, dy, initialAngle, fun = i => 1, ray=200, fillrule="") {
+function curve_star(n, r, dx, dy, initialAngle, fun = i => 1, ray = 200, fillrule = "") {
     let l = StarPoints(n, r, dx, dy, initialAngle);
     if (n % 4 == 2) {
         let even = l.filter((_, i) => i % 2 == 0);
@@ -207,13 +210,13 @@ function rectgPts(pts) {
     let half_x = (x_min + x_max) / 2;
     let half_y = (y_min + y_max) / 2;
     return [
-        (x_min-half_x).toFixed(3) + " " + (y_min-half_y).toFixed(3),
-        (x_min-half_x).toFixed(3) + " " + (y_max-half_y).toFixed(3),
-        (x_max-half_x).toFixed(3) + " " + (y_max-half_y).toFixed(3),
-        (x_max-half_x).toFixed(3) + " " + (y_min-half_y).toFixed(3)
+        (x_min - half_x).toFixed(3) + " " + (y_min - half_y).toFixed(3),
+        (x_min - half_x).toFixed(3) + " " + (y_max - half_y).toFixed(3),
+        (x_max - half_x).toFixed(3) + " " + (y_max - half_y).toFixed(3),
+        (x_max - half_x).toFixed(3) + " " + (y_min - half_y).toFixed(3)
     ].join();
 }
-function mapp_shp(src,svg, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
+function mapp_shp(src, svg, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
     fetch(src)
         .then(response => response.json())
         .then(json => {
@@ -257,25 +260,25 @@ function simpleyingyang() {
     addNs({ cx: -100, cy: 0, r: 40, style: "fill: white;stroke:white;" }, "circle", g);
     addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: "5s", begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
 }
-function yinyang(n,R,dur="4s") {
+function yinyang(n, R, dur = "4s") {
     let g = addNs({}, "g", svg1);
-    let l = StarPoints(n,R,0,0,0);
+    let l = StarPoints(n, R, 0, 0, 0);
     addNs({ cx: 0, cy: 0, r: R, style: "fill: orange;stroke:black;" }, "circle", g);
-    let listColors = ["black"].concat([...Array(n-2)].map((_,i)=>`rgb(${(i+1)*255/n},${(i+1)*255/n},${(i+1)*255/n})`)).concat(["white"]);
-    l.forEach((element,index,arr) => {
-        let ng = listColors[index],rem = (index-2+n) % n;
-        let rj = n*R/4;
+    let listColors = ["black"].concat([...Array(n - 2)].map((_, i) => `rgb(${(i + 1) * 255 / n},${(i + 1) * 255 / n},${(i + 1) * 255 / n})`)).concat(["white"]);
+    l.forEach((element, index, arr) => {
+        let ng = listColors[index], rem = (index - 2 + n) % n;
+        let rj = n * R / 4;
         let d = `M${element.join(" ")}A${rj} ${rj} 0 0 1 0 0`;
         d += `A${rj} ${rj} 0 0 0 ${arr[(index + 1) % n].join(" ")}`;
-        d += `A${-1*R} ${-1*R} 0 0 0 ${element.join(" ")}`;
+        d += `A${-1 * R} ${-1 * R} 0 0 0 ${element.join(" ")}`;
         addNs({ d, style: `fill:${ng};stroke:${ng};` }, "path", g);
         // addNs({ cx: element[0], cy: element[1], r: 4, style: "fill: black;stroke:black;" }, "circle", g);
         // addNs({ x1:0,y1:0,x2: element[0], y2: element[1], style: "stroke-width: 5;stroke:black;" }, "line", g);
-        setTimeout(()=>{
+        setTimeout(() => {
             let inn = element.map(val => val * 0.5);
             addNs({ cx: inn[0], cy: inn[1], r: 0.4 * R / n, style: `fill: ${listColors[rem]};stroke:${listColors[rem]};` }, "circle", g);
-        },(index+2)*50)
-        addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1,index+1);
+        }, (index + 2) * 50)
+        addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1, index + 1);
     });
     // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
 }
@@ -301,7 +304,7 @@ function Google(ro = 250) {
 function f(x, e) {
     return e.a * x + e.b;
 }
-function googleLines(a1, a2, x1, x2,ro,ri) {
+function googleLines(a1, a2, x1, x2, ro, ri) {
     let pt1 = pta(ro, a1);
     let pt2 = pta(ri, a2);
     let eql1 = EQ_LINE(pt1, pt2);
@@ -322,7 +325,7 @@ function pta(r, a) {
 }
 function tangenteCircle(rayon, angle) {
     let pt = pt_cir(rayon, angle, 0, 0);
-    let p = Math.tan(PI/2+deg2rad(angle));
+    let p = Math.tan(PI / 2 + deg2rad(angle));
     let b = pt.y - p * pt.x;
     let x1 = pt.x + 100; let y1 = p * x1 + b;
     let x2 = pt.x - 100; let y2 = p * x2 + b;
@@ -344,7 +347,51 @@ function logoUchiha() {
     addNs({ d: d1, stroke: "black", fill: "white" }, "path", group);
     // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${dx};360 0 ${dx}`, keyTimes: "0;1", dur:"4s", begin: "0s", repeatCount: "indefinite" }, "animateTransform", group);
 }
-logoUchiha()
+// logoUchiha();
+/**
+ * spirale
+ * @param {Number} rayon1 
+ * @param {Number} rayon2 
+ * @param {Number} angle_initial 
+ * @param {Number} angle_step 
+ * @param {Number} rayon_step 
+ */
+function spiral(rayon1, rayon2, angle_initial, angle_step = 3, rayon_step = 0.5) {
+    let this_ray = rayon1;
+    let i = 0;
+    let points_list = [], angles_points = [];
+    var angle = angle_initial;
+    while (this_ray <= rayon2) {
+        if (this_ray<1000) {
+            angle = angle_initial+i*3;
+        } else {
+        }
+        angle += rad2deg(angle_step / this_ray);
+        // angle += step_ang;//i *angle_step;
+        let point = pt_cir(this_ray, angle, 0, 0);
+        angles_points.push({ angle, this_ray, ...point });
+        points_list.push([point.x, point.y]);
+        this_ray += rayon_step; i++;
+        addNs({ cx: point.x, cy: point.y, r: 4 }, "circle", svg);
+    };
+    let pt_retour = angles_points.find(i => {
+        let a_p_l = angles_points.length - 1;
+        let angle_fixe = angles_points[a_p_l].angle - 180;
+        return i.angle <= angle_fixe + 0.9 * angle_step && i.angle >= angle_fixe - 0.9 * angle_step;
+    });
+    if (pt_retour) {
+        while (this_ray > pt_retour.this_ray) {
+            let angle = angle_initial + i * angle_step;//rad2deg(distance_fixe/this_ray);
+            let point = pt_cir(this_ray, angle, 0, 0);
+            angles_points.push({ angle, this_ray, x: point.x, y: point.y })
+            points_list.push([point.x, point.y]);
+            this_ray -= rayon_step; i++;
+        }
+    }
+    points = points_list.join(" ");
+    addNs({ points, fill: "none", stroke: rand_color(),style:"stroke-width:2;" },"polyline",svg);
+}
+spiral(20, 250, 0);
 var rangle = Math.random() * 360;
 // tangenteCircle(100, rangle);
 

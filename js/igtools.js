@@ -445,7 +445,7 @@ function pdp(p, profile_pic_url_hd, username, is_private) {
 }
 var All_Posts = []; var Un_Post = [];
 function slick() { $('.slider').slick(withoutResponsive); };
-PostClicked = shortcode => _gt_(`https://www.instagram.com/p/${shortcode}?__a=1&SameSite=Lax`, "£", shortcode, "divModaltoreplace", "Instagram Post", fetchFeedPost);
+PostClicked = shortcode => _gt_(`https://www.instagram.com/p/${shortcode}?__a=1`, "£", shortcode, "divModaltoreplace", "Instagram Post", fetchFeedPost);
 getmn = d => Math.round(d / 60);
 PhotoOrVid = sh => {
     var url = getLink(sh);
@@ -471,7 +471,7 @@ function show_modal(disp) {
     $(`#divModaltoreplace`).children().remove();
 }
 function _gt_(url, code, pop, id, rel, func) {
-    /*fetch(url, {mode:'no-cors',"Access-Control-Allow-Origin":"*"})
+    fetch(url)
     .then((data) => {console.log(data)
         var container = ReturnContainer(id);
         show_modal(id!="divtoreplace");
@@ -484,11 +484,7 @@ function _gt_(url, code, pop, id, rel, func) {
     })
     .fail(function () {
         alert(`${rel} ${pop} was not found!`)
-    });*/
-    var container = ReturnContainer(id);
-    show_modal(id != "divtoreplace");
-    $('#url').val(`${code}${pop}`);
-    func(ihssanebenalluch, container);
+    });
 }
 function getThumbail(a, id) {
     var container = ReturnContainer(id);
@@ -561,7 +557,7 @@ function constroctur(input) {
         var rel = comp.rel; var code = comp.code;
         var shortcode = input.match(mss).pop();
         var link = comp.base_url + shortcode;
-        link += comp._u ? '?__a=1&SameSite=None' : '';
+        link += comp._u ? '?__a=1' : '';
         var fonction = comp.func;
         var fonctiot = comp.funct;
         fonctiot ? fonction(link, code, shortcode, "divtoreplace", rel, fonctiot) : fonction(shortcode, "divtoreplace");
