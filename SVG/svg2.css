@@ -1,0 +1,53 @@
+p {
+  font-size: 28px;
+  font-family: sans-serif;
+  font-weight: 20;
+}
+.sec {
+  transition: transform 50ms;
+}
+.aiguille {
+  stroke: red;
+  stroke-width: 0.4;
+}
+.minutes {
+  stroke: rgb(204, 0, 0);
+  stroke-width: 0.8;
+}
+.heures {
+  stroke: rgb(174, 0, 0);
+  stroke-width: 1.2;
+}
+.aiguille {
+  stroke: red;
+  stroke-width: 0.4;
+}
+.outline,
+path {
+  stroke: black;
+  fill: transparent;
+  stroke-width: 1.4;
+  fill: rgba(122, 124, 200, 0.5);
+}
+svg#out {
+  margin: 0 auto;
+  width: 40rem;
+  height: 24rem;
+  border: 2px solid gray;
+}
+.Quarters {
+  stroke: rgb(14, 14, 14);
+  stroke-width: 1.5;
+}
+.Thirds {
+  stroke: rgb(64, 64, 64);
+  stroke-width: 1;
+}
+.Units {
+  stroke: rgb(124, 124, 124);
+  stroke-width: 0.5;
+}
+.autres {
+  stroke: rgb(174, 174, 174);
+  stroke-width: 0.25;
+}

@@ -1,0 +1,19 @@
+<div id='editableDiv' contenteditable='true'>Paste</div>
+<script>
+function handlePaste () {
+    navigator.clipboard.readText()
+	  .then(text => {
+	    console.log('Pasted content: ', text);
+	  })
+	  .catch(err => {
+	    console.error('Failed to read clipboard contents: ', err);
+	  });
+}
+</script>
+
+<script type="text/javascript" src="anneau.js"></script>
+<script type="text/javascript" src="avancee.js"></script>
+<script type="text/javascript" src="helpers.js"></script>
+<script type="text/javascript" src="tests.js"></script>
+
+<button id="btn" onclick="handlePaste()">click</button>
