@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="msapplication-TileColor" content="#EE0A99">
+        <meta name="theme-color" content="#EE0A99">
+        <title>SVG</title>
+        <style>
+            p {
+                font-size: 28px;
+                font-family: sans-serif;
+                font-weight: 20;
+            }
+
+            .sec {
+                transition: transform 50ms;
+            }
+
+            .aiguille {
+                stroke: red;
+                stroke-width: 0.4;
+            }
+
+            .minutes {
+                stroke: rgb(204, 0, 0);
+                stroke-width: 0.8;
+            }
+
+            .heures {
+                stroke: rgb(174, 0, 0);
+                stroke-width: 1.2;
+            }
+
+            .aiguille {
+                stroke: red;
+                stroke-width: 0.4;
+            }
+
+            .outline {
+                stroke: black;
+                fill: transparent;
+                stroke-width: 1.4;
+                fill: rgba(122, 124, 200, 0.5);
+            }
+
+            svg#out {
+                border: 2px solid gray;
+            }
+
+            .Quarters {
+                stroke: rgb(14, 14, 14);
+                stroke-width: 1.5;
+            }
+
+            .Thirds {
+                stroke: rgb(64, 64, 64);
+                stroke-width: 1;
+            }
+
+            .Units {
+                stroke: rgb(124, 124, 124);
+                stroke-width: 0.5
+            }
+
+            .autres {
+                stroke: rgb(174, 174, 174);
+                stroke-width: 0.25
+            }
+
+            #clock,
+            #clock>* {
+                margin: auto;
+                width: 70vw;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="clock">
+            <svg id="out" width="80%" height="500" viewbox="-50, -50, 100, 100">
+            </svg>
+            <p style="text-align: center;"><q id="analogc"></q></p>
+            <audio id="tics" src="sounds/tic.mp3"></audio>
+            <audio id="midnight" src="sounds/midnight.mp3"></audio>
+            <audio id="pre" src="sounds/pre.mp3"></audio>
+            <audio id="oclock" src="sounds/oclock.mp3"></audio>
+        </div>
+
+        <script src="svg-clcok.js"></script>
+    </body>
+
+</html>
