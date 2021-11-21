@@ -69,4 +69,4 @@ ctx.fillStyle = "#00FF00";
 ctx.stroke();
 ctx.fill(); */
 
-// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: "4s", begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
+// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: "4s", begin: "0s", repeatCount: "indefinite" }, "animateTransform", g);

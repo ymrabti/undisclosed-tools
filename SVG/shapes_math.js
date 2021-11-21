@@ -2,6 +2,7 @@ const svg = document.querySelector("#empty");
 const svg1 = document.querySelector("#fulfilled");
 const rayon = 300, n = 12, dfx = 100, dfy = 100, af = 0, at = 360, svgw = 200;
 const init_attrs = { viewBox: '-300, -300, 600, 600', width: svgw };
+const spinOpts = spin => ({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: spin, begin: "0s", repeatCount: "indefinite" });
 function rectgPts(pts) {
     var x_min = pts[0], x_max = pts[2]
         , y_min = pts[1], y_max = pts[3];
@@ -170,9 +171,9 @@ function simpleyingyang(spin) {
     addNs({ d: "M-200 0A 20 20 0 1 1 200 0A 20 20 0 1 1 0 0A 20 20 0 1 0 -200 0", style: "fill:white;stroke:black;" }, "path", g);
     addNs({ cx: 100, cy: 0, r: 40, style: "fill: black;stroke:black;" }, "circle", g);
     addNs({ cx: -100, cy: 0, r: 40, style: "fill: white;stroke:white;" }, "circle", g);
-    spin && addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: "5s", begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
+    spin && addNs(spinOpts(spin), "animateTransform", g);
 }
-function yinyang(n, R, dur = "4s") {
+function yinyang(n, R, spin = "4s") {
     const svg1 = addSVG();
     const g = addNs({}, "g", svg1);
     const l = StarPoints(n, R, 0, 0, 0);
@@ -193,7 +194,7 @@ function yinyang(n, R, dur = "4s") {
         }, (index + 2) * 50)
         addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1, index + 1);
     });
-    !!dur && addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
+    !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
 function Google(ro = 250) {
     const svg = addSVG();
@@ -246,9 +247,9 @@ function logoUchiha() {
  * @param {number} angle_initial initial angle
  * @param {number} dist_step step points
  * @param {number} rayon_step step between rayons in 360 round
- * @param {number} dur spin duration tour
+ * @param {number} spin spin duration tour
  */
-function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, dur = "5s") {
+function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, spin = "5s") {
     const svg = addSVG(), g = addNs({}, "g", svg);
     let points_list = [], angles_points = [], i = 0,
         this_ray = dist_step,
@@ -264,7 +265,7 @@ function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, dur = "5s
     };
     const pts = points_list.join(" ");
     addNs({ points: pts, fill: "none", stroke: rand_color(), style: "stroke-width:2;" }, "polyline", g);
-    !!dur && addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${at} ${0} ${0};${af} ${0} ${0}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
+    !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
 function nest(n, angle, rayon, min_r, start, Attrs = init_attrs, spin, dx = 0, dy = 0) {
     const svg = addSVG(Attrs);
@@ -290,7 +291,7 @@ function nest(n, angle, rayon, min_r, start, Attrs = init_attrs, spin, dx = 0, d
         let pt = IT_PTS(n, rayon, dx, dy, angle, start);
         rayon = getRayon(pt, dx, dy); i++;
     }
-    !!spin && addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: spin, begin: "0s", repeatCount: "indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", g);
+    !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
 function curve_star(n, r, dx, dy, initialAngle, fun = i => 1, ray = 200, fillrule = "", fillcolor) {
     let l = StarPoints(n, r, dx, dy, initialAngle);
@@ -304,7 +305,7 @@ function curve_star(n, r, dx, dy, initialAngle, fun = i => 1, ray = 200, fillrul
 }
 // SDL1234@2021
 spiral(250, 0, 20, 30, false);
-yinyang(2, 250, false);
+yinyang(2, 250, '2s');
 Google();
 logoUchiha();
 tangenteCircle(200, 80);
@@ -368,8 +369,8 @@ var rangle = Math.random() * 360;
 // addNs({ d:"M0 200,200 0A150 150 0 0 0 0 -150A150 150 0 0 0 -200 0M0 200,-200 0z",fill:'red',stroke:"brown",strokeWidth:5 }, "path", svg);
 
 // let newStars = starPolygon(n, rayon, dfx, dfy, 180);let poly = addNs({ points: newStars, style: `fill:${rand_color()};fill-rule:evenodd;stroke:black;` }, "polygon", svg);
-// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${dfx} ${dfy};${at} ${dfx} ${dfy}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", poly);
-// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${0} ${0};${at} ${0} ${0}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite", style: `fill:${rand_color()};fill-rule:evenodd;` }, "animateTransform", poly);
+// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${dfx} ${dfy};${at} ${dfx} ${dfy}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite" }, "animateTransform", poly);
+// addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${0} ${0};${at} ${0} ${0}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite" }, "animateTransform", poly);
 
 let rr = 20, dur = "1s";
 // var arc1 = addNs({ d: hilalc(0, rr, 60, 80, 5, 90), style: `fill:${rand_color()}` }, "path", svg1);
