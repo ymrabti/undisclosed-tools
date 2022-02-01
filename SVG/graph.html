@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+</head>
+<body>
+    <script>
+        initPicture(-4, 4); axes(5, 1, true); grid()
+            pointsize = dotmarkersize = "4"
+            pointfill = dotmarkerfill = "purple"
+            point([0, 0], "|", "0", "left")
+
+            var f = function (x) { return sin(x) };
+            var g = function (x) { return 1 / f(x) };
+
+            strokewidth = "3"
+            stroke = "tomato"
+            plot(f, -5, 5);
+            stroke = "purple"
+            plot(g, -5, -pi - 0.05);
+            plot(g, -pi + 0.05, 0);
+            plot(g, 0, pi - 0.05);
+            plot(g, pi + 0.05, 5);
+            strokewidth = "2"
+            line([-pi, -5], [-pi, 5])
+            line([pi, -5], [pi, 5])
+
+            strokewidth = "2"
+            stroke = "green"
+            point([pi, 0], "open", "π", "belowleft")
+
+            var xp = pi / 2
+            line([xp, 0], [xp, f(xp)])
+            line([xp, f(xp)], [0, f(xp)], "dotarrow")
+
+            strokewidth = "1"
+            point([0, f(xp)], "open")
+            point([xp, 0], "open", "π/2 ≈ " + round(xp, 3))
+    </script>
+</body>
+</html>

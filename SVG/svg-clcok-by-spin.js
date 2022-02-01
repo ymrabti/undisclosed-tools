@@ -1,13 +1,12 @@
 
 /*1613257190000*//*1613260790000*/
-const date = new Date(), one_sec = 1000, Hours = date.getHours(), Minutes = date.getMinutes(), Seconds = date.getSeconds(), mSeconds = date.getMilliseconds(), stom = (60 - Seconds) * one_sec, stoh = ((60 - Minutes) * 60 - Seconds) * one_sec, ns = 'http://www.w3.org/2000/svg', svgNode = document.querySelector('#out'), sec = document.querySelector('#sec'), minutes = document.querySelector('#minutes'), heures = document.querySelector('#heures'), analogc = document.querySelector('#analogc'), trans = angle => `transform: ${tran1(angle)}`, tran1 = angle => `rotate(${angle}deg)`, st = (node, angle) => node["style"]["transform"] = tran1(angle), pad = num => num < 10 ? `0${num}` : num, spinOpts = (spin) => ({ attributeName: "transform", keyTimes: "0;1", begin: "0s", repeatCount: "indefinite", dur: spin, type: "rotate", calcMode: "linear", values: `0 0 0;360 0 0` });
+const date = new Date(), one_sec = 1000, Hours = date.getHours(), Minutes = date.getMinutes(), Seconds = date.getSeconds(), mSeconds = date.getMilliseconds(), stom = (60 - Seconds) * one_sec, stoh = ((60 - Minutes) * 60 - Seconds) * one_sec, ns = 'http://www.w3.org/2000/svg', svgNode = document.querySelector('#out'), sec = document.querySelector('#sec'), minutes = document.querySelector('#minutes'), heures = document.querySelector('#heures'), trans = angle => `transform: ${tran1(angle)}`, tran1 = angle => `rotate(${angle}deg)`, st = (node, angle) => node["style"]["transform"] = tran1(angle), pad = num => num < 10 ? `0${num}` : num, spinOpts = (spin) => ({ attributeName: "transform", keyTimes: "0;1", begin: "0s", repeatCount: "indefinite", dur: spin, type: "rotate", calcMode: "linear", values: `0 0 0;360 0 0` });
 const angle_secnds = (Seconds + mSeconds / one_sec) * 6;
 const angleMinu = Minutes * 6;
 const angleHours = Hours * 30 + 0.5 * Minutes;
 init_style = trans(angle_secnds);
 init_style_mints = trans(angleMinu);
 init_style_hrs = trans(angleHours);
-analogc.innerText = get_time(angleHours, angleMinu, angle_secnds);
 const secds = addNs({ x1: 0, x2: 0, y1: 5, y2: -40, id: "sec", style: init_style }, ["sec", "aiguille"], 'line', svgNode, true), mints = addNs({ x1: 0, x2: 0, y1: 0, y2: -35, id: "minutes", style: init_style_mints }, ["sec", "minutes"], 'line', svgNode, true), horss = addNs({ x1: 0, x2: 0, y1: 0, y2: -28, id: "heures", style: init_style_hrs }, ["sec", "heures"], 'line', svgNode, true);
 addNs(spinOpts((60).toString() + 's'), [], "animateTransform", secds);
 addNs(spinOpts((60 * 60).toString() + 's'), [], "animateTransform", mints);
@@ -64,7 +63,6 @@ function addNs(Attrs = {}, Classes = [], name = "line", svg = svgNode, separateG
 setInterval(() => {
     angle_secnds += 6;
     st(sec, angle_secnds);
-    analogc.innerText = get_time(angleHours, angleMinu, angle_secnds);
     if (should_play) {
         audio.play();
         if (angleHours % 360 == 359.5 && angle_secnds % 360 > 324) {

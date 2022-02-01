@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Online Graphing Calculator: Plot your own SVG Math Graphs</title>
+        <meta name="description" content="Free online graphing calculator with minimum &amp; maximum value choices. Plot a wide range of graphs.">
+
+        <meta name="author" content="Murray Bourne">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="favicon-48.png">
+
+        <style type="text/css">
+            .interactive {
+                text-align: center
+            }
+
+            #fn1 {
+                font-weight: bold;
+                color: #165a71
+            }
+
+            #fn2 {
+                font-weight: bold;
+                color: #c0c
+            }
+
+            #grafButton {
+                padding: 0.5em 1em;
+                border-radius: .2em;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+                cursor: pointer
+            }
+
+            #asvg1Wrap {
+                height: 250px;
+                padding: 0;
+                margin: 0 auto;
+                position: relative;
+                box-sizing: border-box
+            }
+
+            #asvg1 {
+                overflow: hidden;
+                user-select: none;
+                -webkit-user-select: none;
+                box-sizing: border-box
+            }
+
+            #makeGraph p {
+                display: inline-block
+            }
+
+            #makeGraph div:first-child input[type=text] {
+                width: 160px
+            }
+
+            #makeGraph div:nth-child(n+2) input[type=text] {
+                width: 30px
+            }
+
+            #makeGraph div:nth-child(n+4) input[type=text] {
+                width: 40px
+            }
+
+            @media screen and (max-width: 499px) {
+                #makeGraph p {
+                    margin: 0.3em 0;
+                    padding: 0 0.3em
+                }
+            }
+
+            @media screen and (min-width: 500px) {
+                #asvg1Wrap {
+                    width: 450px
+                }
+
+                #makeGraph p {
+                    margin: 0.6em 0;
+                    padding: 0 0.3em
+                }
+            }
+
+
+            /*div{border:1px solid #920}*/
+        </style>
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0 0 2em;
+                font-family: Arial, Helvetica, sans-serif
+            }
+
+            .sprite {
+                background: url('/includes/images/sprite2016-06-30a.svg') no-repeat
+            }
+
+            span.sprite {
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0
+            }
+
+            span.upArr {
+                width: 20px;
+                height: 15px;
+                margin: auto 0;
+                background-position: 2px -122px;
+                right: 4px
+            }
+
+            span.rtArr {
+                width: 12px;
+                height: 20px;
+                margin: auto 0;
+                background-position: -97px -114px;
+                right: 4px
+            }
+
+            span.dnArr {
+                width: 20px;
+                height: 15px;
+                margin: auto 0;
+                background-position: -98px -220px;
+                right: 4px
+            }
+
+            span.ltArr {
+                width: 12px;
+                height: 20px;
+                margin: auto 0;
+                background-position: 0px -214px;
+                left: 4px
+            }
+
+            span.infor {
+                width: 12px;
+                height: 20px;
+                background-position: -196px -318px;
+                top: 4px;
+                left: 3px
+            }
+
+            span.inter {
+                width: 12px;
+                height: 20px;
+                background-position: -198px -415px;
+                top: 4px;
+                left: 3px
+            }
+
+            span.vid {
+                width: 12px;
+                height: 20px;
+                background-position: -199px -215px;
+                top: 4px;
+                left: 3px
+            }
+
+            div.hamb {
+                display: block;
+                width: 25px;
+                height: 17px;
+                margin: 0 auto;
+                background-position: -200px -100px
+            }
+
+            div.ansPromoWrap {
+                display: table;
+                font-size: 0.85em;
+                margin: 1em auto
+            }
+
+            a.twit {
+                display: table-cell;
+                width: 35px;
+                height: 27px;
+                background-position: -277px -499px
+            }
+
+            div.ansPromoWrap p {
+                display: table-cell;
+                vertical-align: top;
+                padding-left: 0.7em
+            }
+
+            a.mtdvd {
+                display: table-cell;
+                width: 35px;
+                height: 37px;
+                background-position: -277px -65px
+            }
+
+            #probHeader {
+                background: #377185
+            }
+
+            .logo {
+                margin: 0 auto;
+                padding: 0.5em 0 0;
+                color: #fff;
+                overflow: hidden;
+                border-radius: 0.5em;
+                position: relative;
+                max-width: 1030px;
+                box-sizing: border-box;
+            }
+
+            .logoTable {
+                display: table;
+                padding-left: 0.5em;
+                margin-right: 40px
+            }
+
+            .logoTableRow {
+                display: table-row
+            }
+
+            .logoTableRow div {
+                display: table-cell;
+                vertical-align: middle;
+                padding: 0 0.5em 0 0
+            }
+
+            .home {
+                background-position: -95px 5px;
+                width: 36px;
+                height: 30px
+            }
+
+            .sqClogo {
+                background-position: 0 -292px;
+                width: 40px;
+                height: 40px
+            }
+
+            .logo a {
+                color: #fff;
+                text-decoration: none;
+                display: block
+            }
+
+            .topSrch {
+                width: 40px;
+                height: 32px
+            }
+
+            #srchWrapTop form fieldset {
+                border: none;
+                text-align: right;
+                margin: 0.4em 0.4em 0 0;
+                padding: 0
+            }
+
+            #srchWrapTop form div {
+                display: inline-block;
+                vertical-align: middle
+            }
+
+            #srchWrapTop form input[type=text] {
+                margin: auto 0;
+                width: 200px;
+                padding: 0.1em 0.4em;
+                border-radius: 0.5em
+            }
+
+            #srchWrapTop form input[type=submit] {
+                padding: 0;
+                border: none;
+                width: 32px;
+                height: 31px
+            }
+
+            #topSrchButt {
+                cursor: pointer
+            }
+
+            #srchHambarg {
+                display: table;
+                width: 100%;
+                margin: 0 40px 0 0;
+                padding: 0
+            }
+
+            #hambarg {
+                display: table-cell;
+                width: 40px;
+                padding: 0.2em;
+                font-size: 0.8em;
+                cursor: pointer;
+                text-align: center
+            }
+
+            #srchHambarg ul {
+                margin: 0;
+                padding: 0 0 0 7px
+            }
+
+            #srchHambarg li {
+                padding: 2px 8px;
+                display: table-cell;
+                vertical-align: middle;
+                list-style-type: none;
+                white-space: nowrap
+            }
+
+            #hori .horizHere {
+                color: #ccc;
+                border-bottom: 3px solid #ccc
+            }
+
+            #wrapper {
+                margin: 0 auto;
+                max-width: 1145px;
+                padding: 0.75em 0.5em
+            }
+
+            #links {
+                padding: 0;
+                border-radius: 0.5em;
+                background: #fff
+            }
+
+            #content {
+                margin: 0;
+                padding: 0.5em;
+                color: #000
+            }
+
+            #bcWrap {
+                border-radius: 0.5em 0.5em 0 0;
+                background: #377185;
+                font-family: Georgia, Times, "Times New Roman", serif
+            }
+
+            #breadcrumb {
+                list-style: none;
+                padding-left: 0.5em;
+                margin: 0 0 1.5em
+            }
+
+            #breadcrumb li {
+                display: inline-block;
+                text-align: center;
+                font-size: 0.8em;
+                padding: 0.5em 0
+            }
+
+            #breadcrumb li:first-child a {
+                padding-left: 1.6em;
+                background-position: -2px -15px;
+                text-decoration: underline
+            }
+
+            #breadcrumb li,
+            #breadcrumb li a {
+                color: #eee
+            }
+
+            #breadcrumb li a {
+                padding: 0.3em 0
+            }
+
+            @media(max-width:480px) {
+                li#about {
+                    display: none
+                }
+            }
+
+            @media(max-width:379px) {
+
+                li#sitem,
+                #learnM {
+                    display: none
+                }
+            }
+
+            @media screen and (max-width: 1023px) {
+                #links {
+                    display: none;
+                    width: 85%;
+                    margin: 0 auto
+                }
+
+                #linksul>li>a>span.rtArr,
+                #linksComments>li>a>span.rtArr {
+                    visibility: visible
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                #hambarg {
+                    display: none
+                }
+
+                #linksContentWrap {
+                    display: table-row
+                }
+
+                #links {
+                    display: table-cell;
+                    width: 300px;
+                    vertical-align: top;
+                    padding-top: 0.5em
+                }
+
+                #links ul {
+                    border: none;
+                    background: #fff;
+                    box-shadow: none
+                }
+
+                #linksul>li:last-child {
+                    border-bottom: 1px solid #94b4be;
+                    border-radius: 0
+                }
+
+                #linksul>li>a {
+                    padding-right: 0.4em
+                }
+
+                #linksul>li>a>span.rtArr,
+                #linksComments>li>a>span.rtArr {
+                    visibility: hidden
+                }
+
+                #content {
+                    display: table-cell;
+                    vertical-align: top
+                }
+            }
+
+            @media screen and (max-width: 479px) {
+                #content {
+                    padding: 0
+                }
+            }
+
+            .links {
+                max-width: 400px;
+                margin: 0 auto;
+                font-size: 0.95em
+            }
+
+            .links a:hover,
+            #botNav a:hover {
+                color: #63f;
+                text-decoration: underline
+            }
+
+            .linksHeader {
+                background: #377185;
+                color: #fff;
+                padding: 5px 3px;
+                margin: 0;
+                display: block;
+                text-align: center;
+                font-size: 1.1em;
+                font-weight: bold;
+                border-top-left-radius: 0.5em;
+                border-top-right-radius: 0.5em;
+                position: relative;
+                font-family: Georgia, Times, "Times New Roman", serif
+            }
+
+            #linksul,
+            #linksul2,
+            #linksul-bot {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                text-align: left
+            }
+
+            .links ul {
+                background: #e9f3f5;
+                margin-bottom: 1em;
+                text-indent: -1.15em
+            }
+
+            .linkList,
+            .links ul {
+                margin-top: 0;
+                padding: 0;
+                list-style: none;
+                border: 1px solid #5b8a9b;
+                box-shadow: 0.25em 0.25em 0.25em #ddd;
+                border-radius: 0.3em
+            }
+
+            .linkList li,
+            .links ul li {
+                padding-left: 1.2em;
+                border-bottom: 1px solid #94b4be;
+                position: relative
+            }
+
+            .links ul li:last-child {
+                border: none;
+                border-bottom-left-radius: 0.7em;
+                border-bottom-right-radius: 0.7em
+            }
+
+            .linkList li a,
+            .links ul li a {
+                display: block;
+                padding: 0.5em 1.5em 0.5em 0.25em;
+                text-decoration: none;
+                position: relative
+            }
+
+            .linksul>li.liCurrent,
+            .linksul>li.interTabbedCurrent,
+            .linksul>li.inforTabbedCurrent {
+                padding: 0.4em 0.4em 0.4em 22px;
+                background: #fff;
+                font-weight: bold
+            }
+
+            .links li:first-child {
+                text-indent: 0;
+                padding-left: 0.3em
+            }
+
+            .linksul>.tabbedCurrent {
+                padding: 0.4em 0.6em 0.4em 20px;
+                text-indent: 0;
+                background: #fff;
+                font-weight: bold
+            }
+
+            .linksul>.liTabbed {
+                padding-left: 0
+            }
+
+            .linksul>.liTabbed a {
+                padding-left: 20px;
+                text-indent: 0
+            }
+
+            #links #closeBox {
+                position: absolute;
+                top: 2px;
+                right: 4px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: normal;
+                cursor: pointer
+            }
+
+            #links-bot {
+                margin-top: 1.5em
+            }
+
+            @font-face {
+                font-family: KaTeX_Main;
+                src: url(/includes/cssjs/katex/fonts/KaTeX_Main-Italic.woff2) format('woff2'),
+                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Italic.woff) format('woff'),
+                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Italic.ttf) format('truetype');
+                font-weight: 400;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: KaTeX_Main;
+                src: url(/includes/cssjs/katex/fonts/KaTeX_Main-Regular.woff2) format('woff2'),
+                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Regular.woff) format('woff'),
+                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Regular.ttf) format('truetype');
+                font-weight: 400;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: KaTeX_Math;
+                src: url(/includes/cssjs/katex/fonts/KaTeX_Math-Italic.woff2) format('woff2'),
+                    url(/includes/cssjs/katex/fonts/KaTeX_Math-Italic.woff) format('woff'),
+                    url(/includes/cssjs/katex/fonts/KaTeX_Math-Italic.ttf) format('truetype');
+                font-weight: 400;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            .katex-html {
+                white-space: nowrap
+            }
+
+            sup,
+            sub,
+            .intmath {
+                font-family: KaTeX_Main, "Times New Roman", Times, serif
+            }
+
+            i,
+            em {
+                font-family: KaTeX_Math, "Times New Roman", Times, serif
+            }
+
+            .intmath {
+                white-space: nowrap
+            }
+
+            .intmathItalic {
+                font-family: KaTeX_Math, "Times New Roman", Times, serif;
+                font-style: normal
+            }
+
+            .intmathM {
+                font-family: KaTeX_Math
+            }
+
+            sup,
+            sub {
+                font-size: 0.8em
+            }
+
+            .intmath,
+            .intmathItalic,
+            .intmathM {
+                font-size: 1.15em
+            }
+
+            .intmath sup,
+            .intmath sub,
+            .intmathItalic sup,
+            .intmathItalic sub {
+                font-size: 0.7em
+            }
+
+            i,
+            em {
+                font-size: 1.15em
+            }
+
+            .intmath i,
+            .intmath em {
+                font-size: 1em
+            }
+
+            svg .intmath,
+            img .intmath {
+                font-size: 14.5px;
+                stroke: none
+            }
+
+            svg .intmathItalic,
+            img .intmathItalic {
+                font-size: 17px;
+                stroke: none
+            }
+
+            .matrixfrac .mfrac {
+                font-size: 0.9em
+            }
+
+            #content sup {
+                margin-left: 1px
+            }
+
+            .formula {
+                padding: .4em;
+                border: 1px solid #aaa;
+                display: inline-block;
+                margin: 0 0 .5em;
+                border-radius: .15em
+            }
+
+            blockquote .formula {
+                margin: 0.5em
+            }
+
+            .textem {
+                font-family: inherit;
+                font-size: 1em
+            }
+
+            .inlineBlock {
+                display: inline-block
+            }
+
+            .mathIndent,
+            .alignEquals p {
+                text-indent: -1em;
+                padding-left: 1em
+            }
+
+            @media screen and (max-width: 499px) {
+                blockquote {
+                    margin: 1em
+                }
+
+                .notMob {
+                    display: none
+                }
+            }
+
+            @media screen and (min-width:600px) {
+                .showToMob {
+                    display: none
+                }
+            }
+
+            .skip2Cont {
+                display: inline-block;
+                padding: 0.5em;
+                background: #fee;
+                border: 2px solid #f00;
+                position: relative;
+                left: 0
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: Georgia, Times, "Times New Roman", serif;
+                color: #165a71
+            }
+
+            .invis {
+                visibility: hidden
+            }
+
+            .noWrap {
+                white-space: nowrap;
+                padding: 0;
+                margin: 0
+            }
+
+            .displayNone {
+                display: none
+            }
+
+            .ariaHidden {
+                border: 0;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px
+            }
+
+            .fontSize0 {
+                font-size: 0
+            }
+
+            .displayInlineBlock {
+                display: inline-block
+            }
+
+            .alignCenter {
+                text-align: center
+            }
+
+            img {
+                font-size: .9em;
+                border: none;
+                max-width: 100%;
+                height: auto
+            }
+
+            .dlgp .svgphpWrap {
+                display: inline-block
+            }
+
+            .small {
+                font-size: 0.8em
+            }
+
+            .dred,
+            .svgphpgrapherwarn {
+                color: #b00
+            }
+
+            .bold,
+            .svgphpgrapherwarn {
+                font-weight: bold
+            }
+
+            .katexErr {
+                color: #d00;
+                font-weight: bold
+            }
+
+            .vertMid img {
+                vertical-align: middle
+            }
+
+            .clearBoth {
+                clear: both
+            }
+
+            .clearBothInvis {
+                line-height: 0;
+                clear: both;
+                visibility: hidden
+            }
+
+            .overflowXauto {
+                display: block;
+                height: auto;
+                padding-bottom: 12px;
+                overflow-x: auto;
+                white-space: nowrap
+            }
+
+            .overflowXauto::-webkit-scrollbar {
+                height: 8px
+            }
+
+
+
+            .dn1 {
+                vertical-align: -1px
+            }
+
+            .dn2 {
+                vertical-align: -2px
+            }
+
+            .dn3 {
+                vertical-align: -3px
+            }
+
+            .dn4 {
+                vertical-align: -4px
+            }
+
+            .dn5 {
+                vertical-align: -5px
+            }
+
+            .dn6 {
+                vertical-align: -6px
+            }
+
+            .dn7 {
+                vertical-align: -7px
+            }
+
+            .dn8 {
+                vertical-align: -8px
+            }
+
+            .dn9 {
+                vertical-align: -9px
+            }
+
+            .dn10 {
+                vertical-align: -10px
+            }
+
+            .dn11 {
+                vertical-align: -11px
+            }
+
+            .dn12 {
+                vertical-align: -12px
+            }
+
+            .dn13 {
+                vertical-align: -13px
+            }
+
+            .dn14 {
+                vertical-align: -14px
+            }
+
+            .dn15 {
+                vertical-align: -15px
+            }
+
+            .dn16 {
+                vertical-align: -16px
+            }
+
+            .dn17 {
+                vertical-align: -17px
+            }
+
+            .dn18 {
+                vertical-align: -18px
+            }
+
+            .dn19 {
+                vertical-align: -19px
+            }
+
+            .dn20 {
+                vertical-align: -20px
+            }
+
+            .dn21 {
+                vertical-align: -21px
+            }
+
+            .dn22 {
+                vertical-align: -22px
+            }
+
+            .dn23 {
+                vertical-align: -23px
+            }
+
+            .dn24 {
+                vertical-align: -24px
+            }
+
+            .dn25 {
+                vertical-align: -25px
+            }
+
+            .dn26 {
+                vertical-align: -26px
+            }
+
+            .dn27 {
+                vertical-align: -27px
+            }
+
+            .dn28 {
+                vertical-align: -28px
+            }
+
+            .dn29 {
+                vertical-align: -29px
+            }
+
+            .interactive,
+            .answer {
+                padding: 5px 8px;
+                border: 1px #4a798a solid;
+                border-radius: 6px
+            }
+
+            .interactive h2,
+            .interactive h3 {
+                background: none
+            }
+
+            .answer {
+                margin: 0 1em
+            }
+
+            .answer .answerP {
+                margin: -5px -8px;
+                background: #165a71;
+                color: #eee;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                font-family: Georgia, "Times New Roman", serif;
+                padding: 0.3em;
+                font-weight: bold
+            }
+
+            .copy {
+                font-size: 0.8em;
+                padding: 0;
+                margin: 0;
+                color: #888;
+                text-align: center
+            }
+
+            .adsbygoogle {
+                display: block
+            }
+
+            .responsive {
+                margin: 0 auto;
+                width: 320px
+            }
+
+            @media screen and (min-width:500px) {
+                .responsive {
+                    width: 468px;
+                    height: 60px
+                }
+            }
+
+            @media screen and (min-width:800px) {
+                .responsive {
+                    width: 728px;
+                    height: 90px
+                }
+            }
+
+            h1 {
+                font-size: 1.5em;
+                clear: both
+            }
+
+            h1 span.intmath,
+            h2 span.intmath {
+                font-size: 1em
+            }
+
+            h1 i,
+            h1 em,
+            h2 i,
+            h2 em {
+                font-size: 1em
+            }
+
+            h2 {
+                font-size: 1.3em
+            }
+
+            #content h3 {
+                color: #165a71;
+                font-size: 1.1em
+            }
+
+            #probsolv {
+                display: block;
+                width: 160px;
+                height: 32px;
+                background-position: -4px -290px
+            }
+
+            #shadowgame {
+                display: block;
+                width: 90px;
+                height: 60px;
+                background-position: 0 -580px
+            }
+
+            .bannerintext {
+                clear: both
+            }
+
+            .mathvids {
+                display: block;
+                width: 37px;
+                height: 43px;
+                background-position: -275px -60px;
+                margin: 0 auto;
+                text-decoration: none
+            }
+
+            #toTop {
+                position: fixed;
+                bottom: 4px;
+                right: 8px;
+                margin: 0;
+                padding: 0.4em 2em 0.4em 0.3em;
+                background: #d8dddd;
+                border: 1px solid #165a71;
+                border-radius: 0.3em
+            }
+
+            #toTop a {
+                text-decoration: none;
+                display: block
+            }
+
+            #leftarr {
+                display: block;
+                float: left;
+                width: 15px;
+                height: 40px;
+                background-position: 2px -503px
+            }
+
+            #rightarr {
+                display: block;
+                float: right;
+                width: 20px;
+                height: 40px;
+                background-position: -95px -403px
+            }
+
+            .imgRt {
+                margin: 5px 0 5px 10px;
+                float: right
+            }
+
+            .imgLt {
+                margin: 5px 10px 5px 0;
+                float: left
+            }
+
+            .imgLt,
+            .imgCenter,
+            .imgRt {
+                font-size: .85em;
+                text-align: center
+            }
+
+            svg {
+                overflow: hidden
+            }
+
+            .imgSvg {
+                text-align: center;
+                margin: 1em 0
+            }
+
+            .svgphpWrap {
+                display: inline-block;
+                position: relative;
+                overflow: hidden
+            }
+
+            .svgphpWrap a {
+                text-decoration: none
+            }
+
+            .svgphpWrap a:hover {
+                cursor: default
+            }
+
+            .imgSvg p {
+                font-size: 0.85em;
+                padding-top: 0;
+                margin-top: 0.3em
+            }
+
+            .svgRt {
+                margin: 5px 0 5px 10px;
+                float: right;
+                text-align: center
+            }
+
+            figcaption {
+                font-size: 0.9em
+            }
+
+            .svgHtml {
+                position: absolute;
+                font-size: 0.9em
+            }
+
+            .svgWhiteBg {
+                background: #fff;
+                padding: 1px;
+                line-height: 0.9em
+            }
+
+            .draggable {
+                cursor: move
+            }
+
+            .smallCenter {
+                font-size: .85em
+            }
+
+            .imgCenter {
+                margin: 1.5em auto;
+                box-sizing: border-box
+            }
+
+            .floatBlock {
+                position: relative;
+                left: 3em
+            }
+
+            .jxgbox {
+                border: 1px solid #5b8a9b;
+                border-radius: 0.4em;
+                padding: 0;
+                position: relative
+            }
+
+            form {
+                padding: 0;
+                margin: 0
+            }
+
+            hr {
+                height: 1px;
+                background: #00339a;
+                color: #039;
+                border: 0
+            }
+
+            table {
+                border-collapse: collapse
+            }
+
+            .ansTable td {
+                vertical-align: top
+            }
+
+            .ansTable p {
+                margin: 0;
+                padding: 0 4px 8px 0
+            }
+
+            .tableex td {
+                border: 1px solid #5B8A9B;
+                padding: 6px;
+                empty-cells: hide
+            }
+
+            .tableex th {
+                padding: 0 0.4em
+            }
+
+            @media screen and (max-width: 479px) {
+
+                .imgRt,
+                .imgLt {
+                    margin: 1em 0;
+                    float: none
+                }
+            }
+
+            .answerLink,
+            .showHideButt {
+                box-sizing: border-box;
+                margin: .5em 0;
+                padding: 0;
+                position: relative;
+                display: inline-block;
+                background: linear-gradient(to bottom, #fff, #eee);
+                border-radius: .3em;
+                border: 1px solid #165a71
+            }
+
+            p.showHideButt {
+                color: #00f;
+                cursor: pointer
+            }
+
+            .answerLink a,
+            .showHideButt {
+                display: inline-block;
+                text-decoration: none;
+                padding: 0.3em 2em 0.3em 0.5em
+            }
+
+            .answerLink a:hover,
+            .showHideButt:hover {
+                text-decoration: underline
+            }
+
+            .ddown,
+            .showHide {
+                padding: .4em;
+                list-style: none;
+                border: 1px solid #5b8a9b;
+                border-radius: .5em;
+                clear: both
+            }
+
+            @media screen and (max-width: 330px) {
+
+                .ddown,
+                .showHide {
+                    margin: 1em -0.45em 1em 0;
+                    box-shadow: none
+                }
+            }
+
+            @media screen and (min-width: 331px) {
+
+                .ddown,
+                .showHide {
+                    margin: 1em 0 1em .3em;
+                    box-shadow: .2em .2em .2em #aaa
+                }
+            }
+
+            .displayNone {
+                display: none
+            }
+
+            .spinnerWrapWrap {
+                display: inline-block
+            }
+
+            .spinnerMidMid {
+                position: absolute;
+                left: 45%;
+                top: 45%
+            }
+
+            .spinnerWrap {
+                position: relative
+            }
+
+            .spinnerWrap .spinner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0
+            }
+
+            .arc-rotate2 .spinner,
+            .spinnerWrap {
+                width: 40px;
+                height: 40px
+            }
+
+            @keyframes rotate {
+                100% {
+                    transform: rotate(360deg)
+                }
+            }
+
+            .arc-rotate2 .spinner .arc {
+                position: absolute;
+                width: 100%;
+                height: 100%
+            }
+
+            .arc-rotate2 .spinner .arc::after,
+            .arc-rotate2 .spinner .arc::before {
+                content: '';
+                position: absolute;
+                top: 20%;
+                left: 20%;
+                border: 2px solid;
+                border-radius: 50%;
+                width: 50%;
+                height: 50%
+            }
+
+            .arc-rotate2 .spinner .arc::before {
+                border-color: #165a71;
+                opacity: .3
+            }
+
+            .arc-rotate2 .spinner .arc::after {
+                border-color: transparent transparent #165a71;
+                animation: rotate 1s infinite linear
+            }
+
+            .dunmiss {
+                border: 1px solid #165a71;
+                border-radius: 0.3em;
+                font-size: 0.9em;
+                padding: 0.4em;
+                background: #e5edef;
+                color: #0d0d0d
+            }
+
+            .disclaimer {
+                margin: 10px auto;
+                max-width: 400px
+            }
+
+            #content .disclaimer h3,
+            #content .dunmiss h3,
+            p.dunmissHead {
+                margin: -0.4em -0.4em 0.5em;
+                padding: 3px;
+                display: block;
+                text-align: center;
+                background: #4a798a;
+                color: #fff;
+                font-size: 1.1em;
+                border-top-left-radius: 0.3em;
+                border-top-right-radius: 0.3em
+            }
+
+            p.dunmissHead {
+                font-family: Georgia, Times, "Times New Roman", serif
+            }
+
+            .dunmiss ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0
+            }
+
+            .dunmiss ul li {
+                position: relative;
+                padding: 0.3em 0 0.3em 0
+            }
+
+            .dunmiss li a {
+                text-decoration: none
+            }
+
+            .dunmiss li a:hover {
+                text-decoration: underline
+            }
+
+            .dunmiss a {
+                font-weight: normal
+            }
+
+            @media screen and (max-width: 499px) {
+                .dunmiss {
+                    margin: 0 auto 1em
+                }
+
+                .dunmiss ul {
+                    background: #e5edef;
+                    border-bottom-right-radius: 4px;
+                    border-bottom-left-radius: 4px
+                }
+
+                .dunmiss li {
+                    border-bottom: 1px solid #94b4be
+                }
+
+                .dunmiss li:last-child {
+                    border: none
+                }
+            }
+
+            @media screen and (min-width:500px) {
+                .dunmiss {
+                    margin: 0 0 1em 1.5em;
+                    width: 190px;
+                    float: right
+                }
+            }
+
+            .srchWrap {
+                max-width: 450px;
+                margin: 0 auto 1em;
+                padding: 0.4em;
+                border: 1px solid #aaa;
+                border-radius: 0.3em;
+                background: #e9f3f5
+            }
+
+            #sibf {
+                margin: 2em 0 0.8em
+            }
+
+            input.bottSrch {
+                background-position: -100px -300px
+            }
+
+            .srchM form {
+                display: table;
+                width: 100%;
+                box-sizing: border-box
+            }
+
+            .srchM form fieldset {
+                display: table-row;
+                width: 100%;
+                box-sizing: border-box;
+                border: none
+            }
+
+            .srchM form fieldset div {
+                display: table-cell;
+                vertical-align: middle
+            }
+
+            .srchM form fieldset input[type=text] {
+                width: 95%;
+                box-sizing: border-box
+            }
+
+            .srchM form fieldset legend+div+div {
+                width: 1%;
+                white-space: nowrap;
+                background: #387c93;
+                border-radius: 0.3em;
+                box-sizing: border-box
+            }
+
+            .srchM form input[type=submit] {
+                border: none;
+                width: 32px;
+                height: 31px
+            }
+
+            .ADinText {
+                clear: both;
+                min-height: 260px
+            }
+
+            .adInTextWrap {
+                box-sizing: border-box;
+                min-width: 320px
+            }
+
+            .nativeAd {
+                clear: both;
+                margin-bottom: 1.75em
+            }
+
+            .nativeAd ins.adsbygoogle {
+                display: block;
+                text-align: center
+            }
+
+            .nativeAd .contBelow p {
+                font-size: 0.9em
+            }
+
+            .skyScraper {
+                display: inline-block;
+                width: 160px;
+                height: 600px
+            }
+
+            .fixedTop {
+                position: fixed;
+                top: 15px
+            }
+
+            #googSky {
+                width: 160px;
+                margin: 0 auto
+            }
+
+            .contBelow:before {
+                border-top: 1px solid #ccc;
+                content: "";
+                margin: 0 auto;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 95%;
+                z-index: -1
+            }
+
+            .contBelow {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                font-size: 0.9em;
+                color: #555;
+                margin: 1.5em 0 0.2em
+            }
+
+            .contBelow span {
+                font-size: 1.3em
+            }
+
+            .contBelow p {
+                display: inline-block;
+                background: #fff;
+                padding: 0 0.5em
+            }
+
+            .w336h280 {
+                width: 336px;
+                min-height: 280px
+            }
+
+            .maxWidth336 {
+                width: 336px;
+                max-height: 330px
+            }
+
+            .maxHeight280 {
+                min-height: 200px;
+                max-height: 280px
+            }
+
+            .waldoWrap,
+            .waldo,
+            .waldo div,
+            .waldo div iframe {
+                max-height: 280px
+            }
+
+            #mathwayWrap {
+                margin: 0 auto;
+                max-width: 728px;
+                border: 1px solid #94b4be;
+                display: table;
+                background: #e5edef
+            }
+
+            #mwRow {
+                display: table-row
+            }
+
+            #mwLeftCell,
+            #mwRightCell {
+                padding: 0.3em;
+                display: table-cell;
+                vertical-align: middle
+            }
+
+            #mwRightCell p {
+                margin: 0.5em
+            }
+
+            .fauxBg {
+                height: 40px;
+                background: #165a71;
+                opacity: 0.1
+            }
+
+            
+
+            .youtube {
+                background-color: #000;
+                margin-bottom: 30px;
+                position: relative;
+                padding-top: 56.25%;
+                overflow: hidden;
+                cursor: pointer
+            }
+
+            .youtube img {
+                width: 100%;
+                top: -16.84%;
+                left: 0;
+                opacity: .7
+            }
+
+            .youtube .play-button {
+                width: 70px;
+                height: 50px;
+                background-color: #f33;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+                z-index: 1;
+                opacity: .8;
+                border-radius: 6px
+            }
+
+            .youtube .play-button:before {
+                content: "";
+                border-style: solid;
+                border-width: 12px 0 12px 22px;
+                border-color: transparent transparent transparent #fff
+            }
+
+            .youtube img,
+            .youtube .play-button {
+                cursor: pointer
+            }
+
+            .youtube img,
+            .youtube iframe,
+            .youtube .play-button,
+            .youtube .play-button:before {
+                position: absolute
+            }
+
+            .youtube .play-button,
+            .youtube .play-button:before {
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0)
+            }
+
+            .youtube iframe {
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0
+            }
+
+            #waldo-tag-1037 {
+                min-height: 50px;
+                max-height: 100px;
+                min-width: 320px
+            }
+
+            #googBott {
+                min-height: 90px
+            }
+
+            /*********** top banner ************/
+            #googBanner {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100px;
+                box-sizing: border-box
+            }
+
+            @media screen and (max-width: 727px) {
+                #googBanner {
+                    margin: 0 -8px
+                }
+
+                .insTopBanner {
+                    height: 50px;
+                    width: 320px
+                }
+            }
+
+            @media screen and (min-width: 728px) {
+                .insTopBanner {
+                    /*height:90px;width:728px;*/
+                    text-align: center
+                }
+            }
+
+            /*********** Remaining ads *********/
+            @media screen and (max-width: 499px) {
+                .adInTextWrap {
+                    width: 100%;
+                    max-width: 450px;
+                    margin: 0 auto
+                }
+
+                .adInTextWrap.imgCenter {
+                    margin-top: 0
+                }
+
+                .ADInText {
+                    height: 290px;
+                    margin: 0 auto;
+                    text-align: center
+                }
+
+                #mathwayWrap,
+                #mwRow,
+                #mwLeftCell,
+                #mwRightCell {
+                    display: block
+                }
+
+                #mwLeftCell {
+                    text-align: center;
+                    padding-bottom: 0
+                }
+
+                #mwRightCell {
+                    padding: 0
+                }
+
+                .googInsInTxt {
+                    width: 100%;
+                    max-height: 280px
+                }
+            }
+
+            @media screen and (min-width: 500px) {
+                .bannerintext {
+                    width: 100%
+                }
+
+                .googInsInTxt {
+                    width: 100%;
+                    max-height: 90px
+                }
+
+            }
+
+            #subContent {
+                clear: both;
+                margin-top: 2.5em;
+                box-sizing: border-box
+            }
+
+            #relatedLinks {
+                display: table-row;
+                padding-bottom: 0.2em;
+                border-top: 3px solid #165a71
+            }
+
+            #blogRel,
+            #forumPromo {
+                width: 50%;
+                display: table-cell;
+                vertical-align: top
+            }
+
+            #blogRel {
+                padding-right: 0.8em
+            }
+
+            #blogRel h3 {
+                margin: 0 0 0.5em
+            }
+
+            .promoDb {
+                margin-bottom: 1em
+            }
+
+            .blogPromoHeader {
+                padding: 0;
+                margin: 0 0 0.5em;
+                font-weight: bold;
+                font-family: Georgia, Times, "Times New Roman", serif;
+            }
+
+            #forumPromo {
+                padding-left: 0.8em
+            }
+
+            #forumPromo h2 {
+                margin-top: 9px
+            }
+
+            .f {
+                font-family: 'Times New Roman', times, serif;
+                font-style: italic;
+                font-size: 1.4em
+            }
+
+            .pending {
+                font-size: 0.85em;
+                color: #c33
+            }
+
+            .solved {
+                font-size: 0.85em;
+                color: #183
+            }
+
+            #bottomPromosWrap {
+                display: table-row;
+                font-size: 0.85em;
+                background: #fff
+            }
+
+            #adbookM {
+                display: table-cell;
+                width: 50%;
+                padding: 0.5em 0
+            }
+
+            #NLSU {
+                display: table-cell;
+                width: 50%;
+                padding: 0.5em 0 0 1em
+            }
+
+            #NLSU input[type=text],
+            #NLSU input[type=email] {
+                width: 240px
+            }
+
+            @media screen and (max-width: 599px) {
+                #NLSU input[type=text] {
+                    width: 100%
+                }
+            }
+
+            @media screen and (min-width: 600px) {
+                .promoDb>div {
+                    width: 140px
+                }
+
+                .promoDb>div+div {
+                    width: 60%;
+                    max-width: 250px
+                }
+
+                .promoDb div {
+                    display: inline-block;
+                    vertical-align: top
+                }
+
+                .promoDb>div.noImg {
+                    width: 100%
+                }
+            }
+
+            .butt {
+                width: 70px;
+                height: 30px;
+                margin: 10px;
+                font-weight: bold;
+                border-radius: 8px;
+                box-shadow: 3px 3px 4px #888;
+                cursor: pointer
+            }
+
+            #frameWrapper {
+                overflow: auto
+            }
+
+            .myLeft {
+                text-align: left
+            }
+
+            .txtLnk {
+                color: #000;
+                text-decoration: none;
+                cursor: default
+            }
+
+            #mwframe {
+                background: url('/images/spinner8.gif') no-repeat center center
+            }
+
+            #footer {
+                clear: both;
+                text-align: center;
+                background: #e8eeee;
+                margin: 1em 0;
+                border: 1px solid #165a71;
+                border-radius: 0.3em;
+                padding: 0 0 1px;
+                font-size: 0.85em
+            }
+
+            #botNav {
+                box-sizing: border-box;
+                width: 100%;
+                padding: 0.3em 0;
+                background: #e8eeee;
+                border: 1px solid #165a71;
+                border-radius: 0.3em;
+                clear: both
+            }
+
+            #botNav a {
+                text-decoration: none
+            }
+
+            .previous,
+            .next {
+                position: relative
+            }
+
+            .previous {
+                padding: 0.3em 0.25em 0.3em 1.5em
+            }
+
+            .next {
+                padding: 0.3em 1.5em 0.3em 0.25em;
+                text-align: right
+            }
+
+            #cookieDiv {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border: 2px solid #278;
+                background: #9ef;
+                font-size: 0.9em
+            }
+
+            #cookieDiv button {
+                margin: 0 0.3em 0.5em;
+                padding: 0.5em 1em;
+                background-color: #dff;
+                color: #008;
+                font-weight: bold;
+                cursor: pointer
+            }
+
+            #cookieClose {
+                margin: 0.3em;
+                border: 1px solid #444;
+                border-radius: 0.2em;
+                cursor: pointer;
+                padding: 0 0.2em;
+                background: #eff
+            }
+
+            @media screen and (max-width:499px) {
+                #cookieDiv {
+                    box-sizing: border-box;
+                    width: 100%;
+                    padding: 0.2em
+                }
+
+
+                #cookieDiv>div {
+                    padding-top: 30px;
+                    position: relative
+                }
+
+                #cookieDiv>div>div:nth-child(2),
+                #cookieDiv>div>div:nth-child(3) {
+                    display: inline-block;
+                    margin-top: 0.5em
+                }
+
+                #cookieClose {
+                    position: absolute;
+                    top: 0;
+                    right: 0
+                }
+            }
+
+            @media screen and (min-width:500px) {
+                #botNav {
+                    display: table
+                }
+
+                .previous,
+                .next {
+                    display: table-cell;
+                    vertical-align: middle
+                }
+
+                #cookieDiv {
+                    width: calc(100vw - 100px);
+                    max-width: 800px;
+                    margin: 0 auto
+                }
+
+                #cookieDiv>div {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: flex-end
+                }
+
+                #cookieDiv>div>div {
+                    flex: 1 1 auto
+                }
+
+                #cookieDiv>div>div:first-child {
+                    padding: 0.3em
+                }
+
+                #cookieClose {
+                    align-self: flex-start
+                }
+            }
+        </style>
+
+        <link rel="stylesheet" href="/cls.css">
+        </head>
+
+    <body id="top">
+
+        <div id="wrapper">
+
+            <div class="insTopBanner" data-freestar-ad="__300x250 __970x250" id="intmath_leaderboard_incontent"></div>
+            <div id="linksContentWrap">
+                <div id="content">
+                    <main id="maincolumn">
+                        <div class="interactive">
+                            <div id="inputs">
+                                <form name="makeGraph" id="makeGraph">
+                                    <div>
+                                        <p><span id="fn1">Function 1:</span> <input name="function1" id="function1" type="text" value="cos(x^4-2x^2+5)x"></p>
+                                        <p><span id="fn2">Function 2: <input name="function2" id="function2" type="text" value="1.5 cos(2x)"></span></p>
+                                    </div>
+                                    <div>
+                                        <p>Min <i>x</i>-value: <input name="xMin" id="xMin" type="number" value="-5"></p>
+                                        <p>Max <i>x</i>-value: <input name="xMax" id="xMax" type="number" value="5"></p>
+                                        <p>Grid interval (along <i>x</i>-axis): <input name="xGrid" id="xGrid" type="number" value="2"></p>
+                                    </div>
+                                    <div>
+                                        <p>Min <i>y</i>-value: <input name="yMin" id="yMin" type="number" value="-2"></p>
+                                        <p>Max <i>y</i>-value: <input name="yMax" id="yMax" type="number" value="6" disabled=""></p>
+                                        <p>Grid interval (along <i>y</i>-axis): <input name="yGrid" id="yGrid" type="number" value="1"></p>
+                                    </div>
+                                    <div>
+                                        <p>Graph width (pixels, max 700): <input name="gwidth" id="gwidth" type="number" value="450"></p>
+                                        <p>Graph height (pixels, max 600): <input name="gheight" id="gheight" type="number" value="250"></p>
+                                    </div>
+                                    <div>
+                                        <p id="eqSc"><input name="equalScaling" id="equalScaling" type="checkbox" value="equal"> Equal scaling along <i>x</i>- and <i>y</i>-axes.</p>
+                                        <p><input type="button" name="grafButton" id="grafButton" value="Graph it"></p>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <div id="asvg1Wrap" style="height: 600px; width: 650px;">
+                                <div id="asvg1" style="position: relative;"><svg id="asvg1SVG" width="650" height="600"><text id="asvg1SVG-xAxisVbl" x="640.00" y="330.60" style="font-size:12px" class="intmathItalic" font-weight="normal" text-anchor="middle">x</text>
+                                        <path d="M 650 337 L 647 349 L 654 349 Z" transform="rotate(90 650 337)" stroke="black" fill="#333" id="asvg1SVG-xAxisArr"></path><text id="asvg1SVG-yAxisVbl" x="331.00" y="14.00" style="font-size:12px" class="intmathItalic" font-weight="normal" text-anchor="start">y</text>
+                                        <path d="M 325 0 L 322 12 L 329 12 Z" transform="rotate(0 325 0)" stroke="black" fill="#333" id="asvg1SVG-yAxisArr"></path>
+                                        <path d=" M349.64,0 349.64,600.00 M374.28,0 374.28,600.00 M398.92,0 398.92,600.00 M423.56,0 423.56,600.00 M448.20,0 448.20,600.00 M472.84,0 472.84,600.00 M497.48,0 497.48,600.00 M522.12,0 522.12,600.00 M546.76,0 546.76,600.00 M571.40,0 571.40,600.00 M596.04,0 596.04,600.00 M620.68,0 620.68,600.00 M645.32,0 645.32,600.00 M300.36,0 300.36,600.00 M275.72,0 275.72,600.00 M251.08,0 251.08,600.00 M226.44,0 226.44,600.00 M201.80,0 201.80,600.00 M177.16,0 177.16,600.00 M152.52,0 152.52,600.00 M127.88,0 127.88,600.00 M103.24,0 103.24,600.00 M78.60,0 78.60,600.00 M53.96,0 53.96,600.00 M29.32,0 29.32,600.00 M4.68,0 4.68,600.00 M0,324.28 650,324.28 M0,311.96 650,311.96 M0,299.64 650,299.64 M0,287.32 650,287.32 M0,275.00 650,275.00 M0,262.68 650,262.68 M0,250.36 650,250.36 M0,238.04 650,238.04 M0,225.72 650,225.72 M0,213.40 650,213.40 M0,201.08 650,201.08 M0,188.76 650,188.76 M0,176.44 650,176.44 M0,164.12 650,164.12 M0,151.80 650,151.80 M0,139.48 650,139.48 M0,127.16 650,127.16 M0,114.84 650,114.84 M0,102.52 650,102.52 M0,90.20 650,90.20 M0,77.88 650,77.88 M0,65.56 650,65.56 M0,53.24 650,53.24 M0,40.92 650,40.92 M0,28.60 650,28.60 M0,348.92 650,348.92 M0,361.24 650,361.24 M0,373.56 650,373.56 M0,385.88 650,385.88 M0,398.20 650,398.20 M0,410.52 650,410.52 M0,422.84 650,422.84 M0,435.16 650,435.16 M0,447.48 650,447.48 M0,459.80 650,459.80 M0,472.12 650,472.12 M0,484.44 650,484.44 M0,496.76 650,496.76 M0,509.08 650,509.08 M0,521.40 650,521.40 M0,533.72 650,533.72 M0,546.04 650,546.04 M0,558.36 650,558.36 M0,570.68 650,570.68 M0,583.00 650,583.00" stroke-width="1" shape-rendering="crispEdges" stroke="#ddd" fill="none" id="asvg1SVG-grids"></path>
+                                        <path d="M0,336.60 650.00,336.60 M325.00,0 325.00,600.00 M349.64,339.60 349.64,333.60 M374.28,339.60 374.28,333.60 M398.92,339.60 398.92,333.60 M423.56,339.60 423.56,333.60 M448.20,339.60 448.20,333.60 M472.84,339.60 472.84,333.60 M497.48,339.60 497.48,333.60 M522.12,339.60 522.12,333.60 M546.76,339.60 546.76,333.60 M571.40,339.60 571.40,333.60 M596.04,339.60 596.04,333.60 M620.68,339.60 620.68,333.60 M645.32,339.60 645.32,333.60 M300.36,339.60 300.36,333.60 M275.72,339.60 275.72,333.60 M251.08,339.60 251.08,333.60 M226.44,339.60 226.44,333.60 M201.80,339.60 201.80,333.60 M177.16,339.60 177.16,333.60 M152.52,339.60 152.52,333.60 M127.88,339.60 127.88,333.60 M103.24,339.60 103.24,333.60 M78.60,339.60 78.60,333.60 M53.96,339.60 53.96,333.60 M29.32,339.60 29.32,333.60 M4.68,339.60 4.68,333.60 M328.00,324.28 322.00,324.28 M328.00,311.96 322.00,311.96 M328.00,299.64 322.00,299.64 M328.00,287.32 322.00,287.32 M328.00,275.00 322.00,275.00 M328.00,262.68 322.00,262.68 M328.00,250.36 322.00,250.36 M328.00,238.04 322.00,238.04 M328.00,225.72 322.00,225.72 M328.00,213.40 322.00,213.40 M328.00,201.08 322.00,201.08 M328.00,188.76 322.00,188.76 M328.00,176.44 322.00,176.44 M328.00,164.12 322.00,164.12 M328.00,151.80 322.00,151.80 M328.00,139.48 322.00,139.48 M328.00,127.16 322.00,127.16 M328.00,114.84 322.00,114.84 M328.00,102.52 322.00,102.52 M328.00,90.20 322.00,90.20 M328.00,77.88 322.00,77.88 M328.00,65.56 322.00,65.56 M328.00,53.24 322.00,53.24 M328.00,40.92 322.00,40.92 M328.00,28.60 322.00,28.60 M328.00,348.92 322.00,348.92 M328.00,361.24 322.00,361.24 M328.00,373.56 322.00,373.56 M328.00,385.88 322.00,385.88 M328.00,398.20 322.00,398.20 M328.00,410.52 322.00,410.52 M328.00,422.84 322.00,422.84 M328.00,435.16 322.00,435.16 M328.00,447.48 322.00,447.48 M328.00,459.80 322.00,459.80 M328.00,472.12 322.00,472.12 M328.00,484.44 322.00,484.44 M328.00,496.76 322.00,496.76 M328.00,509.08 322.00,509.08 M328.00,521.40 322.00,521.40 M328.00,533.72 322.00,533.72 M328.00,546.04 322.00,546.04 M328.00,558.36 322.00,558.36 M328.00,570.68 322.00,570.68 M328.00,583.00 322.00,583.00" stroke-width="1" shape-rendering="crispEdges" stroke="#333" fill="none" id="asvg1SVG-AxTix"></path><text id="asvg1SVG-x-labels-0" x="349.64" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">2</text><text id="asvg1SVG-x-labels-1" x="374.28" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">4</text><text id="asvg1SVG-x-labels-2" x="398.92" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">6</text><text id="asvg1SVG-x-labels-3" x="423.56" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">8</text><text id="asvg1SVG-x-labels-4" x="448.20" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">10</text><text id="asvg1SVG-x-labels-5" x="472.84" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">12</text><text id="asvg1SVG-x-labels-6" x="497.48" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">14</text><text id="asvg1SVG-x-labels-7" x="522.12" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">16</text><text id="asvg1SVG-x-labels-8" x="546.76" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">18</text><text id="asvg1SVG-x-labels-9" x="571.40" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">20</text><text id="asvg1SVG-x-labels-10" x="596.04" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">22</text><text id="asvg1SVG-x-labels-11" x="620.68" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">24</text><text id="asvg1SVG-x-labels-12" x="645.32" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">26</text><text id="asvg1SVG-x-labels-13" x="300.36" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-2</text><text id="asvg1SVG-x-labels-14" x="275.72" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-4</text><text id="asvg1SVG-x-labels-15" x="251.08" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-6</text><text id="asvg1SVG-x-labels-16" x="226.44" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-8</text><text id="asvg1SVG-x-labels-17" x="201.80" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-10</text><text id="asvg1SVG-x-labels-18" x="177.16" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-12</text><text id="asvg1SVG-x-labels-19" x="152.52" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-14</text><text id="asvg1SVG-x-labels-20" x="127.88" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-16</text><text id="asvg1SVG-x-labels-21" x="103.24" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-18</text><text id="asvg1SVG-x-labels-22" x="78.60" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-20</text><text id="asvg1SVG-x-labels-23" x="53.96" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-22</text><text id="asvg1SVG-x-labels-24" x="29.32" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-24</text><text id="asvg1SVG-x-labels-25" x="4.68" y="352.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="middle">-26</text><text id="asvg1SVG-y-labels-0" x="319.00" y="328.28" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">1</text><text id="asvg1SVG-y-labels-1" x="319.00" y="315.96" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">2</text><text id="asvg1SVG-y-labels-2" x="319.00" y="303.64" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">3</text><text id="asvg1SVG-y-labels-3" x="319.00" y="291.32" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">4</text><text id="asvg1SVG-y-labels-4" x="319.00" y="279.00" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">5</text><text id="asvg1SVG-y-labels-5" x="319.00" y="266.68" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">6</text><text id="asvg1SVG-y-labels-6" x="319.00" y="254.36" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">7</text><text id="asvg1SVG-y-labels-7" x="319.00" y="242.04" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">8</text><text id="asvg1SVG-y-labels-8" x="319.00" y="229.72" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">9</text><text id="asvg1SVG-y-labels-9" x="319.00" y="217.40" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">10</text><text id="asvg1SVG-y-labels-10" x="319.00" y="205.08" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">11</text><text id="asvg1SVG-y-labels-11" x="319.00" y="192.76" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">12</text><text id="asvg1SVG-y-labels-12" x="319.00" y="180.44" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">13</text><text id="asvg1SVG-y-labels-13" x="319.00" y="168.12" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">14</text><text id="asvg1SVG-y-labels-14" x="319.00" y="155.80" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">15</text><text id="asvg1SVG-y-labels-15" x="319.00" y="143.48" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">16</text><text id="asvg1SVG-y-labels-16" x="319.00" y="131.16" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">17</text><text id="asvg1SVG-y-labels-17" x="319.00" y="118.84" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">18</text><text id="asvg1SVG-y-labels-18" x="319.00" y="106.52" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">19</text><text id="asvg1SVG-y-labels-19" x="319.00" y="94.20" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">20</text><text id="asvg1SVG-y-labels-20" x="319.00" y="81.88" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">21</text><text id="asvg1SVG-y-labels-21" x="319.00" y="69.56" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">22</text><text id="asvg1SVG-y-labels-22" x="319.00" y="57.24" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">23</text><text id="asvg1SVG-y-labels-23" x="319.00" y="44.92" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">24</text><text id="asvg1SVG-y-labels-24" x="319.00" y="32.60" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">25</text><text id="asvg1SVG-y-labels-25" x="319.00" y="352.92" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-1</text><text id="asvg1SVG-y-labels-26" x="319.00" y="365.24" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-2</text><text id="asvg1SVG-y-labels-27" x="319.00" y="377.56" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-3</text><text id="asvg1SVG-y-labels-28" x="319.00" y="389.88" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-4</text><text id="asvg1SVG-y-labels-29" x="319.00" y="402.20" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-5</text><text id="asvg1SVG-y-labels-30" x="319.00" y="414.52" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-6</text><text id="asvg1SVG-y-labels-31" x="319.00" y="426.84" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-7</text><text id="asvg1SVG-y-labels-32" x="319.00" y="439.16" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-8</text><text id="asvg1SVG-y-labels-33" x="319.00" y="451.48" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-9</text><text id="asvg1SVG-y-labels-34" x="319.00" y="463.80" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-10</text><text id="asvg1SVG-y-labels-35" x="319.00" y="476.12" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-11</text><text id="asvg1SVG-y-labels-36" x="319.00" y="488.44" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-12</text><text id="asvg1SVG-y-labels-37" x="319.00" y="500.76" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-13</text><text id="asvg1SVG-y-labels-38" x="319.00" y="513.08" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-14</text><text id="asvg1SVG-y-labels-39" x="319.00" y="525.40" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-15</text><text id="asvg1SVG-y-labels-40" x="319.00" y="537.72" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-16</text><text id="asvg1SVG-y-labels-41" x="319.00" y="550.04" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-17</text><text id="asvg1SVG-y-labels-42" x="319.00" y="562.36" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-18</text><text id="asvg1SVG-y-labels-43" x="319.00" y="574.68" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-19</text><text id="asvg1SVG-y-labels-44" x="319.00" y="587.00" style="font-size:12px" class="intmath" font-weight="normal" text-anchor="end">-20</text>
+                                    </svg></div>
+                            </div>
+
+                        </div>
+
+
+                        <script>
+
+                            function serialize(form) {
+                                var field, s = [];
+                                if (typeof form == 'object' && form.nodeName.toLowerCase() == "form") {
+                                    var len = form.elements.length;
+                                    for (i = 0; i < len; i++) {
+                                        field = form.elements[i];
+                                        if (field.name && !field.disabled && field.type != 'file' && field.type != 'reset' && field.type != 'submit' && field.type != 'button') {
+                                            if (field.type == 'select-multiple') {
+                                                for (j = form.elements[i].options.length - 1; j >= 0; j--) {
+                                                    if (field.options[j].selected)
+                                                        s[s.length] = encodeURIComponent(field.name) + "=" + encodeURIComponent(field.options[j].value);
+                                                }
+                                            } else if ((field.type != 'checkbox' && field.type != 'radio') || field.checked) {
+                                                s[s.length] = encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value);
+                                            }
+                                        }
+                                    }
+                                }
+                                return s.join('&').replace(/%20/g, '+');
+                            }
+
+
+
+                            function doSvgGraph() {
+
+                                // gwidth, gheight are NOT global (so don't refer to DOM inputs)
+                                var x_Min, x_Max, gwidth, gheight, doOnce = false, g_Width;
+
+                                var xMinInput = document.getElementById("xMin");
+                                var xMaxInput = document.getElementById("xMax");
+                                var yMinInput = document.getElementById("yMin");
+                                var yMaxInput = document.getElementById("yMax");
+                                var xGridBox = document.getElementById("xGrid");
+                                var yGridBox = document.getElementById("yGrid");
+                                errMessage = "";
+
+                                drawGraphs = function () {
+                                    var xGrid, yGrid;
+                                    content = document.getElementById("content");
+                                    contentWidth = content.clientWidth;
+                                    contentHeight = content.clientHeight;
+                                    gwidth = Math.min(700, asvg1Wrap.clientWidth);
+
+                                    if (!doOnce) { // reset on browser resize
+                                        gheight = Math.min(600, asvg1Wrap.clientHeight);
+                                        doOnce = true;
+                                    } else {
+                                        gheight = asvg1Wrap.clientHeight;
+                                    }
+                                    asvg1Wrap.style.height = gheight + "px";
+
+
+                                    //document.getElementById("gwidth").setAttribute("value", gwidth);
+
+                                    document.getElementById("gwidth").value = gwidth;
+                                    document.getElementById("gheight").value = gheight;
+
+                                    boardWidthToHeight = gheight / gwidth;
+                                    //
+
+                                    if (equalScaling.value == "equal") {
+                                        equalScaling.checked = "checked";
+                                    }
+
+                                    if (equalScaling.checked) {
+                                        yMaxInput.value = "";
+                                        yMaxInput.disabled = "disabled";
+                                        yMax = null;  // Must be null and not ''
+
+                                    } else {
+                                        yMaxInput.disabled = '';
+                                        if (!Number(yMaxInput.value)) {
+                                            yMax = Math.round(Number(yMinInput.value) + 12) + 0.3;
+                                        } else {
+                                            yMax = Number(yMaxInput.value);
+                                        }
+                                    }
+
+                                    yMaxInput.value = yMax;
+                                    boardID = "asvg1";
+
+                                    if (xMinInput.value !== "") {
+                                        xMin = Number(xMinInput.value);
+                                    } else {
+                                        errMessage = "Minimum <i>x</i>-value required!";
+                                    }
+
+                                    if (xMaxInput.value !== "") {
+                                        xMax = Number(xMaxInput.value);
+                                    } else {
+                                        errMessage = "Maximum <i>x</i>-value required!";
+                                    }
+
+                                    if (xMin >= xMax) {
+                                        errMessage = "Max-<i>x</i> must be greater than Min-<i>x</i>!";
+                                    }
+
+                                    if (yMinInput.value !== "") {
+                                        yMin = Number(yMinInput.value);
+                                    } else {
+                                        errMessage = "Minimum <i>y</i>-value required!";
+                                    }
+
+                                    if (yMaxInput.value !== "") {
+                                        yMax = Number(yMaxInput.value);
+                                        if (yMin >= yMax) {
+                                            errMessage = "Max-<i>y</i> must be greater than Min-<i>y</i>!";
+                                        }
+                                    }
+
+                                    /*if(numPts.value > 30000) {
+                                        errMessage = "Max number of points is 30,000!";
+                                    }*/
+
+                                    padding = 17;
+                                    //
+                                    removeEle("asvg1SVG");
+                                    removeEle("spinnerWrapWrap");
+                                    //
+                                    initBoard(boardID, xMin, xMax, yMin, yMax);  // For equally scaled, only define xMin, xMax, yMin
+
+                                    if (xGridBox.value) {
+                                        xGrid = Number(xGridBox.value);
+                                    } else {
+                                        xGrid = 1;
+                                        xGridBox.value = xGrid;
+                                    }
+                                    if (yGridBox.value) {
+                                        yGrid = Number(yGridBox.value);
+                                    } else {
+                                        yGrid = 1;
+                                        yGridBox.value = xGrid;
+                                    }
+
+                                    if (errMessage.length == 0) {
+                                        axes(xGrid, yGrid, "labels", xGrid, yGrid);
+
+                                        fill = "none";
+                                        strokewidth = 1.5;
+                                        stroke = "#165a71";
+                                        fn1 = function1.value;
+                                        if (fn1 !== '') {
+                                            plot(fn1, xMin, xMax, 500); // fun,x_min,x_max,points,id		 
+                                        }
+                                        stroke = "#cc00cc";
+                                        fn2 = function2.value;
+                                        if (fn2 !== '') {
+                                            plot(fn2, xMin, xMax, 500);
+                                        }
+                                    } else {
+                                        errMessage = '';
+                                    }
+                                }
+                                drawGraphs();
+
+                                equalScaling.addEventListener("change", function () {
+
+
+                                    if (equalScaling.checked) {
+                                        equalScaling.value = "equal";
+                                    } else {
+                                        equalScaling.value = "";
+                                        yMaxInput.value = "";
+                                    }
+
+                                    queryStr = serialize(document.getElementById("makeGraph"));
+                                    drawGraphs();
+                                });
+
+                                const grafButton = document.querySelector('#grafButton');
+                                grafButton.addEventListener("click", function (event) {
+                                    event.preventDefault();
+                                    gwidth = Math.min((contentWidth - 20), Math.min(700, Number(document.getElementById("gwidth").value)));
+                                    document.getElementById("gwidth").value = gwidth;
+
+                                    gheight = Math.min(600, Number(document.getElementById("gheight").value));
+                                    document.getElementById("gheight").value = gheight;
+
+                                    document.getElementById("asvg1Wrap").style.width = gwidth + "px";
+                                    asvg1Wrap.style.height = gheight + "px";
+                                    queryStr = serialize(document.getElementById("makeGraph"));
+                                    drawGraphs();
+                                });
+
+
+
+                                ///////////////////////////////////////
+                                //
+                                // Resize throttler
+                                //
+                                ///////////////////////////////////////		
+                                window.addEventListener("resize", resizeThrottler, false);
+                                var resizeTimeout;
+
+                                function resizeThrottler() {
+                                    if (!resizeTimeout) {
+                                        resizeTimeout = setTimeout(function () {
+                                            resizeTimeout = null;
+                                            actualResizeHandler();
+                                        }, 1000);
+                                    }
+                                }
+
+                                function actualResizeHandler() {
+                                    doOnce = false;
+                                    drawGraphs();
+                                }
+
+                            }
+                        </script>
+                    </main>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            function gebi(ele) {
+                return document.getElementById(ele);
+            }
+            function Set_Cookie(name, value, expires, path, domain, secure) {
+                var today = new Date();
+                today.setTime(today.getTime());
+                if (expires) {
+                    expires = expires * 1000 * 60 * 60 * 24;
+                }
+                var expires_date = new Date(today.getTime() + (expires));
+                document.cookie = name + "=" + escape(value) + ((expires) ? ";expires=" + expires_date.toGMTString() : "") + ((path) ? ";path=" + path : "") + ((domain) ? ";domain=" + domain : "") + ((secure) ? ";secure" : "");
+            }
+            function Get_Cookie(check_name) {
+                var a_all_cookies = document.cookie.split(';');
+                var a_temp_cookie = '';
+                var cookie_name = '';
+                var cookie_value = '';
+                var b_cookie_found = false;
+                for (i = 0; i < a_all_cookies.length; i++) {
+                    a_temp_cookie = a_all_cookies[i].split('=');
+                    cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+                    if (cookie_name == check_name) {
+                        b_cookie_found = true;
+                        if (a_temp_cookie.length > 1) {
+                            cookie_value = unescape(a_temp_cookie[1].replace(/^\s+|\s+$/g, ''))
+                        }
+                        return cookie_value;
+                        break
+                    }
+                    a_temp_cookie = null;
+                    cookie_name = '';
+                }
+                if (!b_cookie_found) {
+                    return null;
+                }
+            }
+
+            function loadScript(t, e) { var a = document.createElement("script"); a.type = "text/javascript", a.async = !0, a.readyState ? a.onreadystatechange = function () { ("loaded" == a.readyState || "complete" == a.readyState) && (a.onreadystatechange = null, e && "function" == typeof e && e()) } : a.onload = function () { e && "function" == typeof e && e() }, a.src = t, document.head.appendChild(a) }
+        </script>
+        <script>
+            var skip2Cont = document.getElementById("skip2Cont"); if (skip2Cont) { skip2Cont.addEventListener("focus", function () { this.className = "skip2Cont"; }, true); }
+            var isOperaMini = Object.prototype.toString.call(window.operamini) === "[object OperaMini]";
+            function loadScript(t, e) { var a = document.createElement("script"); a.type = "text/javascript", a.defer = !0, a.readyState ? a.onreadystatechange = function () { ("loaded" == a.readyState || "complete" == a.readyState) && (a.onreadystatechange = null, e && "function" == typeof e && e()) } : a.onload = function () { e && "function" == typeof e && e() }, a.src = t, document.head.appendChild(a) }
+            var freestar = freestar || {};
+            freestar.queue = freestar.queue || [];
+            freestar.config = freestar.config || {};
+            freestar.config.enabled_slots = [];
+            freestar.initCallback = function () { (freestar.config.enabled_slots.length === 0) ? freestar.initCallbackCalled = false : freestar.newAdSlots(freestar.config.enabled_slots) }
+            document.addEventListener("DOMContentLoaded", function (event) {
+                loadScript("/includes/cssjs/ddivs-voting-2020-03-31c.min.js", function () {
+                    loadScript("/includes/cssjs/ASCIIsvg-IM-2020-01-14.min.js", function () {
+                        doSvgGraph();
+                    })
+                });
+            });
+        </script>
+    </body>
+
+</html>

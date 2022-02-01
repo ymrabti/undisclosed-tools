@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://library.fridoverweij.com/codelab/geometric_shapes/cone_solid_p5.html -->
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>Cone - P5.js</title>
+        <meta name="description" content="Interactive cone using the p5.js library.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                text-align: center;
+            }
+
+            h1 {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            noscript {
+                color: red;
+            }
+
+            #myContainer {
+                width: 100%;
+            }
+
+            #myContainer,
+            canvas {
+                display: block;
+                position: relative;
+                margin: auto;
+                cursor: grab;
+            }
+
+            .controls {
+                max-width: 500px;
+                border: 1px solid gray;
+                padding: 1em;
+                margin: 0.5em auto;
+                text-align: left;
+            }
+
+            p {
+                display: block;
+                padding: 1em 0;
+            }
+
+            label {
+                display: inline-block;
+                padding: 0.2em 1em 0.2em 0;
+            }
+
+            header,
+            footer,
+            section {
+                width: 80%;
+                margin: 1em 10%;
+            }
+
+            nav ul {
+                padding: 1em 0;
+                list-style-type: none;
+            }
+
+            nav ul li {
+                display: inline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Cone</h1>
+            <noscript>To use the functionality of this page, JavaScript needs to be enabled in your browser.</noscript>
+        </header>
+        <div id="myContainer"></div>
+        <section class="controls">
+            <h2>Controls</h2>
+            <p>Shape:</p>
+            <p><label><input id="height" width="400px" min="10" max="400" step="10" value="200" type="range"> Height</label></p>
+        </section>
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://library.fridoverweij.com/index.html">Frido Verweij</a> −</li>
+                    <li><a href="https://library.fridoverweij.com/codelab/geometric_shapes/index.html">Geometric shapes</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <script src="./p5_0.5.7.min.js"></script>
+        <script>
+            "use strict";
+
+            // code for user controls
+            var height = document.getElementById("height");
+            var heightValue = 400;
+
+            height.oninput = function (e) {
+                var thisValue = parseFloat(this.value);
+                if (thisValue >= 10 && thisValue <= 400) heightValue = thisValue;
+                redraw();
+            };
+
+            // END code for user controls
+
+            function setup() {
+                var myContainer = document.getElementById('myContainer');
+                //var widthCanvas = windowWidth;
+                //var heightCanvas = windowHeight;  
+                var widthCanvas = 320;
+                var heightCanvas = 400;
+                var myCanvas = createCanvas(widthCanvas, heightCanvas, WEBGL);
+                //myContainer.appendChild(myCanvas); 
+                myCanvas.parent(myContainer);
+            };
+
+            /* Is not necessary because widthCanvas = 320. 
+            function windowResized() {
+              resizeCanvas(windowWidth, windowHeight);
+              //resizeCanvas(document.body.clientWidth, window.innerHeight);  
+            };
+            */
+
+            function draw() {
+                rotateZ(frameCount * 0.01);
+                rotateX(frameCount * 0.01);
+                rotateY(frameCount * 0.01);
+                cone(80, heightValue);
+            };
+
+        </script>
+        <div id="axe" style="position: fixed; width: 100%; height: 100%; top: 0; display: none; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 9999999; cursor: pointer; " onclick="this.style.display=none"></div>
+    </body>
+
+</html>

@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     width="100%" height="100%" viewBox="0 0 1166.4 590.4" preserveAspectRatio="xMinYMin meet">
+<g>
+    <title>set square, geo triangle</title>
+    <desc>
+      set square, geo triangle. 
+    </desc>
+</g>
+<!-- Derived (cleaned) from http://commons.wikimedia.org/wiki/File:ARISTO-GEO_DREIECK_1550_indiziert_transparent.svg (Public Domain) -->
+<!-- Copyright by Frido Verweij. Licence: Creative Commons Attribution-ShareAlike 4.0 International (http://creativecommons.org/licenses/by-sa/4.0/) -->
+
+<style type="text/css" id="style_css_sheet">
+<![CDATA[
+
+.geo {
+fill:none;
+stroke:#010101;
+stroke-width:1.44;
+}
+
+.ano {
+fill:#010101;
+stroke: none;
+font: normal 19px Helvetica, Arial, sans-serif;
+text-anchor: left;
+}
+
+]]>
+</style>
+
+<path class="geo" d="M583.2,7.2v18.008"/>
+<path class="geo" d="M655.206,7.2v18.008"/>
+<path class="geo" d="M727.197,7.2v18.008"/>
+<path class="geo" d="M799.201,7.2v18.008"/>
+<path class="geo" d="M871.207,7.2v18.008"/>
+<path class="geo" d="M943.198,7.2v18.008"/>
+<path class="geo" d="M1015.204,7.2v18.008"/>
+<path class="geo" d="M1087.209,7.2v18.008"/>
+<path class="geo" d="M511.195,7.2v18.008"/>
+<path class="geo" d="M439.203,7.2v18.008"/>
+<path class="geo" d="M367.199,7.2v18.008"/>
+<path class="geo" d="M295.193,7.2v18.008"/>
+<path class="geo" d="M223.201,7.2v18.008"/>
+<path class="geo" d="M151.197,7.2v18.008"/>
+<path class="geo" d="M79.191,7.2v18.008"/>
+<path class="geo" d="M115.194,7.2v18.008"/>
+<path class="geo" d="M187.2,7.2v18.008"/>
+<path class="geo" d="M259.19,7.2v18.008"/>
+<path class="geo" d="M331.196,7.2v18.008"/>
+<path class="geo" d="M403.2,7.2v18.008"/>
+<path class="geo" d="M475.192,7.2v18.008"/>
+<path class="geo" d="M547.198,7.2v18.008"/>
+<path class="geo" d="M691.208,7.2v18.008"/>
+<path class="geo" d="M619.202,7.2v18.008"/>
+<path class="geo" d="M979.2,7.2v18.008"/>
+<path class="geo" d="M907.21,7.2v18.008"/>
+<path class="geo" d="M835.205,7.2v18.008"/>
+<path class="geo" d="M763.2,7.2v18.008"/>
+<path class="geo" d="M1051.207,7.2v18.008"/>
+<path class="geo" d="M590.397,7.2v10.812"/>
+<path class="geo" d="M597.597,7.2v10.812"/>
+<path class="geo" d="M604.808,7.2v10.812"/>
+<path class="geo" d="M612.006,7.2v10.812"/>
+<path class="geo" d="M683.995,7.2v10.812"/>
+<path class="geo" d="M676.8,7.2v10.812"/>
+<path class="geo" d="M669.601,7.2v10.812"/>
+<path class="geo" d="M662.404,7.2v10.812"/>
+<path class="geo" d="M756.002,7.2v10.812"/>
+<path class="geo" d="M748.803,7.2v10.812"/>
+<path class="geo" d="M741.606,7.2v10.812"/>
+<path class="geo" d="M734.409,7.2v10.812"/>
+<path class="geo" d="M828.007,7.2v10.812"/>
+<path class="geo" d="M820.81,7.2v10.812"/>
+<path class="geo" d="M813.598,7.2v10.812"/>
+<path class="geo" d="M806.399,7.2v10.812"/>
+<path class="geo" d="M899.998,7.2v10.812"/>
+<path class="geo" d="M892.801,7.2v10.812"/>
+<path class="geo" d="M885.603,7.2v10.812"/>
+<path class="geo" d="M878.405,7.2v10.812"/>
+<path class="geo" d="M972.005,7.2v10.812"/>
+<path class="geo" d="M964.806,7.2v10.812"/>
+<path class="geo" d="M957.608,7.2v10.812"/>
+<path class="geo" d="M950.411,7.2v10.812"/>
+<path class="geo" d="M1044.009,7.2v10.812"/>
+<path class="geo" d="M1036.812,7.2v10.812"/>
+<path class="geo" d="M1029.6,7.2v10.812"/>
+<path class="geo" d="M1022.402,7.2v10.812"/>
+<path class="geo" d="M540,7.2v10.812"/>
+<path class="geo" d="M532.802,7.2v10.812"/>
+<path class="geo" d="M525.604,7.2v10.812"/>
+<path class="geo" d="M518.392,7.2v10.812"/>
+<path class="geo" d="M467.995,7.2v10.812"/>
+<path class="geo" d="M460.796,7.2v10.812"/>
+<path class="geo" d="M453.599,7.2v10.812"/>
+<path class="geo" d="M446.401,7.2v10.812"/>
+<path class="geo" d="M396.004,7.2v10.812"/>
+<path class="geo" d="M388.791,7.2v10.812"/>
+<path class="geo" d="M381.594,7.2v10.812"/>
+<path class="geo" d="M374.396,7.2v10.812"/>
+<path class="geo" d="M323.997,7.2v10.812"/>
+<path class="geo" d="M316.8,7.2v10.812"/>
+<path class="geo" d="M309.603,7.2v10.812"/>
+<path class="geo" d="M302.39,7.2v10.812"/>
+<path class="geo" d="M251.991,7.2v10.812"/>
+<path class="geo" d="M244.794,7.2v10.812"/>
+<path class="geo" d="M237.597,7.2v10.812"/>
+<path class="geo" d="M230.399,7.2v10.812"/>
+<path class="geo" d="M180.001,7.2v10.812"/>
+<path class="geo" d="M172.789,7.2v10.812"/>
+<path class="geo" d="M165.592,7.2v10.812"/>
+<path class="geo" d="M158.394,7.2v10.812"/>
+<path class="geo" d="M86.389,7.2v10.812"/>
+<path class="geo" d="M93.6,7.2v10.812"/>
+<path class="geo" d="M100.798,7.2v10.812"/>
+<path class="geo" d="M107.995,7.2v10.812"/>
+<path class="geo" d="M143.999,7.2v10.812"/>
+<path class="geo" d="M136.801,7.2v10.812"/>
+<path class="geo" d="M129.588,7.2v10.812"/>
+<path class="geo" d="M122.39,7.2v10.812"/>
+<path class="geo" d="M194.396,7.2v10.812"/>
+<path class="geo" d="M201.594,7.2v10.812"/>
+<path class="geo" d="M208.792,7.2v10.812"/>
+<path class="geo" d="M215.99,7.2v10.812"/>
+<path class="geo" d="M266.402,7.2v10.812"/>
+<path class="geo" d="M273.6,7.2v10.812"/>
+<path class="geo" d="M280.797,7.2v10.812"/>
+<path class="geo" d="M287.994,7.2v10.812"/>
+<path class="geo" d="M338.393,7.2v10.812"/>
+<path class="geo" d="M345.591,7.2v10.812"/>
+<path class="geo" d="M352.802,7.2v10.812"/>
+<path class="geo" d="M360,7.2v10.812"/>
+<path class="geo" d="M410.398,7.2v10.812"/>
+<path class="geo" d="M417.596,7.2v10.812"/>
+<path class="geo" d="M424.794,7.2v10.812"/>
+<path class="geo" d="M431.99,7.2v10.812"/>
+<path class="geo" d="M482.405,7.2v10.812"/>
+<path class="geo" d="M489.601,7.2v10.812"/>
+<path class="geo" d="M496.8,7.2v10.812"/>
+<path class="geo" d="M503.996,7.2v10.812"/>
+<path class="geo" d="M554.395,7.2v10.812"/>
+<path class="geo" d="M561.593,7.2v10.812"/>
+<path class="geo" d="M568.806,7.2v10.812"/>
+<path class="geo" d="M576.003,7.2v10.812"/>
+<path class="geo" d="M626.4,7.2v10.812"/>
+<path class="geo" d="M633.599,7.2v10.812"/>
+<path class="geo" d="M640.796,7.2v10.812"/>
+<path class="geo" d="M648.009,7.2v10.812"/>
+<path class="geo" d="M698.407,7.2v10.812"/>
+<path class="geo" d="M705.604,7.2v10.812"/>
+<path class="geo" d="M712.802,7.2v10.812"/>
+<path class="geo" d="M719.999,7.2v10.812"/>
+<path class="geo" d="M770.396,7.2v10.812"/>
+<path class="geo" d="M777.609,7.2v10.812"/>
+<path class="geo" d="M784.807,7.2v10.812"/>
+<path class="geo" d="M792.005,7.2v10.812"/>
+<path class="geo" d="M842.403,7.2v10.812"/>
+<path class="geo" d="M849.601,7.2v10.812"/>
+<path class="geo" d="M856.798,7.2v10.812"/>
+<path class="geo" d="M864.011,7.2v10.812"/>
+<path class="geo" d="M914.407,7.2v10.812"/>
+<path class="geo" d="M921.606,7.2v10.812"/>
+<path class="geo" d="M928.802,7.2v10.812"/>
+<path class="geo" d="M936.001,7.2v10.812"/>
+<path class="geo" d="M986.399,7.2v10.812"/>
+<path class="geo" d="M993.612,7.2v10.812"/>
+<path class="geo" d="M1000.809,7.2v10.812"/>
+<path class="geo" d="M1008.006,7.2v10.812"/>
+<path class="geo" d="M1058.405,7.2v10.812"/>
+<path class="geo" d="M1065.603,7.2v10.812"/>
+<path class="geo" d="M1072.8,7.2v10.812"/>
+<path class="geo" d="M1080.012,7.2v10.812"/>
+<path class="geo" d="M93.6,43.202h115.192"/>
+<path class="geo" d="M282.083,79.203h99.511"/>
+<path class="geo" d="M293.039,115.206h88.555"/>
+<path class="geo" d="M309.125,151.208h72.469"/>
+<path class="geo" d="M331.296,187.195h50.298"/>
+<path class="geo" d="M361.402,223.196h20.192"/>
+<path class="geo" d="M396.004,259.198h21.592"/>
+<path class="geo" d="M396.004,223.196h21.592"/>
+<path class="geo" d="M396.004,187.195h21.592"/>
+<path class="geo" d="M396.004,151.208h21.592"/>
+<path class="geo" d="M396.004,115.206h21.592"/>
+<path class="geo" d="M396.004,79.203h21.592"/>
+<path class="geo" d="M396.004,43.202h21.592"/>
+<path class="geo" d="M784.807,223.196h20.192"/>
+<path class="geo" d="M784.807,187.195h50.298"/>
+<path class="geo" d="M784.807,151.208h72.469"/>
+<path class="geo" d="M784.807,115.206h88.556"/>
+<path class="geo" d="M784.807,79.203h99.511"/>
+<path class="geo" d="M784.807,43.202h105.899"/>
+<path class="geo" d="M431.99,259.198h136.815"/>
+<path class="geo" d="M439.203,223.196h129.603"/>
+<path class="geo" d="M431.99,187.195h136.815"/>
+<path class="geo" d="M439.203,151.208h129.603"/>
+<path class="geo" d="M431.99,115.206h136.815"/>
+<path class="geo" d="M439.203,79.203h129.603"/>
+<path class="geo" d="M431.99,43.202h136.815"/>
+<path class="geo" d="M748.803,259.198h21.594"/>
+<path class="geo" d="M748.803,223.196h21.594"/>
+<path class="geo" d="M748.803,187.195h21.594"/>
+<path class="geo" d="M748.803,151.208h21.594"/>
+<path class="geo" d="M748.803,115.206h21.594"/>
+<path class="geo" d="M748.803,79.203h21.594"/>
+<path class="geo" d="M748.803,43.202h21.594"/>
+<path class="geo" d="M597.597,259.198h136.813"/>
+<path class="geo" d="M597.597,223.196h129.601"/>
+<path class="geo" d="M597.597,187.195h136.813"/>
+<path class="geo" d="M597.597,151.208h129.601"/>
+<path class="geo" d="M597.597,115.206h136.813"/>
+<path class="geo" d="M597.597,79.203h129.601"/>
+<path class="geo" d="M597.597,43.202h136.813"/>
+<path class="geo" d="M275.695,43.202h105.899"/>
+<path class="geo" d="M957.608,43.202H1072.8"/>
+<path class="geo" d="M583.2,57.596v43.2"/>
+<path class="geo" d="M583.2,201.603v43.201"/>
+<path class="geo" d="M583.2,129.601v43.198"/>
+<path class="geo" d="M540,50.4l-21.608,21.606"/>
+<path class="geo" d="M467.995,122.403l-21.593,21.593"/>
+<path class="geo" d="M503.996,86.401l-21.591,21.606"/>
+<path class="geo" d="M626.4,50.4l21.608,21.606"/>
+<path class="geo" d="M662.404,86.401l21.591,21.606"/>
+<path class="geo" d="M698.407,122.403l21.592,21.593"/>
+<path class="geo" d="M396.004,36.005h14.395"/>
+<path class="geo" d="M396.004,28.806h14.395"/>
+<path class="geo" d="M396.004,50.4h14.395"/>
+<path class="geo" d="M396.004,57.596h14.395"/>
+<path class="geo" d="M396.004,64.809h14.395"/>
+<path class="geo" d="M396.004,72.006h14.395"/>
+<path class="geo" d="M396.004,108.007h14.395"/>
+<path class="geo" d="M396.004,100.796h14.395"/>
+<path class="geo" d="M396.004,93.599h14.395"/>
+<path class="geo" d="M396.004,86.401h14.395"/>
+<path class="geo" d="M396.004,122.403h14.395"/>
+<path class="geo" d="M396.004,129.601h14.395"/>
+<path class="geo" d="M396.004,136.798h14.395"/>
+<path class="geo" d="M396.004,143.996h14.395"/>
+<path class="geo" d="M396.004,179.998h14.395"/>
+<path class="geo" d="M396.004,172.799h14.395"/>
+<path class="geo" d="M396.004,165.603h14.395"/>
+<path class="geo" d="M396.004,158.404h14.395"/>
+<path class="geo" d="M396.004,215.999h14.395"/>
+<path class="geo" d="M396.004,208.801h14.395"/>
+<path class="geo" d="M396.004,201.603h14.395"/>
+<path class="geo" d="M396.004,194.406h14.395"/>
+<path class="geo" d="M396.004,252h14.395"/>
+<path class="geo" d="M396.004,244.804h14.395"/>
+<path class="geo" d="M396.004,237.605h14.395"/>
+<path class="geo" d="M396.004,230.395h14.395"/>
+<path class="geo" d="M756.002,230.395h14.395"/>
+<path class="geo" d="M756.002,237.605h14.395"/>
+<path class="geo" d="M756.002,244.804h14.395"/>
+<path class="geo" d="M756.002,252h14.395"/>
+<path class="geo" d="M756.002,194.406h14.395"/>
+<path class="geo" d="M756.002,201.603h14.395"/>
+<path class="geo" d="M756.002,208.801h14.395"/>
+<path class="geo" d="M756.002,215.999h14.395"/>
+<path class="geo" d="M756.002,158.404h14.395"/>
+<path class="geo" d="M756.002,165.603h14.395"/>
+<path class="geo" d="M756.002,172.799h14.395"/>
+<path class="geo" d="M756.002,179.998h14.395"/>
+<path class="geo" d="M756.002,143.996h14.395"/>
+<path class="geo" d="M756.002,136.798h14.395"/>
+<path class="geo" d="M756.002,129.601h14.395"/>
+<path class="geo" d="M756.002,122.403h14.395"/>
+<path class="geo" d="M756.002,86.401h14.395"/>
+<path class="geo" d="M756.002,93.599h14.395"/>
+<path class="geo" d="M756.002,100.796h14.395"/>
+<path class="geo" d="M756.002,108.007h14.395"/>
+<path class="geo" d="M756.002,72.006h14.395"/>
+<path class="geo" d="M756.002,64.809h14.395"/>
+<path class="geo" d="M756.002,57.596h14.395"/>
+<path class="geo" d="M756.002,50.4h14.395"/>
+<path class="geo" d="M756.002,36.005h14.395"/>
+<path class="geo" d="M756.002,28.806h14.395"/>
+<path class="geo" d="M583.2,324.004v21.594"/>
+<path class="geo" d="M583.2,388.795v50.397"/>
+<path class="geo" d="M588.735,323.946l0.246,14.41"/>
+<path class="geo" d="M594.257,323.802l0.506,14.395"/>
+<path class="geo" d="M599.778,323.571l0.751,14.381"/>
+<path class="geo" d="M605.3,323.224l1.01,14.366"/>
+<path class="geo" d="M577.666,323.946l-0.247,14.41"/>
+<path class="geo" d="M572.144,323.802l-0.506,14.395"/>
+<path class="geo" d="M566.622,323.571l-0.751,14.381"/>
+<path class="geo" d="M561.103,323.224l-1.013,14.366"/>
+<path class="geo" d="M610.806,322.791l1.894,21.519"/>
+<path class="geo" d="M616.312,322.269l1.504,14.31"/>
+<path class="geo" d="M621.806,321.635l1.763,14.293"/>
+<path class="geo" d="M627.297,320.912l1.995,14.266"/>
+<path class="geo" d="M632.761,320.102l2.254,14.222"/>
+<path class="geo" d="M638.208,319.191l3.758,21.261"/>
+<path class="geo" d="M643.644,318.18l2.761,14.135"/>
+<path class="geo" d="M649.063,317.082l2.992,14.077"/>
+<path class="geo" d="M654.469,315.881l3.237,14.034"/>
+<path class="geo" d="M659.845,314.596l3.483,13.961"/>
+<path class="geo" d="M665.193,313.208l5.593,20.854"/>
+<path class="geo" d="M670.526,311.734l3.959,13.831"/>
+<path class="geo" d="M675.831,310.159l4.205,13.773"/>
+<path class="geo" d="M681.092,308.496l4.451,13.688"/>
+<path class="geo" d="M686.337,306.733l4.698,13.63"/>
+<path class="geo" d="M691.556,304.898l7.385,20.292"/>
+<path class="geo" d="M696.73,302.961l5.157,13.441"/>
+<path class="geo" d="M701.875,300.938l5.392,13.339"/>
+<path class="geo" d="M706.99,298.813l5.624,13.254"/>
+<path class="geo" d="M712.05,296.616l5.869,13.152"/>
+<path class="geo" d="M717.095,294.318l9.119,19.569"/>
+<path class="geo" d="M722.081,291.933l6.315,12.949"/>
+<path class="geo" d="M727.024,289.477l6.531,12.82"/>
+<path class="geo" d="M731.937,286.918l6.75,12.719"/>
+<path class="geo" d="M736.794,284.273l6.98,12.604"/>
+<path class="geo" d="M741.606,281.556l10.797,18.702"/>
+<path class="geo" d="M746.362,278.753l7.414,12.343"/>
+<path class="geo" d="M751.073,275.863l7.632,12.211"/>
+<path class="geo" d="M755.742,272.885l7.848,12.083"/>
+<path class="geo" d="M760.353,269.835l8.051,11.939"/>
+<path class="geo" d="M764.905,266.714l12.4,17.689"/>
+<path class="geo" d="M769.415,263.49l8.454,11.65"/>
+<path class="geo" d="M773.851,260.211l8.672,11.503"/>
+<path class="geo" d="M778.245,256.843l8.859,11.345"/>
+<path class="geo" d="M782.567,253.403l9.063,11.186"/>
+<path class="geo" d="M786.831,249.89l13.888,16.535"/>
+<path class="geo" d="M791.037,246.292l9.451,10.868"/>
+<path class="geo" d="M795.183,242.636l9.643,10.694"/>
+<path class="geo" d="M799.26,238.893l9.813,10.537"/>
+<path class="geo" d="M803.264,235.091l10.016,10.348"/>
+<path class="geo" d="M807.208,231.217l15.279,15.263"/>
+<path class="geo" d="M811.081,227.273l10.365,10.001"/>
+<path class="geo" d="M814.897,223.254l10.522,9.828"/>
+<path class="geo" d="M818.628,219.178l10.709,9.64"/>
+<path class="geo" d="M822.299,215.045l10.868,9.436"/>
+<path class="geo" d="M825.882,210.84l16.549,13.874"/>
+<path class="geo" d="M829.409,206.576l11.188,9.061"/>
+<path class="geo" d="M832.85,202.24l11.345,8.874"/>
+<path class="geo" d="M836.217,197.86l11.49,8.658"/>
+<path class="geo" d="M839.497,193.409l11.649,8.47"/>
+<path class="geo" d="M842.706,188.915l17.691,12.385"/>
+<path class="geo" d="M845.843,184.348l11.938,8.064"/>
+<path class="geo" d="M848.892,179.737l12.083,7.85"/>
+<path class="geo" d="M851.869,175.083l12.213,7.633"/>
+<path class="geo" d="M854.76,170.372l12.343,7.415"/>
+<path class="geo" d="M857.563,165.603l18.703,10.796"/>
+<path class="geo" d="M860.282,160.791l12.587,6.98"/>
+<path class="geo" d="M862.927,155.934l12.703,6.763"/>
+<path class="geo" d="M865.47,151.034l12.834,6.533"/>
+<path class="geo" d="M867.942,146.076l12.936,6.316"/>
+<path class="geo" d="M870.325,141.09l19.569,9.119"/>
+<path class="geo" d="M872.608,136.06l13.168,5.854"/>
+<path class="geo" d="M874.821,130.988l13.254,5.621"/>
+<path class="geo" d="M876.931,125.872l13.355,5.405"/>
+<path class="geo" d="M878.956,120.742l13.455,5.158"/>
+<path class="geo" d="M880.892,115.551l20.307,7.387"/>
+<path class="geo" d="M882.74,110.349l13.615,4.684"/>
+<path class="geo" d="M884.505,105.103l13.688,4.451"/>
+<path class="geo" d="M886.166,99.827l13.76,4.206"/>
+<path class="geo" d="M887.728,94.524l13.846,3.974"/>
+<path class="geo" d="M889.202,89.191l20.869,5.594"/>
+<path class="geo" d="M890.589,83.843l13.977,3.483"/>
+<path class="geo" d="M891.89,78.467l14.02,3.236"/>
+<path class="geo" d="M893.075,73.075l14.092,2.993"/>
+<path class="geo" d="M894.188,67.656l14.136,2.747"/>
+<path class="geo" d="M895.185,62.222l21.274,3.744"/>
+<path class="geo" d="M896.096,56.758l14.236,2.255"/>
+<path class="geo" d="M896.919,51.294l14.266,2.011"/>
+<path class="geo" d="M897.644,45.817l14.293,1.75"/>
+<path class="geo" d="M898.263,40.325l14.324,1.503"/>
+<path class="geo" d="M898.799,34.82l21.521,1.878"/>
+<path class="geo" d="M555.594,322.791l-1.893,21.519"/>
+<path class="geo" d="M550.088,322.269l-1.503,14.31"/>
+<path class="geo" d="M544.597,321.635l-1.765,14.293"/>
+<path class="geo" d="M539.104,320.912l-1.995,14.266"/>
+<path class="geo" d="M533.641,320.102l-2.255,14.222"/>
+<path class="geo" d="M528.192,319.191l-3.758,21.261"/>
+<path class="geo" d="M522.757,318.18l-2.761,14.135"/>
+<path class="geo" d="M517.337,317.082l-2.992,14.077"/>
+<path class="geo" d="M511.932,315.881l-3.238,14.034"/>
+<path class="geo" d="M506.556,314.596l-3.483,13.961"/>
+<path class="geo" d="M501.207,313.208l-5.593,20.854"/>
+<path class="geo" d="M495.874,311.734l-3.959,13.831"/>
+<path class="geo" d="M490.569,310.159l-4.206,13.773"/>
+<path class="geo" d="M485.309,308.496l-4.451,13.688"/>
+<path class="geo" d="M480.063,306.733l-4.698,13.63"/>
+<path class="geo" d="M474.845,304.898l-7.385,20.292"/>
+<path class="geo" d="M469.67,302.961l-5.158,13.441"/>
+<path class="geo" d="M464.525,300.938l-5.391,13.339"/>
+<path class="geo" d="M459.41,298.813l-5.623,13.254"/>
+<path class="geo" d="M454.351,296.616l-5.867,13.152"/>
+<path class="geo" d="M449.306,294.318l-9.119,19.569"/>
+<path class="geo" d="M444.319,291.933l-6.315,12.949"/>
+<path class="geo" d="M439.377,289.477l-6.533,12.82"/>
+<path class="geo" d="M434.462,286.918l-6.75,12.719"/>
+<path class="geo" d="M429.607,284.273l-6.981,12.604"/>
+<path class="geo" d="M424.794,281.556l-10.796,18.702"/>
+<path class="geo" d="M420.039,278.753l-7.414,12.343"/>
+<path class="geo" d="M415.327,275.863l-7.631,12.211"/>
+<path class="geo" d="M410.659,272.885l-7.848,12.083"/>
+<path class="geo" d="M406.049,269.835l-8.051,11.939"/>
+<path class="geo" d="M401.495,266.714l-12.4,17.689"/>
+<path class="geo" d="M396.986,263.49l-8.455,11.65"/>
+<path class="geo" d="M392.548,260.211l-8.672,11.503"/>
+<path class="geo" d="M388.156,256.843l-8.861,11.345"/>
+<path class="geo" d="M383.833,253.403l-9.063,11.186"/>
+<path class="geo" d="M379.57,249.89l-13.89,16.535"/>
+<path class="geo" d="M375.363,246.292l-9.451,10.868"/>
+<path class="geo" d="M371.216,242.636l-9.641,10.694"/>
+<path class="geo" d="M367.141,238.893l-9.813,10.537"/>
+<path class="geo" d="M363.137,235.091l-10.016,10.348"/>
+<path class="geo" d="M359.192,231.217l-15.278,15.263"/>
+<path class="geo" d="M355.317,227.273l-10.363,10.001"/>
+<path class="geo" d="M351.502,223.254l-10.522,9.828"/>
+<path class="geo" d="M347.773,219.178l-10.71,9.64"/>
+<path class="geo" d="M344.102,215.045l-10.869,9.436"/>
+<path class="geo" d="M340.517,210.84l-16.548,13.874"/>
+<path class="geo" d="M336.991,206.576l-11.187,9.061"/>
+<path class="geo" d="M333.551,202.24l-11.346,8.874"/>
+<path class="geo" d="M330.184,197.86l-11.49,8.658"/>
+<path class="geo" d="M326.902,193.409l-11.648,8.47"/>
+<path class="geo" d="M323.694,188.915l-17.69,12.385"/>
+<path class="geo" d="M320.557,184.348l-11.938,8.064"/>
+<path class="geo" d="M317.507,179.737l-12.082,7.85"/>
+<path class="geo" d="M314.531,175.083l-12.213,7.633"/>
+<path class="geo" d="M311.64,170.372l-12.343,7.415"/>
+<path class="geo" d="M308.835,165.603l-18.701,10.796"/>
+<path class="geo" d="M306.119,160.791l-12.588,6.98"/>
+<path class="geo" d="M303.474,155.934l-12.705,6.763"/>
+<path class="geo" d="M300.931,151.034l-12.834,6.533"/>
+<path class="geo" d="M298.458,146.076l-12.936,6.316"/>
+<path class="geo" d="M296.074,141.09l-19.568,9.119"/>
+<path class="geo" d="M293.792,136.06l-13.167,5.854"/>
+<path class="geo" d="M291.58,130.988l-13.254,5.621"/>
+<path class="geo" d="M289.469,125.872l-13.355,5.405"/>
+<path class="geo" d="M287.445,120.742L273.99,125.9"/>
+<path class="geo" d="M285.509,115.551l-20.307,7.387"/>
+<path class="geo" d="M283.659,110.349l-13.615,4.684"/>
+<path class="geo" d="M281.896,105.103l-13.687,4.451"/>
+<path class="geo" d="M280.232,99.827l-13.758,4.206"/>
+<path class="geo" d="M278.673,94.524l-13.846,3.974"/>
+<path class="geo" d="M277.198,89.191l-20.871,5.594"/>
+<path class="geo" d="M275.811,83.843l-13.977,3.483"/>
+<path class="geo" d="M274.51,78.467l-14.019,3.236"/>
+<path class="geo" d="M273.325,73.075l-14.092,2.993"/>
+<path class="geo" d="M272.212,67.656l-14.135,2.747"/>
+<path class="geo" d="M271.215,62.222l-21.275,3.744"/>
+<path class="geo" d="M270.305,56.758l-14.236,2.255"/>
+<path class="geo" d="M269.481,51.294l-14.266,2.011"/>
+<path class="geo" d="M268.757,45.817l-14.293,1.75"/>
+<path class="geo" d="M268.137,40.325l-14.323,1.503"/>
+<path class="geo" d="M267.602,34.82l-21.521,1.878"/>
+<path class="geo" d="M827.573,251.581l20.364,20.365"/>
+<path class="geo" d="M592.726,552.618l0.361,20.696"/>
+<path class="geo" d="M601.932,543.411l0.707,20.35"/>
+<path class="geo" d="M610.834,534.494l1.056,20.019"/>
+<path class="geo" d="M619.464,525.866l1.387,19.686"/>
+<path class="geo" d="M627.021,508.131l2.516,28.719"/>
+<path class="geo" d="M635.982,509.362l1.995,19.047"/>
+<path class="geo" d="M643.888,501.44l2.299,18.761"/>
+<path class="geo" d="M651.577,493.752l2.602,18.469"/>
+<path class="geo" d="M659.078,486.265l2.878,18.181"/>
+<path class="geo" d="M649.468,383l20.075,113.857"/>
+<path class="geo" d="M673.519,471.826l3.425,17.634"/>
+<path class="geo" d="M680.483,464.861l3.686,17.372"/>
+<path class="geo" d="M687.292,458.053l3.945,17.112"/>
+<path class="geo" d="M693.956,451.39l4.205,16.853"/>
+<path class="geo" d="M698.319,436.837l6.605,24.642"/>
+<path class="geo" d="M706.862,438.471l4.696,16.372"/>
+<path class="geo" d="M713.134,432.199l4.929,16.128"/>
+<path class="geo" d="M719.29,426.04l5.175,15.898"/>
+<path class="geo" d="M725.347,420l5.391,15.667"/>
+<path class="geo" d="M713.712,365.788l23.197,63.707"/>
+<path class="geo" d="M737.141,408.206l5.84,15.219"/>
+<path class="geo" d="M742.894,402.438l6.056,15.004"/>
+<path class="geo" d="M748.572,396.773l6.274,14.786"/>
+<path class="geo" d="M754.167,391.182l6.488,14.566"/>
+<path class="geo" d="M756.435,378.708l9.944,21.317"/>
+<path class="geo" d="M765.137,380.21l6.894,14.149"/>
+<path class="geo" d="M770.513,374.821l7.111,13.961"/>
+<path class="geo" d="M775.847,369.502l7.298,13.744"/>
+<path class="geo" d="M781.106,364.227l7.516,13.556"/>
+<path class="geo" d="M773.996,337.676l20.032,34.688"/>
+<path class="geo" d="M791.483,353.849l7.906,13.152"/>
+<path class="geo" d="M796.614,348.733l8.095,12.949"/>
+<path class="geo" d="M801.688,343.646l8.296,12.775"/>
+<path class="geo" d="M806.731,338.601l8.484,12.573"/>
+<path class="geo" d="M807.556,327.603l12.863,18.384"/>
+<path class="geo" d="M816.719,328.615l8.876,12.198"/>
+<path class="geo" d="M821.676,323.657l9.05,12.025"/>
+<path class="geo" d="M826.605,318.745l9.236,11.821"/>
+<path class="geo" d="M831.506,313.831l9.422,11.633"/>
+<path class="geo" d="M828.485,299.521l17.516,20.87"/>
+<path class="geo" d="M841.275,304.075l9.784,11.259"/>
+<path class="geo" d="M846.131,299.204l9.973,11.085"/>
+<path class="geo" d="M850.987,294.362l10.16,10.897"/>
+<path class="geo" d="M855.831,289.505l10.348,10.724"/>
+<path class="geo" d="M855.584,279.576l15.623,15.625"/>
+<path class="geo" d="M865.513,279.822l10.71,10.349"/>
+<path class="geo" d="M870.355,274.98l10.911,10.161"/>
+<path class="geo" d="M875.212,270.124l11.086,9.988"/>
+<path class="geo" d="M880.067,265.269l11.273,9.798"/>
+<path class="geo" d="M875.53,252.492l20.869,17.517"/>
+<path class="geo" d="M889.837,255.513l11.637,9.423"/>
+<path class="geo" d="M894.737,250.599l11.822,9.234"/>
+<path class="geo" d="M899.666,245.67l12.01,9.047"/>
+<path class="geo" d="M904.624,240.728l12.197,8.859"/>
+<path class="geo" d="M903.612,231.551l18.369,12.862"/>
+<path class="geo" d="M914.61,230.74l12.573,8.484"/>
+<path class="geo" d="M919.655,225.698l12.761,8.28"/>
+<path class="geo" d="M924.728,220.609l12.965,8.108"/>
+<path class="geo" d="M929.858,215.493l13.152,7.906"/>
+<path class="geo" d="M913.685,198.005l34.688,20.031"/>
+<path class="geo" d="M940.235,205.102l13.558,7.515"/>
+<path class="geo" d="M945.495,199.84l13.761,7.313"/>
+<path class="geo" d="M950.83,194.522l13.948,7.097"/>
+<path class="geo" d="M956.206,189.131l14.165,6.908"/>
+<path class="geo" d="M954.718,180.445l21.305,9.93"/>
+<path class="geo" d="M967.175,178.162l14.585,6.489"/>
+<path class="geo" d="M972.785,172.568l14.784,6.272"/>
+<path class="geo" d="M978.45,166.889l15.002,6.07"/>
+<path class="geo" d="M984.218,161.136l15.217,5.839"/>
+<path class="geo" d="M941.796,137.723l63.71,23.183"/>
+<path class="geo" d="M996.01,149.343l15.668,5.391"/>
+<path class="geo" d="M1002.052,143.288l15.898,5.173"/>
+<path class="geo" d="M1008.208,137.146l16.131,4.928"/>
+<path class="geo" d="M1014.481,130.873l16.361,4.684"/>
+<path class="geo" d="M1012.834,122.316l24.642,6.604"/>
+<path class="geo" d="M1027.388,117.951l16.867,4.206"/>
+<path class="geo" d="M1034.051,111.29l17.112,3.944"/>
+<path class="geo" d="M1040.858,104.481l17.372,3.687"/>
+<path class="geo" d="M1047.825,97.515l17.631,3.426"/>
+<path class="geo" d="M959.011,73.466l113.848,20.074"/>
+<path class="geo" d="M1062.264,83.077l18.183,2.875"/>
+<path class="geo" d="M1069.765,75.591l18.455,2.587"/>
+<path class="geo" d="M1077.454,67.887l18.759,2.312"/>
+<path class="geo" d="M1085.359,59.982l19.065,2.008"/>
+<path class="geo" d="M1084.132,51.035l28.732,2.516"/>
+<path class="geo" d="M1101.879,43.477l19.685,1.372"/>
+<path class="geo" d="M1110.509,34.833l20.017,1.056"/>
+<path class="geo" d="M1119.411,25.93l20.365,0.709"/>
+<path class="geo" d="M1128.618,16.724l20.711,0.361"/>
+<path class="geo" d="M1159.2,7.2"/>
+<path class="geo" d="M964.806,7.2"/>
+<path class="geo" d="M583.2,467.997v50.396"/>
+<path class="geo" d="M583.2,540V583.2"/>
+<path class="geo" d="M338.826,251.581l-20.364,20.365"/>
+<path class="geo" d="M573.675,552.618l-0.362,20.696"/>
+<path class="geo" d="M564.47,543.411l-0.708,20.35"/>
+<path class="geo" d="M555.567,534.494l-1.056,20.019"/>
+<path class="geo" d="M546.937,525.866l-1.387,19.686"/>
+<path class="geo" d="M539.379,508.131l-2.516,28.719"/>
+<path class="geo" d="M530.418,509.362l-1.995,19.047"/>
+<path class="geo" d="M522.512,501.44l-2.298,18.761"/>
+<path class="geo" d="M514.823,493.752l-2.602,18.469"/>
+<path class="geo" d="M507.32,486.265l-2.875,18.181"/>
+<path class="geo" d="M516.932,383l-20.075,113.857"/>
+<path class="geo" d="M492.882,471.826l-3.425,17.634"/>
+<path class="geo" d="M485.917,464.861l-3.686,17.372"/>
+<path class="geo" d="M479.108,458.053l-3.946,17.112"/>
+<path class="geo" d="M472.445,451.39l-4.205,16.853"/>
+<path class="geo" d="M468.081,436.837l-6.605,24.642"/>
+<path class="geo" d="M459.539,438.471l-4.696,16.372"/>
+<path class="geo" d="M453.267,432.199l-4.929,16.128"/>
+<path class="geo" d="M447.108,426.04l-5.173,15.898"/>
+<path class="geo" d="M441.053,420l-5.391,15.667"/>
+<path class="geo" d="M452.688,365.788l-23.197,63.707"/>
+<path class="geo" d="M429.26,408.206l-5.84,15.219"/>
+<path class="geo" d="M423.507,402.438l-6.056,15.004"/>
+<path class="geo" d="M417.827,396.773l-6.273,14.786"/>
+<path class="geo" d="M412.233,391.182l-6.489,14.566"/>
+<path class="geo" d="M409.965,378.708l-9.944,21.317"/>
+<path class="geo" d="M401.264,380.21l-6.894,14.149"/>
+<path class="geo" d="M395.888,374.821l-7.111,13.961"/>
+<path class="geo" d="M390.553,369.502l-7.298,13.744"/>
+<path class="geo" d="M385.293,364.227l-7.516,13.556"/>
+<path class="geo" d="M392.404,337.676l-20.033,34.688"/>
+<path class="geo" d="M374.917,353.849l-7.907,13.152"/>
+<path class="geo" d="M369.785,348.733l-8.094,12.949"/>
+<path class="geo" d="M364.712,343.646l-8.296,12.775"/>
+<path class="geo" d="M359.668,338.601l-8.484,12.573"/>
+<path class="geo" d="M358.844,327.603l-12.863,18.384"/>
+<path class="geo" d="M349.681,328.615l-8.875,12.198"/>
+<path class="geo" d="M344.723,323.657l-9.048,12.025"/>
+<path class="geo" d="M339.794,318.745l-9.235,11.821"/>
+<path class="geo" d="M334.895,313.831l-9.422,11.633"/>
+<path class="geo" d="M337.916,299.521l-17.518,20.87"/>
+<path class="geo" d="M325.125,304.075l-9.786,11.259"/>
+<path class="geo" d="M320.269,299.204l-9.972,11.085"/>
+<path class="geo" d="M315.413,294.362l-10.161,10.897"/>
+<path class="geo" d="M310.57,289.505l-10.348,10.724"/>
+<path class="geo" d="M310.816,279.576l-15.623,15.625"/>
+<path class="geo" d="M300.887,279.822l-10.709,10.349"/>
+<path class="geo" d="M296.045,274.98l-10.911,10.161"/>
+<path class="geo" d="M291.188,270.124l-11.085,9.988"/>
+<path class="geo" d="M286.333,265.269l-11.273,9.798"/>
+<path class="geo" d="M290.871,252.492l-20.869,17.517"/>
+<path class="geo" d="M276.562,255.513l-11.635,9.423"/>
+<path class="geo" d="M271.663,250.599l-11.822,9.234"/>
+<path class="geo" d="M266.734,245.67l-12.009,9.047"/>
+<path class="geo" d="M261.777,240.728l-12.199,8.859"/>
+<path class="geo" d="M262.789,231.551l-18.37,12.862"/>
+<path class="geo" d="M251.79,230.74l-12.575,8.484"/>
+<path class="geo" d="M246.745,225.698l-12.762,8.28"/>
+<path class="geo" d="M241.672,220.609l-12.964,8.108"/>
+<path class="geo" d="M236.542,215.493l-13.152,7.906"/>
+<path class="geo" d="M252.714,198.005l-34.688,20.031"/>
+<path class="geo" d="M226.165,205.102l-13.559,7.515"/>
+<path class="geo" d="M220.904,199.84l-13.759,7.313"/>
+<path class="geo" d="M215.571,194.522l-13.948,7.097"/>
+<path class="geo" d="M210.193,189.131l-14.164,6.908"/>
+<path class="geo" d="M211.682,180.445l-21.304,9.93"/>
+<path class="geo" d="M199.224,178.162l-14.583,6.489"/>
+<path class="geo" d="M193.615,172.568l-14.784,6.272"/>
+<path class="geo" d="M187.95,166.889l-15.002,6.07"/>
+<path class="geo" d="M182.183,161.136l-15.218,5.839"/>
+<path class="geo" d="M224.604,137.723l-63.71,23.183"/>
+<path class="geo" d="M170.389,149.343l-15.666,5.391"/>
+<path class="geo" d="M164.349,143.288l-15.898,5.173"/>
+<path class="geo" d="M158.192,137.146l-16.13,4.928"/>
+<path class="geo" d="M151.919,130.873l-16.362,4.684"/>
+<path class="geo" d="M153.566,122.316l-24.642,6.604"/>
+<path class="geo" d="M139.012,117.951l-16.867,4.206"/>
+<path class="geo" d="M132.35,111.29l-17.112,3.944"/>
+<path class="geo" d="M125.542,104.481l-17.374,3.687"/>
+<path class="geo" d="M118.575,97.515l-17.633,3.426"/>
+<path class="geo" d="M207.39,73.466L93.542,93.541"/>
+<path class="geo" d="M104.137,83.077l-18.182,2.875"/>
+<path class="geo" d="M96.636,75.591l-18.458,2.587"/>
+<path class="geo" d="M88.947,67.887l-18.76,2.312"/>
+<path class="geo" d="M81.042,59.982L61.976,61.99"/>
+<path class="geo" d="M82.269,51.035L53.537,53.55"/>
+<path class="geo" d="M64.52,43.477l-19.684,1.372"/>
+<path class="geo" d="M55.892,34.833L35.875,35.89"/>
+<path class="geo" d="M46.988,25.93L26.625,26.64"/>
+<path class="geo" d="M37.782,16.724l-20.71,0.361"/>
+
+<text transform="matrix(1 0 0 1 576.9243 39.6001)" class="ano">0</text>
+<text transform="matrix(1 0 0 1 504.9243 39.6001)" class="ano">1</text>
+<text transform="matrix(1 0 0 1 432.9243 39.6001)" class="ano">2</text>
+<text transform="matrix(1 0 0 1 360.9243 39.6001)" class="ano">3</text>
+<text transform="matrix(1 0 0 1 288.9243 39.6001)" class="ano">4</text>
+<text transform="matrix(1 0 0 1 216.9243 39.6001)" class="ano">5</text>
+<text transform="matrix(1 0 0 1 144.9243 39.6001)" class="ano">6</text>
+<text transform="matrix(1 0 0 1 72.9243 39.6001)" class="ano">7</text>
+<text transform="matrix(1 0 0 1 648.9238 39.6001)" class="ano">1</text>
+<text transform="matrix(1 0 0 1 720.9238 39.6001)" class="ano">2</text>
+<text transform="matrix(1 0 0 1 792.9238 39.6001)" class="ano">3</text>
+<text transform="matrix(1 0 0 1 864.9238 39.6001)" class="ano">4</text>
+<text transform="matrix(1 0 0 1 936.9238 39.6001)" class="ano">5</text>
+<text transform="matrix(1 0 0 1 1008.9238 39.6001)" class="ano">6</text>
+<text transform="matrix(1 0 0 1 1080.9238 39.6001)" class="ano">7</text>
+<text transform="matrix(1 0 0 1 418.5244 86.3999)" class="ano">1</text>
+<text transform="matrix(1 0 0 1 418.5244 158.3999)" class="ano">2</text>
+<text transform="matrix(1 0 0 1 418.5244 230.3999)" class="ano">3</text>
+<text transform="matrix(1 0 0 1 735.3242 86.3999)" class="ano">1</text>
+<text transform="matrix(1 0 0 1 735.3242 158.3999)" class="ano">2</text>
+<text transform="matrix(1 0 0 1 735.3242 230.3999)" class="ano">3</text>
+<text transform="matrix(1 0 0 1 570.6484 374.3999)" class="ano">90</text>
+<g>
+<text transform="matrix(0.9848 -0.1736 0.1736 0.9848 633.3525 363.9097)" class="ano">80</text>
+<text transform="matrix(0.9848 -0.1736 0.1736 0.9848 630.9229 386.272)" class="ano">100</text>
+</g>
+<g>
+<text transform="matrix(0.9397 -0.342 0.342 0.9397 694.5322 349.7817)" class="ano">70</text>
+<text transform="matrix(0.9397 -0.342 0.342 0.9397 696.0234 372.2251)" class="ano">110</text>
+</g>
+<g>
+<text transform="matrix(0.866 -0.5 0.5 0.866 752.3301 325.2446)" class="ano">60</text>
+<text transform="matrix(0.866 -0.5 0.5 0.866 757.6953 347.0884)" class="ano">120</text>
+</g>
+<g>
+<text transform="matrix(0.766 -0.6428 0.6428 0.766 804.9883 291.0435)" class="ano">50</text>
+<text transform="matrix(0.766 -0.6428 0.6428 0.766 814.0654 311.6235)" class="ano">130</text>
+</g>
+<g>
+<text transform="matrix(0.6428 -0.766 0.766 0.6428 850.9072 248.2173)" class="ano">40</text>
+<text transform="matrix(0.6428 -0.766 0.766 0.6428 863.4199 266.9097)" class="ano">140</text>
+</g>
+<g>
+<text transform="matrix(0.5 -0.866 0.866 0.5 888.6924 198.0698)" class="ano">30</text>
+<text transform="matrix(0.5 -0.866 0.866 0.5 904.2617 214.3037)" class="ano">150</text>
+</g>
+<g>
+<text transform="matrix(0.342 -0.9397 0.9397 0.342 917.1953 142.1235)" class="ano">20</text>
+<text transform="matrix(0.342 -0.9397 0.9397 0.342 935.3467 155.4072)" class="ano">160</text>
+</g>
+<g>
+<text transform="matrix(0.1736 -0.9848 0.9848 0.1736 935.5508 82.0767)" class="ano">10</text>
+<text transform="matrix(0.1736 -0.9848 0.9848 0.1736 955.7324 92.0063)" class="ano">170</text>
+</g>
+<g>
+<text transform="matrix(0.9848 0.1736 -0.1736 0.9848 502.1455 358.4614)" class="ano">100</text>
+<text transform="matrix(0.9848 0.1736 -0.1736 0.9848 504.5747 380.8228)" class="ano">80</text>
+</g>
+<g>
+<text transform="matrix(0.9397 0.342 -0.342 0.9397 442.3813 339.0493)" class="ano">110</text>
+<text transform="matrix(0.9397 0.342 -0.342 0.9397 440.8901 361.4927)" class="ano">70</text>
+</g>
+<g>
+<text transform="matrix(0.866 0.5 -0.5 0.866 386.896 309.5552)" class="ano">120</text>
+<text transform="matrix(0.866 0.5 -0.5 0.866 381.5308 331.3989)" class="ano">60</text>
+</g>
+<g>
+<text transform="matrix(0.766 0.6428 -0.6428 0.766 337.3745 270.8745)" class="ano">130</text>
+<text transform="matrix(0.766 0.6428 -0.6428 0.766 328.2974 291.4546)" class="ano">50</text>
+</g>
+<g>
+<text transform="matrix(0.6428 0.766 -0.766 0.6428 295.3218 224.1812)" class="ano">140</text>
+<text transform="matrix(0.6428 0.766 -0.766 0.6428 282.8091 242.8721)" class="ano">40</text>
+</g>
+<g>
+<text transform="matrix(0.5 0.866 -0.866 0.5 262.0176 170.895)" class="ano">150</text>
+<text transform="matrix(0.5 0.866 -0.866 0.5 246.4482 187.1294)" class="ano">30</text>
+</g>
+<g>
+<text transform="matrix(0.342 0.9397 -0.9397 0.342 238.4717 112.6353)" class="ano">160</text>
+<text transform="matrix(0.342 0.9397 -0.9397 0.342 220.3213 125.9194)" class="ano">20</text>
+</g>
+<g>
+<text transform="matrix(0.1736 0.9848 -0.9848 0.1736 225.4004 51.1719)" class="ano">170</text>
+<text transform="matrix(0.1736 0.9848 -0.9848 0.1736 205.2188 61.1025)" class="ano">10</text>
+</g>
+<polygon class="geo" points="583.2,583.2 7.2,7.2 1159.2,7.2 "/>
+</svg>
