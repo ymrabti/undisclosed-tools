@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
         <meta name="format-detection" content="telephone=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon" href="favicon-48.png">
+        <link rel="shortcut icon" href="img/favicon-48.png">
 
         <style type="text/css">
             .interactive {
@@ -92,7 +92,7 @@
             }
 
             .sprite {
-                background: url('/includes/images/sprite2016-06-30a.svg') no-repeat
+                background: url('includes/images/sprite2016-06-30a.svg') no-repeat
             }
 
             span.sprite {
@@ -553,9 +553,9 @@
 
             @font-face {
                 font-family: KaTeX_Main;
-                src: url(/includes/cssjs/katex/fonts/KaTeX_Main-Italic.woff2) format('woff2'),
-                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Italic.woff) format('woff'),
-                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Italic.ttf) format('truetype');
+                src: url(includes/cssjs/katex/fonts/KaTeX_Main-Italic.woff2) format('woff2'),
+                    url(includes/cssjs/katex/fonts/KaTeX_Main-Italic.woff) format('woff'),
+                    url(includes/cssjs/katex/fonts/KaTeX_Main-Italic.ttf) format('truetype');
                 font-weight: 400;
                 font-style: italic;
                 font-display: swap;
@@ -563,9 +563,9 @@
 
             @font-face {
                 font-family: KaTeX_Main;
-                src: url(/includes/cssjs/katex/fonts/KaTeX_Main-Regular.woff2) format('woff2'),
-                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Regular.woff) format('woff'),
-                    url(/includes/cssjs/katex/fonts/KaTeX_Main-Regular.ttf) format('truetype');
+                src: url(includes/cssjs/katex/fonts/KaTeX_Main-Regular.woff2) format('woff2'),
+                    url(includes/cssjs/katex/fonts/KaTeX_Main-Regular.woff) format('woff'),
+                    url(includes/cssjs/katex/fonts/KaTeX_Main-Regular.ttf) format('truetype');
                 font-weight: 400;
                 font-style: normal;
                 font-display: swap;
@@ -573,9 +573,9 @@
 
             @font-face {
                 font-family: KaTeX_Math;
-                src: url(/includes/cssjs/katex/fonts/KaTeX_Math-Italic.woff2) format('woff2'),
-                    url(/includes/cssjs/katex/fonts/KaTeX_Math-Italic.woff) format('woff'),
-                    url(/includes/cssjs/katex/fonts/KaTeX_Math-Italic.ttf) format('truetype');
+                src: url(includes/cssjs/katex/fonts/KaTeX_Math-Italic.woff2) format('woff2'),
+                    url(includes/cssjs/katex/fonts/KaTeX_Math-Italic.woff) format('woff'),
+                    url(includes/cssjs/katex/fonts/KaTeX_Math-Italic.ttf) format('truetype');
                 font-weight: 400;
                 font-style: italic;
                 font-display: swap;
@@ -2008,7 +2008,7 @@
             }
         </style>
 
-        <link rel="stylesheet" href="/cls.css">
+        <link rel="stylesheet" href="css/cls.css">
         </head>
 
     <body id="top">
@@ -2327,8 +2327,8 @@
             freestar.config.enabled_slots = [];
             freestar.initCallback = function () { (freestar.config.enabled_slots.length === 0) ? freestar.initCallbackCalled = false : freestar.newAdSlots(freestar.config.enabled_slots) }
             document.addEventListener("DOMContentLoaded", function (event) {
-                loadScript("/includes/cssjs/ddivs-voting-2020-03-31c.min.js", function () {
-                    loadScript("/includes/cssjs/ASCIIsvg-IM-2020-01-14.min.js", function () {
+                loadScript("includes/cssjs/ddivs-voting-2020-03-31c.min.js", function () {
+                    loadScript("includes/cssjs/ASCIIsvg-IM-2020-01-14.min.js", function () {
                         doSvgGraph();
                     })
                 });
