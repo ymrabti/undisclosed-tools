@@ -250,7 +250,7 @@ function logoUchiha() {
  * @param {number} spin spin duration tour
  */
 function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, spin = "5s") {
-    const svg = addSVG(), g = addNs({}, "g", svg);
+    const svg = addSVG({ ...init_attrs, width: 400 }), g = addNs({}, "g", svg);
     let points_list = [], angles_points = [], i = 0,
         this_ray = dist_step,
         angle = angle_initial;
@@ -267,21 +267,34 @@ function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, spin = "5
     addNs({ points: pts, fill: "none", stroke: rand_color(), style: "stroke-width:2;" }, "polyline", g);
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
-function nest(n, angle, rayon, min_r, start, Attrs = init_attrs, spin, dx = 0, dy = 0) {
+/**
+ * 
+ * @param {number} n number of vertices
+ * @param {number} angle initial angle
+ * @param {number} rayon rayon exterior
+ * @param {number} min_r rayon interior
+ * @param {number} start vertice start
+ * @param {Object} Attrs Attributes
+ * @param {object} spin spin or not
+ * @param {number} dx dx
+ * @param {number} dy dy
+ */
+function nest(n, angle, rayon, min_r, start, spin, Attrs = init_attrs, dx = 0, dy = 0) {
     const svg = addSVG(Attrs);
     let i = 0, rcc = rand_color();
     let g = addNs({}, "g", svg);
     while (rayon > min_r && n > 4) {
         let alpha = 180 * i / n - angle;
         let list_gr = star(n, rayon, dx, dy, alpha);
-        let star_graphic = "M" + (list_gr.length == 2 ? list_gr[0].join() + "zM" + list_gr[1].join() : list_gr[0].join()) + "z";
+        const pathInner = list_gr.length == 2 ? list_gr[0].join() + "zM" + list_gr[1].join() : list_gr[0].join();
+        let star_graphic = "M" + pathInner + "z";
         if (i === 0) {
             list_gr.forEach(function (item, index) {
                 item.forEach(function (item1, index1, arr1) {
                     // console.log(index1,arr1.length);
                     if (index1 < arr1.length - 1) {
                         let indTxt = index * (arr1.length - 1) + index1;
-                        addNs({ x: item1[0], y: item1[1], fill: 'red', style: `font-size:35;font-family:"Arial";` }, "text", svg, indTxt + 1);
+                        addNs({ x: item1[0], y: item1[1], fill: 'red', style: `font-size:48;font-family:"Arial";` }, "text", svg, indTxt + 1);
                     }
                 });
             });
@@ -304,15 +317,15 @@ function curve_star(n, r, dx, dy, initialAngle, fun = i => 1, ray = 200, fillrul
     else { draw_cstar(l, fun, ray, fillrule, fillcolor); }
 }
 // SDL1234@2021
-spiral(250, 0, 20, 30, false);
 yinyang(2, 250, '2s');
 Google();
 logoUchiha();
 tangenteCircle(200, 80);
 simpleyingyang();
 // mapp_shp('./geojson/ts.json', svg, (w, h) => Math.min(w, h))
-curve_star(n, rayon, 0, 0, 0, (i) => 1 - i % 2, 3 * rayon, "evenodd", 'green');
-nest(n, -90, 250, 5, 5, { ...init_attrs, width: 400 });
+curve_star(9, rayon, 0, 0, 0, (i) => 1 - i % 2, 3 * rayon, "evenodd", 'green');
+spiral(250, 0, 20, 50, false);
+nest(5, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
 
 
 /* function googleLines(a1, a2, x1, x2, ro, ri) {

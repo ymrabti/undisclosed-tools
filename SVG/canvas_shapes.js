@@ -28,17 +28,19 @@ function yinyang(n, R) {
         ctx.arc(300, 300, R, nangle, tangle);
         ctx.strokeStyle = listColors[index];
         ctx.stroke();
-        ctx.fillStyle = listColors[index]; ctx.fill();
+        ctx.fillStyle = listColors[index]; 
+        ctx.fill();
 
         setTimeout(() => {
-            let c1x = 0.5 * R * cos(deg2rad((index + 0.5) * 360 / n)) + dx;
-            let c1y = 0.5 * R * sin(deg2rad((index + 0.5) * 360 / n)) + dy;
+            const degIndex = (index + 0.0) * 360 / n;
+            let c1x = 0.5 * R * cos(deg2rad(degIndex)) + dx;
+            let c1y = 0.5 * R * sin(deg2rad(degIndex)) + dy;
             circle(c1x, c1y, 0.5 * R / n, 0, 2 * Math.PI, false, listColors[(n + index - 1) % n]);
         }, 100 * index);
     }
 
 }
-yinyang(2, 200);
+yinyang(3, 200);
 
 function circle(cx, cy, r, as, ae, clock, fill) {
     ctx.beginPath();

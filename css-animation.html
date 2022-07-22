@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS Animation</title>
+        <style>
+            label {
+                display: block;
+                width: 50px;
+                height: 50px;
+                cursor: pointer;
+            }
+
+            input {
+                position: absolute;
+                transform: scale(0);
+            }
+
+            input:checked~.checkbox {
+                transform: rotate(45deg);
+                width: 20px;
+                margin-left: 20px;
+                border-color: #24c78e;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-radius: 0;
+            }
+
+            .checkbox {
+                display: block;
+                width: inherit;
+                height: inherit;
+                border: 3px solid #434343;
+                border-radius: 6px;
+                transition: all 0.375s;
+            }
+
+            .custom-resizer {
+                width: 200px;
+                height: 300px;
+                border: 2px solid black;
+                border-radius: 20px;
+                overflow: auto;
+                resize: both;
+            }
+
+            ::-webkit-resizer {
+                border: 2px solid yellow;
+                background: blue;
+                box-shadow: 0 0 2px 5px red;
+                outline: 2px dashed green;
+
+                /*size does not work*/
+                display: block;
+                width: 150px !important;
+                height: 150px !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <label>
+            <input type="checkbox">
+            <span class="checkbox"></span>
+        </label>
+        <div class="custom-resizer">
+
+        </div>
+    </body>
+
+</html>

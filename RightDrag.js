@@ -55,3 +55,7 @@ while (date.getFullYear() < 3033) {
     }
     // .toLocaleDateString().match(/(\d{2})\/(\d{2})\/(\d{4})/gi)
 }
+
+/* var img = document.createElement('img');
+Object.assign(img, { src: document.getElementsByTagName('canvas')[0].toDataURL() })
+document.body.appendChild(img); */
