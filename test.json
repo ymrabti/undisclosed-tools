@@ -1,0 +1,95 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "EPSG:3857"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            100,
+                            0
+                        ],
+                        [
+                            101,
+                            0
+                        ],
+                        [
+                            101,
+                            1
+                        ],
+                        [
+                            100,
+                            1
+                        ],
+                        [
+                            100,
+                            0
+                        ]
+                    ]
+                ]
+            },
+            "fields": [
+                {
+                    "Commune": "Fezouane",
+                    "Secteur": "Secteur1",
+                    "Date Depart": "2022-01-01",
+                    "Heure Depart": "17:00:00",
+                    "Heure Arrive": "23:00:00",
+                    "Km Depart": "1",
+                    "Km Arrivee": "1",
+                    "Tournees": "1",
+                    "Tare": 5.54,
+                    "Brut": 3.86,
+                    "Tonnage": 1.68
+                },
+                {
+                    "Commune": "Zegzel",
+                    "Secteur": "Secteur1",
+                    "Date Depart": "2022-01-01",
+                    "Heure Depart": "12:15:00",
+                    "Heure Arrive": "17:05:00",
+                    "Km Depart": "1",
+                    "Km Arrivee": "1",
+                    "Tournees": "2",
+                    "Tare": 11.16,
+                    "Brut": 7.86,
+                    "Tonnage": 3.3
+                },
+                {
+                    "Commune": "Laatamna",
+                    "Secteur": "Secteur1",
+                    "Date Depart": "2022-01-01",
+                    "Heure Depart": "12:25:00",
+                    "Heure Arrive": "12:35:00",
+                    "Km Depart": "43861",
+                    "Km Arrivee": "43780",
+                    "Tournees": "2",
+                    "Tare": 11.84,
+                    "Brut": 7.94,
+                    "Tonnage": 3.9
+                },
+                {
+                    "Commune": "Ahfir",
+                    "Secteur": "Secteur1",
+                    "Date Depart": "2022-01-01",
+                    "Heure Depart": "06:00:00",
+                    "Heure Arrive": "11:35:00",
+                    "Km Depart": "1",
+                    "Km Arrivee": "1",
+                    "Tournees": "1",
+                    "Tare": 19.92,
+                    "Brut": 12.16,
+                    "Tonnage": 7.76
+                }
+            ]
+        }
+    ]
+}
