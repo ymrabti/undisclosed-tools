@@ -4,22 +4,45 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/svg+xml" href="./index.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SVG Flags</title>
         <style type="text/css">
-            .svg {
-                box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+            .svg:hover {
+                box-shadow: 2px 5px;
+                box-shadow: 3px 5px 20px #d0282880;
             }
 
-            
-
             .svg {
-                width: 45%;
+                width: CALC(50% - 60px);
+                transition-duration: 500ms;
+                cursor: pointer;
+                margin-bottom: 30px;
+                box-shadow: 3px 5px 10px #000000bf;
+            }
+
+            .svg:nth-child(even) {
+                float: right;
+                margin-right: 30px;
+            }
+
+            .svg:nth-child(odd) {
+                margin-left: 30px;
             }
 
             @media screen and (max-width:700px) {
                 .svg {
                     width: 100%;
+                    float: left;
+                }
+
+                .svg:nth-child(even) {
+                    float: left;
+                    margin-right: 0;
+                }
+
+                .svg:nth-child(odd) {
+                    margin-left: 0;
                 }
 
                 #heart {
@@ -32,32 +55,36 @@
             }
         </style>
     </head>
+
     <body>
-        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
             <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 80.00,349.96 233.77,219.16 138.73,380.84 138.73,250.04 233.77,300.00,80.00z" style="stroke: green;stroke-width: 5;fill: none;" />
             <path d="M310 182.32050807568876A20 20 0 1 1 310 147.67949192431124 10 10 0 1 0 310 182.32050807568876" style="fill: green;" />
         </svg>
-        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
             <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 80.00,349.96 233.77,219.16 138.73,380.84 138.73,250.04 233.77,300.00,80.00z" style="stroke: white;stroke-width: 5;fill: none;" />
             <path d="M310 182.32050807568876A20 20 0 1 1 310 147.67949192431124 10 10 0 1 0 310 182.32050807568876" style="fill: white;" />
         </svg>
-        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
             <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 140.00,314.69 185.23,276.22 157.27,323.78 157.27,285.31 185.23,300.00,140.00zM369.2820323027551 205A80 80 0 1 1 369.2820323027551 125 70 70 0 1 0 369.2820323027551 205" style="fill: white;" />
         </svg>
-        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
             <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
             <path d="M300 0,600 0,600 330,300 330,300 0" style="fill: green;" />
             <path d="M0 0,300 0,300 330,0 330" style="fill: red;" />
             <path d="M300.00 140.00,314.69 185.23,276.22 157.27,323.78 157.27,285.31 185.23,300.00,140.00zM369.2820323027551 205A80 80 0 1 1 369.2820323027551 125 70 70 0 1 0 369.2820323027551 205" style="fill: white;" />
         </svg>
-        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
             <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M300.00 110.00,347.63 192.50,252.37 192.50,300.00,110.00zM347.63 137.50,300.00 220.00,252.37 137.50,347.63,137.50z" style="stroke:green;stroke-width:7;fill: none" />
+            <rect y="50" width="600" height="40" style="stroke: black;stroke-width: 0;fill: green;" />
+            <rect y="240" width="600" height="40" style="stroke: black;stroke-width: 0;fill: green;" />
         </svg>
-        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" >
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330">
             <rect width="600" height="330" style="stroke: black;fill: red;" />
             <path d="M370.00 140.00,384.69 185.23,346.22 157.27,393.78 157.27,355.31 185.23,370.00,140.00zM369.28 205.00A80 80 0 1 1 369.28 125.00 70 70 0 1 0 369.28 205.00" style="fill: green" />
         </svg>
@@ -69,10 +96,14 @@
 
 
 
-        
+
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="morocco">
             <rect width="600" height="330" style="stroke: black;fill: red;" />
-            <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: green;stroke-width: 5;fill:none;" />
+            <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: green;stroke-width: 10;fill:none;" />
+        </svg>
+        <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="morocco">
+            <rect width="600" height="330" style="stroke: black;fill: white;" />
+            <path d="M300 127,270.5 212.5, 345 160,255 160,329.5 212.5,300 127,270.5 212.5" style="stroke: #0555e0;stroke-width: 10;fill:none;" />
         </svg>
         <svg class="svg" viewbox="0, 0, 600, 330" width="600" heigth="330" id="algeria">
             <path d="M0 0, 300 0,300 330,0 330,0 0" style="stroke: none;fill: green;" />
@@ -101,7 +132,7 @@
             <path d="M0 0,600 0,600 330,0 330,0 0" style="stroke: black;fill: none;" />
             <circle cx="300" cy="165" r="80" fill="red" />
         </svg>
-        
+
     </body>
 
 </html>
