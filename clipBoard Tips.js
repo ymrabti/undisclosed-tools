@@ -1,3 +1,7 @@
+
+    // logger.err(err, true);
+    // C:/Users/y.mrabti/cloudflared.exe tunnel --url localhost:6842
+    // cloudflared.exe tunnel --url http://192.168.1.184:59206
 async function getClipboardContents() {
   try {
     const clipboardItems = await navigator.clipboard.read();
