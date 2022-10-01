@@ -15,29 +15,59 @@ function rectgPts(pts) {
         (x_max - half_x).toFixed(3) + " " + (y_min - half_y).toFixed(3)
     ].join();
 }
-function arc(r, angle, da, dr, xc, yc) {
+/* let x1 = (r * cos(angle1) + xc).toFixed(2);
+let y1 = (r * sin(angle1) + yc).toFixed(2);
+let x2 = (r * cos(angle2) + xc).toFixed(2);
+let y2 = (r * sin(angle2) + yc).toFixed(2); */
+
+/* let x3 = ((r + dr) * cos(angle1) + xc).toFixed(2);
+let y3 = ((r + dr) * sin(angle1) + yc).toFixed(2);
+let x4 = ((r + dr) * cos(angle2) + xc).toFixed(2);
+let y4 = ((r + dr) * sin(angle2) + yc).toFixed(2); */
+
+// addNs({ cx: x1, cy: y1, r: 4, style: "fill: blue;" }, [], "circle", document.querySelector("#radar"));
+// addNs({ cx: x2, cy: y2, r: 4, style: "fill: blue;" }, [], "circle", document.querySelector("#radar"));
+// addNs({ cx: x3, cy: y3, r: 4, style: "fill: red;" }, [], "circle", document.querySelector("#radar"));
+// addNs({ cx: x4, cy: y4, r: 4, style: "fill: red;" }, [], "circle", document.querySelector("#radar"));
+function radar(r, angle, ouverture, dr) {
     let angle1 = angle * PI / 180;
-    let angle2 = (180 - da - angle) * PI / 180;
+    let angle2 = (180 - ouverture - angle) * PI / 180;
+    let pt1 = pt_cir(r, angle - ouverture / 2, 0, 0);
+    let pt2 = pt_cir(r, angle + ouverture / 2, 0, 0);
+    let ori1 = pt_cir(dr, angle - 90, 0, 0);
+    let ori2 = pt_cir(dr, angle + 90, 0, 0);
+    let o = pt_cir(0, 0, 0, 0);
 
-    let x1 = (r * cos(angle1) + xc).toFixed(2);
-    let y1 = (r * sin(angle1) + yc).toFixed(2);
-    let x2 = (r * cos(angle2) + xc).toFixed(2);
-    let y2 = (r * sin(angle2) + yc).toFixed(2);
-
-    let x3 = ((r + dr) * cos(angle1) + xc).toFixed(2);
-    let y3 = ((r + dr) * sin(angle1) + yc).toFixed(2);
-    let x4 = ((r + dr) * cos(angle2) + xc).toFixed(2);
-    let y4 = ((r + dr) * sin(angle2) + yc).toFixed(2);
-
-    let arc1 = `M${x1} ${y1}A${r} ${r} 0 1 1 ${x2} ${y2}`;
-    let arc2 = `M${x3} ${y3}A${r + dr} ${r + dr} 0 1 0 ${x4} ${y4}`;
-    let path = `${arc1}${arc1}m${x1} ${y1}z`;
-    addNs({ cx: x1, cy: y1, r: 4, style: "fill: blue;" }, [], "circle", "#empty");
-    addNs({ cx: x2, cy: y2, r: 4, style: "fill: blue;" }, [], "circle", "#empty");
-    addNs({ cx: x3, cy: y3, r: 4, style: "fill: red;" }, [], "circle", "#empty");
-    addNs({ cx: x4, cy: y4, r: 4, style: "fill: red;" }, [], "circle", "#empty");
-    return path;
+    // let arc2 = `M${x3} ${y3}A${r + dr} ${r + dr} 0 1 0 ${x4} ${y4}`;
+    let int = ouverture > 180 ? 1 : 0; 
+    let line1 = `M${o.p} l${pt1.p} `;
+    let arc1 = `${line1} A${r} ${r} 0 ${int} 1 ${pt2.p}`;
+    let path1 = `${arc1} l${o.p}z`;
+    // 
+    let line2 = `M${o.p} L${ori1.p} L${pt1.p} A${r} ${r} 0 ${int} 1 ${pt2.p} L${ori2.p} `;
+    let arc2 = `${line2}`;
+    let path2 = `${arc2}z`;
+    var elementString = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="-50 -50 100 100">
+        <rect x="-50" y="-50" width="100" height="100" fill="black" />
+        <path d="${path2}" fill="blue" />
+        <circle r="${dr}" cx="${o.x}" cy="${o.y}" fill="blue" stroke="white" stroke-width="1" />
+        <!-- <circle r="${2}" cx="${pt1.x}" cy="${pt1.y}" fill="red" />
+        <circle r="${2}" cx="${pt2.x}" cy="${pt2.y}" fill="red" />
+        <circle r="${2}" cx="${ori1.x}" cy="${ori1.y}" fill="orange" />
+        <circle r="${2}" cx="${ori2.x}" cy="${ori2.y}" fill="orange" /> -->
+    </svg>
+    `;
+    console.log(elementString);
+    var div = document.createElement('div');
+    div.style.width = "fit-content"
+    div.innerHTML = elementString.trim();
+    document.body.appendChild(div);
 }
+radar(42, -90, 60, 8);
+// radar(45, -90, 260, 8);
+
+
 function star(noids, r, dx, dy, initial = 90, ar = false) {
     const l = StarPoints(noids, r, dx, dy, initial);
     if (ar) {
@@ -102,6 +132,14 @@ function draw_cstar(l, fun, ray, fillrule, fillcolor = rand_color()) {
     });
     addNs({ d: curvePath.join(" "), style: `fill:${fillcolor};fill-rule:${fillrule};stroke:black;` }, "path", svg);
 }
+/**
+ * 
+ * @param {Object} Attrs Attributes
+ * @param {string} name nom
+ * @param {Element} pere document
+ * @param {boolean} innerText text
+ * @returns {SVGElement}
+ */
 function addNs(Attrs = {}, name, pere, innerText = false) {
     var i_svg = document.createElementNS('http://www.w3.org/2000/svg', name);
     Object.keys(Attrs).forEach(function (item, index) {

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20">
+  <circle r="10" cx="10" cy="10" fill="white" />
+  <circle r="5" cx="10" cy="10" fill="bisque"
+          stroke="tomato"
+          stroke-width="10"
+          stroke-dasharray="14 3" />
+<path d="M0 0 m59.09 59.09 A20 20 0 1 1 30.00 30.00m0 0z" fill="blue" />
+</svg>

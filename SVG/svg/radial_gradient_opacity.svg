@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="-50 -50 100 100">
+    <circle r="5" cx="0" cy="0" fill="blue" />
+    <radialGradient id="radGrad">
+        <stop offset="0" stop-color="white" stop-opacity="1" />
+        <stop offset="1" stop-color="white" stop-opacity="0" />
+    </radialGradient>
+    <mask id="mask">
+        <circle id="c" cx="0" cy="0" r="30" fill="url(#radGrad)" stroke-width="6" stroke-dasharray="6.28" />
+    </mask>
+    <g mask="url(#mask)">
+        <path d="M0.00 0.00 L1.29 -4.83 L29.89 -2.61 A30 30 0 0 1 24.57 17.21 L-1.29 4.83 z" fill="blue" />
+        <circle r="5" cx="0" cy="0" fill="blue" stroke="white" stroke-width="1" />
+
+    </g>
+</svg>

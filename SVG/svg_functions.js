@@ -7,10 +7,18 @@ function deg2rad(deg) {
 function rad2deg(rad) {
     return rad * 180 / PI;
 }
+/**
+ * 
+ * @param {number} rayon Rayon
+ * @param {number} angle Angle
+ * @param {number} dx dx
+ * @param {number} dy dy
+ * @returns Object
+ */
 function pt_cir(rayon, angle, dx = 0, dy = 0) {
     let x = rayon * cos(deg2rad(angle)) + dx;
     let y = rayon * sin(deg2rad(angle)) + dy;
-    return { "p": x + " " + y, x, y };
+    return { "p": x.toFixed(2) + " " + y.toFixed(2), x: x, y: y };
 }
 function StarPoints(noids, r, dx, dy, initialAngle) {
     return [...Array(noids)].map((_, i) => {
