@@ -210,3 +210,18 @@ function findAngel(minkills, n = 100, M = 1) {
     console.log("end = " + start);
     console.log("etape   = " + etape);
 }
+module.exports = {
+    TestNByJSONtoSplit,
+    TestEgaliteN,
+    TestPowm,
+    Encadrement,
+    TestUnitaire,
+    TestEg,
+    TestReversePw3,
+    TestEgalite,
+    TestReverse3,
+    MathToOthers,
+    compNSp,
+    TestMath,
+    findAngel,
+}

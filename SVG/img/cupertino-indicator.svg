@@ -12,8 +12,8 @@
         <rect fill="#555555" height="6" opacity="0.75" rx="3" ry="3" transform="rotate(180 50 50)" width="25" x="72" y="47"></rect>
         <rect fill="#555555" height="6" opacity="0.8333333333333334" rx="3" ry="3" transform="rotate(210 50 50)" width="25" x="72" y="47"></rect>
         <rect fill="#555555" height="6" opacity="0.9166666666666666" rx="3" ry="3" transform="rotate(240 50 50)" width="25" x="72" y="47"></rect>
-        <animateTransform attributeName="transform" type="rotate,scale" calcMode="ease" values="0 50 51;360 50 51" keyTimes="0;1" dur="3s" begin="0s" repeatCount="indefinite"></animateTransform>
-        <!-- <animateTransform attributeName="transform" type="scale" from="1 1" to="0.75 0.75" begin="0s" dur="2s" repeatCount="indefinite" /> -->
+        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="4s" begin="0s" repeatCount="indefinite"></animateTransform>
     </g>
-
 </svg>
+
+        <!-- <animateTransform attributeName="transform" type="scale" from="1 1" to="0.75 0.75" begin="0s" dur="2s" repeatCount="indefinite" /> -->

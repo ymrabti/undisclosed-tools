@@ -5,7 +5,9 @@ ctx.fill();
 function yinyang(n, R) {
     let scl = i => (i + 1) * 255 / (n - 1);
     let dx = 300, dy = 300;
-    var listColors = ["black"].concat([...Array(n - 1)].map((_, i) => `rgb(${scl(i)},${scl(i)},${scl(i)})`));
+    const listFrwd = [...Array(Math.ceil((n+1) / 2))].map((_, i) => `rgb(${scl(i)},${scl(i)},${scl(i)})`)
+    const listBckr = listFrwd.reverse()
+    var listColors = ["black"].concat(listFrwd, listBckr);
     circle(300, 300, 4, 0, 2 * Math.PI);
     circle(300, 300, R, 0, 2 * Math.PI);
 
@@ -28,19 +30,19 @@ function yinyang(n, R) {
         ctx.arc(300, 300, R, nangle, tangle);
         ctx.strokeStyle = listColors[index];
         ctx.stroke();
-        ctx.fillStyle = listColors[index]; 
+        ctx.fillStyle = listColors[index];
         ctx.fill();
 
-        setTimeout(() => {
+        /* setTimeout(() => {
             const degIndex = (index + 0.0) * 360 / n;
             let c1x = 0.5 * R * cos(deg2rad(degIndex)) + dx;
             let c1y = 0.5 * R * sin(deg2rad(degIndex)) + dy;
             circle(c1x, c1y, 0.5 * R / n, 0, 2 * Math.PI, false, listColors[(n + index - 1) % n]);
-        }, 100 * index);
+        }, 100 * index); */
     }
 
 }
-yinyang(3, 200);
+yinyang(160, 200);
 
 function circle(cx, cy, r, as, ae, clock, fill) {
     ctx.beginPath();

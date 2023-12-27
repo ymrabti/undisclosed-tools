@@ -27,7 +27,7 @@ class TimeCity {
     constructor(Time_Zone, cityID, Mode_12) {
         this.timeZone = Time_Zone;
         this.CityId = cityID;
-        var divParent = TimeCity.addElmnt({ align: "center" }, [`col-sm-4`], "div", TimeCity.newXlocks);
+        var divParent = TimeCity.addElmnt({ align: "center" }, ['grid-item'], "div", TimeCity.newXlocks);
         var fatherSon = TimeCity.addElmnt({ style: `background-color: #1A1A1A;border: 2px solid gray;padding: 5px;margin: 5px` }, [], "div", divParent);
         var svg_out = TimeCity.addNs({ viewBox: `0, 0, ${2 * TimeCity.ctr}, ${2 * TimeCity.ctr}`, id: this.CityId }, [], "svg", fatherSon);
         var svg_in = TimeCity.addNs({ viewBox: "-37,-33,300,300", align: "center" }, [], "svg", svg_out);

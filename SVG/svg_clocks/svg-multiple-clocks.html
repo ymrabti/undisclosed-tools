@@ -5,19 +5,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type="text/css" href="http://localhost:81/sites/Libraries/css/bootstrap.min.css">
-        <script type="text/javascript" src="pathNumbs.js"></script>
-        <title>SVG Multiple</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script type="text/javascript" src="svg_path_numbs.js"></script>
+        <title>SVG Multiple Clocks</title>
         <style type="text/css">
             .sec {
                 transform-origin: center;
                 /*transition: transform 50ms;*/
             }
+
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                /* Four columns */
+                gap: 10px;
+                /* Gap between grid items */
+            }
+
+            .grid-item {
+                /* Additional styling for your grid items */
+                border: 1px solid #ccc;
+                padding: 10px;
+            }
         </style>
     </head>
 
     <body style="background-color: #0E0E0E;color: #F1F1F1">
-        <div id="NewClocks"></div>
+        <div id="NewClocks" class="grid-container"></div>
         <script>
             function Update() {// readAngles(Mode12);
                 MoveSecnds();
@@ -36,7 +50,7 @@
                 return secnd;
             }
         </script>
-        <script type="text/javascript" src="svg-multiple.js"></script>
+        <script type="text/javascript" src="svg-multiple-clocks.js"></script>
     </body>
 
 </html>
