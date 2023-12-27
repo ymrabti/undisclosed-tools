@@ -309,8 +309,7 @@ radar(42, -90, 60, 8);
 spiral(250, 0, 20, 50, false);
 curve_star(19, rayon, 0, 0, 0, (i) => 1- i % 2, 3 * rayon, "evenodd", 'green');
 nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
-
-
+// 
 Google();
 logoUchiha();
 simpleyingyang();
