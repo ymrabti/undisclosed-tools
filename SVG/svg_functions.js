@@ -83,3 +83,18 @@ function pta(r, a) {
     let y = parseFloat(parseFloat(pt_cir(r, a).y).toFixed(2));
     return { x, y };
 }
+
+function gcd(a, b) {
+    if (b === 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+function lcm(a, b) {
+    if (a === 0 || b === 0) {
+        return 0;
+    }
+    return Math.abs((a * b) / gcd(a, b));
+}
+

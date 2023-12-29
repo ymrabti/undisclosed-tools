@@ -237,19 +237,21 @@ function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, spin = "5
     addNs({ points: pts, fill: "none", stroke: rand_color(), style: "stroke-width:2;" }, "polyline", g);
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
-function yinyang(n, R, r = 0, spin = "4s") {
-    const start = 30;
-    const end = 200;
+function yinyang(n, R, r = 0, slices = 4, spin = "4s") {
+    const start = 80;
+    const end = 180;
     let scl = i => Math.round(4 * i * (end - start) / n + start);
     const svg1 = addSVG();
     const g = addNs({}, "g", svg1);
     const l = StarPoints(n, R, 0, 0, 0);
     const lr = StarPoints(n, r, 0, 0, 45);
     addNs({ cx: 0, cy: 0, r: R, style: "fill: orange;stroke:black;" }, "circle", g);
-    const proto = [...Array(Math.ceil(n / 4))]
-    const listFrwd = proto.map((_, i) => `rgb(0,${scl(i)},0)`)
-    const listBckr = proto.map((_, i) => `rgb(0,${scl(i)},255)`).reverse()
-    const listColors = [...listFrwd, ...listBckr,...listFrwd, ...listBckr,];
+    const proto = [...Array(Math.ceil(lcm(n, lcm(2, slices)) / lcm(2, slices)))]
+    const listColors = [...Array(lcm(2, slices))].map(function (_, i) {
+        const liste = proto.map((_, j) => `rgb(${scl(j)},${scl(j)},${scl(j)})`);
+        return i % 2 == 0 ? liste : [...liste].reverse();
+    }).reduce((prev, curr) => [...prev, ...curr], []);
+    console.log(listColors);
     l.forEach((element, index, arr) => {
         let ng = listColors[index]/* , rem = (index - 2 + n) % n; */
         let rj = R / 2;
@@ -321,7 +323,7 @@ Google();
 spiral(250, 0, 20, 50, false);
 nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
 curve_star(48, rayon, 0, 0, -90, (i) => 1 - i % 2, 3 * rayon, "evenodd", 'green');
-yinyang(160, 250, 0, null);
+yinyang(12, 250, 0, 2, null);
 
 function comments() {
     /* let x1 = (r * cos(angle1) + xc).toFixed(2);
