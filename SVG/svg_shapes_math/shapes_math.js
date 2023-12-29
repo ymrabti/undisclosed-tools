@@ -21,6 +21,7 @@ function addSVG(Attrs = init_attrs) {
     let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', Attrs.viewBox);
     svg.setAttribute('width', Attrs.width);
+    svg.setAttribute('xmlns', "http://www.w3.org/2000/svg");
     addNs({ width: 600, height: 600, x: -300, y: -300, stroke: "black", fill: "none", style: 'stroke-width:3;' }, "rect", svg);
     document.body.insertBefore(svg, document.body.firstChild)
     return svg;
@@ -121,13 +122,13 @@ function nested_stars(n, angle, rayon, min_r, start, spin, Attrs = init_attrs, d
     }
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
-function curve_star(n, r, dx, dy, initialAngle, fun = i => 1, ray = 200, fillrule = "", fillcolor) {
+function curve_star(n, r, dx, dy, initialAngle, fun = _i => 1, ray = 200, fillrule = "", fillcolor) {
     let l = StarPoints(n, r, dx, dy, initialAngle);
     if (n % 4 == 2) {
         let even = l.filter((_, i) => i % 2 == 0);
         let odd = l.filter((_, i) => i % 2 == 1);
-        draw_cstar(even, i => 1, ray, fillrule, fillcolor);
-        draw_cstar(odd, i => 1, ray, fillrule, fillcolor);
+        draw_cstar(even, _i => 1, ray, fillrule, fillcolor);
+        draw_cstar(odd, _i => 1, ray, fillrule, fillcolor);
     }
     else { draw_cstar(l, fun, ray, fillrule, fillcolor); }
 }
@@ -236,32 +237,39 @@ function spiral(rayon, angle_initial, dist_step = 20, rayon_step = 35, spin = "5
     addNs({ points: pts, fill: "none", stroke: rand_color(), style: "stroke-width:2;" }, "polyline", g);
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
-function yinyang(n, R, spin = "4s") {
-    let scl = i => (i + 1) * 255 / (n - 1);
+function yinyang(n, R, r = 0, spin = "4s") {
+    const start = 30;
+    const end = 200;
+    let scl = i => Math.round(4 * i * (end - start) / n + start);
     const svg1 = addSVG();
     const g = addNs({}, "g", svg1);
     const l = StarPoints(n, R, 0, 0, 0);
+    const lr = StarPoints(n, r, 0, 0, 45);
     addNs({ cx: 0, cy: 0, r: R, style: "fill: orange;stroke:black;" }, "circle", g);
-    const listFrwd = [...Array(Math.ceil((n) / 2))].map((_, i) => `rgb(${scl(i)},${scl(i)},${scl(i)})`)
-    const listBckr = listFrwd.reverse()
-    var listColors = ["black"].concat(listFrwd, listBckr);
+    const proto = [...Array(Math.ceil(n / 4))]
+    const listFrwd = proto.map((_, i) => `rgb(0,${scl(i)},0)`)
+    const listBckr = proto.map((_, i) => `rgb(0,${scl(i)},255)`).reverse()
+    const listColors = [...listFrwd, ...listBckr,...listFrwd, ...listBckr,];
     l.forEach((element, index, arr) => {
-        let ng = listColors[index], rem = (index - 2 + n) % n;
+        let ng = listColors[index]/* , rem = (index - 2 + n) % n; */
         let rj = R / 2;
-        let d = `M${element.join(" ")}A${rj} ${rj} 0 0 1 0 0`;
+        const fMove = `M${element.join(" ")}A${rj} ${rj} 0 0 1 `
+        let d = `${fMove}${lr[index].join(" ")} M${lr[(index + 1) % n].join(" ")}`;
         d += `A${rj} ${rj} 0 0 0 ${arr[(index + 1) % n].join(" ")}`;
         d += `A${-1 * R} ${-1 * R} 0 0 0 ${element.join(" ")}`;
         addNs({ d, style: `fill:${ng};stroke:${ng};` }, "path", g);
-        // addNs({ cx: element[0], cy: element[1], r: 4, style: "fill: black;stroke:black;" }, "circle", g);
-        // addNs({ x1:0,y1:0,x2: element[0], y2: element[1], style: "stroke-width: 5;stroke:black;" }, "line", g);
-        /* setTimeout(() => {
-            let inn = element.map(val => val * 0.5);
-            addNs({ cx: inn[0], cy: inn[1], r: 0.4 * R / n, style: `fill: red};stroke:${listColors[rem]};stroke-width: 1;` }, "circle", g);
-        }, (index + 2) * 50) */
-        // addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1, index + 1);
     });
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
+
+/* addNs({ cx: element[0], cy: element[1], r: 4, style: "fill: black;stroke:black;" }, "circle", g);
+addNs({ x1:0,y1:0,x2: element[0], y2: element[1], style: "stroke-width: 5;stroke:black;" }, "line", g);
+setTimeout(() => {
+    let inn = element.map(val => val * 0.5);
+    addNs({ cx: inn[0], cy: inn[1], r: 0.4 * R / n, style: `fill: red};stroke:${listColors[rem]};stroke-width: 1;` }, "circle", g);
+}, (index + 2) * 50)
+addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1, index + 1); */
+
 function tangenteCircle(rayon, angle) {
     const svg = addSVG();
     let pt = pt_cir(rayon, angle, 0, 0);
@@ -303,16 +311,17 @@ function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
             });
         })
 }
-yinyang(200, 250, null);
 tangenteCircle(200, 80);
-radar(42, -90, 60, 8);
-spiral(250, 0, 20, 50, false);
-curve_star(19, rayon, 0, 0, 0, (i) => 1- i % 2, 3 * rayon, "evenodd", 'green');
-nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
+// radar(42, -90, 60, 8);
 // 
-Google();
 logoUchiha();
 simpleyingyang();
+
+Google();
+spiral(250, 0, 20, 50, false);
+nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
+curve_star(48, rayon, 0, 0, -90, (i) => 1 - i % 2, 3 * rayon, "evenodd", 'green');
+yinyang(160, 250, 0, null);
 
 function comments() {
     /* let x1 = (r * cos(angle1) + xc).toFixed(2);
