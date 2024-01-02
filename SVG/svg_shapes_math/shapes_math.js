@@ -56,11 +56,25 @@ function rectgPts(pts) {
 }
 const svg = document.querySelector("#empty");
 const svg1 = document.querySelector("#fulfilled");
+Number.prototype.ron = function (gaps = 2) {
+    return Math.round((this) * (10 ** gaps)) / (10 ** gaps)
+}
 const rayon = 300, n = 12, dfx = 100, dfy = 100, af = 0, at = 360, svgw = 400;
 const init_attrs = { viewBox: '-300, -300, 600, 600', width: svgw };
 const spinOpts = spin => ({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `${af} ${0} ${0};${at} ${0} ${0}`, keyTimes: "0;1", dur: spin, begin: "0s", repeatCount: "indefinite" });
 let rr = 20, dur = "1s";
 var rangle = Math.random() * 360;
+tangenteCircle(200, 80);
+// radar(42, -90, 60, 8);
+// 
+logoUchiha();
+simpleyingyang();
+
+Google();
+spiral(250, 0, 20, 50, false);
+nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
+curve_star(20, rayon, 0, 0, -90, (i) => 1 - i % 2, 3 * rayon, "evenodd", 'green');
+yinyang(14, 250, 0, 2, null);
 // Stars
 function star(noids, r, dx, dy, initial = 90, ar = false) {
     const l = StarPoints(noids, r, dx, dy, initial);
@@ -123,14 +137,15 @@ function nested_stars(n, angle, rayon, min_r, start, spin, Attrs = init_attrs, d
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
 }
 function curve_star(n, r, dx, dy, initialAngle, fun = _i => 1, ray = 200, fillrule = "", fillcolor) {
+    const svg = addSVG();
     let l = StarPoints(n, r, dx, dy, initialAngle);
     if (n % 4 == 2) {
         let even = l.filter((_, i) => i % 2 == 0);
         let odd = l.filter((_, i) => i % 2 == 1);
-        draw_cstar(even, _i => 1, ray, fillrule, fillcolor);
-        draw_cstar(odd, _i => 1, ray, fillrule, fillcolor);
+        draw_cstar(even, _i => 1, ray, fillrule, svg, fillcolor);
+        draw_cstar(odd, _i => 1, ray, fillrule, svg, fillcolor);
     }
-    else { draw_cstar(l, fun, ray, fillrule, fillcolor); }
+    else { draw_cstar(l, fun, ray, fillrule, svg, fillcolor); }
 }
 function starPolygon(noids, r, dx, dy, initial = 90, ar = false) {
     const l = StarPoints(noids, r, dx, dy, initial);
@@ -149,8 +164,7 @@ function starPolygon(noids, r, dx, dy, initial = 90, ar = false) {
     }
     return path(l).join();
 }
-function draw_cstar(l, fun, ray, fillrule, fillcolor = rand_color()) {
-    const svg = addSVG();
+function draw_cstar(l, fun, ray, fillrule, svg, fillcolor = rand_color()) {
     var step = cstep(l.length);
     var curveStar = path(l, ",");
     let curvePath = ["M", curveStar[0][0], curveStar[0][1]];
@@ -251,7 +265,6 @@ function yinyang(n, R, r = 0, slices = 4, spin = "4s") {
         const liste = proto.map((_, j) => `rgb(${scl(j)},${scl(j)},${scl(j)})`);
         return i % 2 == 0 ? liste : [...liste].reverse();
     }).reduce((prev, curr) => [...prev, ...curr], []);
-    console.log(listColors);
     l.forEach((element, index, arr) => {
         let ng = listColors[index]/* , rem = (index - 2 + n) % n; */
         let rj = R / 2;
@@ -262,6 +275,64 @@ function yinyang(n, R, r = 0, slices = 4, spin = "4s") {
         addNs({ d, style: `fill:${ng};stroke:${ng};` }, "path", g);
     });
     !!spin && addNs(spinOpts(spin), "animateTransform", g);
+}
+function illusionAnimationCircle(noids, r, dx, dy, initial = 90, init = 0, dur = '5s') {
+    const svg = addSVG();
+    var g = addNs({}, "g", svg);
+    const l = StarPoints(noids, r, dx, dy, initial);
+    const colors = ['red', 'green', 'blue', 'purple', 'cyan', 'magenta', 'black', 'pink', 'gray', 'brown', 'orange', 'azure', 'teal'];
+    const rr = r / 2, cx = Math.cos(deg2rad(init)) * rr,
+        cy = Math.sin(deg2rad(init)) * rr;
+    for (let i = 0; i < noids / 2; i++) {
+        const x1 = l[i][0], y1 = l[i][1],
+            x2 = l[i + noids / 2][0], y2 = l[i + noids / 2][1];
+        addNs({ x1, y1, x2, y2, style: "stroke-width: 8;stroke:black;" }, "line", g);
+        const intersections = getLineCircleIntersections(x1, y1, x2, y2, cx, cy, rr);
+        const inters = intersections.filter(e => !(Number.isNaN(e.x) || Number.isNaN(e.y)))[0];
+        // const point = addNs({ cx: x1, cy: y1, r: 10, style: `fill: ${colors[i]};` }, "circle", g);
+        if (inters/*  && i == Math.round(noids / 4 - 1) */) {
+            const ix = inters.x.toFixed(2), iy = inters.y.toFixed(2);
+            const ixx = parseFloat(ix), iyy = parseFloat(iy), x11 = parseFloat(x1), y11 = parseFloat(y1),
+                x22 = parseFloat(x2), y22 = parseFloat(y2);
+            const point = addNs({ cx: ix, cy: iy, r: 10, style: `fill: ${colors[i]};` }, "circle", g);
+            // 
+            const pathAller0 = `M0 0 L${(x22 - ixx).ron(2)} ${(y22 - iyy).ron(2)} L ${(x11 - ixx).ron(2)} ${(y11 - iyy).ron(2)} L 0 0z`;
+            const pathRetur0 = `M0 0 L${(x11 - ixx).ron(2)} ${(y11 - iyy).ron(2)} L ${(x22 - ixx).ron(2)} ${(y22 - iyy).ron(2)} L 0 0z`;
+            const path0 = /* !(i < noids / 4) ? pathAller0 : */ pathRetur0
+            addNs({ dur: dur, repeatCount: "indefinite", path: path0 }, "animateMotion", point);
+        } else {
+            console.log(`i = ${i}`);
+        }
+        // <animateMotion dur = "10s" repeatCount = "indefinite" path = "M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z" />
+    }
+    var ga = addNs({}, "g", svg);
+    addNs({ cx, cy, r: rr, style: `fill: none;stroke: red;stroke-width: 5;` }, "circle", ga);
+    addNs({ cx, cy, r: 2, style: `fill: blue;` }, "circle", ga);
+    // addNs(spinOpts(dur), "animateTransform", ga);
+}
+illusionAnimationCircle(14, 250, 0, 2, null);
+function getLineCircleIntersections(x1, y1, x2, y2, centerX, centerY, radius) {
+    const m = (y2 - y1) / (x2 - x1);
+    const c = y1 - m * x1;
+    const A = 1 + m * m;
+    const B = 2 * (m * c - m * centerY - centerX);
+    const C = centerX * centerX + centerY * centerY + c * c - 2 * c * centerY - radius * radius;
+    const discriminant = B * B - 4 * A * C;
+    if (discriminant < 0) {
+        return [];
+    } else if (discriminant === 0) {
+        const x = -B / (2 * A);
+        const y = m * x + c;
+        return [{ x, y }];
+    } else {
+        const x1 = (-B + Math.sqrt(discriminant)) / (2 * A);
+        const y1 = m * x1 + c;
+
+        const x2 = (-B - Math.sqrt(discriminant)) / (2 * A);
+        const y2 = m * x2 + c;
+
+        return [{ x: x1, y: y1 }, { x: x2, y: y2 }];
+    }
 }
 
 /* addNs({ cx: element[0], cy: element[1], r: 4, style: "fill: black;stroke:black;" }, "circle", g);
@@ -313,17 +384,6 @@ function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
             });
         })
 }
-tangenteCircle(200, 80);
-// radar(42, -90, 60, 8);
-// 
-logoUchiha();
-simpleyingyang();
-
-Google();
-spiral(250, 0, 20, 50, false);
-nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
-curve_star(48, rayon, 0, 0, -90, (i) => 1 - i % 2, 3 * rayon, "evenodd", 'green');
-yinyang(12, 250, 0, 2, null);
 
 function comments() {
     /* let x1 = (r * cos(angle1) + xc).toFixed(2);

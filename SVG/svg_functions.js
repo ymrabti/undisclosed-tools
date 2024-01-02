@@ -20,12 +20,21 @@ function pt_cir(rayon, angle, dx = 0, dy = 0) {
     let y = rayon * sin(deg2rad(angle)) + dy;
     return { "p": x.toFixed(2) + " " + y.toFixed(2), x: x, y: y };
 }
+/**
+ * 
+ * @param {number} noids Number of Noids
+ * @param {number} r radius
+ * @param {double} dx dx
+ * @param {number} dy dy
+ * @param {number} initialAngle number
+ * @returns string
+ */
 function StarPoints(noids, r, dx, dy, initialAngle) {
     return [...Array(noids)].map((_, i) => {
         let angle = (360 / noids) * i - initialAngle;
         let angra = angle * PI / 180;
-        let coss = cos(angra) * r + dx;
-        let sinn = sin(angra) * r + dy;
+        let coss = (Math.cos(angra) * r) + dx;
+        let sinn = (Math.sin(angra) * r) + dy;
         return [coss.toFixed(2), sinn.toFixed(2)];
     })
 }
