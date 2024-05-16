@@ -4,14 +4,14 @@
  * @param {Number} s2 
  */
 function computeJoinPoint(s1, s2) {
-    var max = 20_000;
+    var max = 2_000;
     var line1 = [];
     var line2 = [];
     if (s1 < max && s2 < max) {
         while (
             !line1.includes(s2)
             && !line2.includes(s1)
-            && s1 < max 
+            && s1 < max
             && s2 < max
         ) {
             s1 = getChiffres(s1); line1.push(s1);
