@@ -4,7 +4,8 @@
   "description": "",
   "main": "anneau.js",
   "scripts": {
-    "start": "nodemon anneau"
+    "start": "nodemon anneau",
+    "jou3":"nodemon yamat_jou3"
   },
   "keywords": [],
   "author": "",
