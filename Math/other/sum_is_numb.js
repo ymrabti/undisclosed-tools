@@ -1,22 +1,3 @@
-/**
- * 
- * @param {number} nombre 
- * @returns {boolean}
- */
-function Palindrome(nombre) {
-    return `${nombre}` == `${nombre}`.split('').reverse().join('');
-}
-
-function palimite(start = 10000, limit = 3000) {
-    var palindromes = [];
-    for (var k = start; k < limit; k++) {
-        if (Palindrome(k)) {
-            palindromes.push(k);
-        }
-    }
-    return palindromes;
-}
-
 var str = 3299485722222222;
 function Jard(char, str) {
     var avant = str.length;
@@ -35,7 +16,7 @@ function getSum(num) {
 }
 /**
  * 
- * @param {number} nombre 
+ * @param {number} nombre
  * @returns 
  */
 function getsumchiffres(nombre) {
@@ -50,4 +31,5 @@ for (var k = 2_000; k < 10_000; k++) {
         ntest++;
     }
 }
+const aa = 1234321
 console.log({ test, ntest });

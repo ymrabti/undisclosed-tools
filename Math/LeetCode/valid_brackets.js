@@ -27,17 +27,24 @@ String.prototype.close = function (other) {
 }
 // [{(())}[()]]
 const promptxt = "[{(())}{()}[()]]"
-console.log(promptxt.split('').reduce((prev, curr) => {
-    if (prev.length !== 0) {
-        const [l, ...next] = [...prev].reverse();
-        if (l.close(curr)) {
-            const nevo = next.reverse()
-            return nevo;
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    return s.split('').reduce((prev, curr) => {
+        if (prev.length !== 0) {
+            const [l, ...next] = [...prev].reverse();
+            if (l.close(curr)) {
+                const nevo = next.reverse()
+                return nevo;
+            } else {
+                const nevo = [...prev, curr]
+                return nevo
+            }
         } else {
-            const nevo = [...prev, curr]
-            return nevo
+            return [curr]
         }
-    } else {
-        return [curr]
-    }
-}, []).length);
+    }, []).length === 0
+};
+console.log(isValid(promptxt));

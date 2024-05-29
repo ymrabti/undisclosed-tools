@@ -5,7 +5,7 @@
   "main": "anneau.js",
   "scripts": {
     "start": "nodemon anneau",
-    "jou3":"nodemon yamat_jou3"
+    "dev":"nodemon other/numerator_denomenator"
   },
   "keywords": [],
   "author": "",
