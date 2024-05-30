@@ -382,9 +382,10 @@ function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
                     });
                 addNs({ points: list.join(" "), style: `fill:${rand_color()};stroke:black;` }, "polygon", svg);
             });
-        })
+        }).catch((reason) => console.log(reason))
 }
 
+mapp_shp('/assets/geojson/polygons.json', svg, (w, h) => 150);
 function comments() {
     /* let x1 = (r * cos(angle1) + xc).toFixed(2);
     let y1 = (r * sin(angle1) + yc).toFixed(2);
@@ -443,7 +444,6 @@ function comments() {
 
     // var arc2 = addNs({ d: "M100 -173A200 200 0 1 0 200 0L0 0", style: `fill:none;stroke:green;stroke-width:55;` }, "path", svg);
 
-    // mapp_shp('./json/json2.json',svg,(w,h)=>150);
     // mapp_shp('./json/json1.json',svg,(w,h)=>Math.min(w,h));
 
 

@@ -1,35 +1,46 @@
-var str = 3299485722222222;
-function Jard(char, str) {
-    var avant = str.length;
-    var str2 = str.replaceAll(char, "");
-    var apres = str2.length;
-    return [char, (avant - apres), str2];
-}
+const { getNumberDijits } = require("../LeetCode/_helpers");
+
+var str = 23400222115167;
+
 function getSum(num) {
-    var sum = 0, str = `${num}`;
-    while (str != "") {
-        var jr = Jard(str[0], str);
-        sum += jr[0] ** jr[1];
-        str = jr[2];
+    const map = getNumberDijits(num).reduce((p, c) => {
+        if (p.hasOwnProperty(c)) { p[c]++ } else { (p[c] = 1); }
+        return p;
+    }, {});
+    return {
+        sumOfpowers: Object.keys(map).reduce((p, c) => p + parseInt(c) ** map[c], 0),
+        max: Math.max(...Object.keys(map).filter(e => !["0", "1"].includes(e)).map(e => map[e])),
+        countTwoes: map['2']
     }
-    return sum;
 }
+
+// console.log(getSum(str));
+
 /**
  * 
  * @param {number} nombre
- * @returns 
+ * @returns {number}
  */
-function getsumchiffres(nombre) {
-    return `${nombre}`.split('').map(e => parseInt(e)).reduce((a, b) => a + b, 0)
+function getSumchiffres(nombre) {
+    return getNumberDijits(nombre).reduce((a, b) => a + b, 0)
 }
-var test = 0
-var ntest = 0
-for (var k = 2_000; k < 10_000; k++) {
-    if (getSum(k) == getsumchiffres(k)) {
-        test++;
-    } else {
-        ntest++;
+
+
+function test() {
+    var test = 0
+    for (var k = 0; k < 10_000; k++) {
+        const sumPowers = getSum(k);
+        const sumDigits = getSumchiffres(k);
+        if (sumPowers.max > 1 && sumPowers.sumOfpowers === sumDigits) {
+            // console.log(k);
+            test++;
+        }
     }
+    console.log({ test });
 }
-const aa = 1234321
-console.log({ test, ntest });
+
+// test()
+
+module.exports = {
+    getSumchiffres
+}

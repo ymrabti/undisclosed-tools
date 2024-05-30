@@ -1,3 +1,5 @@
+const { getNumberDijits } = require("./_helpers");
+
 /**
  * 
  * @param {Number} s1 
@@ -36,20 +38,8 @@ function getArraysIntersection(a1, a2) {
  * @param {Number} nombre 
  */
 function getChiffres(nombre) {
-    return nombre.toString().split("")
-        .map(v => parseInt(v))
+    return getNumberDijits(nombre)
         .reduce((a, b) => a + b, nombre);
-}
-
-function reverseChiffres(nombre) {
-    var list = []; var nombrestr = nombre + "";
-    list.push(nombre);
-    for (var k = 0; k < nombrestr.length; k++) {
-        list.push(parseInt(nombrestr[k]));
-    }
-    var sum = list.reduce((a, b) => a + b, 0);
-    console.log(sum);
-    return sum;
 }
 
 console.log(computeJoinPoint(57, 78));
@@ -59,8 +49,8 @@ console.log(computeJoinPoint(389, 289));
 
 /* Ignore and do not change the code below */
 // #region main
-/* const s1 = parseInt(readline());
-const s2 = parseInt(readline());
+/* const s1 = parse Int(readline());
+const s2 = parse Int(readline());
 const oldWrite = process.stdout.write;
 process.stdout.write = chunk => { console.error(chunk); return true }
 const res = computeJoinPoint(s1, s2);

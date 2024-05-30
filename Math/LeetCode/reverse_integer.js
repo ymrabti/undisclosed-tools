@@ -1,3 +1,5 @@
+const { getNumberDijits } = require("./_helpers");
+
 /**
  * @param {number} x
  * @return {number}
@@ -21,7 +23,7 @@ var reverse = function (x) {
  * @return {number}
  */
 var reverse = function (x) {
-    const parsed = [...`${Math.abs(x)}`.split('')].map((e, i) => parseInt(e) * 10 ** i)
+    const parsed = getNumberDijits(Math.abs(x)).map((e, i) => e * 10 ** i)
     const b = Math.sign(x) * parsed.reduce((p, c) => p + c, 0)
     if (b >= 2 ** 31) return 0
     if (b < -1 * (2 ** 31 + 1)) return 0

@@ -1,12 +1,13 @@
+const { getNumberDijits } = require("./_helpers");
+
 /**
  * armstrong
  * @param {number} num num
  * @returns {boolean} is Armstrong
  */
 function armstrong(num) {
-    var str = `${num}`;
-    const list = str.split('');
-    const powers = list.map(e => parseInt(e) ** str.length);
+    const list = getNumberDijits(num);
+    const powers = list.map(e => e ** list.length);
     const sum = powers.reduce((acc, curr) => acc + curr, 0);
     return sum === num && num > 9
 }
@@ -17,24 +18,22 @@ function armstrong(num) {
  * @returns {boolean} is Armstrong
  */
 function younestrong(num) {
-    var str = `${num}`;
-    const list = str.split('').map((e) => parseInt(e));
+    const list = getNumberDijits(num);
 
-    const powers = list.map((e, i) => e ** (str.length - i));
+    const powers = list.map((e, i) => e ** (list.length - i));
     const sum = powers.reduce((acc, curr) => acc + curr, 0);
 
-    const digits = list.map((e) => e ** str.length);
+    const digits = list.map((e) => e ** list.length);
     const sum2 = digits.reduce((acc, curr) => acc + curr, 0);
 
     const prod = digits.reduce((acc, curr) => acc * curr, 1);
 
-    return { isYounes: sum === prod && num > 9, sum }
+    return { isYounes: sum === prod && num > 9, sum, sum2 }
 }
 
 function younestrongtest(num) {
-    var str = `${num}`;
-    const list = str.split('');
-    const powers = list.map((e, i) => ({ digit: parseInt(e), index: str.length - i, power: parseInt(e) ** (str.length - i) }));
+    const list = getNumberDijits(num);
+    const powers = list.map((e, i, str) => ({ digit: e, index: str.length - i, power: e ** (str.length - i) }));
     const sum = powers.reduce((acc, curr) => acc + curr.power, 0);
     return console.log({ powers, sum })
 }
