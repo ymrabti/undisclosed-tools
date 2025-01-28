@@ -778,20 +778,12 @@ Method_05()
 
 /* 
 now generate a ui that covers all the cases:
-
 input initial loan amount and annual interest rate
-
 input Fixed monthly payment or fixed term loan with correspondance input
-
 input events
-
 etc..
-
 output list yearly summary
-
 output global summary
-
 output suggetions(if there is)
-
 etc...
 */
