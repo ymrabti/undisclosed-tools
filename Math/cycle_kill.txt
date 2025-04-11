@@ -4,3 +4,6 @@
 A king wanted to execute 100 prisoners, put them in a circular shape and number them from 1 to 100 and give the sword to the number 1, and each prisoner executes the prisoner after him, and gives the sword to the living prisoner after him, and so on, what is the prisoner who survives
 
 In a kingdom, there were 100 prisoners facing execution. The king arranged them in a circle and assigned numbers from 1 to 100. He handed the sword to the first prisoner, who executed the next prisoner. The sword continued to pass from one to another until only one prisoner remained alive. Who was the last survivor among them?
+
+
+this is called Josephus_problem
