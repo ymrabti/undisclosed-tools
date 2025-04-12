@@ -1,3 +1,5 @@
+const { powm } = require("./cycle_kill_helpers");
+
 function TestNByJSONtoSplit(limit = 25, desc = false) {
     var temps1 = 0; var temps2 = 0;
     var countGlobal = 0;
@@ -65,6 +67,54 @@ function Encadrement(n = 257, m = 2) {
         txtLog1 += mpi + egSup1 + n + " < " + (mpi + mp);
         console.log(txtLog1);
     }
+}
+
+function chances(nombre, num) {
+    var list = [];
+    for (var i = 1; i <= nombre; i++) {
+        if (lastBy1Splice(nombre, i, false) == num) { list.push({ "start": i, "desc": false }) }
+        if (lastBy1Splice(nombre, i, true) == num) { list.push({ "start": i, "desc": true }) }
+    }
+    return list;
+}
+function chancesStartEnd(nombre, N = 1) {
+    var list = [];
+    for (var i = 1; i <= nombre; i++) {
+        if (lastByNMath(nombre, N, i, false).lastAlive == i) { list.push({ "start": i, "desc": false }) }
+        if (lastByNMath(nombre, N, i, true).lastAlive == i) { list.push({ "start": i, "desc": true }) }
+    }
+    return list;
+}
+function Nchances(nombre = 100, num = 73, starter = false) {
+    var list = [];
+    if (starter) { NchnceUnitaire(nombre, num, num, list) }
+    else {
+        for (var i = 1; i <= nombre; i++) {
+            NchnceUnitaire(nombre, i, num, list);
+        }
+    }
+    return list;
+}
+function NchnceUnitaire(nombre, i, num, list) {
+    for (let N = 1; N < i + 1; N++) {
+        if (lastByNSplice(nombre, N, i, false)[0] == num) { list.push({ "start": i, "N": N, "desc": false }) }
+        if (lastByNSplice(nombre, N, i, true)[0] == num) { list.push({ "start": i, "N": N, "desc": true }) }
+    }
+}
+function Cumutations(nombre, desc = false) {
+    for (let i = 1; i <= nombre; i++) {
+        var last0 = lastBySplice(nombre, i, desc != false)[0];
+        console.log(i - last0);
+        // console.log(last0);
+        // console.log("\n\n");
+    }
+}
+function listLasts(nombre, N = 1, desc = false) {
+    var list = [];
+    for (var i = 1; i <= nombre; i++) {
+        list.push(lastByNSplice(nombre, N, i, desc)[0]);
+    }
+    return list;
 }
 
 function TestUnitaire(i, N, show) {
