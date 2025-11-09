@@ -82,10 +82,8 @@ function star(noids, r, dx, dy, initial = 90, ar = false) {
                     [l[1], l[3], l[5], l[7], l[1]].join() +
                     'z'
                 );
-                break;
             default:
                 return 'M' + l.join() + 'z';
-                break;
         }
     }
     if (noids % 4 == 2) {
@@ -141,26 +139,27 @@ function nested_stars(n, angle, rayon, min_r, start, spin, Attrs = init_attrs, d
     }
     if (spin) addNs(spinOpts(spin), 'animateTransform', g);
 }
-function curve_star(
-    n,
-    r,
-    dx,
-    dy,
-    initialAngle,
-    fun = (_i) => 1,
-    ray = 200,
-    fillrule = '',
-    fillcolor
-) {
+/**
+ * @param {Array} options.pt points count
+ * @param {number} options.r rayon
+ * @param {number} options.dx dx
+ * @param {number} options.dy dy
+ * @param {number} options.initialAngle initial angle
+ * @param {function} options.fun function
+ * @param {number} options.ray ray
+ * @param {string} options.fillrule fillrule
+ * @param {string} options.fillcolor fillcolor
+ */
+function curve_star(options) {
     const svg = addSVG();
-    let l = StarPoints(n, r, dx, dy, initialAngle);
-    if (n % 4 == 2) {
+    let l = StarPoints(options.n, options.r, options.dx, options.dy, options.initialAngle);
+    if (options.n % 4 == 2) {
         let even = l.filter((_, i) => i % 2 == 0);
         let odd = l.filter((_, i) => i % 2 == 1);
-        draw_cstar(even, (_i) => 1, ray, fillrule, svg, fillcolor);
-        draw_cstar(odd, (_i) => 1, ray, fillrule, svg, fillcolor);
+        draw_cstar(even, (_i) => 1, options.ray, options.fillrule, svg, options.fillcolor);
+        draw_cstar(odd, (_i) => 1, options.ray, options.fillrule, svg, options.fillcolor);
     } else {
-        draw_cstar(l, fun, ray, fillrule, svg, fillcolor);
+        draw_cstar(l, options.fun, options.ray, options.fillrule, svg, options.fillcolor);
     }
 }
 function starPolygon(noids, r, dx, dy, initial = 90, ar = false) {
@@ -187,20 +186,20 @@ function starPolygon(noids, r, dx, dy, initial = 90, ar = false) {
     return path(l).join();
 }
 function draw_cstar(l, fun, ray, fillrule, svg, fillcolor = rand_color()) {
-    var step = cstep(l.length);
+    // var step = cstep(l.length);
     var curveStar = path(l, ',');
     let curvePath = ['M', curveStar[0][0], curveStar[0][1]];
     curveStar.forEach((val, ind) => {
         if (ind !== 0) {
-            curvePath = curvePath.concat(['A', ray, ray, 0, 0, fun(ind), ...val]);
+            const ry = fun(ind);
+            curvePath = curvePath.concat(['A', ray, ray, 0, 0, ry, ...val]);
         }
-        var index = (ind + step) % l.length;
-        var il = curveStar[ind];
-        var isl = curveStar[index];
-        // addNs({ x: il[0], y: il[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg, index + 1);
     });
     addNs(
-        { d: curvePath.join(' '), style: `fill:${fillcolor};fill-rule:${fillrule};stroke:transparent;` },
+        {
+            d: curvePath.join(' '),
+            style: `fill:${fillcolor};fill-rule:${fillrule};stroke:transparent;`,
+        },
         'path',
         svg
     );
@@ -324,13 +323,14 @@ function gradientColors(n, color1, color2) {
 
     return colors;
 }
-function yinyang(n, R, slices = 4, spin) {
+function yinyang(n, R, spin) {
     const svg1 = addSVG();
-    const g = addNs({}, 'g', svg1);
-    const l = StarPoints(n, R, 0, 0, 0);
-    const lr = StarPoints(n, 0, 0, 0, 45);
+    (g = addNs({}, 'g', svg1)), //
+        (l = StarPoints(n, R, 0, 0, 0)),
+        (lr = StarPoints(n, 0, 0, 0, 45));
     addNs({ cx: 0, cy: 0, r: R, style: 'fill: orange;stroke:black;' }, 'circle', g);
-    const listColors = gradientColors(n, '#ff3399', '#FF9900');
+    const yingColor = rand_color();
+    const listColors = gradientColors(n, yingColor, reverse_color(yingColor));
     l.forEach((element, index, arr) => {
         let ng = listColors[index]; /* , rem = (index - 2 + n) % n; */
         let rj = R / 2;
@@ -352,7 +352,6 @@ function yinyang(n, R, slices = 4, spin) {
             g
         );
     }
-    console.log(spin);
     if (spin) {
         addNs(spinOpts(spin), 'animateTransform', g);
     }
@@ -385,14 +384,6 @@ function getLineCircleIntersections(x1, y1, x2, y2, centerX, centerY, radius) {
     }
 }
 
-/* addNs({ cx: element[0], cy: element[1], r: 4, style: "fill: black;stroke:black;" }, "circle", g);
-addNs({ x1:0,y1:0,x2: element[0], y2: element[1], style: "stroke-width: 5;stroke:black;" }, "line", g);
-setTimeout(() => {
-    let inn = element.map(val => val * 0.5);
-    addNs({ cx: inn[0], cy: inn[1], r: 0.4 * R / n, style: `fill: red};stroke:${listColors[rem]};stroke-width: 1;` }, "circle", g);
-}, (index + 2) * 50)
-addNs({ x: element[0], y: element[1], fill: 'red', style: `font-size:30;font-family:"Arial";` }, "text", svg1, index + 1); */
-
 function tangenteCircle(rayon, angle) {
     const svg = addSVG();
     let pt = pt_cir(rayon, angle, 0, 0);
@@ -407,72 +398,228 @@ function tangenteCircle(rayon, angle) {
     var group = addNs({}, 'g', svg);
     addNs({ cx: pt.x, cy: pt.y, r: 10, style: `fill:red;stroke:red;` }, 'circle', group);
     addNs({ x1, y1, x2, y2, style: `stroke:red;stroke-width:3;` }, 'line', group);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: "0 0 0;360 0 0", keyTimes: "0;1", dur:"4s", begin: "2s", repeatCount: "indefinite" }, "animateTransform", group);
+    addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: '0 0 0;360 0 0',
+            keyTimes: '0;1',
+            dur: '4s',
+            begin: '2s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        group
+    );
+}
+// GIS
+async function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
+    const svg = addSVG();
+    var response = await fetch(src);
+    const json = await response.json();
+    var bboxG = json.bbox;
+    if (!bboxG) {
+        bboxG = [...json.features].reduce(
+            function (prev, curr) {
+                var coors = curr.geometry.coordinates[0];
+                coors.forEach(function (item) {
+                    if (item[0] < prev[0]) prev[0] = item[0];
+                    if (item[0] > prev[2]) prev[2] = item[0];
+                    if (item[1] < prev[1]) prev[1] = item[1];
+                    if (item[1] > prev[3]) prev[3] = item[1];
+                });
+                return prev;
+            },
+            [Infinity, Infinity, -Infinity, -Infinity]
+        );
+    }
+    var x_min = bboxG[0],
+        x_max = bboxG[2],
+        y_min = bboxG[1],
+        y_max = bboxG[3];
+    let half_x = (x_min + x_max) / 2;
+    let half_y = (y_min + y_max) / 2;
+    let dx = 280;
+    let dy = 280;
+    let width_ = dx / (x_max - half_x);
+    let heigth = dy / (y_max - half_y);
+    var a = fun(width_, heigth);
+    let points = rectgPts(bboxG.map((ii, index) => index * a + dx));
+    addNs({ points, style: 'fill: none;stroke:red;' }, 'polygon', svg);
+    json.features.forEach(function (item) {
+        var listCoor = item.geometry.coordinates[0];
+        var list = listCoor.map((itm) => {
+            return itm.map((ii, index) => {
+                return index === 0 ? (ii - half_x) * a + tx : -(ii - half_y) * a + ty;
+            });
+        });
+        addNs(
+            { points: list.join(' '), style: `fill:${rand_color()};stroke:black;` },
+            'polygon',
+            svg
+        );
+    });
 }
 
 function comments() {
-    /* let x1 = (r * cos(angle1) + xc).toFixed(2);
+    let x1 = (r * cos(angle1) + xc).toFixed(2);
     let y1 = (r * sin(angle1) + yc).toFixed(2);
-    let x2 = (r * cos(angle2) + xc).toFixed(2);
-    let y2 = (r * sin(angle2) + yc).toFixed(2); */
-    /* let x3 = ((r + dr) * cos(angle1) + xc).toFixed(2);
+    let x22 = (r * cos(angle2) + xc).toFixed(2);
+    let y22 = (r * sin(angle2) + yc).toFixed(2);
+    let x3 = ((r + dr) * cos(angle1) + xc).toFixed(2);
     let y3 = ((r + dr) * sin(angle1) + yc).toFixed(2);
     let x4 = ((r + dr) * cos(angle2) + xc).toFixed(2);
-    let y4 = ((r + dr) * sin(angle2) + yc).toFixed(2); */
-    // addNs({ cx: x1, cy: y1, r: 4, style: "fill: blue;" }, [], "circle", document.querySelector("#radar"));
-    // addNs({ cx: x2, cy: y2, r: 4, style: "fill: blue;" }, [], "circle", document.querySelector("#radar"));
-    // addNs({ cx: x3, cy: y3, r: 4, style: "fill: red;" }, [], "circle", document.querySelector("#radar"));
-    // addNs({ cx: x4, cy: y4, r: 4, style: "fill: red;" }, [], "circle", document.querySelector("#radar"));
-    // mapp_shp('./geojson/ts.json', svg, (w, h) => Math.min(w, h))
-    /* function googleLines(a1, a2, x1, x2, ro, ri) {
-        const svg = addSVG();
-        let pt1 = pta(ro, a1);
-        let pt2 = pta(ri, a2);
-        let eql1 = EQ_LINE(pt1, pt2);
-        y1 = f(x1, eql1);
-        y2 = f(x2, eql1);
-        addNs({ x1, y1, x2, y2, style: `fill:green;stroke:black;stroke-width:5;` }, "line", svg);
-    } */
-    // logoUchiha();
-    /* if (this_ray < 1000) {
+    let y4 = ((r + dr) * sin(angle2) + yc).toFixed(2);
+    addNs(
+        { cx: x1, cy: y1, r: 4, style: 'fill: blue;' },
+        [],
+        'circle',
+        document.querySelector('#radar')
+    );
+    addNs(
+        { cx: x2, cy: y2, r: 4, style: 'fill: blue;' },
+        [],
+        'circle',
+        document.querySelector('#radar')
+    );
+    addNs(
+        { cx: x3, cy: y3, r: 4, style: 'fill: red;' },
+        [],
+        'circle',
+        document.querySelector('#radar')
+    );
+    addNs(
+        { cx: x4, cy: y4, r: 4, style: 'fill: red;' },
+        [],
+        'circle',
+        document.querySelector('#radar')
+    );
+    logoUchiha();
+    if (this_ray < 1000) {
         angle = angle_initial + i * 4;
     } else {
     }
-    // angle += step_ang;//i *angle_step; */
-    /* let pt_retour = angles_points.find(i => {
+    // angle += step_ang;//i *angle_step;
+    let pt_retour = angles_points.find((i) => {
         let a_p_l = angles_points.length - 1;
         let angle_fixe = angles_points[a_p_l].angle - 180;
-        return i.angle <= angle_fixe + 0.9 * dist_step
-            && i.angle >= angle_fixe - 0.9 * dist_step;
+        return i.angle <= angle_fixe + 0.9 * dist_step && i.angle >= angle_fixe - 0.9 * dist_step;
     });
     if (pt_retour) {
         while (this_ray > pt_retour.this_ray) {
             let angle = angle_initial + i * dist_step;
             //rad2deg(distance_fixe/this_ray);
             let point = pt_cir(this_ray, angle, 0, 0);
-            angles_points.push({ angle, this_ray, x: point.x, y: point.y })
+            angles_points.push({ angle, this_ray, x: point.x, y: point.y });
             points_list.push([point.x, point.y]);
-            this_ray -= rayon_step; i++;
+            this_ray -= rayon_step;
+            i++;
         }
-    } */
-    // tangenteCircle(100, rangle);
-    // let x2 = 300;
-    // let y2 = x2 * Math.tan(PI / 2 + deg2rad(rangle));
-    // addNs({ x2, y2, fill: 'green', stroke: "green", style: "stroke-width:6;" }, 'line', svg);
-    // Google(80);
-    // var arc2 = addNs({ d: "M100 -173A200 200 0 1 0 200 0L0 0", style: `fill:none;stroke:green;stroke-width:55;` }, "path", svg);
-    // mapp_shp('./json/json1.json',svg,(w,h)=>Math.min(w,h));
+    }
+    tangenteCircle(100, rangle);
+    let x2 = 300;
+    let y2 = x2 * Math.tan(PI / 2 + deg2rad(rangle));
+    addNs({ x2, y2, fill: 'green', stroke: 'green', style: 'stroke-width:6;' }, 'line', svg);
+    Google(80);
+    var arc2 = addNs(
+        {
+            d: 'M100 -173A200 200 0 1 0 200 0L0 0',
+            style: `fill:none;stroke:green;stroke-width:55;`,
+        },
+        'path',
+        svg
+    );
+    mapp_shp('./json/json1.json', svg, (w, h) => Math.min(w, h));
     // orochimaru curse
-    // var arc2 = addNs({ cx:200,cy:-200,r:50, style: `fill:none;stroke:black;` }, "circle", svg);
-    // var arc2 = addNs({ d:"M250 -200A250 250 0 0 1 250 0", style: `fill:none;stroke:black;` }, "path", svg);
-    // addNs({ d:"M0 200,200 0A150 150 0 0 0 0 -150A150 150 0 0 0 -200 0M0 200,-200 0z",fill:'red',stroke:"brown",strokeWidth:5 }, "path", svg);
-    // let newStars = starPolygon(n, rayon, dfx, dfy, 180);let poly = addNs({ points: newStars, style: `fill:${rand_color()};fill-rule:evenodd;stroke:black;` }, "polygon", svg);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${dfx} ${dfy};${at} ${dfx} ${dfy}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite" }, "animateTransform", poly);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values:`${af} ${0} ${0};${at} ${0} ${0}` ,keyTimes:"0;1" ,dur:"4s" ,begin:"0s" ,repeatCount:"indefinite" }, "animateTransform", poly);
-    // var arc1 = addNs({ d: hilalc(0, rr, 60, 80, 5, 90), style: `fill:${rand_color()}` }, "path", svg1);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${rr};360 0 ${rr}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite" }, "animateTransform", arc1);
-    // var arc2 = addNs({ d: hilalc(0, -rr, 60, 80, 5, 270), style: `fill:${rand_color()}` }, "path", svg1);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${-rr};360 0 ${-rr}`, keyTimes: "0;1", dur, begin: "0s", repeatCount: "indefinite" }, "animateTransform", arc2);
+    var arc2 = addNs({ cx: 200, cy: -200, r: 50, style: `fill:none;stroke:black;` }, 'circle', svg);
+    var arc2 = addNs(
+        { d: 'M250 -200A250 250 0 0 1 250 0', style: `fill:none;stroke:black;` },
+        'path',
+        svg
+    );
+    addNs(
+        {
+            d: 'M0 200,200 0A150 150 0 0 0 0 -150A150 150 0 0 0 -200 0M0 200,-200 0z',
+            fill: 'red',
+            stroke: 'brown',
+            strokeWidth: 5,
+        },
+        'path',
+        svg
+    );
+    let newStars = starPolygon(n, rayon, dfx, dfy, 180);
+    let poly = addNs(
+        { points: newStars, style: `fill:${rand_color()};fill-rule:evenodd;stroke:black;` },
+        'polygon',
+        svg
+    );
+    addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: `${af} ${dfx} ${dfy};${at} ${dfx} ${dfy}`,
+            keyTimes: '0;1',
+            dur: '4s',
+            begin: '0s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        poly
+    );
+    addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: `${af} ${0} ${0};${at} ${0} ${0}`,
+            keyTimes: '0;1',
+            dur: '4s',
+            begin: '0s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        poly
+    );
+    var arc1 = addNs(
+        { d: hilalc(0, rr, 60, 80, 5, 90), style: `fill:${rand_color()}` },
+        'path',
+        svg1
+    );
+    addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: `0 0 ${rr};360 0 ${rr}`,
+            keyTimes: '0;1',
+            dur,
+            begin: '0s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        arc1
+    );
+    var arc2 = addNs(
+        { d: hilalc(0, -rr, 60, 80, 5, 270), style: `fill:${rand_color()}` },
+        'path',
+        svg1
+    );
+    addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: `0 0 ${-rr};360 0 ${-rr}`,
+            keyTimes: '0;1',
+            dur,
+            begin: '0s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        arc2
+    );
 }
 function simpleyingyang(spin) {
     const svg1 = addSVG();
@@ -560,9 +707,30 @@ function Google(ro = 250) {
         'line',
         svg
     );
-    // addNs({ cx: ri * cos(ang1), cy: dr/2, r: 10, style: `fill:none;stroke:red;stroke-width:5;` }, "circle", svg);
-    // let line = addNs({ x1:0,x2:0,x2, y2: -dr/2, style: `fill:none;stroke:black;stroke-width:5;` }, "line", svg);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `-10 0 ${0};350 0 ${0}`, keyTimes: "0;1", dur:"5s", begin: "0s", repeatCount: "indefinite" }, "animateTransform", line);
+    addNs(
+        { cx: ri * cos(ang1), cy: dr / 2, r: 10, style: `fill:none;stroke:red;stroke-width:5;` },
+        'circle',
+        svg
+    );
+    let line = addNs(
+        { x1: 0, x2: 0, x2, y2: -dr / 2, style: `fill:none;stroke:black;stroke-width:5;` },
+        'line',
+        svg
+    );
+    addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: `-10 0 ${0};350 0 ${0}`,
+            keyTimes: '0;1',
+            dur: '5s',
+            begin: '0s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        line
+    );
 }
 function logoUchiha() {
     const svg = addSVG();
@@ -581,14 +749,27 @@ function logoUchiha() {
         pt_cir(ry, 90 - da * 0.75, 0, dx).p
     }A${ry} ${ry} 0 0 0 ${pt_cir(ry, ag + da, 0, dx).p}`;
     //
-    addNs(
+    /* addNs(
         { width: 600, height: 600, x: -300, y: -300, stroke: 'red', fill: 'black' },
         'rect',
         group
-    );
+    ); */
     addNs({ d, stroke: 'red', fill: 'red' }, 'path', group);
-    addNs({ d: d1, stroke: 'black', fill: 'white' }, 'path', group);
-    // addNs({ attributeName: "transform", type: "rotate", calcMode: "linear", values: `0 0 ${dx};360 0 ${dx}`, keyTimes: "0;1", dur:"4s", begin: "0s", repeatCount: "indefinite" }, "animateTransform", group);
+    addNs({ d: d1, stroke: 'black', fill: rand_color() }, 'path', group);
+    /* addNs(
+        {
+            attributeName: 'transform',
+            type: 'rotate',
+            calcMode: 'linear',
+            values: `0 0 ${dx};360 0 ${dx}`,
+            keyTimes: '0;1',
+            dur: '4s',
+            begin: '0s',
+            repeatCount: 'indefinite',
+        },
+        'animateTransform',
+        group
+    ); */
 }
 
 const svg = document.querySelector('#empty');
@@ -609,10 +790,21 @@ let rr = 20,
 var rangle = Math.random() * 360;
 // tangenteCircle(200, 80);
 // radar(42, -90, 60, 8);
-// logoUchiha();
-// Google();
-simpleyingyang('8s');
+logoUchiha();
+Google();
+mapp_shp('/assets/geojson/morocco.geojson', (w, h) => Math.min(w, h));
 spiral(250, 0, 20, 50, false);
-nested_stars(7, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
-curve_star(7, rayon, 0, 0, 90, (i) => 1 - (i % 2), 2 * rayon, 'evenodd', 'green');
-yinyang(2, 250, 4, '5s');
+nested_stars(5, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
+curve_star({
+    n: 20,
+    r: rayon,
+    dx: 0,
+    dy: 0,
+    initialAngle: 90,
+    fun: (i) => 1 - (i % 2),
+    ray: 2 * rayon,
+    fillrule: 'evenodd',
+    fillcolor: 'green',
+});
+// simpleyingyang('8s');
+// yinyang(2, 250, '8s');

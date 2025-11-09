@@ -75,12 +75,27 @@ function IT_PTS(noids, r, dx, dy, initial, start = 0) {
     let L2 = EQ_LINE({ x: parseFloat(x3), y: parseFloat(y3) }, { x: parseFloat(x4), y: parseFloat(y4) });
     return IT_LINES(L1, L2);
 }
+// 24ef75
+// 6123eb
 function rand_color() {
-    let r = Math.round(Math.random() * 255);
-    let g = Math.round(Math.random() * 255);
-    let b = Math.round(Math.random() * 255);
-    return `rgb(${r},${g},${b})`
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
+
+function reverse_color(hex) {
+    // Remove the '#' if it's there
+    hex = hex.replace('#', '');
+    // Invert the color
+    let r = (255 - parseInt(hex.substring(0, 2), 16)).toString(16).padStart(2, '0');
+    let g = (255 - parseInt(hex.substring(2, 4), 16)).toString(16).padStart(2, '0');
+    let b = (255 - parseInt(hex.substring(4, 6), 16)).toString(16).padStart(2, '0');
+    return `#${r}${g}${b}`;
+}
+
 function getRayon(pt, dx, dy) {
     return Math.sqrt((pt.x - dx) ** 2 + (pt.y - dy) ** 2);
 }
