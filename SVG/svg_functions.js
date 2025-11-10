@@ -75,8 +75,8 @@ function IT_PTS(noids, r, dx, dy, initial, start = 0) {
     let L2 = EQ_LINE({ x: parseFloat(x3), y: parseFloat(y3) }, { x: parseFloat(x4), y: parseFloat(y4) });
     return IT_LINES(L1, L2);
 }
-// 24ef75
-// 6123eb
+// 24ef75 6123eb
+// 0a0375 f5fc8a
 function rand_color() {
     const letters = '0123456789ABCDEF';
     let color = '#';

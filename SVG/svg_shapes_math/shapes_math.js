@@ -35,7 +35,7 @@ function addSVG(Attrs = init_attrs) {
         'rect',
         svg
     );
-    document.body.insertBefore(svg, document.body.firstChild);
+    document.body.appendChild(svg);
     return svg;
 }
 function path(l, sep = ' ') {
@@ -422,7 +422,7 @@ async function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
     if (!bboxG) {
         bboxG = [...json.features].reduce(
             function (prev, curr) {
-                var coors = curr.geometry.coordinates[0];
+                var coors = curr.geometry.coordinates[0][0];
                 coors.forEach(function (item) {
                     if (item[0] < prev[0]) prev[0] = item[0];
                     if (item[0] > prev[2]) prev[2] = item[0];
@@ -448,7 +448,7 @@ async function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
     let points = rectgPts(bboxG.map((ii, index) => index * a + dx));
     addNs({ points, style: 'fill: none;stroke:red;' }, 'polygon', svg);
     json.features.forEach(function (item) {
-        var listCoor = item.geometry.coordinates[0];
+        var listCoor = item.geometry.coordinates[0][0];
         var list = listCoor.map((itm) => {
             return itm.map((ii, index) => {
                 return index === 0 ? (ii - half_x) * a + tx : -(ii - half_y) * a + ty;
@@ -463,43 +463,27 @@ async function mapp_shp(src, fun = (w, h) => Math.min(w, h), tx = 0, ty = 0) {
 }
 
 function comments() {
-    let x1 = (r * cos(angle1) + xc).toFixed(2);
-    let y1 = (r * sin(angle1) + yc).toFixed(2);
-    let x22 = (r * cos(angle2) + xc).toFixed(2);
-    let y22 = (r * sin(angle2) + yc).toFixed(2);
-    let x3 = ((r + dr) * cos(angle1) + xc).toFixed(2);
-    let y3 = ((r + dr) * sin(angle1) + yc).toFixed(2);
-    let x4 = ((r + dr) * cos(angle2) + xc).toFixed(2);
-    let y4 = ((r + dr) * sin(angle2) + yc).toFixed(2);
-    addNs(
-        { cx: x1, cy: y1, r: 4, style: 'fill: blue;' },
-        [],
-        'circle',
-        document.querySelector('#radar')
-    );
-    addNs(
-        { cx: x2, cy: y2, r: 4, style: 'fill: blue;' },
-        [],
-        'circle',
-        document.querySelector('#radar')
-    );
-    addNs(
-        { cx: x3, cy: y3, r: 4, style: 'fill: red;' },
-        [],
-        'circle',
-        document.querySelector('#radar')
-    );
-    addNs(
-        { cx: x4, cy: y4, r: 4, style: 'fill: red;' },
-        [],
-        'circle',
-        document.querySelector('#radar')
-    );
+    const svg = addSVG({ ...init_attrs, width: 600, height: 600 });
+    const svg1 = addSVG({ ...init_attrs, width: 400, height: 400 });
+    const n = 7;
+    const rayon = 150;
+    const dfx = 0;
+    const dfy = 0;
+    const af = 0;
+    const at = 360;
+    const rr = 80;
+    const dur = '8s';
+    let angle_initial = 0;
+    let dist_step = 5;
+    let rayon_step = 5;
+    let this_ray = 1000;
+    let i = 0;
+    let angles_points = [];
+    let points_list = [];
+    let rangle = 45;
+    let x2 = 300;
+    let y2 = x2 * Math.tan(PI / 2 + deg2rad(rangle));
     logoUchiha();
-    if (this_ray < 1000) {
-        angle = angle_initial + i * 4;
-    } else {
-    }
     // angle += step_ang;//i *angle_step;
     let pt_retour = angles_points.find((i) => {
         let a_p_l = angles_points.length - 1;
@@ -518,8 +502,6 @@ function comments() {
         }
     }
     tangenteCircle(100, rangle);
-    let x2 = 300;
-    let y2 = x2 * Math.tan(PI / 2 + deg2rad(rangle));
     addNs({ x2, y2, fill: 'green', stroke: 'green', style: 'stroke-width:6;' }, 'line', svg);
     Google(80);
     var arc2 = addNs(
@@ -530,7 +512,7 @@ function comments() {
         'path',
         svg
     );
-    mapp_shp('./json/json1.json', svg, (w, h) => Math.min(w, h));
+    mapp_shp('/assets/geojson/ts.json', (w, h) => Math.min(w, h));
     // orochimaru curse
     var arc2 = addNs({ cx: 200, cy: -200, r: 50, style: `fill:none;stroke:black;` }, 'circle', svg);
     var arc2 = addNs(
@@ -777,7 +759,7 @@ const svg1 = document.querySelector('#fulfilled');
 Number.prototype.ron = function (gaps = 2) {
     return Math.round(this * 10 ** gaps) / 10 ** gaps;
 };
-const rayon = 300,
+const rayon = 250,
     n = 12,
     dfx = 100,
     dfy = 100,
@@ -787,24 +769,24 @@ const rayon = 300,
 const init_attrs = { viewBox: '-300, -300, 600, 600', width: svgw };
 let rr = 20,
     dur = '1s';
-var rangle = Math.random() * 360;
 // tangenteCircle(200, 80);
 // radar(42, -90, 60, 8);
-logoUchiha();
-Google();
-mapp_shp('/assets/geojson/morocco.geojson', (w, h) => Math.min(w, h));
+// Google();
+// logoUchiha();
+// simpleyingyang('8s');
+// mapp_shp('/assets/geojson/morocco.geojson', (w, h) => Math.min(w, h));
+// comments();
+yinyang(2, 250, '8s');
 spiral(250, 0, 20, 50, false);
-nested_stars(5, -90, 250, 5, 2, false, { ...init_attrs, width: 400 });
+nested_stars(5, -90, 250, 75, 2, false, { ...init_attrs, width: 400 });
 curve_star({
-    n: 20,
+    n: 7,
     r: rayon,
     dx: 0,
     dy: 0,
     initialAngle: 90,
     fun: (i) => 1 - (i % 2),
-    ray: 2 * rayon,
+    ray: 5.7 * rayon,
     fillrule: 'evenodd',
     fillcolor: 'green',
 });
-// simpleyingyang('8s');
-// yinyang(2, 250, '8s');
