@@ -1,4 +1,5 @@
-const { powm } = require("./cycle_kill_helpers");
+const { lastByNJSON, lastByNSplice, lastByNMath } = require("./index");
+const { powm } = require("./helpers");
 
 function TestNByJSONtoSplit(limit = 25, desc = false) {
     var temps1 = 0; var temps2 = 0;
@@ -120,7 +121,7 @@ function listLasts(nombre, N = 1, desc = false) {
 function TestUnitaire(i, N, show) {
     var count = 0;
     for (let j = 1; j < i + 1; j++) {
-        var lbm = lastByMathGeneral(i, N, j);
+        var lbm = lastByNMath(i, N, j);
         var lef = lastByNJSON(i, N, j)[0];
         var rig = lbm[0];/*var m=lbm[1];*/
         if (lef == rig) {
@@ -260,6 +261,15 @@ function findAngel(minkills, n = 100, M = 1) {
     console.log("end = " + start);
     console.log("etape   = " + etape);
 }
+
+
+TestNByJSONtoSplit();
+TestEgaliteN(100, 2);
+TestPowm(10, 2);
+Encadrement(100, 3);
+TestUnitaire(100, 2, false);
+TestEg(100, 2, false);
+
 module.exports = {
     TestNByJSONtoSplit,
     TestEgaliteN,

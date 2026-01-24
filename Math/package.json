@@ -2,9 +2,9 @@
   "name": "killscycle",
   "version": "1.0.0",
   "description": "",
-  "main": "anneau.js",
+  "main": "josephus_problem/index.test.js",
   "scripts": {
-    "start": "nodemon anneau",
+    "start": "nodemon josephus_problem/index.test",
     "dev":"nodemon other/numerator_denomenator"
   },
   "keywords": [],

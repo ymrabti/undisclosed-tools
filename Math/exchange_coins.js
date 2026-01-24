@@ -10,4 +10,9 @@ const srfReduc = maxsrf.reduceRight((p, c) => {
     return p
 }, { monatntActuel: monatnt - tamanSl3a })
 const { monatntActuel, ...result } = srfReduc
+for (const key in result) {
+    if (result[key] === 0) {
+        delete result[key]
+    }
+}
 console.log(result)
