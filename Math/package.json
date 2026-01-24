@@ -2,10 +2,17 @@
   "name": "killscycle",
   "version": "1.0.0",
   "description": "",
-  "main": "josephus_problem/index.test.js",
+  "main": "josephus_problem/tests/run-all.js",
   "scripts": {
-    "start": "nodemon josephus_problem/index.test",
-    "dev":"nodemon other/numerator_denomenator"
+    "start": "node josephus_problem/tests/run-all.js",
+    "dev": "nodemon other/numerator_denomenator",
+    "test:all": "node josephus_problem/tests/run-all.js",
+    "test:unit": "node josephus_problem/tests/unit.test.js",
+    "test:integration": "node josephus_problem/tests/integration.test.js",
+    "test:system": "node josephus_problem/tests/system.test.js",
+    "test:performance": "node josephus_problem/tests/performance.test.js",
+    "test:usability": "node josephus_problem/tests/usability.test.js",
+    "test:compatibility": "node josephus_problem/tests/compatibility.test.js"
   },
   "keywords": [],
   "author": "",
