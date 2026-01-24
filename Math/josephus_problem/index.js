@@ -7,11 +7,8 @@ var {
     findNextAlive,
     pow2,
     findNextNAlives,
-    powm,
     powN,
-    pow2Loop,
-    getRandomInt,
-    findPAndQ,
+    rand,
 } = require('./helpers');
 
 function lastBy1Splice(nombre = 100, start = 1, desc = false) {
@@ -80,7 +77,7 @@ function lastByNJSON(nombre = 100, N = 1, start = 1, desc = false) {
     while (countAlives(listComn) > N) {
         i = findNUM(listComn, lastAlive);
         var nextAlives = findNextNAlives(listComn, N, i);
-        nextAlives.forEach(function (item, index) {
+        nextAlives.forEach(function (item) {
             listComn[i].kills += 1;
             listComn[item].killed = true;
             listComn[item].killedBy = lastAlive;
@@ -138,13 +135,13 @@ function lastByNJSON_Random(nombre = 100, M = 1) {
     var N = rand(M, 0);
     var start = rand(1, nombre);
     var desc = rand(1, 0);
-    var listComn = generate1(nombre, desc);
+    var listComn = generateListJSON(nombre, desc);
     var lastAlive = start;
     while (countAlives(listComn) > N) {
         // console.log("Killer = "+lastAlive);
         i = findNUM(listComn, lastAlive);
         var nextAlives = findNextNAlives(listComn, N, i);
-        nextAlives.forEach(function (item, index) {
+        nextAlives.forEach(function (item) {
             listComn[i].kills += 1;
             listComn[item].killed = true;
             listComn[item].killedBy = lastAlive;
@@ -159,68 +156,117 @@ function lastByNJSON_Random(nombre = 100, M = 1) {
     return [lastAlive, kills];
 }
 
-function returnAlives(list) {
-    var listAlives = [];
-    list.forEach(function (item, index) {
-        if (!item.killed) {
-            listAlives.push(item);
-        }
-    });
-    return listAlives;
+// 
+/**
+ * Josephus Classic
+ * step = 2, forward direction, custom start
+ * @param {number} n
+ * @param {number} start (1-based)
+ * @returns {number}
+ */
+function josephusClassic(n, start = 1) {
+  if (n < 1 || start < 1 || start > n) {
+    throw new Error("Invalid n or start");
+  }
+
+  const highestPowerOf2 = 1 << Math.floor(Math.log2(n));
+  const l = n - highestPowerOf2;
+  const base = 2 * l + 1;
+
+  return ((base + start - 2) % n) + 1;
 }
+
 
 /**
- *
- * @param {InfoCondamne[]} list Liste
- * @param {number} num num
- * @returns
+ * Josephus Classic Reverse
+ * step = 2, reverse direction, custom start
+ * @param {number} n
+ * @param {number} start
+ * @returns {number}
  */
-function InfosNum(list, num) {
-    var listOfkills = list.filter((item) => item.killedBy == num);
-    var i = findNUM(list, num);
-    return i < 0
-        ? null
-        : {
-              from_function: listOfkills.length,
-              from_list: list[i].kills,
-              kills: listOfkills,
-              killedBy: list[i].killedBy,
-          };
+function josephusClassicReverse(n, start = 1) {
+  const forward = josephusClassic(n, start);
+  return n - forward + 1;
 }
 
-function josephus(n, m) {
-    let survivor = 0; // Base case: when there's 1 person, the survivor is at position 0
 
-    // Calculate the position for n people iteratively
-    for (let i = 2; i <= n; i++) {
-        survivor = (survivor + m) % i;
-    }
+/**
+ * Josephus General
+ * step = m, forward direction, custom start
+ * @param {number} n
+ * @param {number} m
+ * @param {number} start
+ * @returns {number}
+ */
+function josephusGeneral(n, m, start = 1) {
+  if (n < 1 || m < 1 || start < 1 || start > n) {
+    throw new Error("Invalid parameters");
+  }
 
-    // Convert from 0-based index to 1-based index
-    return survivor + 1;
+  let survivor = 0; // zero-based
+
+  for (let i = 1; i <= n; i++) {
+    survivor = (survivor + m) % i;
+  }
+
+  const base = survivor + 1;
+  return ((base + start - 2) % n) + 1;
 }
 
-var n = getRandomInt(102, 3_000);
-// var n = 3 ** 4;
-var Skip = 4;
-var start = 1;
 
-const obj = {
-    last_1: {
-        math: lastBy1Math(n, start),
-        splice: lastBy1Splice(n, start),
-        jSON: lastBy1JSON(n, start).lastAlive,
-    },
-    last_n: {
-        math: lastByNMath(n, Skip, start).lastAlive,
-        // math: josephus(n, Skip, start),
-        // math: josephusBinary(n, Skip + 1, start),
-        splice: lastByNSplice(n, Skip, start).lastAlive,
-        jSON: lastByNJSON(n, Skip, start).lastAlive,
-    },
-};
-obj[`${n}, ${Skip + 1}`] = findPAndQ(n, Skip + 1);
-console.table(obj);
+/**
+ * Josephus General Reverse
+ * step = m, reverse direction, custom start
+ * @param {number} n
+ * @param {number} m
+ * @param {number} start
+ * @returns {number}
+ */
+function josephusGeneralReverse(n, m, start = 1) {
+  const forward = josephusGeneral(n, m, start);
+  return n - forward + 1;
+}
+
+
+/**
+ * Unified Josephus Function
+ *
+ * @param {number} n       - Number of prisoners (n >= 1)
+ * @param {number} m       - Step size (m >= 1, m = 2 => classic)
+ * @param {number} start   - Starting position (1-based)
+ * @param {string} dir     - "forward" | "reverse"
+ * @returns {number}       - Survivor position (1-based)
+ */
+function josephus(n, m = 2, start = 1, dir = "forward") {
+  if (
+    n < 1 ||
+    m < 1 ||
+    start < 1 ||
+    start > n ||
+    !["forward", "reverse"].includes(dir)
+  ) {
+    throw new Error("Invalid parameters");
+  }
+
+  // Base Josephus (0-based, forward, start = 1)
+  let survivor = 0;
+  for (let i = 1; i <= n; i++) {
+    survivor = (survivor + m) % i;
+  }
+
+  // Apply start rotation (still 0-based)
+  survivor = (survivor + start - 1) % n;
+
+  // Apply direction
+  if (dir === "reverse") {
+    survivor = n - 1 - survivor;
+  }
+
+  // Convert to 1-based index
+  return survivor + 1;
+}
+
+
 
 module.exports = {
     lastBy1Splice,
@@ -229,11 +275,13 @@ module.exports = {
     lastByNSplice,
     lastByNJSON,
     lastByNMath,
-    InfosNum,
-    returnAlives,
-    josephus,
     lastByNSplice_Random,
     lastByNJSON_Random,
+    josephusClassic,
+    josephusClassicReverse,
+    josephusGeneral,
+    josephusGeneralReverse,
+    josephus,
 };
 
 /*
