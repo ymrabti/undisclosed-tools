@@ -197,7 +197,6 @@ function powm(n, m = 2) {
         p++;
         i++;
     }
-    console.log(m ** (p - 1) + ' < ' + n + ' < ' + m ** p, pw, m);
     let borne_inf = m ** (p - 1);
     while (borne_inf <= n) {
         borne_inf += m ** (p - 1);

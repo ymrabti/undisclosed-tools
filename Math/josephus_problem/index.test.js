@@ -1,7 +1,6 @@
 const {
     lastByNJSON,
     lastByNSplice,
-    lastByNMath,
     lastBy1Splice,
     lastBy1Math,
     lastBy1JSON,
@@ -112,23 +111,7 @@ function chances(nombre, num) {
     }
     console.table(list);
 }
-/**
- * Calculate the chances to be the last alive, starting and ending alive, multiple directions
- * @param {*} nombre
- * @param {*} N
- */
-function chancesStartEnd(nombre, N = 1) {
-    var list = [];
-    for (var i = 1; i <= nombre; i++) {
-        if (lastByNMath(nombre, N, i, false).lastAlive == i) {
-            list.push({ start: i, desc: false });
-        }
-        if (lastByNMath(nombre, N, i, true).lastAlive == i) {
-            list.push({ start: i, desc: true });
-        }
-    }
-    console.table(list);
-}
+
 
 /**
  * Find the angel position that kills the minimum number of people
@@ -150,26 +133,28 @@ function findAngel(minkills, n = 100, M = 1) {
 }
 
 function testClassic() {
-    var n = getRandomInt(102, 3_000);
+    const n = getRandomInt(102, 3_000);
     // var n = 3 ** 4;
-    var Skip = 4;
-    var start = 1;
+    const M = 2;
+    const start = 1;
+    const desc = Math.random() >= 0.5;
+    console.log(`Testing n = ${n}, Skip = ${M}, start = ${start}, desc = ${desc}`);
 
     const obj = {
         last_1: {
-            math: lastBy1Math(n, start),
-            josephus: josephus(n, 2, start),
-            splice: lastBy1Splice(n, start),
-            jSON: lastBy1JSON(n, start).lastAlive,
+            math: lastBy1Math(n, start, desc),
+            josephus: josephus(n, 2, start, desc ? 'reverse' : 'forward'),
+            splice: lastBy1Splice(n, start, desc),
+            jSON: lastBy1JSON(n, start, desc).lastAlive,
         },
         last_n: {
-            math: lastByNMath(n, Skip, start).lastAlive,
-            josephus: josephus(n, Skip, start),
-            splice: lastByNSplice(n, Skip, start).lastAlive,
-            jSON: lastByNJSON(n, Skip, start).lastAlive,
+            math: josephus(n, M, start, desc ? 'reverse' : 'forward'),
+            josephus: josephus(n, M, start, desc ? 'reverse' : 'forward'),
+            splice: lastByNSplice(n, M - 1, start, desc).lastAlive,
+            jSON: lastByNJSON(n, M - 1, start, desc).lastAlive,
         },
     };
-    obj[`${n}, ${Skip + 1}`] = findPAndQ(n, Skip + 1);
+    obj[`${n}, ${M + 1}`] = findPAndQ(n, M);
     console.table(obj);
 }
 
@@ -197,7 +182,6 @@ module.exports = {
     TestEgaliteN,
     Encadrement,
     chances,
-    chancesStartEnd,
     findAngel,
     testClassic,
 };

@@ -87,17 +87,6 @@ function lastByNJSON(nombre = 100, N = 1, start = 1, desc = false) {
     }
     return { lastAlive /* listComn */ };
 }
-function lastByNMath(nombre = 100, N = 1, start = 1, desc = false) {
-    const m = powN(nombre, N + 1); // Calculate the exponent for the largest power of (N + 1)
-    const desc1 = descendant(!!desc); // Convert desc to either 1 (descending) or -1 (ascending)
-
-    // Generalized formula for finding the last person standing
-    const deux = N + 1;
-    const lastAlive =
-        ((desc1 * nombre + (nombre - Math.pow(deux, m)) * deux + start - 1) % nombre) + 1;
-
-    return { lastAlive, m }; // Return the last person and the power exponent
-}
 
 function lastByNSplice_Random(nombre = 100, M = 1) {
     var N = rand(M, 0);
@@ -156,7 +145,7 @@ function lastByNJSON_Random(nombre = 100, M = 1) {
     return [lastAlive, kills];
 }
 
-// 
+//
 /**
  * Josephus Classic
  * step = 2, forward direction, custom start
@@ -165,17 +154,16 @@ function lastByNJSON_Random(nombre = 100, M = 1) {
  * @returns {number}
  */
 function josephusClassic(n, start = 1) {
-  if (n < 1 || start < 1 || start > n) {
-    throw new Error("Invalid n or start");
-  }
+    if (n < 1 || start < 1 || start > n) {
+        throw new Error('Invalid n or start');
+    }
 
-  const highestPowerOf2 = 1 << Math.floor(Math.log2(n));
-  const l = n - highestPowerOf2;
-  const base = 2 * l + 1;
+    const highestPowerOf2 = 1 << Math.floor(Math.log2(n));
+    const l = n - highestPowerOf2;
+    const base = 2 * l + 1;
 
-  return ((base + start - 2) % n) + 1;
+    return ((base + start - 2) % n) + 1;
 }
-
 
 /**
  * Josephus Classic Reverse
@@ -185,48 +173,41 @@ function josephusClassic(n, start = 1) {
  * @returns {number}
  */
 function josephusClassicReverse(n, start = 1) {
-  const forward = josephusClassic(n, start);
-  return n - forward + 1;
+    const forward = josephusClassic(n, start);
+    return (n - forward + start + 1) % n;
 }
-
 
 /**
- * Josephus General
- * step = m, forward direction, custom start
- * @param {number} n
- * @param {number} m
- * @param {number} start
- * @returns {number}
+ * Josephus General — CORRECT for your rules
+ * Matches splice / JSON simulation
+ *
+ * @param {number} n       - number of prisoners
+ * @param {number} m       - number killed each round
+ * @param {number} start   - starting prisoner (1-based)
+ * @param {boolean} desc   - reverse circle direction
+ * @returns {number}       - last alive (1-based)
  */
-function josephusGeneral(n, m, start = 1) {
-  if (n < 1 || m < 1 || start < 1 || start > n) {
-    throw new Error("Invalid parameters");
-  }
+function josephusGeneral(n, m, start = 1, dir = 'forward') {
+    if (n < 1 || m < 1 || start < 1 || start > n || !['forward', 'reverse'].includes(dir)) {
+        throw new Error('Invalid parameters');
+    }
 
-  let survivor = 0; // zero-based
+    // Base Josephus: forward, start = 1, 0-based
+    let survivor = 0;
+    for (let i = 1; i <= n; i++) {
+        survivor = (survivor + m + 1) % i;
+    }
 
-  for (let i = 1; i <= n; i++) {
-    survivor = (survivor + m) % i;
-  }
+    // Apply start rotation
+    survivor = (survivor + (start - 1)) % n;
 
-  const base = survivor + 1;
-  return ((base + start - 2) % n) + 1;
+    // Reverse CIRCLE (not recurrence)
+    if (dir === 'reverse') {
+        survivor = (n - survivor - 1 + n) % n;
+    }
+
+    return survivor + 1;
 }
-
-
-/**
- * Josephus General Reverse
- * step = m, reverse direction, custom start
- * @param {number} n
- * @param {number} m
- * @param {number} start
- * @returns {number}
- */
-function josephusGeneralReverse(n, m, start = 1) {
-  const forward = josephusGeneral(n, m, start);
-  return n - forward + 1;
-}
-
 
 /**
  * Unified Josephus Function
@@ -237,36 +218,18 @@ function josephusGeneralReverse(n, m, start = 1) {
  * @param {string} dir     - "forward" | "reverse"
  * @returns {number}       - Survivor position (1-based)
  */
-function josephus(n, m = 2, start = 1, dir = "forward") {
-  if (
-    n < 1 ||
-    m < 1 ||
-    start < 1 ||
-    start > n ||
-    !["forward", "reverse"].includes(dir)
-  ) {
-    throw new Error("Invalid parameters");
-  }
+function josephus(n, m = 2, start = 1, dir = 'forward') {
+    if (n < 1 || m < 1 || start < 1 || start > n || !['forward', 'reverse'].includes(dir)) {
+        throw new Error('Invalid parameters');
+    }
 
-  // Base Josephus (0-based, forward, start = 1)
-  let survivor = 0;
-  for (let i = 1; i <= n; i++) {
-    survivor = (survivor + m) % i;
-  }
-
-  // Apply start rotation (still 0-based)
-  survivor = (survivor + start - 1) % n;
-
-  // Apply direction
-  if (dir === "reverse") {
-    survivor = n - 1 - survivor;
-  }
-
-  // Convert to 1-based index
-  return survivor + 1;
+    if (m === 2) {
+        return dir === 'forward' ? josephusClassic(n, start) : josephusClassicReverse(n, start);
+    } else {
+        console.log('Using General Josephus for m != 2', { n, m: m, start, dir });
+        return josephusGeneral(n, m, start, dir);
+    }
 }
-
-
 
 module.exports = {
     lastBy1Splice,
@@ -274,18 +237,15 @@ module.exports = {
     lastBy1Math,
     lastByNSplice,
     lastByNJSON,
-    lastByNMath,
     lastByNSplice_Random,
     lastByNJSON_Random,
     josephusClassic,
     josephusClassicReverse,
     josephusGeneral,
-    josephusGeneralReverse,
     josephus,
 };
 
 /*
-console.log(lastByNMath(n, M, start));
 var Mi = 2
 console.log('\nTESTS\n');
 console.log(chances(nn, 1));
