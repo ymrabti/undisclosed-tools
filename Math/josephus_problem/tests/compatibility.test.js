@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { josephus, josephusClassic, josephusGeneral } = require('../index');
+const { josephus, josephusClassic, josephusGeneral, lastBy1Binary } = require('../index');
 
 function logPass(name) { console.log(`PASS: ${name}`); }
 function logFail(name, err) { console.error(`FAIL: ${name} -> ${err.message}`); }
@@ -27,6 +27,16 @@ test('Compatibility: stable outputs between josephus(m=2) and classical', () => 
   for (let n = 2; n <= 50; n++) {
     for (let s = 1; s <= Math.min(n, 5); s++) {
       assert.strictEqual(josephus(n, 2, s, 'forward'), josephusClassic(n, s));
+    }
+  }
+});
+
+test('Compatibility: lastBy1Binary matches classical for all starts', () => {
+  for (let n = 2; n <= 50; n++) {
+    for (let s = 1; s <= Math.min(n, 5); s++) {
+      const binary = lastBy1Binary(n, s, false);
+      const classic = josephusClassic(n, s);
+      assert.strictEqual(binary, classic, `Failed for n=${n}, s=${s}`);
     }
   }
 });

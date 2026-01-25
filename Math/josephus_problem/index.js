@@ -1,13 +1,11 @@
 var {
     generate,
-    descendant,
     generateListJSON,
     countAlives,
     findNUM,
     findNextAlive,
     pow2,
     findNextNAlives,
-    powN,
     rand,
 } = require('./helpers');
 
@@ -50,9 +48,22 @@ function lastBy1Math(nombre = 100, start = 1, desc = false) {
     return lastAlive;
 }
 
+function lastBy1Binary(nombre = 100, start = 1, desc = false) {
+    var binary = nombre.toString(2);
+    var rotatedBinary = binary.slice(1) + binary[0];
+    var lastAlive = parseInt(rotatedBinary, 2);
+    if (desc) {
+        lastAlive = ((nombre + 1 - lastAlive + start - 1) % nombre) + 1;
+    } else {
+        lastAlive = ((lastAlive - 1 + start - 1) % nombre) + 1;
+    }
+    return lastAlive;
+}
+
 // Generalized Josephus Function for skipping N persons
 function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
     var listComn = generate(nombre, desc);
+    console.log(listComn);
     var lastAlive = start;
     while (listComn.length > N + 1) {
         var len = listComn.length;
@@ -235,6 +246,7 @@ module.exports = {
     lastBy1Splice,
     lastBy1JSON,
     lastBy1Math,
+    lastBy1Binary,
     lastByNSplice,
     lastByNJSON,
     lastByNSplice_Random,

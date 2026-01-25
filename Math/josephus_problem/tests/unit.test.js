@@ -16,8 +16,8 @@ const {
   josephusGeneral,
   josephus,
   lastBy1Splice,
-  lastBy1JSON,
   lastBy1Math,
+  lastBy1Binary,
 } = require('../index');
 
 function logPass(name) { console.log(`PASS: ${name}`); }
@@ -113,6 +113,32 @@ test('lastBy1Math equals lastBy1Splice for small n', () => {
     const a = lastBy1Splice(n, 1, false);
     const b = lastBy1Math(n, 1, false);
     assert.strictEqual(a, b);
+  }
+});
+
+test('lastBy1Binary equals lastBy1Splice for small n', () => {
+  for (let n = 2; n <= 20; n++) {
+    const a = lastBy1Splice(n, 1, false);
+    const b = lastBy1Binary(n, 1, false);
+    assert.strictEqual(a, b, `Failed for n=${n}`);
+  }
+});
+
+test('lastBy1Binary equals lastBy1Math for various starts', () => {
+  for (let n = 2; n <= 20; n++) {
+    for (let s = 1; s <= n; s++) {
+      const a = lastBy1Math(n, s, false);
+      const b = lastBy1Binary(n, s, false);
+      assert.strictEqual(a, b, `Failed for n=${n}, start=${s}`);
+    }
+  }
+});
+
+test('lastBy1Binary works with reverse direction', () => {
+  for (let n = 2; n <= 15; n++) {
+    const a = lastBy1Splice(n, 1, true);
+    const b = lastBy1Binary(n, 1, true);
+    assert.strictEqual(a, b, `Failed reverse for n=${n}`);
   }
 });
 

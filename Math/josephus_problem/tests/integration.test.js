@@ -9,6 +9,7 @@ const {
 const {
   lastBy1JSON,
   lastBy1Splice,
+  lastBy1Binary,
   lastByNJSON,
   lastByNSplice,
   josephus,
@@ -26,6 +27,15 @@ test('lastBy1JSON survivor equals splice survivor', () => {
   const json = lastBy1JSON(n, start, false);
   const splice = lastBy1Splice(n, start, false);
   assert.strictEqual(json.lastAlive, splice);
+});
+
+test('lastBy1Binary survivor equals splice and JSON survivors', () => {
+  const n = 15, start = 1;
+  const json = lastBy1JSON(n, start, false);
+  const splice = lastBy1Splice(n, start, false);
+  const binary = lastBy1Binary(n, start, false);
+  assert.strictEqual(binary, splice);
+  assert.strictEqual(binary, json.lastAlive);
 });
 
 test('lastByNJSON survivor equals splice survivor for N=3', () => {
@@ -51,6 +61,20 @@ test('josephus(m=2) equals lastBy1Splice for several n', () => {
     const got = josephus(n, 2, 1, 'forward');
     const expect = lastBy1Splice(n, 1, false);
     assert.strictEqual(got, expect);
+  }
+});
+
+test('All lastBy1 implementations agree (splice, math, binary, josephus)', () => {
+  for (let n = 2; n <= 30; n++) {
+    for (let s = 1; s <= Math.min(n, 5); s++) {
+      const splice = lastBy1Splice(n, s, false);
+      const binary = lastBy1Binary(n, s, false);
+      const json = lastBy1JSON(n, s, false).lastAlive;
+      const jph = josephus(n, 2, s, 'forward');
+      assert.strictEqual(binary, splice, `Binary failed for n=${n}, s=${s}`);
+      assert.strictEqual(json, splice, `JSON failed for n=${n}, s=${s}`);
+      assert.strictEqual(jph, splice, `Josephus failed for n=${n}, s=${s}`);
+    }
   }
 });
 

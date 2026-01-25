@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { josephus, josephusGeneral, josephusClassic } = require('../index');
+const { josephus, josephusGeneral, josephusClassic, lastBy1Binary } = require('../index');
 
 function logPass(name) { console.log(`PASS: ${name}`); }
 function logFail(name, err) { console.error(`FAIL: ${name} -> ${err.message}`); }
@@ -17,6 +17,22 @@ test('Usability: josephus invalid args throw descriptive error', () => {
 
 test('Usability: reasonable defaults work', () => {
   assert.strictEqual(josephus(7), josephusClassic(7, 1));
+});
+
+test('Usability: lastBy1Binary returns valid result within range', () => {
+  for (let n = 2; n <= 20; n++) {
+    const result = lastBy1Binary(n, 1, false);
+    assert.ok(Number.isInteger(result), `Result should be integer for n=${n}`);
+    assert.ok(result >= 1 && result <= n, `Result ${result} should be in range [1, ${n}]`);
+  }
+});
+
+test('Usability: lastBy1Binary handles all valid start positions', () => {
+  const n = 15;
+  for (let start = 1; start <= n; start++) {
+    const result = lastBy1Binary(n, start, false);
+    assert.ok(result >= 1 && result <= n);
+  }
 });
 
 test('Usability: josephusGeneral supports forward/reverse', () => {

@@ -6,6 +6,7 @@ const {
     lastBy1JSON,
     lastByNJSON_Random,
     josephus,
+    lastBy1Binary,
 } = require('./index');
 const {
     powm,
@@ -34,6 +35,13 @@ function TestNByJSONtoSplit(limit = 25, desc = false) {
             for (let N = 1; N < i + 1; N++) {
                 var leeft = lastByNJSON(i, N, j, desc);
                 var right = lastByNSplice(i, N, j, desc);
+                // Test binary for N=1 (k=2 case)
+                if (N === 1) {
+                    var binary = lastBy1Binary(i, j, desc);
+                    if (leeft[0] !== binary) {
+                        console.error(`Binary mismatch at i=${i}, j=${j}, N=${N}: ${leeft[0]} !== ${binary}`);
+                    }
+                }
                 if (leeft[0] == right[0]) {
                     count_InN++;
                 }
@@ -59,6 +67,13 @@ function TestEgaliteN(limit = 25, N = 1, desc = false) {
         var count = 0;
         for (let j = 1; j <= i; j++) {
             var l1 = lastByNJSON(i, N, j, desc);
+            // Test binary for N=1 (k=2 case)
+            if (N === 1) {
+                var binary = lastBy1Binary(i, j, desc);
+                if (l1.lastAlive !== binary) {
+                    console.error(`Binary mismatch at i=${i}, j=${j}, N=${N}: ${l1.lastAlive} !== ${binary}`);
+                }
+            }
             if (l1.lastAlive == j) {
                 count++;
             }
@@ -102,11 +117,22 @@ function Encadrement(n = 257, m = 2) {
 function chances(nombre, num) {
     var list = [];
     for (var i = 1; i <= nombre; i++) {
-        if (lastBy1Splice(nombre, i, false) == num) {
-            list.push({ start: i, desc: false });
+        var spliceResult = lastBy1Splice(nombre, i, false);
+        var binaryResult = lastBy1Binary(nombre, i, false);
+        if (spliceResult == num) {
+            list.push({ start: i, desc: false, method: 'splice' });
         }
-        if (lastBy1Splice(nombre, i, true) == num) {
-            list.push({ start: i, desc: true });
+        if (binaryResult == num) {
+            list.push({ start: i, desc: false, method: 'binary' });
+        }
+        
+        spliceResult = lastBy1Splice(nombre, i, true);
+        binaryResult = lastBy1Binary(nombre, i, true);
+        if (spliceResult == num) {
+            list.push({ start: i, desc: true, method: 'splice' });
+        }
+        if (binaryResult == num) {
+            list.push({ start: i, desc: true, method: 'binary' });
         }
     }
     console.table(list);
@@ -135,7 +161,7 @@ function findAngel(minkills, n = 100, M = 1) {
 function testClassic() {
     const n = getRandomInt(102, 3_000);
     // var n = 3 ** 4;
-    const M = 2;
+    const M = 5;
     const start = 1;
     const desc = Math.random() >= 0.5;
     console.log(`Testing n = ${n}, Skip = ${M}, start = ${start}, desc = ${desc}`);
@@ -144,6 +170,7 @@ function testClassic() {
         last_1: {
             math: lastBy1Math(n, start, desc),
             josephus: josephus(n, 2, start, desc ? 'reverse' : 'forward'),
+            binary: lastBy1Binary(n, start, desc),
             splice: lastBy1Splice(n, start, desc),
             jSON: lastBy1JSON(n, start, desc).lastAlive,
         },
@@ -154,7 +181,6 @@ function testClassic() {
             jSON: lastByNJSON(n, M - 1, start, desc).lastAlive,
         },
     };
-    obj[`${n}, ${M + 1}`] = findPAndQ(n, M);
     console.table(obj);
 }
 
