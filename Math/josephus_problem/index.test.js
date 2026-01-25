@@ -232,7 +232,7 @@ function looop(n = 1000) {
 // testPowers(3000, 3);
 // testClassic();
 // looop(getRandomInt(100, 5000));
-lastByNSplice(27, 2, 1, false);
+lastByNSplice(41, 2, 1, false);
 
 module.exports = {
     TestNByJSONtoSplit,

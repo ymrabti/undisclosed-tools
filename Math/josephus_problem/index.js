@@ -63,7 +63,7 @@ function lastBy1Binary(nombre = 100, start = 1, desc = false) {
 function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
     const listComn = generate(nombre, desc);
     let lastAlive = start;
-    while (listComn.length > N + 1) {
+    while (listComn.length >= N + 1) {
         const len = listComn.length;
         const i = listComn.indexOf(lastAlive);
         lastAlive = listComn[(i + 1 + N) % len];
@@ -77,7 +77,6 @@ function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
                 listComn.splice(itemIndex, 1);
             }
         });
-        console.log(`Alives left: ${listComn} | Killer: ${lastAlive} | Killed: ${kills.length}`);
     }
     return { lastAlive /* listComn */ };
 }
