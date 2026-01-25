@@ -71,13 +71,13 @@ function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
         for (let j = 0; j < N; j++) {
             kills.push(listComn[(i + j + 1) % len]);
         }
-        console.log(kills);
         kills.forEach(function (item, index) {
             const itemIndex = listComn.indexOf(item);
             if (itemIndex > -1) {
                 listComn.splice(itemIndex, 1);
             }
         });
+        console.log(`Alives left: ${listComn} | Killer: ${lastAlive} | Killed: ${kills.length}`);
     }
     return { lastAlive /* listComn */ };
 }
