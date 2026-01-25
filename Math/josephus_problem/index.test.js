@@ -161,12 +161,7 @@ function findAngel(minkills, n = 100, M = 1) {
     console.log('minkills   = ' + minkills);
 }
 
-function testClassic() {
-    const n = getRandomInt(102, 3_00);
-    // var n = 3 ** 5 - 1;
-    const M = 3;
-    const start = 1//getRandomInt(1, n);
-    const desc = Math.random() >= 0.5;
+function testClassic(n, M, start, desc) {
     console.log(`Testing n = ${n}, Skip = ${M}, start = ${start}, desc = ${desc}`);
 
     const obj = {
@@ -184,9 +179,9 @@ function testClassic() {
             n,
             start,
             M,
-            josephus: josephus(n, M, start, desc ? 'reverse' : 'forward'),
-            splice: lastByNSplice(n, M - 1, start, desc).lastAlive,
-            JSON: lastByNJSON(n, M - 1, start, desc).lastAlive,
+            josephus: josephus(n, M + 1, start, desc ? 'reverse' : 'forward'),
+            splice: lastByNSplice(n, M, start, desc).lastAlive,
+            JSON: lastByNJSON(n, M, start, desc).lastAlive,
             math: 'N/A',
             binary: 'N/A',
         },
@@ -229,10 +224,15 @@ function looop(n = 1000) {
     );
 }
 
+/* const n = getRandomInt(102, 3_00);
+// var n = 3 ** 5 - 1;
+const M = 3;
+const start = 1; //getRandomInt(1, n);
+const desc = Math.random() >= 0.5;
+testClassic(n, M, start, desc); */
+testClassic(32, 2, 6, false);
 // testPowers(3000, 3);
-// testClassic();
 // looop(getRandomInt(100, 5000));
-lastByNSplice(41, 2, 1, false);
 
 module.exports = {
     TestNByJSONtoSplit,

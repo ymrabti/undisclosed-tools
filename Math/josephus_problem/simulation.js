@@ -97,11 +97,21 @@ class JosephusSimulation {
 
     stepForward() {
         const len = this.listComn.length;
+        
+        // If only 1 person left, they are the winner
+        if (len === 1) {
+            this.log.push(`🎉 Winner: Position ${this.lastAlive}!`);
+            return false; // Simulation complete
+        }
+
         const i = this.listComn.indexOf(this.lastAlive);
-        const nextAlive = this.listComn[(i + 1 + this.N) % len];
+        
+        // Calculate how many people we can actually eliminate
+        const canEliminate = Math.min(this.N, len - 1); // Never eliminate everyone
+        const nextAlive = this.listComn[(i + 1 + canEliminate) % len];
 
         const kills = [];
-        for (let j = 0; j < this.N; j++) {
+        for (let j = 0; j < canEliminate; j++) {
             kills.push(this.listComn[(i + j + 1) % len]);
         }
 
@@ -124,17 +134,10 @@ class JosephusSimulation {
             this.positions = this.calculatePositions();
         }
 
+        // Check if we found the winner
         if (this.listComn.length === 1) {
-            this.log.push(`🎉 Survivor found: Position ${this.lastAlive}`);
+            this.log.push(`🎉 Winner: Position ${this.lastAlive}!`);
             return false; // Simulation complete
-        }
-
-        if (this.listComn.length === this.N) {
-            this.log.push(`🎉 Survivor found: Position ${this.lastAlive} 🎉`);
-            return false; // Simulation complete
-        } else if (this.listComn.length < this.N + 1) {
-            this.log.push(`Not enough people to continue. Simulation ends.`);
-            return false; // Not enough people to continue
         }
 
         return true;
@@ -261,15 +264,18 @@ class JosephusSimulation {
     }
 
     getNextKills() {
-        if (this.listComn.length <= this.N + 1) {
+        if (this.listComn.length <= 1) {
             return [];
         }
 
         const len = this.listComn.length;
         const i = this.listComn.indexOf(this.lastAlive);
         const kills = [];
+        
+        // Calculate how many people we can actually eliminate
+        const canEliminate = Math.min(this.N, len - 1);
 
-        for (let j = 0; j < this.N; j++) {
+        for (let j = 0; j < canEliminate; j++) {
             kills.push(this.listComn[(i + j + 1) % len]);
         }
 

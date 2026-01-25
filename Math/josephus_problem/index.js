@@ -71,7 +71,7 @@ function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
         for (let j = 0; j < N; j++) {
             kills.push(listComn[(i + j + 1) % len]);
         }
-        kills.forEach(function (item, index) {
+        kills.forEach(function (item) {
             const itemIndex = listComn.indexOf(item);
             if (itemIndex > -1) {
                 listComn.splice(itemIndex, 1);
