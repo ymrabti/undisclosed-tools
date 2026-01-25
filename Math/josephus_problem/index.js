@@ -62,21 +62,20 @@ function lastBy1Binary(nombre = 100, start = 1, desc = false) {
 
 // Generalized Josephus Function for skipping N persons
 function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
-    var listComn = generate(nombre, desc);
-    console.log(listComn);
-    var lastAlive = start;
+    const listComn = generate(nombre, desc);
+    let lastAlive = start;
     while (listComn.length > N + 1) {
-        var len = listComn.length;
-        i = listComn.indexOf(lastAlive);
+        const len = listComn.length;
+        const i = listComn.indexOf(lastAlive);
         lastAlive = listComn[(i + 1 + N) % len];
-        listKills = [];
+        const kills = [];
         for (let j = 0; j < N; j++) {
-            listKills.push(listComn[(i + j + 1) % len]);
+            kills.push(listComn[(i + j + 1) % len]);
         }
-        listKills.forEach(function (item, index) {
-            var index = listComn.indexOf(item);
-            if (index > -1) {
-                listComn.splice(index, 1);
+        kills.forEach(function (item, index) {
+            var itemIndex = listComn.indexOf(item);
+            if (itemIndex > -1) {
+                listComn.splice(itemIndex, 1);
             }
         });
     }
@@ -237,7 +236,6 @@ function josephus(n, m = 2, start = 1, dir = 'forward') {
     if (m === 2) {
         return dir === 'forward' ? josephusClassic(n, start) : josephusClassicReverse(n, start);
     } else {
-        console.log('Using General Josephus for m != 2', { n, m: m, start, dir });
         return josephusGeneral(n, m, start, dir);
     }
 }

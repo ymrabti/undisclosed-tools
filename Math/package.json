@@ -5,7 +5,7 @@
   "main": "josephus_problem/tests/run-all.js",
   "scripts": {
     "start": "node josephus_problem/tests/run-all.js",
-    "dev": "nodemon other/numerator_denomenator",
+    "dev": "nodemon josephus_problem/index.test.js",
     "test:all": "node josephus_problem/tests/run-all.js",
     "test:unit": "node josephus_problem/tests/unit.test.js",
     "test:integration": "node josephus_problem/tests/integration.test.js",

@@ -39,7 +39,9 @@ function TestNByJSONtoSplit(limit = 25, desc = false) {
                 if (N === 1) {
                     var binary = lastBy1Binary(i, j, desc);
                     if (leeft[0] !== binary) {
-                        console.error(`Binary mismatch at i=${i}, j=${j}, N=${N}: ${leeft[0]} !== ${binary}`);
+                        console.error(
+                            `Binary mismatch at i=${i}, j=${j}, N=${N}: ${leeft[0]} !== ${binary}`,
+                        );
                     }
                 }
                 if (leeft[0] == right[0]) {
@@ -71,7 +73,9 @@ function TestEgaliteN(limit = 25, N = 1, desc = false) {
             if (N === 1) {
                 var binary = lastBy1Binary(i, j, desc);
                 if (l1.lastAlive !== binary) {
-                    console.error(`Binary mismatch at i=${i}, j=${j}, N=${N}: ${l1.lastAlive} !== ${binary}`);
+                    console.error(
+                        `Binary mismatch at i=${i}, j=${j}, N=${N}: ${l1.lastAlive} !== ${binary}`,
+                    );
                 }
             }
             if (l1.lastAlive == j) {
@@ -125,7 +129,7 @@ function chances(nombre, num) {
         if (binaryResult == num) {
             list.push({ start: i, desc: false, method: 'binary' });
         }
-        
+
         spliceResult = lastBy1Splice(nombre, i, true);
         binaryResult = lastBy1Binary(nombre, i, true);
         if (spliceResult == num) {
@@ -137,7 +141,6 @@ function chances(nombre, num) {
     }
     console.table(list);
 }
-
 
 /**
  * Find the angel position that kills the minimum number of people
@@ -159,26 +162,33 @@ function findAngel(minkills, n = 100, M = 1) {
 }
 
 function testClassic() {
-    const n = getRandomInt(102, 3_000);
-    // var n = 3 ** 4;
-    const M = 5;
-    const start = 1;
+    const n = getRandomInt(102, 3_00);
+    // var n = 3 ** 5 - 1;
+    const M = 3;
+    const start = 1//getRandomInt(1, n);
     const desc = Math.random() >= 0.5;
     console.log(`Testing n = ${n}, Skip = ${M}, start = ${start}, desc = ${desc}`);
 
     const obj = {
         last_1: {
-            math: lastBy1Math(n, start, desc),
+            n,
+            start,
+            M: 2,
             josephus: josephus(n, 2, start, desc ? 'reverse' : 'forward'),
-            binary: lastBy1Binary(n, start, desc),
             splice: lastBy1Splice(n, start, desc),
-            jSON: lastBy1JSON(n, start, desc).lastAlive,
+            JSON: lastBy1JSON(n, start, desc).lastAlive,
+            math: lastBy1Math(n, start, desc),
+            binary: lastBy1Binary(n, start, desc),
         },
         last_n: {
-            math: josephus(n, M, start, desc ? 'reverse' : 'forward'),
+            n,
+            start,
+            M,
             josephus: josephus(n, M, start, desc ? 'reverse' : 'forward'),
             splice: lastByNSplice(n, M - 1, start, desc).lastAlive,
-            jSON: lastByNJSON(n, M - 1, start, desc).lastAlive,
+            JSON: lastByNJSON(n, M - 1, start, desc).lastAlive,
+            math: 'N/A',
+            binary: 'N/A',
         },
     };
     console.table(obj);
@@ -200,14 +210,36 @@ function testPowers(n = 1000, m = 2) {
     console.table(obj);
 }
 
-testPowers(3000, 3);
+function looop(n = 1000) {
+    let nn = n;
+    while (nn > 1) {
+        const alive = lastBy1Math(nn, 1, false);
+        nn = alive;
+        if (nn + 1 === 1 << Math.ceil(Math.log2(nn))) {
+            console.log(`>>>>>>> Reached power of 2 at n=${nn}, stopping loop.`);
+            break;
+        } else if (nn === 1 << Math.ceil(Math.log2(nn))) {
+            console.log(`>>>>>>> Reached double power of 2 at n=${nn}, stopping loop.`);
+            break;
+        }
+    }
+    console.log(
+        `looop for n=${n} ends in ${i} steps, alive=${nn}`,
+        'color: green; font-weight: bold;font-size:16px;',
+    );
+}
+
+// testPowers(3000, 3);
 testClassic();
+// looop(getRandomInt(100, 5000));
 
 module.exports = {
     TestNByJSONtoSplit,
     TestEgaliteN,
     Encadrement,
     chances,
+    looop,
+    testPowers,
     findAngel,
     testClassic,
 };
