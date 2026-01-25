@@ -10,11 +10,11 @@ var {
 } = require('./helpers');
 
 function lastBy1Splice(nombre = 100, start = 1, desc = false) {
-    var listComn = generate(nombre, desc);
-    var lastAlive = start;
+    const listComn = generate(nombre, desc);
+    let lastAlive = start;
     while (listComn.length > 2) {
-        var len = listComn.length;
-        i = listComn.indexOf(lastAlive);
+        const len = listComn.length;
+        const i = listComn.indexOf(lastAlive);
         lastAlive = listComn[(i + 2) % len];
         listComn.splice((i + 1) % len, 1);
     }
@@ -47,7 +47,6 @@ function lastBy1Math(nombre = 100, start = 1, desc = false) {
         1;
     return lastAlive;
 }
-
 function lastBy1Binary(nombre = 100, start = 1, desc = false) {
     var binary = nombre.toString(2);
     var rotatedBinary = binary.slice(1) + binary[0];
@@ -72,8 +71,9 @@ function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
         for (let j = 0; j < N; j++) {
             kills.push(listComn[(i + j + 1) % len]);
         }
+        console.log(kills);
         kills.forEach(function (item, index) {
-            var itemIndex = listComn.indexOf(item);
+            const itemIndex = listComn.indexOf(item);
             if (itemIndex > -1) {
                 listComn.splice(itemIndex, 1);
             }
@@ -97,7 +97,6 @@ function lastByNJSON(nombre = 100, N = 1, start = 1, desc = false) {
     }
     return { lastAlive /* listComn */ };
 }
-
 function lastByNSplice_Random(nombre = 100, M = 1) {
     var N = rand(M, 0);
     var start = rand(1, nombre);
