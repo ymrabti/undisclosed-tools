@@ -42,20 +42,6 @@
                     </div>
 
                     <div class="control-group">
-                        <label>Visualization Mode:</label>
-                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
-                            <div class="checkbox-group">
-                                <input type="radio" name="visualMode" id="modeCircular" value="circular" checked>
-                                <label for="modeCircular" style="margin: 0;">🔵 Circular (Static)</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="radio" name="visualMode" id="modeSpiral" value="spiral">
-                                <label for="modeSpiral" style="margin: 0;">🌀 Spiral (Dynamic)</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
                         <label for="speed">Animation Speed:</label>
                         <div class="speed-control">
                             <span>🐌</span>
@@ -75,6 +61,10 @@
                     <div class="button-group">
                         <button class="btn-success" onclick="stepSimulation()">⏭️ Step</button>
                         <button class="btn-secondary" onclick="pauseSimulation()">⏸️ Pause</button>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="shuffleParameters()" style="width: 100%;">🎲 Shuffle</button>
                     </div>
 
                     <div class="legend" style="margin-top: 20px;">
@@ -124,6 +114,29 @@
                         <div class="log-container" id="logContainer"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Festival Ceremony Overlay -->
+        <div id="ceremonyOverlay" class="ceremony-overlay" style="display: none;">
+            <div class="ceremony-content">
+                <div class="fireworks"></div>
+                <div class="trophy">🏆</div>
+                <h1 class="winner-title">Champion!</h1>
+                <div class="winner-number" id="winnerNumber"></div>
+                <div class="confetti-container">
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                    <div class="confetti"></div>
+                </div>
+                <button class="ceremony-close" onclick="closeCeremony()">✕</button>
             </div>
         </div>
 

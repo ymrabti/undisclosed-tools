@@ -16,12 +16,11 @@ let animationTimer = null;
 let isPaused = false;
 
 class JosephusSimulation {
-    constructor(nombre, N, start, desc, visualMode) {
+    constructor(nombre, N, start, desc) {
         this.nombre = nombre;
         this.N = N;
         this.start = start;
         this.desc = desc;
-        this.visualMode = visualMode;
         this.listComn = generate(nombre, desc);
         this.lastAlive = start;
         this.step = 0;
@@ -30,6 +29,7 @@ class JosephusSimulation {
         this.log = [];
         this.eliminated_history = [];
         this.initialCount = nombre;
+        this.killMap = {}; // Track who killed whom
         this.positions = this.calculatePositions();
     }
 
@@ -38,58 +38,25 @@ class JosephusSimulation {
         const centerY = canvas.height / 2;
         const positions = {};
 
-        const maxRadius = Math.min(canvas.width, canvas.height) * 0.4;
-        const minRadius = maxRadius * 0.2;
         const currentCount = this.listComn.length;
+        const progress = 1 - (currentCount / this.initialCount);
+        
+        // Circle shrinks as people are eliminated
+        const maxRadius = Math.min(canvas.width, canvas.height) * 0.4;
+        const minRadius = maxRadius * 0.3;
+        const currentRadius = maxRadius - (maxRadius - minRadius) * progress;
+        
         const angleStep = (2 * Math.PI) / this.nombre;
 
-        if (this.visualMode === 'spiral') {
-            // Dynamic spiral: radius decreases as people are eliminated
-            // Start with bigger circles, spiral inward as rounds progress
-            const spiralProgress = 1 - currentCount / this.initialCount;
-            const currentMaxRadius = maxRadius - (maxRadius - minRadius) * spiralProgress;
+        for (let i = 0; i < this.nombre; i++) {
+            const angle = i * angleStep - Math.PI / 2;
+            const num = this.desc ? this.nombre - i : i + 1;
 
-            for (let i = 0; i < this.nombre; i++) {
-                const num = this.desc ? this.nombre - i : i + 1;
-                const angle = i * angleStep - Math.PI / 2;
-
-                // For alive members, calculate their current spiral position
-                if (this.listComn.includes(num)) {
-                    const aliveIndex = this.listComn.indexOf(num);
-                    const aliveProgress = aliveIndex / currentCount;
-                    const radius = currentMaxRadius * (0.6 + 0.4 * aliveProgress);
-
-                    positions[num] = {
-                        x: centerX + radius * Math.cos(angle),
-                        y: centerY + radius * Math.sin(angle),
-                        radius: 12 + 6 * (1 - spiralProgress),
-                    };
-                } else {
-                    // Eliminated members stay at their elimination position (fade out)
-                    const eliminatedIndex = this.eliminated_history.indexOf(num);
-                    const eliminatedProgress = eliminatedIndex / this.initialCount;
-                    const frozenRadius = maxRadius - (maxRadius - minRadius) * eliminatedProgress;
-                    const frozenRadiusPosition = frozenRadius * (0.6 + 0.4 * Math.random());
-
-                    positions[num] = {
-                        x: centerX + frozenRadiusPosition * Math.cos(angle),
-                        y: centerY + frozenRadiusPosition * Math.sin(angle),
-                        radius: 10,
-                    };
-                }
-            }
-        } else {
-            // Circular: static circle arrangement
-            for (let i = 0; i < this.nombre; i++) {
-                const angle = i * angleStep - Math.PI / 2;
-                const num = this.desc ? this.nombre - i : i + 1;
-
-                positions[num] = {
-                    x: centerX + maxRadius * Math.cos(angle),
-                    y: centerY + maxRadius * Math.sin(angle),
-                    radius: 15,
-                };
-            }
+            positions[num] = {
+                x: centerX + currentRadius * Math.cos(angle),
+                y: centerY + currentRadius * Math.sin(angle),
+                radius: 15
+            };
         }
 
         return positions;
@@ -101,6 +68,7 @@ class JosephusSimulation {
         // If only 1 person left, they are the winner
         if (len === 1) {
             this.log.push(`🎉 Winner: Position ${this.lastAlive}!`);
+            showCeremony(this.lastAlive);
             return false; // Simulation complete
         }
 
@@ -117,26 +85,31 @@ class JosephusSimulation {
 
         this.log.push(`Position ${this.lastAlive} eliminates: ${kills.join(', ')}`);
 
+        // Track kills for pyramid visualization
+        if (!this.killMap[this.lastAlive]) {
+            this.killMap[this.lastAlive] = [];
+        }
+        
         kills.forEach((item) => {
             const itemIndex = this.listComn.indexOf(item);
             if (itemIndex > -1) {
                 this.eliminated_history.push(item);
                 this.listComn.splice(itemIndex, 1);
                 this.eliminated++;
+                this.killMap[this.lastAlive].push(item);
             }
         });
 
         this.lastAlive = nextAlive;
         this.step++;
 
-        // Recalculate positions for spiral mode (dynamic shrinking)
-        if (this.visualMode === 'spiral') {
-            this.positions = this.calculatePositions();
-        }
+        // Recalculate positions for shrinking circle
+        this.positions = this.calculatePositions();
 
         // Check if we found the winner
         if (this.listComn.length === 1) {
             this.log.push(`🎉 Winner: Position ${this.lastAlive}!`);
+            setTimeout(() => showCeremony(this.lastAlive), 1000);
             return false; // Simulation complete
         }
 
@@ -146,7 +119,7 @@ class JosephusSimulation {
     draw(highlightKills = []) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw connections for spiral
+        // Draw connections for circle
         ctx.strokeStyle = 'rgba(102, 126, 234, 0.2)';
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -165,6 +138,38 @@ class JosephusSimulation {
             ctx.lineTo(pos2.x, pos2.y);
         }
         ctx.stroke();
+
+        // Draw pyramid connections from killer to kills (behind the person)
+        for (const killer in this.killMap) {
+            const killerNum = parseInt(killer);
+            const killerPos = this.positions[killerNum];
+            const kills = this.killMap[killer];
+            
+            if (kills && kills.length > 0 && this.listComn.includes(killerNum)) {
+                kills.forEach((victim, index) => {
+                    const victimPos = this.positions[victim];
+                    
+                    // Draw line from killer's back to victim
+                    ctx.strokeStyle = `rgba(255, 107, 107, ${0.3 + 0.05 * index})`;
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([3, 3]);
+                    ctx.beginPath();
+                    
+                    // Calculate direction from center to killer (behind the person)
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    const angle = Math.atan2(killerPos.y - centerY, killerPos.x - centerX);
+                    const backOffset = 15;
+                    const backX = killerPos.x - Math.cos(angle) * backOffset;
+                    const backY = killerPos.y - Math.sin(angle) * backOffset;
+                    
+                    ctx.moveTo(backX, backY);
+                    ctx.lineTo(victimPos.x, victimPos.y);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                });
+            }
+        }
 
         // Draw circles
         for (const num in this.positions) {
@@ -210,6 +215,26 @@ class JosephusSimulation {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(num, pos.x, pos.y);
+            
+            // Draw kill count badge for alive people with kills
+            if (isAlive && this.killMap[numInt] && this.killMap[numInt].length > 0) {
+                const killCount = this.killMap[numInt].length;
+                const badgeRadius = 8;
+                const badgeX = pos.x + pos.radius - 5;
+                const badgeY = pos.y - pos.radius + 5;
+                
+                ctx.beginPath();
+                ctx.arc(badgeX, badgeY, badgeRadius, 0, 2 * Math.PI);
+                ctx.fillStyle = '#e74c3c';
+                ctx.fill();
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 10px Arial';
+                ctx.fillText(killCount, badgeX, badgeY);
+            }
         }
 
         // Draw arrow from current to next kills
@@ -290,19 +315,43 @@ function startSimulation() {
     const N = parseInt(document.getElementById('skip').value);
     const start = parseInt(document.getElementById('start').value);
     const desc = document.getElementById('desc').checked;
-    const visualMode = document.querySelector('input[name="visualMode"]:checked').value;
 
     if (start > nombre) {
         alert('Starting position cannot be greater than the number of people!');
         return;
     }
 
-    simulation = new JosephusSimulation(nombre, N, start, desc, visualMode);
+    simulation = new JosephusSimulation(nombre, N, start, desc);
     simulation.draw();
     simulation.updateUI();
 
     isPaused = false;
     animate();
+}
+
+function shuffleParameters() {
+    const nombre = Math.floor(Math.random() * 150) + 10; // 10-159
+    const skip = Math.floor(Math.random() * 15) + 1; // 1-15
+    const start = Math.floor(Math.random() * nombre) + 1; // 1-nombre
+    const desc = Math.random() > 0.5;
+    
+    document.getElementById('nombre').value = nombre;
+    document.getElementById('skip').value = skip;
+    document.getElementById('start').value = start;
+    document.getElementById('start').max = nombre;
+    document.getElementById('desc').checked = desc;
+}
+
+function showCeremony(winnerNumber) {
+    const overlay = document.getElementById('ceremonyOverlay');
+    const winnerEl = document.getElementById('winnerNumber');
+    winnerEl.textContent = `Position ${winnerNumber}`;
+    overlay.style.display = 'flex';
+}
+
+function closeCeremony() {
+    const overlay = document.getElementById('ceremonyOverlay');
+    overlay.style.display = 'none';
 }
 
 function animate() {
