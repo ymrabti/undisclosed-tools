@@ -224,13 +224,14 @@ function looop(n = 1000) {
     );
 }
 
-/* const n = getRandomInt(102, 3_00);
 // var n = 3 ** 5 - 1;
+const n = getRandomInt(102, 3_000);
 const M = 3;
 const start = 1; //getRandomInt(1, n);
 const desc = Math.random() >= 0.5;
-testClassic(n, M, start, desc); */
-testClassic(32, 2, 6, false);
+testClassic(n, M, start, desc);
+
+// testClassic(2000, 2, 6, false);
 // testPowers(3000, 3);
 // looop(getRandomInt(100, 5000));
 
