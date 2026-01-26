@@ -46,17 +46,31 @@ class JosephusSimulation {
         const minRadius = maxRadius * 0.3;
         const currentRadius = maxRadius - (maxRadius - minRadius) * progress;
         
+        // Outer radius for eliminated people (outside the circle)
+        const outerRadius = maxRadius * 1.2;
+        
         const angleStep = (2 * Math.PI) / this.nombre;
 
         for (let i = 0; i < this.nombre; i++) {
             const angle = i * angleStep - Math.PI / 2;
             const num = this.desc ? this.nombre - i : i + 1;
+            const isAlive = this.listComn.includes(num);
 
-            positions[num] = {
-                x: centerX + currentRadius * Math.cos(angle),
-                y: centerY + currentRadius * Math.sin(angle),
-                radius: 15
-            };
+            if (isAlive) {
+                // Alive people stay in the shrinking circle
+                positions[num] = {
+                    x: centerX + currentRadius * Math.cos(angle),
+                    y: centerY + currentRadius * Math.sin(angle),
+                    radius: 15
+                };
+            } else {
+                // Eliminated people move outside the circle
+                positions[num] = {
+                    x: centerX + outerRadius * Math.cos(angle),
+                    y: centerY + outerRadius * Math.sin(angle),
+                    radius: 12
+                };
+            }
         }
 
         return positions;
