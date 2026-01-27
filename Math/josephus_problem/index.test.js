@@ -7,11 +7,12 @@ const {
     lastByNJSON_Random,
     josephus,
     lastBy1Binary,
+    batchJosephus,
+    Solution,
 } = require('./index');
 const {
     powm,
     powN,
-    findPAndQ,
     pow2Loop,
     powerTwo,
     powNOld,
@@ -182,6 +183,8 @@ function testClassic(n, M, start, desc) {
             josephus: josephus(n, M + 1, start, desc ? 'reverse' : 'forward'),
             splice: lastByNSplice(n, M, start, desc).lastAlive,
             JSON: lastByNJSON(n, M, start, desc).lastAlive,
+            batchJosephus: batchJosephus(n, M, start, desc),
+            Solution: new Solution().findTheWinner(n, M + 1),
             math: 'N/A',
             binary: 'N/A',
         },

@@ -1,0 +1,24 @@
+{
+  "name": "killscycle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "maths/josephus_problem/tests/run-all.js",
+  "scripts": {
+    "start": "vite maths/josephus_problem/index.test.js",
+    "dev": "nodemon maths/josephus_problem/index.test.js",
+    "test:all": "node maths/josephus_problem/tests/run-all.js",
+    "test:unit": "node maths/josephus_problem/tests/unit.test.js",
+    "test:integration": "node maths/josephus_problem/tests/integration.test.js",
+    "test:system": "node maths/josephus_problem/tests/system.test.js",
+    "test:performance": "node maths/josephus_problem/tests/performance.test.js",
+    "test:usability": "node maths/josephus_problem/tests/usability.test.js",
+    "test:compatibility": "node maths/josephus_problem/tests/compatibility.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "3.0.3",
+    "vite": "^7.3.1"
+  }
+}

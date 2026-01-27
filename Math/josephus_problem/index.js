@@ -60,6 +60,43 @@ function lastBy1Binary(nombre = 100, start = 1, desc = false) {
 }
 
 // Generalized Josephus Function for skipping N persons
+function josephusN(n, k, start = 1) {
+    const people = Array.from({ length: n }, (_, i) => i + 1);
+    let idx = people.indexOf(start);
+
+    while (people.length > 1) {
+        idx = (idx + k - 1) % people.length;
+        people.splice(idx, 1);
+    }
+    return people[0];
+}
+function batchJosephus(n, N, start = 1) {
+    let people = Array.from({ length: n }, (_, i) => i + 1);
+    let idx = people.indexOf(start);
+
+    while (people.length > N) {
+        const len = people.length;
+
+        // collect kill indices (stable)
+        let killIdx = [];
+        for (let j = 1; j <= N; j++) {
+            killIdx.push((idx + j) % len);
+        }
+
+        // sort descending to preserve indices
+        killIdx.sort((a, b) => b - a);
+
+        // remove simultaneously
+        for (const k of killIdx) {
+            people.splice(k, 1);
+        }
+
+        // next alive = element after last removed
+        idx = killIdx[0] % people.length;
+    }
+
+    return people;
+}
 function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
     const listComn = generate(nombre, desc);
     let lastAlive = start;
@@ -238,6 +275,34 @@ function josephus(n, m = 2, start = 1, dir = 'forward') {
     }
 }
 
+class Solution {
+  josephus(people, k, idx) {
+    if (people.length === 1) {
+      return people[0];
+    }
+
+    // find the index (person) to be deleted
+    idx = (idx + k - 1) % people.length; // k-1 due to 0-based index
+
+    people.splice(idx, 1);
+
+    return this.josephus(people, k, idx);
+  }
+
+  findTheWinner(n, k) {
+    const people = [];
+    for (let i = 1; i <= n; i++) {
+      people.push(i);
+    }
+
+    return this.josephus(people, k, 0);
+  }
+}
+
+// Example
+// console.log(new Solution().findTheWinner(5, 2)); // 3
+
+
 module.exports = {
     lastBy1Splice,
     lastBy1JSON,
@@ -251,6 +316,9 @@ module.exports = {
     josephusClassicReverse,
     josephusGeneral,
     josephus,
+    Solution,
+    josephusN,
+    batchJosephus,
 };
 
 /*
