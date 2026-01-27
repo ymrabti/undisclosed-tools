@@ -1,4 +1,4 @@
-var {
+const {
     generate,
     generateListJSON,
     countAlives,
@@ -60,43 +60,46 @@ function lastBy1Binary(nombre = 100, start = 1, desc = false) {
 }
 
 // Generalized Josephus Function for skipping N persons
-function josephusN(n, k, start = 1) {
-    const people = Array.from({ length: n }, (_, i) => i + 1);
+function josephusGeneral(n, k, start = 1, dir = 'forward') {
+    const people = Array.from({ length: n }, (_, i) => (dir === 'forward' ? i + 1 : n - i));
+    if (dir === 'reverse') {
+        // console.log(people);
+    }
     let idx = people.indexOf(start);
+    let alive = start;
 
     while (people.length > 1) {
-        idx = (idx + k - 1) % people.length;
-        people.splice(idx, 1);
-    }
-    return people[0];
-}
-function batchJosephus(n, N, start = 1) {
-    let people = Array.from({ length: n }, (_, i) => i + 1);
-    let idx = people.indexOf(start);
-
-    while (people.length > N) {
-        const len = people.length;
-
-        // collect kill indices (stable)
-        let killIdx = [];
-        for (let j = 1; j <= N; j++) {
-            killIdx.push((idx + j) % len);
+        const willKillCount = Math.min(k, people.length - 1);
+        const targetIndex = (idx + 1 + willKillCount) % people.length;
+        const nextIndex = (idx + 1) % people.length;
+        const aliveNext = people.at((idx + willKillCount + 1) % people.length);
+        /* 
+        const selectedTargets =
+            nextIndex > targetIndex
+                ? people.slice(nextIndex, people.length).concat(people.slice(0, targetIndex))
+                : people.slice(nextIndex, targetIndex);
+        const zeroPaddedTargets = selectedTargets.map((x) => x.toString().padStart(2, '0'));
+        console.log(
+            `killer: ${alive.toString().padStart(2, '0')}, will kill ${zeroPaddedTargets.join(', ')}, next alive: ${aliveNext.toString().padStart(2, '0')}`,
+        ); */
+        if (nextIndex < targetIndex) {
+            /* const killed =  */ people.splice(nextIndex, willKillCount);
+            // console.log(`\tKilled: ${killed.map((x) => x.toString().padStart(2, '0')).join(', ')}`);
+        } else {
+            /* const killedPart1 =  */ people.splice(nextIndex);
+            /* const killedPart2 =  */ people.splice(0, targetIndex);
+            // console.log(`\tKilled: ${killedPart1.concat(killedPart2).map((x) => x.toString().padStart(2, '0')).join(', ')}`);
         }
-
-        // sort descending to preserve indices
-        killIdx.sort((a, b) => b - a);
-
-        // remove simultaneously
-        for (const k of killIdx) {
-            people.splice(k, 1);
+        alive = aliveNext;
+        idx = people.indexOf(alive);
+        if (idx === -1) {
+            console.error('Error: Alive person not found in the list!');
+            break;
         }
-
-        // next alive = element after last removed
-        idx = killIdx[0] % people.length;
     }
-
-    return people;
+    return alive;
 }
+
 function lastByNSplice(nombre = 100, N = 1, start = 1, desc = false) {
     const listComn = generate(nombre, desc);
     let lastAlive = start;
@@ -223,45 +226,13 @@ function josephusClassicReverse(n, start = 1) {
 }
 
 /**
- * Josephus General — CORRECT for your rules
- * Matches splice / JSON simulation
- *
- * @param {number} n       - number of prisoners
- * @param {number} m       - number killed each round
- * @param {number} start   - starting prisoner (1-based)
- * @param {boolean} desc   - reverse circle direction
- * @returns {number}       - last alive (1-based)
- */
-function josephusGeneral(n, m, start = 1, dir = 'forward') {
-    if (n < 1 || m < 1 || start < 1 || start > n || !['forward', 'reverse'].includes(dir)) {
-        throw new Error('Invalid parameters');
-    }
-
-    // Base Josephus: forward, start = 1, 0-based
-    let survivor = 0;
-    for (let i = 1; i <= n; i++) {
-        survivor = (survivor + m + 1) % i;
-    }
-
-    // Apply start rotation
-    survivor = (survivor + (start - 1)) % n;
-
-    // Reverse CIRCLE (not recurrence)
-    if (dir === 'reverse') {
-        survivor = (n - survivor - 1 + n) % n;
-    }
-
-    return survivor + 1;
-}
-
-/**
  * Unified Josephus Function
  *
  * @param {number} n       - Number of prisoners (n >= 1)
  * @param {number} m       - Step size (m >= 1, m = 2 => classic)
  * @param {number} start   - Starting position (1-based)
  * @param {string} dir     - "forward" | "reverse"
- * @returns {number}       - Survivor position (1-based)
+ * @returns {number|}       - Survivor position (1-based)
  */
 function josephus(n, m = 2, start = 1, dir = 'forward') {
     if (n < 1 || m < 1 || start < 1 || start > n || !['forward', 'reverse'].includes(dir)) {
@@ -270,55 +241,31 @@ function josephus(n, m = 2, start = 1, dir = 'forward') {
 
     if (m === 2) {
         return dir === 'forward' ? josephusClassic(n, start) : josephusClassicReverse(n, start);
-    } else {
-        return josephusGeneral(n, m, start, dir);
     }
-}
-
-class Solution {
-  josephus(people, k, idx) {
-    if (people.length === 1) {
-      return people[0];
-    }
-
-    // find the index (person) to be deleted
-    idx = (idx + k - 1) % people.length; // k-1 due to 0-based index
-
-    people.splice(idx, 1);
-
-    return this.josephus(people, k, idx);
-  }
-
-  findTheWinner(n, k) {
-    const people = [];
-    for (let i = 1; i <= n; i++) {
-      people.push(i);
-    }
-
-    return this.josephus(people, k, 0);
-  }
+    return josephusGeneral(n, m, start);
 }
 
 // Example
 // console.log(new Solution().findTheWinner(5, 2)); // 3
 
-
 module.exports = {
+    // Classic Josephus - Step 2
     lastBy1Splice,
     lastBy1JSON,
     lastBy1Math,
     lastBy1Binary,
-    lastByNSplice,
-    lastByNJSON,
-    lastByNSplice_Random,
-    lastByNJSON_Random,
+    // Classic Josephus Functions
     josephusClassic,
     josephusClassicReverse,
-    josephusGeneral,
+    // Generalized Josephus
+    lastByNSplice,
+    lastByNJSON,
+    // Randomized Generalized Josephus
+    lastByNSplice_Random,
+    lastByNJSON_Random,
+    // Unified Josephus
     josephus,
-    Solution,
-    josephusN,
-    batchJosephus,
+    josephusGeneral,
 };
 
 /*

@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+""" To recover the Python script to generate this SVG, delete the line above -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="-225 -233 450 450">
+ <title>Josephus problem 30 9</title>
+ <desc>Variant of the Josephus problem with 15 Christians and 15 Turks and a step size of 9, visualised by CMG Lee. Time progresses inwards along the spiral, green dots denoting live soldiers, grey dead soldiers, and crosses killings.</desc>
+ <style type="text/css">
+.main  { font-family:Helvetica,Arial,sans-serif; font-weight:bold; font-size:18px; letter-spacing:-2px; text-anchor:middle;
+         fill:#000000; stroke:none; stroke-linecap:round }
+.alive { fill:#009900; }
+.dead  { fill:#cccccc; }
+.trans { opacity:0.4; }
+.var   { font-style:italic; }
+ </style>
+ <defs>
+  <marker id="marker" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+   <path d="M 4,3.5 L 6,4 L 4,5" fill="none" stroke="#cccccc" stroke-width="0.5" stroke-linecap="round"/>
+  </marker>
+  <circle id="status" x="0" y="0" r="5"/>
+  <path id="kill" d="M -6,-6 L 6,6 M -6,6 L 6,-6" stroke="#ff0000" stroke-width="2"/>
+  <path id="icon" d="M 0,2 a 10,10 0 1 1 0.1,0 m -4,-14 a 2,2 0 1 0 0.1,0 m 8,0 a 2,2 0 1 0 0.1,0"/>
+  <g id="icon_alive" class="trans" stroke="#0000ff">
+   <use xlink:href="#icon" fill="#0099ff"/>
+   <path d="M -4,-5 a 8,32 0 0 0 8,0 z" fill="#ffffff"/>
+  </g>
+  <g id="icon_dead" class="trans" stroke="#660033">
+   <use xlink:href="#icon" fill="#ff00cc"/>
+   <path d="M -4,-2 a 8,32 0 0 1 8,0 z" fill="#ffffff"/>
+  </g>
+<!-- BEGIN_DYNAMIC_DEFS -->
+  <g id="bg">
+   <g transform="translate(-44,-207)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">30</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-86,-193)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">29</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(-124,-171)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">28</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(-157,-141)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">27</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-183,-106)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">26</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-201,-65)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">25</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(-210,-22)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">24</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-210,22)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">23</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-201,65)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">22</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-183,106)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">21</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(-157,141)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">20</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(-124,171)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">19</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-86,193)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">18</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(-44,207)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">17</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(0,212)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">16</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(44,207)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">15</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(86,193)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">14</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(124,171)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">13</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(157,141)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">12</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(183,106)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">11</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(201,65)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">10</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(210,22)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">9</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(210,-22)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">8</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(201,-65)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">7</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(183,-106)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">6</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(157,-141)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">5</text>
+    <use xlink:href="#icon_dead"/>
+   </g>
+   <g transform="translate(124,-171)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">4</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(86,-193)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">3</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(44,-207)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">2</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+   <g transform="translate(0,-212)" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">1</text>
+    <use xlink:href="#icon_alive"/>
+   </g>
+
+   <path d="M 0,-200 L 41,-194 L 80,-180 L 115,-159 L 145,-131 L 168,-97 L 184,-60 L 192,-20 L 191,20 L 181,59 L 164,95 L 140,126 L 110,152 L 76,170 L 38,182 L 0,185 L -38,180 L -74,167 L -107,147 L -134,121 L -155,90 L -170,55 L -177,18 L -176,-18 L -167,-54 L -151,-87 L -129,-116 L -101,-140 L -70,-157 L -35,-167 L 0,-170 L 35,-165 L 68,-153 L 98,-135 L 123,-111 L 142,-82 L 156,-50 L 162,-17 L 161,17 L 153,49 L 138,80 L 118,106 L 92,127 L 63,143 L 32,152 L 0,155 L -32,150 L -62,139 L -89,123 L -112,101 L -130,75 L -141,46 L -147,15 L -146,-15 L -138,-45 L -125,-72 L -107,-96 L -84,-115 L -57,-129 L -29,-138 L 0,-140 L 28,-136 L 56,-126 L 80,-110 L 101,-91 L 117,-67 L 127,-41 L 132,-14 L 131,13 L 124,40 L 112,65 L 95,86 L 75,103 L 51,116 L 26,123 L 0,125 L -25,121 L -50,112 L -71,98 L -90,81 L -104,60 L -113,36 L -117,12 L -116,-12 L -110,-35 L -99,-57 L -84,-76 L -66,-91 L -45,-102 L -23,-108 L 0,-110 L 22,-106 L 44,-98 L 62,-86 L 78,-71 L 91,-52 L 99,-32 L 102,-10 L 101,10 L 96,31 L 86,50 L 73,66 L 57,79 L 39,88 L 20,94 L 0,95 L -19,92 L -37,85 L -54,74 L -67,60 L -78,45 L -84,27 L -87,9 L -86,-9 L -81,-26 L -73,-42 L -62,-56 L -48,-67 L -33,-75 L -16,-79 L 0,-80 L 16,-77 L 31,-71 L 45,-62 L 56,-50 L 65,-37 L 70,-22 L 72,-7 L 71,7 L 67,22 L 60,35 L 51,46 L 40,55 L 27,61 L 13,64 L 0,65 L -13,62 L -25,57 L -36,50 L -45,40 L -52,30 L -56,18 L -57,6 L -56,-6 L -53,-17 L -47,-27 L -40,-36 L -31,-42 L -21,-47 L -10,-49 L 0,-50 L 10,-48 L 19,-43 L 27,-38 L 34,-30 L 39,-22 L 41,-13 L 42,-4 L 41,4 L 39,12 L 34,20 L 29,26 L 22,30 L 15,33 L 7,35 L 0,35 L -7,33 L -13,30 L -18,25 L -23,20 L -26,15 L -27,9 L -27,3 M 32,-354 l 8,8 l -9,7" fill="none" stroke="#cccccc" stroke-width="3" marker-mid="url(#marker)"/>
+  </g>
+<!--   END_DYNAMIC_DEFS -->
+ </defs>
+ <circle cx="0" cy="0" r="99999" fill="#ffffff"/>
+ <g class="main">
+  <use xlink:href="#bg"/>
+<!-- BEGIN_DYNAMIC_MAIN -->
+  <use class="alive" xlink:href="#status" transform="translate(0,-200)"/>
+  <use class="alive" xlink:href="#status" transform="translate(41,-194)"/>
+  <use class="alive" xlink:href="#status" transform="translate(80,-180)"/>
+  <use class="alive" xlink:href="#status" transform="translate(115,-159)"/>
+  <use class="alive" xlink:href="#status" transform="translate(145,-131)"/>
+  <use class="alive" xlink:href="#status" transform="translate(168,-97)"/>
+  <use class="alive" xlink:href="#status" transform="translate(184,-60)"/>
+  <use class="alive" xlink:href="#status" transform="translate(192,-20)"/>
+  <use class="alive" xlink:href="#status" transform="translate(191,20)"/>
+  <use xlink:href="#kill" transform="translate(191,20)"/>
+  <use class="alive" xlink:href="#status" transform="translate(181,59)"/>
+  <use class="alive" xlink:href="#status" transform="translate(164,95)"/>
+  <use class="alive" xlink:href="#status" transform="translate(140,126)"/>
+  <use class="alive" xlink:href="#status" transform="translate(110,152)"/>
+  <use class="alive" xlink:href="#status" transform="translate(76,170)"/>
+  <use class="alive" xlink:href="#status" transform="translate(38,182)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,185)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-38,180)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-74,167)"/>
+  <use xlink:href="#kill" transform="translate(-74,167)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-107,147)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-134,121)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-155,90)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-170,55)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-177,18)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-176,-18)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-167,-54)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-151,-87)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-129,-116)"/>
+  <use xlink:href="#kill" transform="translate(-129,-116)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-101,-140)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-70,-157)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-35,-167)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,-170)"/>
+  <use class="alive" xlink:href="#status" transform="translate(35,-165)"/>
+  <use class="alive" xlink:href="#status" transform="translate(68,-153)"/>
+  <use class="alive" xlink:href="#status" transform="translate(98,-135)"/>
+  <use class="alive" xlink:href="#status" transform="translate(123,-111)"/>
+  <use class="alive" xlink:href="#status" transform="translate(142,-82)"/>
+  <use xlink:href="#kill" transform="translate(142,-82)"/>
+  <use class="alive" xlink:href="#status" transform="translate(156,-50)"/>
+  <use class="alive" xlink:href="#status" transform="translate(162,-17)"/>
+  <use class="dead" xlink:href="#status" transform="translate(161,17)"/>
+  <use class="alive" xlink:href="#status" transform="translate(153,49)"/>
+  <use class="alive" xlink:href="#status" transform="translate(138,80)"/>
+  <use class="alive" xlink:href="#status" transform="translate(118,106)"/>
+  <use class="alive" xlink:href="#status" transform="translate(92,127)"/>
+  <use class="alive" xlink:href="#status" transform="translate(63,143)"/>
+  <use class="alive" xlink:href="#status" transform="translate(32,152)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,155)"/>
+  <use xlink:href="#kill" transform="translate(0,155)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-32,150)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-62,139)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-89,123)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-112,101)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-130,75)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-141,46)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-147,15)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-146,-15)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-138,-45)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-125,-72)"/>
+  <use xlink:href="#kill" transform="translate(-125,-72)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-107,-96)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-84,-115)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-57,-129)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-29,-138)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,-140)"/>
+  <use class="alive" xlink:href="#status" transform="translate(28,-136)"/>
+  <use class="alive" xlink:href="#status" transform="translate(56,-126)"/>
+  <use class="alive" xlink:href="#status" transform="translate(80,-110)"/>
+  <use class="alive" xlink:href="#status" transform="translate(101,-91)"/>
+  <use class="dead" xlink:href="#status" transform="translate(117,-67)"/>
+  <use class="alive" xlink:href="#status" transform="translate(127,-41)"/>
+  <use xlink:href="#kill" transform="translate(127,-41)"/>
+  <use class="alive" xlink:href="#status" transform="translate(132,-14)"/>
+  <use class="dead" xlink:href="#status" transform="translate(131,13)"/>
+  <use class="alive" xlink:href="#status" transform="translate(124,40)"/>
+  <use class="alive" xlink:href="#status" transform="translate(112,65)"/>
+  <use class="alive" xlink:href="#status" transform="translate(95,86)"/>
+  <use class="alive" xlink:href="#status" transform="translate(75,103)"/>
+  <use class="alive" xlink:href="#status" transform="translate(51,116)"/>
+  <use class="alive" xlink:href="#status" transform="translate(26,123)"/>
+  <use class="dead" xlink:href="#status" transform="translate(0,125)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-25,121)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-50,112)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-71,98)"/>
+  <use xlink:href="#kill" transform="translate(-71,98)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-90,81)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-104,60)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-113,36)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-117,12)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-116,-12)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-110,-35)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-99,-57)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-84,-76)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-66,-91)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-45,-102)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-23,-108)"/>
+  <use xlink:href="#kill" transform="translate(-23,-108)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,-110)"/>
+  <use class="alive" xlink:href="#status" transform="translate(22,-106)"/>
+  <use class="alive" xlink:href="#status" transform="translate(44,-98)"/>
+  <use class="alive" xlink:href="#status" transform="translate(62,-86)"/>
+  <use class="alive" xlink:href="#status" transform="translate(78,-71)"/>
+  <use class="dead" xlink:href="#status" transform="translate(91,-52)"/>
+  <use class="dead" xlink:href="#status" transform="translate(99,-32)"/>
+  <use class="alive" xlink:href="#status" transform="translate(102,-10)"/>
+  <use class="dead" xlink:href="#status" transform="translate(101,10)"/>
+  <use class="alive" xlink:href="#status" transform="translate(96,31)"/>
+  <use class="alive" xlink:href="#status" transform="translate(86,50)"/>
+  <use class="alive" xlink:href="#status" transform="translate(73,66)"/>
+  <use xlink:href="#kill" transform="translate(73,66)"/>
+  <use class="alive" xlink:href="#status" transform="translate(57,79)"/>
+  <use class="alive" xlink:href="#status" transform="translate(39,88)"/>
+  <use class="alive" xlink:href="#status" transform="translate(20,94)"/>
+  <use class="dead" xlink:href="#status" transform="translate(0,95)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-19,92)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-37,85)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-54,74)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-67,60)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-78,45)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-84,27)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-87,9)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-86,-9)"/>
+  <use xlink:href="#kill" transform="translate(-86,-9)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-81,-26)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-73,-42)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-62,-56)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-48,-67)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-33,-75)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-16,-79)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,-80)"/>
+  <use class="alive" xlink:href="#status" transform="translate(16,-77)"/>
+  <use class="alive" xlink:href="#status" transform="translate(31,-71)"/>
+  <use class="alive" xlink:href="#status" transform="translate(45,-62)"/>
+  <use class="alive" xlink:href="#status" transform="translate(56,-50)"/>
+  <use class="dead" xlink:href="#status" transform="translate(65,-37)"/>
+  <use class="dead" xlink:href="#status" transform="translate(70,-22)"/>
+  <use class="alive" xlink:href="#status" transform="translate(72,-7)"/>
+  <use xlink:href="#kill" transform="translate(72,-7)"/>
+  <use class="dead" xlink:href="#status" transform="translate(71,7)"/>
+  <use class="alive" xlink:href="#status" transform="translate(67,22)"/>
+  <use class="alive" xlink:href="#status" transform="translate(60,35)"/>
+  <use class="dead" xlink:href="#status" transform="translate(51,46)"/>
+  <use class="alive" xlink:href="#status" transform="translate(40,55)"/>
+  <use class="alive" xlink:href="#status" transform="translate(27,61)"/>
+  <use class="alive" xlink:href="#status" transform="translate(13,64)"/>
+  <use class="dead" xlink:href="#status" transform="translate(0,65)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-13,62)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-25,57)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-36,50)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-45,40)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-52,30)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-56,18)"/>
+  <use xlink:href="#kill" transform="translate(-56,18)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-57,6)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-56,-6)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-53,-17)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-47,-27)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-40,-36)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-31,-42)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-21,-47)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-10,-49)"/>
+  <use class="alive" xlink:href="#status" transform="translate(0,-50)"/>
+  <use class="alive" xlink:href="#status" transform="translate(10,-48)"/>
+  <use class="alive" xlink:href="#status" transform="translate(19,-43)"/>
+  <use class="alive" xlink:href="#status" transform="translate(27,-38)"/>
+  <use class="alive" xlink:href="#status" transform="translate(34,-30)"/>
+  <use xlink:href="#kill" transform="translate(34,-30)"/>
+  <use class="dead" xlink:href="#status" transform="translate(39,-22)"/>
+  <use class="dead" xlink:href="#status" transform="translate(41,-13)"/>
+  <use class="dead" xlink:href="#status" transform="translate(42,-4)"/>
+  <use class="dead" xlink:href="#status" transform="translate(41,4)"/>
+  <use class="alive" xlink:href="#status" transform="translate(39,12)"/>
+  <use class="alive" xlink:href="#status" transform="translate(34,20)"/>
+  <use class="dead" xlink:href="#status" transform="translate(29,26)"/>
+  <use class="alive" xlink:href="#status" transform="translate(22,30)"/>
+  <use class="alive" xlink:href="#status" transform="translate(15,33)"/>
+  <use class="alive" xlink:href="#status" transform="translate(7,35)"/>
+  <use class="dead" xlink:href="#status" transform="translate(0,35)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-7,33)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-13,30)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-18,25)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-23,20)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-26,15)"/>
+  <use class="dead" xlink:href="#status" transform="translate(-27,9)"/>
+  <use class="alive" xlink:href="#status" transform="translate(-27,3)"/>
+  <use xlink:href="#kill" transform="translate(-27,3)"/>
+  <g fill="#000000">
+   <text transform="translate(5,0)" x="0" y="-0.2ex" text-anchor="start" letter-spacing="-1"
+    ><tspan x="-2ex"         ><tspan class="var">n</tspan><tspan x="-0.6ex">=&#8201;30</tspan></tspan
+    ><tspan x="-2ex" dy="1em"><tspan class="var">k</tspan><tspan x="-0.6ex">=&#8201;9</tspan></tspan></text>
+  </g>
+
+<!--   END_DYNAMIC_MAIN -->
+ </g>
+</svg>
+<!-- Please retain this and other comments, which contain Python code to generate this SVG. """
+import re, math
+class dict2class(dict):
+ def __getattr__(self, k): return dict2class(self[k]) if isinstance(self[k], dict) else self[k]
+def fmt(string): ## string.format(**vars()) using tags {expression!format} by CMG Lee
+ def f(tag): i_sep = tag.rfind('!'); return (re.sub('\.0$', '', str(eval(tag[1:-1])))
+  if (i_sep < 0) else ('{:%s}' % tag[i_sep + 1:-1]).format(eval(tag[1:i_sep])))
+ return (re.sub(r'(?<!{){[^{}]+}', lambda m:f(m.group()), string)
+         .replace('{{', '{').replace('}}', '}'))
+def append(obj, string): return obj.append(fmt(string))
+def roundm(x, multiple=1):
+ if   (isinstance(x, tuple)): return tuple(roundm(list(x), multiple))
+ elif (isinstance(x, list )): return [roundm(x_i, multiple) for x_i in x]
+ else: return int(math.floor(float(x) / multiple + 0.5)) * multiple
+def roundsf(x, sf=3):
+ if   (isinstance(x, tuple)): return tuple(roundm(list(x), multiple))
+ elif (isinstance(x, list )): return [roundm(x_i, multiple) for x_i in x]
+ else:
+  str_round = str(round(x, sf - 1 - int(math.floor(math.log10(abs(x))))))
+  n_pad     = sf - len(re.sub(r'\D', r'', str_round).lstrip('0'))
+  if n_pad < 0: return str_round[:-2]
+  else:         return str_round + '0' * n_pad
+def try_int_float(field):
+ try:               return int(field)
+ except Exception:
+  try:              return float(field)
+  except Exception: return field
+def tabbify(cellss, separator='|'):
+ cellpadss = [list(rows) + [''] * (len(max(cellss, key=len)) - len(rows)) for rows in cellss]
+ fmts = ['%%%ds' % (max([len(str(cell)) for cell in cols])) for cols in zip(*cellpadss)]
+ return '\n'.join([separator.join(fmts) % tuple(rows) for rows in cellpadss])
+
+## Based on http://rosettacode.org/wiki/Josephus_problem#Python
+def kill_order(n, k):
+ (i_kill, alives, deads) = (0, list(range(n)), [])
+ while alives:
+  i_kill = (i_kill + k - 1) % len(alives)
+  deads.append(alives.pop(i_kill) + 1)
+ return deads
+
+def compute_xy(i, r):
+ rad = float(i - 1) / n * 2 * math.pi
+ return '%d,%d' % roundm((r * math.sin(rad), -r * math.cos(rad)), 0.2)
+
+(out_defs, out_mains) = ([], [])
+n                 =  30
+k                 =   9
+pad               =  25
+r0                = 200
+dr                =   1
+n_alive_stop      =  15
+n_alive           = n
+alives            = [True] * (n + 1)
+t                 = 0
+t_since_last_kill = 0
+r0_pad            = r0 + pad
+xys               = []
+
+while n_alive > 15:
+ i  = (t % n) + 1
+ r  = r0 - dr * t
+ xy = compute_xy(i, r)
+ xys.append(xy)
+ is_alive = alives[i]
+ clas     = 'alive' if is_alive else 'dead'
+ # print(t, i, r, rad, xy, fill)
+ append(out_mains, '''\
+  <use class="{clas}" xlink:href="#status" transform="translate({xy})"/>''')
+ if alives[i]:
+   t_since_last_kill += 1
+   if t_since_last_kill == k:
+    alives[i]         = False
+    t_since_last_kill = 0
+    n_alive          -= 1
+    append(out_mains, '''\
+  <use xlink:href="#kill" transform="translate({xy})"/>''')
+ t += 1
+
+append(out_mains, '''\
+  <g fill="#000000">
+   <text transform="translate(5,0)" x="0" y="-0.2ex" text-anchor="start" letter-spacing="-1"
+    ><tspan x="-2ex"         ><tspan class="var">n</tspan><tspan x="-0.6ex">=&#8201;{n}</tspan></tspan
+    ><tspan x="-2ex" dy="1em"><tspan class="var">k</tspan><tspan x="-0.6ex">=&#8201;{k}</tspan></tspan></text>
+  </g>
+''')
+
+append(out_defs, '''\
+  <g id="bg">''')
+for i in range(n, 0, -1):
+ xy = compute_xy(i, r0 + pad // 2)
+ #   <path d="M 0,0 L {xy}" stroke="#eeeeee"/>
+ append(out_defs, '''\
+   <g transform="translate({xy})" stroke="none">
+    <text x="-0.1ex" y="-0.1ex">{i}</text>
+    <use xlink:href="#icon_{'alive' if alives[i] else 'dead'}"/>
+   </g>''')
+append(out_defs, '''
+   <path d="M {' L '.join(xys)} M 32,-354 l 8,8 l -9,7" fill="none" stroke="#cccccc" stroke-width="3" marker-mid="url(#marker)"/>
+  </g>''')
+
+out_p = fmt('width="100%" height="100%" viewBox="-{r0_pad} -{r0 + pad * 4 // 3} {r0_pad * 2} {r0_pad * 2}"')
+
+## Compile everything into an .svg file
+myself   = open(__file__, 'r').read() ## the contents of this very file
+file_out = open(__file__[:__file__.rfind('.')] + '.svg', 'w') ## *.* -> *.svg
+try: ## use try/finally so that file is closed even if write fails
+ file_out.write('''<?xml version="1.0" encoding="utf-8"?><!%s%s
+%s%s%s\n%s%s\n%s%s''' % ('-', '-', ## because SVG comments cannot have 2 consecutive '-'s
+  myself[:myself.find('width',myself.find('<svg'))], ## assume width specified before height/viewBox
+  out_p, ## replace SVG width/height/viewBox with {out_p} & dynamic SVG blocks with {out*s} contents
+  myself[myself.find ('>',myself.find('<svg')):
+         myself.find ('\n',myself.find('BEGIN_'+'DYNAMIC_DEFS'))], '\n'.join(out_defs),
+  myself[myself.rfind('\n',0,myself.find('END_'+'DYNAMIC_DEFS')):
+         myself.find ('\n',myself.find('BEGIN_'+'DYNAMIC_MAIN'))], '\n'.join(out_mains),
+  myself[myself.rfind('\n',0,myself.find('END_'+'DYNAMIC_MAIN')):]))
+finally:
+ file_out.close()
+
+## SVG-Python near-polyglot framework version 3 by CMG Lee (March 2018) -->

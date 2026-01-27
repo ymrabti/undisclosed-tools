@@ -163,6 +163,49 @@ button:disabled {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* SVG visualization styling */
+#svg {
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+}
+
+.spiral-path {
+    stroke: #cfd8dc;
+    stroke-width: 2;
+    fill: none;
+}
+
+.node {
+    stroke-width: 2px;
+    transition: transform 0.2s ease, fill 0.2s ease, stroke 0.2s ease;
+}
+
+.node.alive { fill: #4CAF50; stroke: #2E7D32; }
+.node.current { fill: #FFD700; stroke: #FF6B00; stroke-width: 3px; }
+.node.dead { fill: #cfd8dc; stroke: #b0bec5; }
+.node.survivor { fill: #2196F3; stroke: #0D47A1; stroke-width: 4px; }
+
+.xmark line {
+    stroke: #e53935;
+    stroke-width: 4px;
+    stroke-linecap: round;
+}
+
+.label-center {
+    font: 700 24px Segoe UI, Arial, sans-serif;
+    fill: #333;
+    text-anchor: middle;
+}
+
+.hint-text {
+    font: 500 16px Segoe UI, Arial, sans-serif;
+    fill: #667eea;
+    text-anchor: middle;
+}
+
 .info-panel {
     background: white;
     padding: 20px;

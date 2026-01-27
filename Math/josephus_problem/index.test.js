@@ -7,18 +7,8 @@ const {
     lastByNJSON_Random,
     josephus,
     lastBy1Binary,
-    batchJosephus,
-    Solution,
 } = require('./index');
-const {
-    powm,
-    powN,
-    pow2Loop,
-    powerTwo,
-    powNOld,
-    pow2,
-    getRandomInt,
-} = require('./helpers');
+const { powm, powN, pow2Loop, powerTwo, powNOld, pow2, getRandomInt } = require('./helpers');
 
 // Tests Functions
 /**
@@ -162,36 +152,6 @@ function findAngel(minkills, n = 100, M = 1) {
     console.log('minkills   = ' + minkills);
 }
 
-function testClassic(n, M, start, desc) {
-    console.log(`Testing n = ${n}, Skip = ${M}, start = ${start}, desc = ${desc}`);
-
-    const obj = {
-        last_1: {
-            n,
-            start,
-            M: 2,
-            josephus: josephus(n, 2, start, desc ? 'reverse' : 'forward'),
-            splice: lastBy1Splice(n, start, desc),
-            JSON: lastBy1JSON(n, start, desc).lastAlive,
-            math: lastBy1Math(n, start, desc),
-            binary: lastBy1Binary(n, start, desc),
-        },
-        last_n: {
-            n,
-            start,
-            M,
-            josephus: josephus(n, M + 1, start, desc ? 'reverse' : 'forward'),
-            splice: lastByNSplice(n, M, start, desc).lastAlive,
-            JSON: lastByNJSON(n, M, start, desc).lastAlive,
-            batchJosephus: batchJosephus(n, M, start, desc),
-            Solution: new Solution().findTheWinner(n, M + 1),
-            math: 'N/A',
-            binary: 'N/A',
-        },
-    };
-    console.table(obj);
-}
-
 function testPowers(n = 1000, m = 2) {
     const obj = {
         n,
@@ -227,10 +187,38 @@ function looop(n = 1000) {
     );
 }
 
+function testClassic(n, M, start, desc) {
+    console.log(`Testing n = ${n}, Skip = ${M}, start = ${start}, desc = ${desc}`);
+
+    const obj = {
+        last_1: {
+            n,
+            start,
+            M: 2,
+            splice: lastBy1Splice(n, start, desc),
+            JSON: lastBy1JSON(n, start, desc).lastAlive,
+            josephus: josephus(n, 2, start, desc ? 'reverse' : 'forward'),
+            math: lastBy1Math(n, start, desc),
+            binary: lastBy1Binary(n, start, desc),
+        },
+        last_n: {
+            n,
+            start,
+            M,
+            splice: lastByNSplice(n, M, start, desc).lastAlive,
+            JSON: lastByNJSON(n, M, start, desc).lastAlive,
+            josephus: josephus(n, M, start, desc ? 'reverse' : 'forward'),
+            math: 'N/A',
+            binary: 'N/A',
+        },
+    };
+    console.table(obj);
+}
+
 // var n = 3 ** 5 - 1;
-const n = getRandomInt(102, 3_000);
-const M = 3;
-const start = 1; //getRandomInt(1, n);
+const n = getRandomInt(200, 3000);
+const M = 5;
+const start = 1; // getRandomInt(1, n);
 const desc = Math.random() >= 0.5;
 testClassic(n, M, start, desc);
 
