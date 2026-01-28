@@ -62,19 +62,16 @@ function lastBy1Binary(nombre = 100, start = 1, desc = false) {
 // Generalized Josephus Function for skipping N persons
 function josephusGeneral(n, k, start = 1, dir = 'forward') {
     const people = Array.from({ length: n }, (_, i) => (dir === 'forward' ? i + 1 : n - i));
-    if (dir === 'reverse') {
-        // console.log(people);
-    }
-    let idx = people.indexOf(start);
     let alive = start;
+    let idx = people.indexOf(alive);
 
     while (people.length > 1) {
-        const willKillCount = Math.min(k, people.length - 1);
-        const targetIndex = (idx + 1 + willKillCount) % people.length;
+        const wkc = Math.min(k, people.length - 1);
         const nextIndex = (idx + 1) % people.length;
-        const aliveNext = people.at((idx + willKillCount + 1) % people.length);
-        /* 
-        const selectedTargets =
+        const targetIndex = (idx + wkc + 1) % people.length;
+        const aliveNext = people.at(targetIndex);
+
+        /* const selectedTargets =
             nextIndex > targetIndex
                 ? people.slice(nextIndex, people.length).concat(people.slice(0, targetIndex))
                 : people.slice(nextIndex, targetIndex);
@@ -83,12 +80,17 @@ function josephusGeneral(n, k, start = 1, dir = 'forward') {
             `killer: ${alive.toString().padStart(2, '0')}, will kill ${zeroPaddedTargets.join(', ')}, next alive: ${aliveNext.toString().padStart(2, '0')}`,
         ); */
         if (nextIndex < targetIndex) {
-            /* const killed =  */ people.splice(nextIndex, willKillCount);
+            /* const killed =  */ people.splice(nextIndex, wkc);
             // console.log(`\tKilled: ${killed.map((x) => x.toString().padStart(2, '0')).join(', ')}`);
         } else {
             /* const killedPart1 =  */ people.splice(nextIndex);
             /* const killedPart2 =  */ people.splice(0, targetIndex);
-            // console.log(`\tKilled: ${killedPart1.concat(killedPart2).map((x) => x.toString().padStart(2, '0')).join(', ')}`);
+            /* console.log(
+                `\tKilled: ${killedPart1
+                    .concat(killedPart2)
+                    .map((x) => x.toString().padStart(2, '0'))
+                    .join(', ')}`,
+            ); */
         }
         alive = aliveNext;
         idx = people.indexOf(alive);
@@ -242,7 +244,7 @@ function josephus(n, m = 2, start = 1, dir = 'forward') {
     if (m === 2) {
         return dir === 'forward' ? josephusClassic(n, start) : josephusClassicReverse(n, start);
     }
-    return josephusGeneral(n, m, start);
+    return josephusGeneral(n, m, start, dir);
 }
 
 // Example

@@ -195,6 +195,7 @@ function testClassic(n, M, start, desc) {
             n,
             start,
             M: 2,
+            direction: desc ? 'reverse' : 'forward',
             splice: lastBy1Splice(n, start, desc),
             JSON: lastBy1JSON(n, start, desc).lastAlive,
             josephus: josephus(n, 2, start, desc ? 'reverse' : 'forward'),
@@ -205,6 +206,7 @@ function testClassic(n, M, start, desc) {
             n,
             start,
             M,
+            direction: desc ? 'reverse' : 'forward',
             splice: lastByNSplice(n, M, start, desc).lastAlive,
             JSON: lastByNJSON(n, M, start, desc).lastAlive,
             josephus: josephus(n, M, start, desc ? 'reverse' : 'forward'),
@@ -216,7 +218,7 @@ function testClassic(n, M, start, desc) {
 }
 
 // var n = 3 ** 5 - 1;
-const n = getRandomInt(200, 3000);
+const n = getRandomInt(20, 30);
 const M = 5;
 const start = 1; // getRandomInt(1, n);
 const desc = Math.random() >= 0.5;

@@ -47,7 +47,7 @@ test('Usability: lastBy1Binary handles all valid start positions', () => {
 });
 
 test('Usability: josephusGeneral supports forward/reverse', () => {
-    const n = 12,
+    const n = 13,
         m = 3;
     const fwd = josephusGeneral(n, m, 1, 'forward');
     const rev = josephusGeneral(n, m, 1, 'reverse');
