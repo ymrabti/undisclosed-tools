@@ -11,7 +11,7 @@ const {
 } = require('../index');
 
 function logPass(name) {
-    // console.log(`PASS: ${name}`);
+    console.log(`PASS: ${name}`);
 }
 function logFail(name, err) {
     console.error(`❌ FAIL: ${name} -> ${err.message}`);

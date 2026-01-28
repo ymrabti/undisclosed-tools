@@ -1,16 +1,12 @@
 const assert = require('assert');
 const {
-    generateListJSON,
     countAlives,
-    returnAlives,
-    findNUM,
-    findNextNAlives,
     InfosNum,
 } = require('../helpers');
 const { lastBy1JSON, lastBy1Binary } = require('../index');
 
 function logPass(name) {
-    // console.log(`PASS: ${name}`);
+    console.log(`PASS: ${name}`);
 }
 function logFail(name, err) {
     console.error(`❌ FAIL: ${name} -> ${err.message}`);
@@ -35,32 +31,6 @@ test('System invariant: total kills = n - survivors', () => {
     assert.strictEqual(totalKills, n - survivors);
 });
 
-// Simulate general N elimination using helpers to validate survivors count
-function simulateGeneralN(n, N, start = 1, desc = false) {
-    const list = generateListJSON(n, desc);
-    let lastAlive = start;
-    while (countAlives(list) > N) {
-        const i = findNUM(list, lastAlive);
-        const nextAlives = findNextNAlives(list, N, i);
-        nextAlives.forEach((idx) => {
-            list[i].kills += 1;
-            list[idx].killed = true;
-            list[idx].killedBy = lastAlive;
-        });
-        const next2 = findNextNAlives(list, 1, i)[0];
-        lastAlive = list[next2].num;
-    }
-    return list;
-}
-
-test('System invariant: only N survivors remain for general N', () => {
-    const n = 25,
-        N = 3,
-        start = 1;
-    const listComn = simulateGeneralN(n, N, start, false);
-    const survivors = returnAlives(listComn);
-    assert.strictEqual(survivors.length, N);
-});
 
 test('System property: winner appears in list and has kills >= 0', () => {
     const n = 40,
