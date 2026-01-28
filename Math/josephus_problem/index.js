@@ -71,33 +71,14 @@ function josephusGeneral(n, k, start = 1, dir = 'forward') {
         const targetIndex = (idx + wkc + 1) % people.length;
         const aliveNext = people.at(targetIndex);
 
-        /* const selectedTargets =
-            nextIndex > targetIndex
-                ? people.slice(nextIndex, people.length).concat(people.slice(0, targetIndex))
-                : people.slice(nextIndex, targetIndex);
-        const zeroPaddedTargets = selectedTargets.map((x) => x.toString().padStart(2, '0'));
-        console.log(
-            `killer: ${alive.toString().padStart(2, '0')}, will kill ${zeroPaddedTargets.join(', ')}, next alive: ${aliveNext.toString().padStart(2, '0')}`,
-        ); */
         if (nextIndex < targetIndex) {
-            /* const killed =  */ people.splice(nextIndex, wkc);
-            // console.log(`\tKilled: ${killed.map((x) => x.toString().padStart(2, '0')).join(', ')}`);
+            people.splice(nextIndex, wkc);
         } else {
-            /* const killedPart1 =  */ people.splice(nextIndex);
-            /* const killedPart2 =  */ people.splice(0, targetIndex);
-            /* console.log(
-                `\tKilled: ${killedPart1
-                    .concat(killedPart2)
-                    .map((x) => x.toString().padStart(2, '0'))
-                    .join(', ')}`,
-            ); */
+            people.splice(nextIndex);
+            people.splice(0, targetIndex);
         }
         alive = aliveNext;
         idx = people.indexOf(alive);
-        if (idx === -1) {
-            console.error('Error: Alive person not found in the list!');
-            break;
-        }
     }
     return alive;
 }

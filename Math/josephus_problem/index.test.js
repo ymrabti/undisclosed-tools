@@ -218,8 +218,8 @@ function testClassic(n, M, start, desc) {
 }
 
 // var n = 3 ** 5 - 1;
-const n = getRandomInt(20, 30);
-const M = 5;
+const n = getRandomInt(20, 300);
+const M = getRandomInt(3, 5);
 const start = 1; // getRandomInt(1, n);
 const desc = Math.random() >= 0.5;
 testClassic(n, M, start, desc);
