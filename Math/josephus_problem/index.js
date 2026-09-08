@@ -65,7 +65,7 @@ function josephusGeneral(n, k, start = 1, dir = 'forward') {
     let alive = start;
     let idx = people.indexOf(alive);
 
-    while (people.length > 1) {
+    while (people.length > k + 1) {
         const wkc = Math.min(k, people.length - 1);
         const nextIndex = (idx + 1) % people.length;
         const targetIndex = (idx + wkc + 1) % people.length;
@@ -74,8 +74,18 @@ function josephusGeneral(n, k, start = 1, dir = 'forward') {
         if (nextIndex < targetIndex) {
             people.splice(nextIndex, wkc);
         } else {
-            people.splice(nextIndex);
-            people.splice(0, targetIndex);
+            const s1 = people.splice(nextIndex);
+            const s2 = people.splice(0, targetIndex);
+            if (s1.length + s2.length !== wkc) {
+                throw new Error('Logic error in josephusGeneral');
+            }
+            const toRemove = s1.concat(s2).slice(0, wkc);
+            toRemove.forEach((item) => {
+                const index = people.indexOf(item);
+                if (index > -1) {
+                    people.splice(index, 1);
+                }
+            });
         }
         alive = aliveNext;
         idx = people.indexOf(alive);
