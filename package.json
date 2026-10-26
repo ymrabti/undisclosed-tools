@@ -1,24 +1,24 @@
 {
-  "name": "killscycle",
-  "version": "1.0.0",
-  "description": "",
-  "main": "Math/josephus_problem/tests/run-all.js",
-  "scripts": {
-    "start:sim:josephus": "vite Math/josephus_problem/simulation.html",
-    "dev": "nodemon Math/josephus_problem/index.test.js",
-    "test:all": "node Math/josephus_problem/tests/run-all.js",
-    "test:unit": "node Math/josephus_problem/tests/unit.test.js",
-    "test:integration": "node Math/josephus_problem/tests/integration.test.js",
-    "test:system": "node Math/josephus_problem/tests/system.test.js",
-    "test:performance": "node Math/josephus_problem/tests/performance.test.js",
-    "test:usability": "node Math/josephus_problem/tests/usability.test.js",
-    "test:compatibility": "node Math/josephus_problem/tests/compatibility.test.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "3.0.3",
-    "vite": "^8.2.2"
-  }
+    "name": "killscycle",
+    "version": "1.0.0",
+    "description": "",
+    "main": "Math/josephus_problem/tests/run-all.js",
+    "scripts": {
+        "dev": "nodemon Math/josephus_problem/index.test.js",
+        "start:sim:josephus": "vite Math/josephus_problem/simulation.html",
+        "test:all": "node Math/josephus_problem/tests/run-all.js",
+        "test:unit": "node Math/josephus_problem/tests/unit.test.js",
+        "test:integration": "node Math/josephus_problem/tests/integration.test.js",
+        "test:system": "node Math/josephus_problem/tests/system.test.js",
+        "test:performance": "node Math/josephus_problem/tests/performance.test.js",
+        "test:usability": "node Math/josephus_problem/tests/usability.test.js",
+        "test:compatibility": "node Math/josephus_problem/tests/compatibility.test.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "3.0.3",
+        "vite": "8.3.5"
+    }
 }
